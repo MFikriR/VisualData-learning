@@ -1,0 +1,45 @@
+/* resources/css/variables.css */
+/* Import Font Profesional */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    /* --- 1. EDTECH PROFESSIONAL PALETTE --- */
+    --edu-primary: #2563eb;       /* Blue 600 (Warna Utama/Tombol) */
+    --edu-primary-hover: #1d4ed8; /* Blue 700 (Hover) */
+    --edu-dark: #0f172a;          /* Slate 900 (Background Utama) */
+    --edu-panel: #1e293b;         /* Slate 800 (Card/Sidebar) */
+    --edu-accent: #38bdf8;        /* Sky 400 (Highlight/Icon) */
+    
+    /* --- 2. TEXT COLORS --- */
+    --text-primary: #f8fafc;      /* Slate 50 (Judul/Teks Utama) */
+    --text-secondary: #cbd5e1;    /* Slate 300 (Subjudul/Paragraf) */
+    --text-muted: #64748b;        /* Slate 500 (Keterangan kecil) */
+
+    /* --- 3. BORDERS --- */
+    --border-color: #334155;      /* Slate 700 (Border Card/Input) */
+    --border-light: rgba(255, 255, 255, 0.1); 
+
+    /* --- 4. TYPOGRAPHY --- */
+    --font-main: '"Plus Jakarta Sans"', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--edu-dark);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Scrollbar Elegan */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--edu-dark); }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--edu-primary); }

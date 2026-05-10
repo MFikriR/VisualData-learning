@@ -1,0 +1,24 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::table('materials', function (Blueprint $table) {
+            // Mengubah kolom content menjadi LONGTEXT
+            $table->longText('content')->change();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::table('materials', function (Blueprint $table) {
+            // Mengembalikan ke TEXT jika di-rollback
+            $table->text('content')->change();
+        });
+    }
+};

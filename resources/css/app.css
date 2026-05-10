@@ -1,0 +1,29 @@
+/* resources/css/app.css */
+@import './variables.css';
+@import './auth.css';
+@import './dashboard.css';
+@import './landing.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        background-color: var(--edu-dark); 
+        color: var(--text-primary);
+        font-family: var(--font-main);
+    }
+}
+
+@layer utilities {
+    /* Glassmorphism Global Class */
+    .glass-panel {
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--border-light);
+        border-radius: 1.5rem;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+}
