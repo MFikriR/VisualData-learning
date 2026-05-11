@@ -1,0 +1,69 @@
+{
+  "_OrbitControls-Bj6RM2HP.js": {
+    "file": "assets/OrbitControls-Bj6RM2HP.js",
+    "name": "OrbitControls"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-DxBTLMW6.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/css/auth.css": {
+    "file": "assets/auth-Dp4AWii8.css",
+    "src": "resources/css/auth.css",
+    "isEntry": true,
+    "name": "auth",
+    "names": [
+      "auth.css"
+    ]
+  },
+  "resources/css/dashboard.css": {
+    "file": "assets/dashboard-T2qgCeym.css",
+    "src": "resources/css/dashboard.css",
+    "isEntry": true,
+    "name": "dashboard",
+    "names": [
+      "dashboard.css"
+    ]
+  },
+  "resources/css/landing.css": {
+    "file": "assets/landing-tn0RQdqM.css",
+    "src": "resources/css/landing.css",
+    "isEntry": true,
+    "name": "landing",
+    "names": [
+      "landing.css"
+    ]
+  },
+  "resources/css/variables.css": {
+    "file": "assets/variables-C-OgjopM.css",
+    "src": "resources/css/variables.css",
+    "isEntry": true,
+    "name": "variables",
+    "names": [
+      "variables.css"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-DJcOy_RT.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_OrbitControls-Bj6RM2HP.js"
+    ]
+  },
+  "resources/js/simulation.js": {
+    "file": "assets/simulation-D0Y885Xd.js",
+    "name": "simulation",
+    "src": "resources/js/simulation.js",
+    "isEntry": true,
+    "imports": [
+      "_OrbitControls-Bj6RM2HP.js"
+    ]
+  }
+}
