@@ -20,8 +20,9 @@ COPY . .
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader
 
-# MASAK CSS TAILWIND DAN JS (Ini bagian yang sebelumnya hilang!)
-RUN npm install
+
+# MASAK CSS TAILWIND DAN JS
+RUN npm install --include=dev
 RUN npm run build
 
 # Permissions
