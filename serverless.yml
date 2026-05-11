@@ -1,0 +1,16 @@
+service: visualdata-learning
+
+provider:
+    name: aws
+    region: ap-southeast-1
+
+plugins:
+    - ./vendor/bref/bref
+
+functions:
+    api:
+        handler: public/index.php
+        runtime: php-82
+        timeout: 28
+        events:
+            - httpApi: "*"
