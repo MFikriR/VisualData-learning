@@ -1,5 +1,11 @@
 FROM php:8.4-apache
 
+# --- MENGARAHKAN APACHE KE FOLDER PUBLIC LARAVEL ---
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+# ---------------------------------------------------
+
 # Install dependencies, PHP extensions, dan Node.js untuk Tailwind
 RUN apt-get update && apt-get install -y \
     libzip-dev zip unzip git curl gnupg \
@@ -19,7 +25,6 @@ COPY . .
 # Install composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader
-
 
 # MASAK CSS TAILWIND DAN JS
 RUN rm -rf node_modules
