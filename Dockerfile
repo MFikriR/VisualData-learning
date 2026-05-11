@@ -22,7 +22,8 @@ RUN composer install --no-dev --optimize-autoloader
 
 
 # MASAK CSS TAILWIND DAN JS
-RUN npm install --include=dev
+RUN rm -rf node_modules
+RUN npm install
 RUN npm run build
 
 # Permissions
