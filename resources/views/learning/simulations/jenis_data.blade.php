@@ -15,7 +15,7 @@
                 <span class="text-2xl">🏭</span>
             </div>
             <div>
-                <h4 class="text-white font-bold text-lg">Data Sorter v1.0</h4>
+                <h4 class="text-white font-bold text-lg">Data Sorter v2.0</h4>
                 <p class="text-gray-400 text-xs">Sortir data ke kategori yang tepat</p>
             </div>
         </div>
@@ -27,7 +27,8 @@
             </div>
             <div class="text-right">
                 <p class="text-xs text-gray-500 uppercase font-bold">Wave</p>
-                <p class="text-2xl font-mono font-bold text-blue-400"><span id="waveDisplay">1</span>/5</p>
+                {{-- Diubah menjadi maksimal 10 --}}
+                <p class="text-2xl font-mono font-bold text-blue-400"><span id="waveDisplay">1</span>/10</p>
             </div>
         </div>
     </div>
@@ -103,13 +104,18 @@
 
 {{-- LOGIKA JAVASCRIPT --}}
 <script>
-    // --- DATABASE SOAL ---
+    // --- DATABASE SOAL 10 GAMBAR ---
     const gameData = [
-        { id: 1, text: "Warna: Merah", type: "nominal", desc: "Warna hanyalah label, tidak ada tingkatan." },
-        { id: 2, text: "Juara 1", type: "ordinal", desc: "Juara memiliki urutan/peringkat (1, 2, 3)." },
-        { id: 3, text: "5 Ekor Kucing", type: "diskrit", desc: "Jumlah hewan dihitung bulat (tidak ada 5.5 kucing)." },
-        { id: 4, text: "Tinggi 170.5 cm", type: "kontinu", desc: "Tinggi badan diukur dan bisa desimal." },
-        { id: 5, text: "Suhu 36.2°C", type: "kontinu", desc: "Suhu adalah hasil pengukuran (Continuous)." }
+        { id: 1, image: "{{ asset('images/simulasi/golongan darah.png') }}", text: "Golongan Darah", type: "nominal", desc: "Golongan darah hanya nama/kategori, tidak ada tingkatan." },
+        { id: 2, image: "{{ asset('images/simulasi/Label Ukuran Kaos.png') }}", text: "Ukuran Kaos", type: "ordinal", desc: "Ada urutan tingkatan ukuran dari kecil ke besar." },
+        { id: 3, image: "{{ asset('images/simulasi/Jumlah Notifikasi Chat di HP.png') }}", text: "Notifikasi HP", type: "diskrit", desc: "Dihitung secara bulat (tidak mungkin pecahan)." },
+        { id: 4, image: "{{ asset('images/simulasi/Termometer Suhu Ruangan.png') }}", text: "Suhu Ruangan", type: "kontinu", desc: "Hasil pengukuran alat dan bisa dalam bentuk desimal." },
+        { id: 5, image: "{{ asset('images/simulasi/Review Toko Online.png') }}", text: "Review Toko", type: "ordinal", desc: "Ada tingkatan kepuasan dari 1 hingga 5 bintang." },
+        { id: 6, image: "{{ asset('images/simulasi/Jenis Kendaraan.png') }}", text: "Jenis Kendaraan", type: "nominal", desc: "Hanya kategori jenis, tidak ada urutan peringkat." },
+        { id: 7, image: "{{ asset('images/simulasi/Stopwatch.png') }}", text: "Stopwatch", type: "kontinu", desc: "Waktu adalah hasil pengukuran yang detail (desimal)." },
+        { id: 8, image: "{{ asset('images/simulasi/Jumlah Siswa Hadir.png') }}", text: "Siswa Hadir", type: "diskrit", desc: "Jumlah manusia pasti dihitung bulat." },
+        { id: 9, image: "{{ asset('images/simulasi/Tinggi Badan Siswa.png') }}", text: "Tinggi Badan", type: "kontinu", desc: "Tinggi badan diukur dengan alat dan bisa pecahan." },
+        { id: 10, image: "{{ asset('images/simulasi/Member Minimarket.png') }}", text: "Member Minimarket", type: "ordinal", desc: "Ada hierarki/urutan dari Silver, Gold, ke Platinum." }
     ];
 
     let currentLevel = 0;
@@ -126,7 +132,6 @@
         hand.classList.remove('hidden');
         
         // Posisikan tangan menunjuk ke Nominal (karena soal 1 jawabannya Nominal)
-        // Ini hardcoded untuk tutorial
         setTimeout(() => {
             hand.classList.add('hidden');
         }, 3000);
@@ -143,14 +148,16 @@
 
         const data = gameData[index];
         
-        // Buat Elemen Data
+        // Buat Elemen Data (Tinggi kotak ditambah agar gambar muat)
         const item = document.createElement('div');
-        item.className = "cursor-grab active:cursor-grabbing w-40 h-24 bg-white text-gray-900 rounded-lg shadow-xl flex flex-col items-center justify-center font-bold text-center p-2 transform transition-transform hover:scale-105 border-4 border-indigo-500 z-40";
+        item.className = "cursor-grab active:cursor-grabbing w-40 h-32 bg-white text-gray-900 rounded-lg shadow-xl flex flex-col items-center justify-center font-bold text-center p-2 transform transition-transform hover:scale-105 border-4 border-indigo-500 z-40";
         item.setAttribute('draggable', true);
         item.setAttribute('id', 'draggable-item');
+        
+        // Memasukkan gambar asli dan teks ke dalam kotak
         item.innerHTML = `
-            <div class="text-2xl mb-1">📦</div>
-            <div class="text-sm">${data.text}</div>
+            <img src="${data.image}" alt="${data.text}" class="h-16 w-16 object-contain mb-1 pointer-events-none rounded">
+            <div class="text-xs leading-tight">${data.text}</div>
         `;
 
         // Event Listeners untuk Drag
@@ -242,7 +249,7 @@
         // Cek elemen di bawah jari saat dilepas
         const changedTouch = e.changedTouches[0];
         const elemBelow = document.elementFromPoint(changedTouch.clientX, changedTouch.clientY);
-        const dropZone = elemBelow.closest('.drop-zone');
+        const dropZone = elemBelow ? elemBelow.closest('.drop-zone') : null;
 
         if (dropZone) {
             const correctType = gameData[currentLevel].type;
@@ -275,7 +282,7 @@
         }, 50);
 
         if (isCorrect) {
-            score += 20;
+            score += 10; // Skor disesuaikan jadi 10 per soal (total 100)
             document.getElementById('scoreDisplay').innerText = score;
             icon.innerText = "🎉";
             title.innerText = "Tepat Sekali!";
@@ -308,7 +315,7 @@
             <div class="text-center animate-fade-in">
                 <div class="text-5xl mb-2">🏆</div>
                 <h3 class="text-white font-bold">Simulasi Selesai!</h3>
-                <p class="text-gray-400">Skor Akhir: ${score}</p>
+                <p class="text-gray-400">Skor Akhir: ${score} / 100</p>
                 <button onclick="location.reload()" class="mt-4 text-xs text-indigo-400 hover:text-white underline">Main Lagi</button>
             </div>
         `;
