@@ -148,16 +148,17 @@
 
         const data = gameData[index];
         
-        // Buat Elemen Data (Tinggi kotak ditambah agar gambar muat)
+        // Buat Elemen Data
         const item = document.createElement('div');
-        item.className = "cursor-grab active:cursor-grabbing w-40 h-32 bg-white text-gray-900 rounded-lg shadow-xl flex flex-col items-center justify-center font-bold text-center p-2 transform transition-transform hover:scale-105 border-4 border-indigo-500 z-40";
+        // --- SEBELUM: item.className = "... w-40 h-32 ..."
+        // --- SESUDAH: Kita besarkan kotak putihnya jadi h-48 w-48 agar lebih lapang
+        item.className = "cursor-grab active:cursor-grabbing w-48 h-48 bg-white text-gray-900 rounded-lg shadow-xl flex flex-col items-center justify-center font-bold text-center p-2 transform transition-transform hover:scale-105 border-4 border-indigo-500 z-40"; // <--- UBAH w-40 h-32 jadi w-48 h-48
         item.setAttribute('draggable', true);
         item.setAttribute('id', 'draggable-item');
         
         // Memasukkan gambar asli dan teks ke dalam kotak
         item.innerHTML = `
-            <img src="${data.image}" alt="${data.text}" class="h-16 w-16 object-contain mb-1 pointer-events-none rounded">
-            <div class="text-xs leading-tight">${data.text}</div>
+            <img src="${data.image}" alt="${data.text}" class="h-32 w-32 object-contain mb-1 pointer-events-none rounded"> <div class="text-xs leading-tight">${data.text}</div>
         `;
 
         // Event Listeners untuk Drag
