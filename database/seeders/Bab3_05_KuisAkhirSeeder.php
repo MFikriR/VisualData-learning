@@ -37,7 +37,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
         // 4. Daftar Soal Lengkap (20 Soal)
         $questions = [
             [
-                'question' => 'Clustering merupakan teknik utama dalam Unsupervised Learning, yang membedakannya dari Supervised Learning adalah data input yang digunakan bersifat ....',
+                'question' => 'Clustering merupakan teknik utama dalam Unsupervised Learning, yang membedakannya dari Supervised Learning adalah data input yang digunakan bersifat....',
                 'image' => null,
                 'options' => [
                     'A' => 'tidak memiliki label atau kunci jawaban',
@@ -50,7 +50,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Unsupervised Learning bekerja pada data mentah yang tidak memiliki label/target output.'
             ],
             [
-                'question' => 'Berdasarkan karakteristik data inputnya, kotak kosong pada tabel tersebut seharusnya diisi dengan keterangan ....',
+                'question' => 'Berdasarkan karakteristik data inputnya, kotak kosong pada tabel tersebut seharusnya diisi dengan keterangan....',
                 'image' => 'images/quiz/q2_tabel_perbandingan.png', 
                 'options' => [
                     'A' => 'data berlabel',
@@ -63,7 +63,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Unsupervised Learning menggunakan data input tanpa label.'
             ],
             [
-                'question' => 'Dalam terminologi K-Means, titik pusat atau "ketua kelas" dari sebuah kelompok yang nilainya dihitung dari rata-rata (mean) seluruh anggota kelompok tersebut dinamakan ....',
+                'question' => 'Dalam terminologi K-Means, titik pusat atau "ketua kelas" dari sebuah kelompok yang nilainya dihitung dari rata-rata (mean) seluruh anggota kelompok tersebut dinamakan....',
                 'image' => null,
                 'options' => [
                     'A' => 'Cluster',
@@ -76,7 +76,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Centroid adalah titik pusat dari sebuah klaster.'
             ],
             [
-                'question' => 'Nilai yang digunakan untuk mengukur "seberapa padat" sebuah klaster, di mana semakin kecil nilainya maka semakin baik kualitas klasternya karena data berkumpul rapat dekat pusat, dikenal dengan istilah ....',
+                'question' => 'Nilai yang digunakan untuk mengukur "seberapa padat" sebuah klaster, di mana semakin kecil nilainya maka semakin baik kualitas klasternya karena data berkumpul rapat dekat pusat, dikenal dengan istilah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Euclidean',
@@ -89,7 +89,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Inertia atau SSE (Sum of Squared Errors) mengukur kepadatan klaster.'
             ],
             [
-                'question' => 'Prinsip kerja utama dari Clustering berfokus pada pengenalan pola (Pattern Recognition), yaitu memaksimalkan kemiripan internal dan memaksimalkan ....',
+                'question' => 'Prinsip kerja utama dari Clustering berfokus pada pengenalan pola (Pattern Recognition), yaitu memaksimalkan kemiripan internal dan memaksimalkan....',
                 'image' => null,
                 'options' => [
                     'A' => 'jumlah data dalam satu kelompok',
@@ -102,7 +102,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Tujuan clustering: Intraclass similarity tinggi, Interclass dissimilarity tinggi (beda antar kelompok).'
             ],
             [
-                'question' => 'Karakteristik utama dari Euclidean Distance dalam perhitungan jarak antar data adalah ....',
+                'question' => 'Karakteristik utama dari Euclidean Distance dalam perhitungan jarak antar data adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'sangat sensitif terhadap perubahan posisi dan cocok untuk data kontinu',
@@ -115,7 +115,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Euclidean mengukur jarak garis lurus, sangat sensitif terhadap posisi (koordinat).'
             ],
             [
-                'question' => 'Alasan utama diperlukannya proses normalisasi (Min-Max Scaling) sebelum menghitung jarak pada data dengan satuan berbeda (misalnya Gaji dalam jutaan dan Usia dalam puluhan) adalah ....',
+                'question' => 'Alasan utama diperlukannya proses normalisasi (Min-Max Scaling) sebelum menghitung jarak pada data dengan satuan berbeda (misalnya Gaji dalam jutaan dan Usia dalam puluhan) adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'untuk mengubah semua data menjadi bilangan bulat',
@@ -128,7 +128,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Normalisasi menyeimbangkan bobot setiap fitur agar perhitungan jarak adil.'
             ],
             [
-                'question' => 'Rumus di atas merupakan metode perhitungan jarak yang disebut ....',
+                'question' => 'Rumus di atas merupakan metode perhitungan jarak yang disebut....',
                 'image' => 'images/quiz/q8_rumus_euclidean.png', 
                 'options' => [
                     'A' => 'Manhattan Distance',
@@ -141,7 +141,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Rumus akar kuadrat selisih kuadrat adalah ciri khas Euclidean Distance (Pythagoras).'
             ],
             [
-                'question' => 'Jika kita mengibaratkan seorang supir taksi yang harus melewati blok-blok gedung berbentuk kotak di sebuah kota untuk mencapai tujuan, metode pengukuran jarak yang paling relevan dengan analogi tersebut adalah ....',
+                'question' => 'Jika kita mengibaratkan seorang supir taksi yang harus melewati blok-blok gedung berbentuk kotak di sebuah kota untuk mencapai tujuan, metode pengukuran jarak yang paling relevan dengan analogi tersebut adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Euclidean Distance',
@@ -154,7 +154,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Manhattan Distance sering disebut Taxicab Geometry karena mengikuti pola grid blok kota.'
             ],
             [
-                'question' => 'Prinsip dasar perhitungan jarak dalam algoritma clustering menyatakan bahwa semakin kecil nilai jarak antara dua titik data, maka ....',
+                'question' => 'Prinsip dasar perhitungan jarak dalam algoritma clustering menyatakan bahwa semakin kecil nilai jarak antara dua titik data, maka....',
                 'image' => null,
                 'options' => [
                     'A' => 'kedua data tersebut semakin berbeda',
@@ -167,7 +167,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Jarak kecil = Mirip. Jarak besar = Beda.'
             ],
             [
-                'question' => 'Langkah pertama (Inisialisasi) yang dilakukan oleh algoritma K-Means setelah menentukan jumlah K adalah ....',
+                'question' => 'Langkah pertama (Inisialisasi) yang dilakukan oleh algoritma K-Means setelah menentukan jumlah K adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'memilih titik pusat (centroid) awal secara acak',
@@ -180,7 +180,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Langkah awal K-Means adalah inisialisasi centroid secara random.'
             ],
             [
-                'question' => 'Sebuah algoritma K-Means dikatakan telah selesai atau berhenti berproses (stop) apabila kondisi berikut terpenuhi, yaitu ....',
+                'question' => 'Sebuah algoritma K-Means dikatakan telah selesai atau berhenti berproses (stop) apabila kondisi berikut terpenuhi, yaitu....',
                 'image' => null,
                 'options' => [
                     'A' => 'jumlah data dalam setiap klaster sudah sama rata',
@@ -193,7 +193,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Konvergensi terjadi saat posisi centroid stabil (tidak berpindah lagi).'
             ],
             [
-                'question' => 'Tindakan yang dilakukan pada "Langkah X" adalah ....',
+                'question' => 'Tindakan yang dilakukan pada "Langkah X" adalah....',
                 'image' => 'images\quiz\q14_LangkahX.png',
                 'options' => [
                     'A' => 'menghapus data yang jauh dari centroid',
@@ -206,7 +206,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Setelah penugasan (assignment), langkah selanjutnya adalah Update Centroid.'
             ],
             [
-                'question' => 'Pada tahap "Penugasan (Assignment)", setiap titik data akan dimasukkan ke dalam kelompok berdasarkan ....',
+                'question' => 'Pada tahap "Penugasan (Assignment)", setiap titik data akan dimasukkan ke dalam kelompok berdasarkan....',
                 'image' => null,
                 'options' => [
                     'A' => 'urutan masuknya data ke dalam sistem',
@@ -219,7 +219,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Data akan bergabung dengan centroid yang memiliki jarak Euclidean paling kecil (terdekat).'
             ],
             [
-                'question' => 'Dalam penamaan algoritma "K-Means", istilah "Means" merujuk pada metode penentuan pusat kelompok yang menggunakan ....',
+                'question' => 'Dalam penamaan algoritma "K-Means", istilah "Means" merujuk pada metode penentuan pusat kelompok yang menggunakan....',
                 'image' => null,
                 'options' => [
                     'A' => 'nilai tengah (median) data',
@@ -232,7 +232,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Means = Rata-rata.'
             ],
             [
-                'question' => 'Berdasarkan grafik di bawah, jumlah klaster (K) yang paling efisien untuk dipilih adalah ....',
+                'question' => 'Berdasarkan grafik di bawah, jumlah klaster (K) yang paling efisien untuk dipilih adalah....',
                 'image' => 'images/quiz/q13_langkah_kmeans.png',
                 'options' => [
                     'A' => '3 (tiga)',
@@ -245,7 +245,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Pada grafik Elbow Method, titik siku (tekukan tajam) berada di angka 3.'
             ],
             [
-                'question' => 'Salah satu kelemahan utama algoritma K-Means yang perlu diwaspadai saat mengolah data yang kotor adalah ....',
+                'question' => 'Salah satu kelemahan utama algoritma K-Means yang perlu diwaspadai saat mengolah data yang kotor adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'proses komputasinya sangat lambat untuk data besar',
@@ -258,7 +258,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Outlier yang nilainya ekstrem akan menarik rata-rata (mean) menjauh, membuat centroid tidak akurat.'
             ],
             [
-                'question' => 'Jika dilakukan simulasi manual K-Means dengan K=2 pada data nilai siswa: A=2, D=12. Jika Centroid 1 ada di posisi 3 dan Centroid 2 ada di posisi 20, maka Data D (nilai 12) akan bergabung ke ....',
+                'question' => 'Jika dilakukan simulasi manual K-Means dengan K=2 pada data nilai siswa: A=2, D=12. Jika Centroid 1 ada di posisi 3 dan Centroid 2 ada di posisi 20, maka Data D (nilai 12) akan bergabung ke....',
                 'image' => null,
                 'options' => [
                     'A' => 'Centroid 1, karena 12 lebih dekat ke 3 daripada 20',
@@ -271,7 +271,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Jarak ke C1(3) = |12-3| = 9. Jarak ke C2(20) = |12-20| = 8. Karena 8 < 9, maka masuk ke C2 (Kelompok 2).'
             ],
             [
-                'question' => 'Proses pengulangan langkah "Penugasan" dan "Pembaruan Centroid" secara terus menerus dalam algoritma K-Means disebut sebagai proses ....',
+                'question' => 'Proses pengulangan langkah "Penugasan" dan "Pembaruan Centroid" secara terus menerus dalam algoritma K-Means disebut sebagai proses....',
                 'image' => null,
                 'options' => [
                     'A' => 'Normalisasi',
@@ -284,7 +284,7 @@ class Bab3_05_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Pengulangan langkah algoritma disebut Iterasi.'
             ],
             [
-                'question' => 'Analogi dunia nyata yang paling tepat menggambarkan proses Clustering pada data buku perpustakaan tanpa label genre adalah ....',
+                'question' => 'Analogi dunia nyata yang paling tepat menggambarkan proses Clustering pada data buku perpustakaan tanpa label genre adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'pustakawan menyusun buku berdasarkan daftar inventaris yang sudah ada',

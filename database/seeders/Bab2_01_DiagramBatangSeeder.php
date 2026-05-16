@@ -547,7 +547,7 @@ class Bab2_01_DiagramBatangSeeder extends Seeder
 
             <div id="mini-quiz-data" class="hidden">
                 <div class="mini-quiz-item" 
-                    data-question="Menurut buku 'Fundamentals of Data Handling' yang dikutip pada materi, bagian mana dari visualisasi yang paling mudah dan cepat dibandingkan oleh mata/otak manusia?"
+                    data-question="Bagian visualisasi yang paling mudah dan cepat dibandingkan oleh mata/otak manusia  adalah...."
                     data-opt-a="Luas area objek"
                     data-opt-b="Volume ruang 3D"
                     data-opt-c="Panjang (Length) dari sebuah elemen"
@@ -556,7 +556,7 @@ class Bab2_01_DiagramBatangSeeder extends Seeder
                     data-answer="C">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Pada diagram batang yang disajikan dengan benar, mengapa SELALU ada celah (gap) di antara batang-batangnya?"
+                    data-question="Alasan diagram batang yang disajikan dengan benar selalu memiliki celah (gap) di antara batang-batangnya adalah...."
                     data-opt-a="Untuk menunjukkan bahwa datanya bersifat kuantitatif/kontinu."
                     data-opt-b="Agar grafik terlihat lebih menarik dan estetis."
                     data-opt-c="Untuk menandakan bahwa data yang disajikan bersifat Kualitatif/Diskret (terpisah satu sama lain)."
@@ -565,7 +565,7 @@ class Bab2_01_DiagramBatangSeeder extends Seeder
                     data-answer="C">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Apa nama 'Aturan Emas' (Golden Rule) visualisasi yang mewajibkan sumbu nilai (Y-Axis) pada diagram batang harus dimulai dari angka 0 (nol) agar tidak memanipulasi persepsi pembaca?"
+                    data-question="Nama “Aturan Emas” (Golden Rule) visualisasi yang mewajibkan sumbu nilai (Y-Axis) pada diagram batang dimulai dari angka 0 (nol) agar tidak memanipulasi persepsi pembaca adalah...."
                     data-opt-a="The Principle of Data Cleaning"
                     data-opt-b="The Law of Categorical Bar"
                     data-opt-c="The Stacked Bar Theorem"
@@ -574,7 +574,7 @@ class Bab2_01_DiagramBatangSeeder extends Seeder
                     data-answer="D">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Jika kamu memiliki data dengan jumlah kategori yang sangat banyak (misal: 30 Provinsi) ATAU teks nama kategorinya sangat panjang (misal: Judul Buku), variasi diagram batang mana yang WAJIB digunakan agar teks labelnya tidak bertumpuk dan mudah dibaca?"
+                    data-question="Variasi diagram batang yang wajib digunakan ketika jumlah kategori sangat banyak atau teks nama kategorinya sangat panjang agar label tidak bertumpuk dan mudah dibaca adalah...."
                     data-opt-a="Diagram Batang Vertikal (Column Chart)"
                     data-opt-b="Diagram Batang Horizontal (Bar Chart)"
                     data-opt-c="Diagram Batang Bertumpuk (Stacked Bar)"
@@ -583,7 +583,7 @@ class Bab2_01_DiagramBatangSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Berdasarkan simulasi DataViz Studio interaktif di atas, apa langkah terakhir yang harus dilakukan untuk memunculkan visualisasi grafik dari data .csv?"
+                    data-question="Langkah terakhir untuk memunculkan visualisasi grafik dari data .csv berdasarkan simulasi DataViz Studio interaktif pada materi adalah...."
                     data-opt-a="Mengetik kode Python untuk plotting grafik."
                     data-opt-b="Mengklik ganda (double-click) pada komponen/node Grafik Batang setelah data dihubungkan."
                     data-opt-c="Mengunggah (upload) manual file Excel ke layar komputer."

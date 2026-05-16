@@ -621,7 +621,7 @@ class Bab3_02_PeranJarakSeeder extends Seeder
 
             <div id="mini-quiz-data" class="hidden">
                 <div class="mini-quiz-item" 
-                    data-question="Bagaimana cara algoritma K-Means (komputer) mengukur tingkat 'kemiripan' antar dua buah data?"
+                    data-question="Cara algoritma K-Means (komputer) mengukur tingkat “kemiripan” antar dua data adalah...."
                     data-opt-a="Dengan membandingkan warna datanya."
                     data-opt-b="Dengan menerjemahkan kemiripan menjadi 'Jarak Matematika' (Distance). Jarak kecil berarti data sangat mirip."
                     data-opt-c="Dengan membaca teks deskripsi pada data."
@@ -630,7 +630,7 @@ class Bab3_02_PeranJarakSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Rumus jarak manakah yang bekerja dengan cara menarik 'garis lurus terpendek' (seperti burung terbang) dari titik A ke titik B, yang diadaptasi dari Teorema Pythagoras?"
+                    data-question="Rumus jarak yang bekerja dengan cara menarik “garis lurus terpendek” (seperti burung terbang) dari titik A ke titik B berdasarkan Teorema Pythagoras adalah...."
                     data-opt-a="Manhattan Distance"
                     data-opt-b="Cosine Similarity"
                     data-opt-c="Euclidean Distance"
@@ -639,7 +639,7 @@ class Bab3_02_PeranJarakSeeder extends Seeder
                     data-answer="C">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Berdasarkan materi, apa keunggulan utama dari metode Manhattan Distance (Jarak Taksi New York)?"
+                    data-question="Keunggulan utama metode Manhattan Distance (Jarak Taksi New York) berdasarkan materi adalah...."
                     data-opt-a="Sangat kebal terhadap data 'Pencilan' (Outlier) dan bagus untuk data berdimensi banyak."
                     data-opt-b="Perhitungannya jauh lebih cepat 100x lipat dari komputer biasa."
                     data-opt-c="Bisa melintasi gedung (menarik garis lurus) dalam perhitungannya."
@@ -648,7 +648,7 @@ class Bab3_02_PeranJarakSeeder extends Seeder
                     data-answer="A">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Pada studi kasus karyawan, mengapa perbedaan Gaji Rp200.000 bisa merusak pengelompokan yang melibatkan Usia (selisih 20 tahun)?"
+                    data-question="Penyebab perbedaan gaji Rp200.000 dapat merusak pengelompokan yang melibatkan usia dengan selisih 20 tahun pada studi kasus karyawan adalah...."
                     data-opt-a="Karena AI tidak bisa memproses mata uang Rupiah."
                     data-opt-b="Karena umur manusia maksimal hanya 100 tahun."
                     data-opt-c="Karena angka 200.000 memiliki nilai yang jauh lebih besar dan mendominasi angka 20 di dalam rumus jarak matematika."
@@ -657,7 +657,7 @@ class Bab3_02_PeranJarakSeeder extends Seeder
                     data-answer="C">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Apa solusi (jalan keluar) agar fitur berskala besar (seperti gaji) tidak 'menjajah' fitur berskala kecil (seperti usia) saat dihitung oleh algoritma AI?"
+                    data-question="Solusi agar fitur berskala besar (seperti gaji) tidak mendominasi fitur berskala kecil (seperti usia) saat dihitung algoritma AI adalah...."
                     data-opt-a="Menghapus fitur Gaji dan hanya menggunakan fitur Usia."
                     data-opt-b="Membulatkan angka Gaji menjadi puluhan ribu."
                     data-opt-c="Melakukan proses Scaling (Normalisasi) agar semua fitur diubah ke rentang yang sama (contoh: di antara 0 hingga 1)."

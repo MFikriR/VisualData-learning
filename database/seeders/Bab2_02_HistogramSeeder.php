@@ -582,7 +582,7 @@ class Bab2_02_HistogramSeeder extends Seeder
 
             <div id="mini-quiz-data" class="hidden">
                 <div class="mini-quiz-item" 
-                    data-question="Apa perbedaan paling mendasar antara Bar Chart (Diagram Batang) dan Histogram jika dilihat dari tampilan visual batangnya?"
+                    data-question="Perbedaan paling mendasar antara Bar Chart (Diagram Batang) dan Histogram jika dilihat dari tampilan visual batangnya adalah...."
                     data-opt-a="Histogram memiliki celah antar batangnya, Bar Chart menempel."
                     data-opt-b="Batang pada Histogram saling berhimpit (menempel tanpa celah) untuk menunjukkan kontinuitas angka."
                     data-opt-c="Histogram menggunakan warna cerah, Bar Chart menggunakan warna gelap."
@@ -591,7 +591,7 @@ class Bab2_02_HistogramSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Jika sumbu X pada Histogram berisi angka umur (10, 20, 30...), maka apa yang diukur pada sumbu Y (vertikal)?"
+                    data-question="Sumbu Y (vertikal) pada Histogram yang memiliki sumbu X berisi angka umur (10, 20, 30, dan seterusnya) menunjukkan...."
                     data-opt-a="Kategori atau nama orang."
                     data-opt-b="Jumlah atau frekuensi orang yang masuk ke dalam rentang umur tersebut."
                     data-opt-c="Rata-rata gaji orang tersebut."
@@ -600,7 +600,7 @@ class Bab2_02_HistogramSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Dalam menganalisis distribusi gaji penduduk suatu negara, sering kali grafiknya memiliki 'ekor yang memanjang ke arah Kanan' (mayoritas UMR di kiri, segelintir miliarder di kanan). Disebut apakah bentuk grafik ini?"
+                    data-question="Bentuk grafik distribusi gaji penduduk suatu negara yang memiliki “ekor memanjang ke arah kanan” (mayoritas UMR di kiri, segelintir miliarder di kanan) disebut...."
                     data-opt-a="Distribusi Normal"
                     data-opt-b="Bimodal"
                     data-opt-c="Skewed Left (Negatif)"
@@ -609,7 +609,7 @@ class Bab2_02_HistogramSeeder extends Seeder
                     data-answer="D">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Untuk menghitung berapa banyak jumlah kotak (Bin) ideal yang harus dibuat dalam sebuah Histogram agar grafiknya tidak bergerigi atau kaku, ilmuwan menggunakan rumus..."
+                    data-question="Rumus yang digunakan ilmuwan untuk menghitung jumlah kotak (Bin) ideal dalam sebuah Histogram agar grafik tidak terlalu bergerigi atau terlalu kaku adalah...."
                     data-opt-a="Rumus Pythagoras"
                     data-opt-b="Aturan Sturges (k = 1 + 3.3 log n)"
                     data-opt-c="Teorema Bayes"
@@ -618,7 +618,7 @@ class Bab2_02_HistogramSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Dalam simulasi yang baru saja kamu lakukan, apa yang terjadi pada bentuk Histogram jika Lebar Batang (Bin Width) diatur terlalu kecil/rapat (misal: 1 atau 2)?"
+                    data-question="Dampak pengaturan Lebar Batang (Bin Width) yang terlalu kecil atau rapat (misalnya 1 atau 2) pada bentuk Histogram adalah...."
                     data-opt-a="Grafik menghilang dari layar."
                     data-opt-b="Pola distribusi normal akan terlihat sangat sempurna."
                     data-opt-c="Grafik menjadi kotak raksasa yang menyembunyikan semua detail."

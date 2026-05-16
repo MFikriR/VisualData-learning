@@ -41,7 +41,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
         // 4. Daftar Soal Lengkap
         $questions = [
             [
-                'question' => 'Perbedaan visual utama yang membedakan antara Diagram Batang (Bar Chart) dan Histogram adalah ....',
+                'question' => 'Perbedaan visual utama yang membedakan antara Diagram Batang (Bar Chart) dan Histogram adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Diagram Batang memiliki celah antar batang, sedangkan Histogram batang-batangnya saling menempel',
@@ -54,7 +54,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Pada Histogram (data kontinu) batang saling berimpit, sedangkan Diagram Batang (data kategori) terpisah.'
             ],
             [
-                'question' => 'Berdasarkan Diagram Batang data penjualan buah di atas ini, buah yang memiliki jumlah penjualan paling sedikit adalah ....',
+                'question' => 'Berdasarkan Diagram Batang data penjualan buah di atas ini, buah yang memiliki jumlah penjualan paling sedikit adalah....',
                 'image' => 'images/quiz/q2_diagram_buah.png',
                 'options' => [
                     'A' => 'Apel',
@@ -67,7 +67,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Batang terpendek pada diagram menunjukkan buah Anggur.'
             ],
             [
-                'question' => 'Alasan batang-batang pada grafik Histogram digambarkan saling berhimpit tanpa celah adalah ....',
+                'question' => 'Alasan batang-batang pada grafik Histogram digambarkan saling berhimpit tanpa celah adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Agar grafik terlihat lebih rapi dan hemat tempat',
@@ -80,7 +80,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Histogram digunakan untuk data kontinu (interval), sehingga tidak ada jeda antar kelas.'
             ],
             [
-                'question' => 'Gambar Histogram berikut memiliki ekor yang memanjang ke arah kanan (Skewed Right). Hal ini mengindikasikan bahwa distribusi datanya ....',
+                'question' => 'Gambar Histogram berikut memiliki ekor yang memanjang ke arah kanan (Skewed Right). Hal ini mengindikasikan bahwa distribusi datanya....',
                 'image' => 'images/quiz/q4_histogram_skewed.png',
                 'options' => [
                     'A' => 'Terdistribusi normal (simetris sempurna)',
@@ -93,7 +93,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Skewed Right (Positif) berarti ekor memanjang ke kanan, artinya ada sebagian kecil data yang bernilai sangat besar.'
             ],
             [
-                'question' => 'Jika seorang peneliti memiliki data nilai ujian dari 100 siswa, jumlah kelas (batang) ideal yang sebaiknya dibuat menggunakan Aturan Sturges adalah ....',
+                'question' => 'Jika seorang peneliti memiliki data nilai ujian dari 100 siswa, jumlah kelas (batang) ideal yang sebaiknya dibuat menggunakan Aturan Sturges adalah....',
                 'image' => null,
                 'options' => [
                     'A' => '5 batang',
@@ -106,7 +106,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Rumus Sturges: k = 1 + 3.322 log(100) = 1 + 3.322(2) = 7.644, dibulatkan menjadi 8.'
             ],
             [
-                'question' => 'Dalam analisis statistik menggunakan Box Plot, yang dimaksud dengan nilai IQR (Interquartile Range) adalah ....',
+                'question' => 'Dalam analisis statistik menggunakan Box Plot, yang dimaksud dengan nilai IQR (Interquartile Range) adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Selisih antara Kuartil Atas (Q3) dan Kuartil Bawah (Q1)',
@@ -119,7 +119,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'IQR adalah rentang antar kuartil, dihitung dengan Q3 dikurangi Q1.'
             ],
             [
-                'question' => 'Perhatikan gambar anatomi Box Plot berikut. Bagian garis di tengah-tengah kotak merepresentasikan nilai ....',
+                'question' => 'Perhatikan gambar anatomi Box Plot berikut. Bagian garis di tengah-tengah kotak merepresentasikan nilai....',
                 'image' => 'images/quiz/q7_boxplot_anatomi.png',
                 'options' => [
                     'A' => 'Mean (Rata-rata)',
@@ -132,7 +132,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Garis horizontal di dalam kotak pada Box Plot selalu menunjukkan nilai Median (Q2).'
             ],
             [
-                'question' => 'Diketahui sebuah data memiliki Kuartil Bawah (Q1) = 40 dan Kuartil Atas (Q3) = 60. Nilai Pagar Atas (Upper Fence) untuk mendeteksi adanya outlier pada data tersebut adalah ....',
+                'question' => 'Diketahui sebuah data memiliki Kuartil Bawah (Q1) = 40 dan Kuartil Atas (Q3) = 60. Nilai Pagar Atas (Upper Fence) untuk mendeteksi adanya outlier pada data tersebut adalah....',
                 'image' => null,
                 'options' => [
                     'A' => '70',
@@ -145,7 +145,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'IQR = 60-40 = 20. Upper Fence = Q3 + (1.5 * IQR) = 60 + (1.5 * 20) = 60 + 30 = 90.'
             ],
             [
-                'question' => 'Simbol titik kecil yang berada terpisah jauh di luar garis kumis (whisker) pada sebuah grafik Box Plot disebut sebagai ....',
+                'question' => 'Simbol titik kecil yang berada terpisah jauh di luar garis kumis (whisker) pada sebuah grafik Box Plot disebut sebagai....',
                 'image' => 'images/quiz/q9_boxplot_outlier.png',
                 'options' => [
                     'A' => 'Median',
@@ -158,7 +158,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Titik di luar whisker menandakan data tersebut adalah outlier (pencilan) yang jauh dari sebaran data normal.'
             ],
             [
-                'question' => 'Pola titik-titik pada Scatter Plot yang bergerak naik dari kiri bawah ke kanan atas menunjukkan adanya hubungan ....',
+                'question' => 'Pola titik-titik pada Scatter Plot yang bergerak naik dari kiri bawah ke kanan atas menunjukkan adanya hubungan....',
                 'image' => 'images/quiz/q10_scatter_positive.png',
                 'options' => [
                     'A' => 'Korelasi Negatif',
@@ -171,7 +171,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Jika X naik dan Y ikut naik (arah kanan atas), itu adalah korelasi positif.'
             ],
             [
-                'question' => 'Kesimpulan yang tepat untuk gambar Scatter Plot dengan titik-titik menyebar secara acak tanpa pola yang jelas adalah ....',
+                'question' => 'Kesimpulan yang tepat untuk gambar Scatter Plot dengan titik-titik menyebar secara acak tanpa pola yang jelas adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Tidak ada korelasi antara kedua variabel',
@@ -184,7 +184,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Penyebaran acak menandakan tidak ada hubungan (korelasi) yang jelas antara variabel X dan Y.'
             ],
             [
-                'question' => 'Pola titik-titik pada Scatter Plot yang bergerak turun dari kiri atas ke kanan bawah menunjukkan adanya hubungan yang bersifat ....',
+                'question' => 'Pola titik-titik pada Scatter Plot yang bergerak turun dari kiri atas ke kanan bawah menunjukkan adanya hubungan yang bersifat....',
                 'image' => 'images/quiz/q12_scatter_negative.png',
                 'options' => [
                     'A' => 'Korelasi Positif',
@@ -197,7 +197,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Jika X naik tapi Y turun (arah kanan bawah), itu adalah korelasi negatif.'
             ],
             [
-                'question' => 'Jika sebuah Histogram memiliki ekor yang memanjang ke arah kiri (Skewed Left), hal ini mengindikasikan bahwa sebagian besar data berkumpul di area nilai ....',
+                'question' => 'Jika sebuah Histogram memiliki ekor yang memanjang ke arah kiri (Skewed Left), hal ini mengindikasikan bahwa sebagian besar data berkumpul di area nilai....',
                 'image' => null,
                 'options' => [
                     'A' => 'Rendah',
@@ -210,7 +210,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Skewed Left artinya ekor di kiri (nilai kecil), sehingga gunungan data (mayoritas) ada di kanan (nilai tinggi).'
             ],
             [
-                'question' => 'Panjang kotak di bagian tengah pada grafik Box Plot (jarak antara garis Q1 dan Q3) merepresentasikan nilai ....',
+                'question' => 'Panjang kotak di bagian tengah pada grafik Box Plot (jarak antara garis Q1 dan Q3) merepresentasikan nilai....',
                 'image' => null,
                 'options' => [
                     'A' => 'Median (Q2)',
@@ -223,7 +223,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Panjang kotak (box) adalah visualisasi dari IQR.'
             ],
             [
-                'question' => 'Penggunaan Diagram Batang Horizontal (Horizontal Bar Chart) sangat disarankan apabila data yang akan ditampilkan memiliki karakteristik ....',
+                'question' => 'Penggunaan Diagram Batang Horizontal (Horizontal Bar Chart) sangat disarankan apabila data yang akan ditampilkan memiliki karakteristik....',
                 'image' => null,
                 'options' => [
                     'A' => 'Data bersifat numerik kontinu',
@@ -236,7 +236,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Batang horizontal memberikan ruang lebih banyak untuk menulis label kategori yang panjang agar mudah dibaca.'
             ],
             [
-                'question' => 'Dalam rumus statistik Box Plot, sebuah data akan dianggap sebagai outlier bawah jika nilainya lebih kecil dari batas ....',
+                'question' => 'Dalam rumus statistik Box Plot, sebuah data akan dianggap sebagai outlier bawah jika nilainya lebih kecil dari batas....',
                 'image' => null,
                 'options' => [
                     'A' => 'Q1 - (1.5 X IQR)',
@@ -249,7 +249,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Rumus pagar bawah (lower fence) adalah Q1 dikurangi 1.5 kali IQR.'
             ],
             [
-                'question' => 'Agar tidak memanipulasi persepsi pembaca terhadap perbedaan tinggi batang yang sebenarnya kecil, sumbu nilai (Sumbu Y) pada Diagram Batang harus selalu dimulai dari angka ....',
+                'question' => 'Agar tidak memanipulasi persepsi pembaca terhadap perbedaan tinggi batang yang sebenarnya kecil, sumbu nilai (Sumbu Y) pada Diagram Batang harus selalu dimulai dari angka....',
                 'image' => null,
                 'options' => [
                     'A' => '100',
@@ -262,7 +262,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Bar chart harus mulai dari 0 (zero baseline) agar proporsi visual akurat.'
             ],
             [
-                'question' => 'Jika seorang Data Scientist ingin mengetahui apakah variabel "Luas Tanah" memiliki hubungan (korelasi) dengan variabel "Harga Rumah", jenis visualisasi yang paling tepat dipilih adalah ....',
+                'question' => 'Jika seorang Data Scientist ingin mengetahui apakah variabel "Luas Tanah" memiliki hubungan (korelasi) dengan variabel "Harga Rumah", jenis visualisasi yang paling tepat dipilih adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Histogram',
@@ -275,7 +275,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Scatter plot adalah standar untuk melihat korelasi antara dua variabel numerik.'
             ],
             [
-                'question' => 'Jenis grafik yang paling tepat digunakan untuk membandingkan data kategori seperti Jumlah Siswa antar Kelas 10, Kelas 11, dan Kelas 12 adalah ....',
+                'question' => 'Jenis grafik yang paling tepat digunakan untuk membandingkan data kategori seperti Jumlah Siswa antar Kelas 10, Kelas 11, dan Kelas 12 adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Scatter Plot',
@@ -288,7 +288,7 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Perbandingan antar kategori diskrit paling baik menggunakan Diagram Batang.'
             ],
             [
-                'question' => 'Grafik yang harus digunakan untuk melihat distribusi frekuensi data numerik kontinu seperti Tinggi Badan seluruh siswa adalah ....',
+                'question' => 'Grafik yang harus digunakan untuk melihat distribusi frekuensi data numerik kontinu seperti Tinggi Badan seluruh siswa adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Diagram Batang',

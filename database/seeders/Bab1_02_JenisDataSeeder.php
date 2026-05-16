@@ -362,7 +362,7 @@ class Bab1_02_JenisDataSeeder extends Seeder
 
             <div id="mini-quiz-data" class="hidden">
                 <div class="mini-quiz-item" 
-                    data-question="Mengapa kita perlu membedakan jenis-jenis data sebelum mengolahnya?"
+                    data-question="Alasan perlunya membedakan jenis-jenis data sebelum mengolahnya adalah...."
                     data-opt-a="Agar data terlihat lebih rapi di dalam database."
                     data-opt-b="Karena jenis data yang berbeda membutuhkan alat visualisasi dan algoritma yang berbeda."
                     data-opt-c="Untuk mengurangi kapasitas penyimpanan komputer."
@@ -371,7 +371,7 @@ class Bab1_02_JenisDataSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Apa perbedaan utama antara Data Kualitatif Nominal dan Ordinal?"
+                    data-question="Perbedaan utama antara Data Kualitatif Nominal dan Ordinal adalah...."
                     data-opt-a="Nominal berbentuk angka, sedangkan Ordinal berbentuk teks."
                     data-opt-b="Nominal tidak memiliki urutan atau tingkatan, sedangkan Ordinal memiliki tingkatan yang logis."
                     data-opt-c="Nominal didapat dari hasil mengukur, sedangkan Ordinal dari hasil menghitung."
@@ -380,7 +380,7 @@ class Bab1_02_JenisDataSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="'Jumlah gol dalam sebuah pertandingan sepak bola adalah 3 gol'. Berdasarkan materi, ini termasuk jenis data apa?"
+                    data-question="“Jumlah gol dalam sebuah pertandingan sepak bola adalah 3 gol” termasuk jenis data...."
                     data-opt-a="Kuantitatif Diskrit, karena didapat dari hasil menghitung/mencacah angka bulat."
                     data-opt-b="Kuantitatif Kontinu, karena angkanya bisa berbentuk desimal."
                     data-opt-c="Kualitatif Nominal, karena hanya berupa label."
@@ -389,7 +389,7 @@ class Bab1_02_JenisDataSeeder extends Seeder
                     data-answer="A">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Data yang didapat dari hasil MENGUKUR dan nilainya bisa berbentuk pecahan atau desimal (seperti Tinggi Badan 170.5 cm) disebut:"
+                    data-question="Data yang didapat dari hasil mengukur dan nilainya bisa berbentuk pecahan atau desimal (seperti tinggi badan 170,5 cm) disebut...."
                     data-opt-a="Data Nominal"
                     data-opt-b="Data Ordinal"
                     data-opt-c="Data Diskrit"
@@ -398,7 +398,7 @@ class Bab1_02_JenisDataSeeder extends Seeder
                     data-answer="D">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Menurut 'Tips Rahasia Data Scientist' di materi, jenis visualisasi apa yang paling cocok digunakan untuk melihat sebaran Data Kontinu?"
+                    data-question="Jenis visualisasi yang paling cocok digunakan untuk melihat sebaran Data Kontinu berdasarkan “Tips Rahasia Data Scientist” pada materi adalah...."
                     data-opt-a="Diagram Lingkaran (Pie Chart)"
                     data-opt-b="Tabel Excel biasa"
                     data-opt-c="Histogram"

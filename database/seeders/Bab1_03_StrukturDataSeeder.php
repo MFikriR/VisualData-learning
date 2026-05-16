@@ -341,7 +341,7 @@ class Bab1_03_StrukturDataSeeder extends Seeder
 
             <div id="mini-quiz-data" class="hidden">
                 <div class="mini-quiz-item" 
-                    data-question="Apa karakteristik utama dari 'Data Terstruktur' (Structured Data)?"
+                    data-question="Karakteristik utama dari “Data Terstruktur” (Structured Data) adalah...."
                     data-opt-a="Berupa file audio dan video berukuran besar."
                     data-opt-b="Tersusun rapi dalam format baris dan kolom yang konsisten (seperti Excel/SQL)."
                     data-opt-c="Memiliki emosi tersembunyi yang bisa dideteksi oleh manusia."
@@ -350,7 +350,7 @@ class Bab1_03_StrukturDataSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Manakah dari pilihan di bawah ini yang merupakan contoh dari 'Data Tidak Terstruktur' (Unstructured Data)?"
+                    data-question="Contoh dari “Data Tidak Terstruktur” (Unstructured Data) adalah...."
                     data-opt-a="Tabel absen siswa di Excel"
                     data-opt-b="Data transaksi pembeli di minimarket"
                     data-opt-c="Rekaman suara dan gambar pemandangan"
@@ -359,7 +359,7 @@ class Bab1_03_StrukturDataSeeder extends Seeder
                     data-answer="C">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Format data apa yang menjadi 'Jalan Tengah' karena tidak punya kolom baris yang kaku, tetapi memiliki tag (keys) pola tertentu?"
+                    data-question="Format data yang menjadi “jalan tengah” karena tidak memiliki kolom dan baris yang kaku, tetapi memiliki tag (keys) pola tertentu adalah...."
                     data-opt-a="Data Terstruktur (SQL)"
                     data-opt-b="Semi-Structured Data (JSON / XML)"
                     data-opt-c="Data Mentah (Raw Text)"
@@ -368,7 +368,7 @@ class Bab1_03_StrukturDataSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Menurut materi di atas, mengapa komputer 'pusing' dan kesulitan memproses Data Tidak Terstruktur?"
+                    data-question="Alasan komputer “pusing” dan kesulitan memproses Data Tidak Terstruktur menurut materi di atas adalah...."
                     data-opt-a="Karena komputer belum di-install Excel."
                     data-opt-b="Karena ukurannya terlalu besar untuk masuk flashdisk."
                     data-opt-c="Karena bebas, liar, dan tidak punya format baku (baris/kolom) sehingga maknanya sulit dihitung langsung."
@@ -377,7 +377,7 @@ class Bab1_03_StrukturDataSeeder extends Seeder
                     data-answer="C">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Pada percobaan 'Lab AI: Ekstraktor Data', apa fungsi dari AI saat diberikan teks berantakan (Chat_Log.txt)?"
+                    data-question="Fungsi AI pada percobaan “Lab AI: Ekstraktor Data” saat diberikan teks berantakan (Chat_Log.txt) adalah...."
                     data-opt-a="Membacakan teksnya keras-keras."
                     data-opt-b="Mengekstrak informasi di dalamnya dan mengubahnya menjadi tabel Data Terstruktur yang rapi."
                     data-opt-c="Menghapus file tersebut karena tidak bisa dibaca."

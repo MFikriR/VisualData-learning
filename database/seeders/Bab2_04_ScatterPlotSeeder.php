@@ -894,7 +894,7 @@ class Bab2_04_ScatterPlotSeeder extends Seeder
 
             <div id="mini-quiz-data" class="hidden">
                 <div class="mini-quiz-item" 
-                    data-question="Fungsi utama dari grafik Scatter Plot (Diagram Pencar) adalah..."
+                    data-question="Fungsi utama grafik Scatter Plot (Diagram Pencar) adalah...."
                     data-opt-a="Menampilkan persentase atau proporsi dari suatu total (part-to-whole)."
                     data-opt-b="Mendeteksi nilai outlier pada data kategori."
                     data-opt-c="Menemukan hubungan atau korelasi antara dua variabel numerik (angka)."
@@ -903,7 +903,7 @@ class Bab2_04_ScatterPlotSeeder extends Seeder
                     data-answer="C">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Pada grafik Scatter Plot, jika titik-titik bergerak ke arah 'X Naik, Y ikut Naik' (membentuk garis menanjak dari kiri bawah ke kanan atas), maka hubungan ini disebut..."
+                    data-question="Hubungan yang ditunjukkan oleh titik-titik Scatter Plot yang bergerak ke arah “X naik, Y ikut naik” (membentuk garis menanjak dari kiri bawah ke kanan atas) disebut...."
                     data-opt-a="Korelasi Negatif"
                     data-opt-b="Korelasi Positif"
                     data-opt-c="Korelasi Nihil (Acak)"
@@ -912,7 +912,7 @@ class Bab2_04_ScatterPlotSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Hubungan antara 'Usia Mobil' (X) dan 'Harga Jual Mobil' (Y) biasanya memiliki arah korelasi..."
+                    data-question="Hubungan antara “Usia Mobil” (X) dan “Harga Jual Mobil” (Y) biasanya memiliki arah korelasi...."
                     data-opt-a="Korelasi Positif Sempurna (+1)"
                     data-opt-b="Korelasi Negatif, karena semakin tua mobil, harganya semakin turun."
                     data-opt-c="Korelasi Nihil, karena usia mobil tidak memengaruhi harga."
@@ -921,7 +921,7 @@ class Bab2_04_ScatterPlotSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Jika hasil pengukuran Pearson Correlation (r) menunjukkan angka yang mendekati 0 (nol), apa arti dari angka tersebut?"
+                    data-question="Arti hasil pengukuran Pearson Correlation (r) yang menunjukkan angka mendekati 0 (nol) adalah...."
                     data-opt-a="Data tersebut sangat berhubungan kuat."
                     data-opt-b="Tidak ada korelasi antar variabel (titik menyebar secara acak)."
                     data-opt-c="Ada korelasi negatif yang kuat."
@@ -930,7 +930,7 @@ class Bab2_04_ScatterPlotSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Berdasarkan Praktikum DataViz Studio yang telah disimulasikan, bagaimana cara kita bisa melihat pengelompokan (Clustering) dari berbagai spesies bunga di dalam Scatter Plot?"
+                    data-question="Cara melihat pengelompokan (Clustering) berbagai spesies bunga di dalam Scatter Plot berdasarkan Praktikum DataViz Studio adalah...."
                     data-opt-a="Dengan mengubah skala sumbu X dan Y."
                     data-opt-b="Dengan menarik garis manual di antara titik-titik."
                     data-opt-c="Dengan mencentang fitur 'Warnai Berdasarkan Spesies' untuk memunculkan warna pada titik."

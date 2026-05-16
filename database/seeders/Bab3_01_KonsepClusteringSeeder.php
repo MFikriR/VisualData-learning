@@ -566,7 +566,7 @@ class Bab3_01_KonsepClusteringSeeder extends Seeder
 
             <div id="mini-quiz-data" class="hidden">
                 <div class="mini-quiz-item" 
-                    data-question="Apa perbedaan utama antara 'Supervised Learning' dengan 'Unsupervised Learning' (seperti algoritma Clustering)?"
+                    data-question="Perbedaan utama antara Supervised Learning dan Unsupervised Learning (seperti algoritma Clustering) adalah...."
                     data-opt-a="Supervised Learning menggunakan data mentah tanpa label, sedangkan Unsupervised Learning menggunakan data yang sudah ada Kunci Jawabannya."
                     data-opt-b="Supervised Learning diajari dengan Kunci Jawaban (label), sedangkan Unsupervised mencari pola sendiri dari data mentah yang tidak berlabel."
                     data-opt-c="Supervised Learning dilakukan oleh robot, Unsupervised oleh manusia."
@@ -575,7 +575,7 @@ class Bab3_01_KonsepClusteringSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Dalam aturan Clustering yang baik, apa yang dimaksud dengan prinsip 'Intraclass Similarity'?"
+                    data-question="Prinsip Intraclass Similarity dalam aturan Clustering yang baik berarti...."
                     data-opt-a="Jarak antar klaster yang satu dengan yang lain harus sejauh mungkin."
                     data-opt-b="Anggota di dalam kelompok (klaster) yang sama harus dibuat semirip dan sedekat mungkin."
                     data-opt-c="Semua data harus dihapus jika tidak mirip."
@@ -584,7 +584,7 @@ class Bab3_01_KonsepClusteringSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Menurut 'Kamus K-Means', apa sebutan untuk titik pusat gravitasi yang mewakili letak rata-rata sebuah klaster?"
+                    data-question="Titik pusat gravitasi yang mewakili letak rata-rata sebuah klaster menurut “Kamus K-Means” disebut...."
                     data-opt-a="Iterasi"
                     data-opt-b="Inertia"
                     data-opt-c="Centroid"
@@ -593,7 +593,7 @@ class Bab3_01_KonsepClusteringSeeder extends Seeder
                     data-answer="C">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Skor/rapor untuk menilai kepadatan sebuah klaster disebut 'Inertia'. Pernyataan manakah yang paling tepat tentang Inertia?"
+                    data-question="Pernyataan yang paling tepat mengenai Inertia sebagai skor atau rapor untuk menilai kepadatan sebuah klaster adalah...."
                     data-opt-a="Semakin besar angka Inertia, maka kualitas klaster semakin bagus."
                     data-opt-b="Semakin kecil angka Inertia, maka kualitas klaster semakin bagus karena menandakan data sangat padat dan dekat dengan Centroid-nya."
                     data-opt-c="Inertia tidak berguna dalam Clustering."
@@ -602,7 +602,7 @@ class Bab3_01_KonsepClusteringSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Pada percobaan 'Simulator Algoritma K-Means', proses pencarian Centroid akan terus diulang (Looping/Iterasi) sampai letak Centroid sudah stabil dan tidak bergeser lagi. Keadaan 'Garis Finish' ini disebut dengan istilah..."
+                    data-question="Keadaan “garis finish” pada percobaan Simulator Algoritma K-Means, ketika posisi Centroid sudah stabil dan tidak bergeser lagi setelah proses iterasi berulang, disebut...."
                     data-opt-a="Konvergensi"
                     data-opt-b="Segmentasi"
                     data-opt-c="Dissimilarity"

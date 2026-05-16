@@ -346,7 +346,7 @@ class Bab1_01_ApaItuDataSeeder extends Seeder
 
             <div id="mini-quiz-data" class="hidden">
                 <div class="mini-quiz-item" 
-                    data-question="Berdasarkan bacaan di atas, apa definisi yang paling tepat tentang 'Data'?"
+                    data-question="Definisi yang paling tepat tentang “Data” adalah...."
                     data-opt-a="Kumpulan fakta, angka, atau deskripsi yang belum diolah."
                     data-opt-b="Informasi yang sudah disajikan dalam bentuk grafik."
                     data-opt-c="Hasil dari sebuah keputusan pintar komputer."
@@ -355,7 +355,7 @@ class Bab1_01_ApaItuDataSeeder extends Seeder
                     data-answer="A">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Dalam analogi materi ini, data diibaratkan sebagai apa bagi mesin Kecerdasan Buatan (AI)?"
+                    data-question="Dalam analogi materi ini, data bagi mesin Kecerdasan Buatan (AI) diibaratkan sebagai...."
                     data-opt-a="Sebagai setir kemudi"
                     data-opt-b="Sebagai bahan bakar"
                     data-opt-c="Sebagai ban penggerak"
@@ -364,7 +364,7 @@ class Bab1_01_ApaItuDataSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Mengapa 'Raw Data' atau data mentah (seperti tulisan acak: 010101, 34.5, 'Budi') sangat sulit dipahami oleh manusia?"
+                    data-question="“Raw Data” atau data mentah (seperti tulisan acak: 010101, 34.5, “Budi”) sulit dipahami oleh manusia karena...."
                     data-opt-a="Karena harus dibaca menggunakan mikroskop khusus."
                     data-opt-b="Karena tidak memiliki konteks dan belum diolah menjadi informasi."
                     data-opt-c="Karena menggunakan bahasa pemrograman tingkat tinggi yang dirahasiakan."
@@ -373,7 +373,7 @@ class Bab1_01_ApaItuDataSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Berdasarkan 'Siklus Belajar AI' yang ada di materi, manakah urutan proses yang paling benar?"
+                    data-question="Urutan proses yang paling benar berdasarkan “Siklus Belajar AI” pada materi adalah...."
                     data-opt-a="AI Belajar ➔ Keputusan Pintar ➔ Data"
                     data-opt-b="Keputusan Pintar ➔ Data ➔ AI Belajar"
                     data-opt-c="Data ➔ Keputusan Pintar ➔ AI Belajar"
@@ -382,7 +382,7 @@ class Bab1_01_ApaItuDataSeeder extends Seeder
                     data-answer="D">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Data bisa berwujud apa saja. Apa contoh dari wujud data berupa 'Visual' yang disebutkan dalam bacaan di atas?"
+                    data-question="Contoh wujud data berupa “Visual” yang disebutkan dalam bacaan adalah...."
                     data-opt-a="Teks tweet dan nama jalan"
                     data-opt-b="Rekaman suara atau musik"
                     data-opt-c="Foto kucing dan rekaman CCTV"

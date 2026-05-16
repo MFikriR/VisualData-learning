@@ -37,7 +37,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
         $questions = [
             // --- TOPIK: DEFINISI & KONSEP DASAR ---
             [
-                'question' => 'Apa definisi yang paling tepat mengenai "Data" dalam konteks teknologi informasi?',
+                'question' => 'Definisi yang paling tepat mengenai “Data” dalam konteks teknologi informasi adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Sebuah aplikasi untuk mengolah angka',
@@ -50,7 +50,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Data adalah representasi fakta atau informasi mentah (raw material) sebelum diolah menjadi informasi yang berguna.'
             ],
             [
-                'question' => 'Dalam buku materi AI, hubungan antara "Data" dan "Kecerdasan Buatan (AI)" dianalogikan seperti ....',
+                'question' => 'Hubungan antara “Data” dan “Kecerdasan Buatan (AI)” dalam buku materi AI dianalogikan seperti....',
                 'image' => null,
                 'options' => [
                     'A' => 'Mobil dan Supirnya',
@@ -63,7 +63,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Data adalah "bahan bakar" bagi AI. Tanpa data, mesin AI tidak akan bisa berjalan atau belajar.'
             ],
             [
-                'question' => 'Mengapa data dianggap penting dalam proses pengambilan keputusan (Decision Making)?',
+                'question' => 'Alasan data dianggap penting dalam proses pengambilan keputusan (Decision Making) adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Agar terlihat canggih dan modern',
@@ -78,7 +78,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
 
             // --- TOPIK: JENIS DATA (KUALITATIF VS KUANTITATIF) ---
             [
-                'question' => 'Manakah di bawah ini yang merupakan contoh dari Data Kualitatif (Kategorikal)?',
+                'question' => 'Contoh Data Kualitatif (Kategorikal) adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Tinggi badan siswa (170 cm)',
@@ -91,7 +91,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Warna mobil adalah label atau deskripsi kualitas (kualitatif), bukan angka yang bisa dihitung secara matematis.'
             ],
             [
-                'question' => 'Data "Tingkat Kepuasan Pelanggan" dengan pilihan: Sangat Puas, Puas, Netral, Kecewa. Jenis data apakah ini?',
+                'question' => 'Contoh Data Kualitatif (Kategorikal) adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Nominal',
@@ -104,7 +104,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Ordinal adalah data kategori yang memiliki urutan atau tingkatan (Ranking).'
             ],
             [
-                'question' => 'Data yang berupa angka bulat hasil pencacahan (menghitung), misalnya "Jumlah Siswa di Kelas", disebut data ....',
+                'question' => 'Data “Tingkat Kepuasan Pelanggan” dengan pilihan Sangat Puas, Puas, Netral, dan Kecewa termasuk jenis data....',
                 'image' => null,
                 'options' => [
                     'A' => 'Kontinu',
@@ -117,7 +117,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Data Diskrit (Discrete) adalah data angka bulat yang tidak mungkin berbentuk pecahan (contoh: tidak ada 1,5 siswa).'
             ],
             [
-                'question' => 'Manakah pernyataan berikut yang BENAR mengenai Data Kontinu?',
+                'question' => 'Pernyataan yang benar mengenai Data Kontinu adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Datanya berupa label nama tanpa urutan',
@@ -132,7 +132,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
 
             // --- TOPIK: STRUKTUR DATA (STRUCTURED VS UNSTRUCTURED) ---
             [
-                'question' => 'Data yang disusun rapi dalam format baris dan kolom (seperti di Excel) disebut ....',
+                'question' => 'Data yang disusun rapi dalam format baris dan kolom (seperti di Excel) disebut....',
                 'image' => null,
                 'options' => [
                     'A' => 'Unstructured Data',
@@ -145,7 +145,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Structured Data (Terstruktur) adalah data yang memiliki format tetap dan terorganisir dalam tabel.'
             ],
             [
-                'question' => 'Sebagian besar data di dunia (sekitar 80%) berbentuk Tidak Terstruktur (Unstructured). Contoh dari data ini adalah ....',
+                'question' => 'Contoh data Tidak Terstruktur (Unstructured Data) adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Tabel absensi siswa',
@@ -158,7 +158,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Foto, video, dan suara tidak memiliki struktur baris/kolom yang kaku, sehingga disebut Unstructured Data.'
             ],
             [
-                'question' => 'Aplikasi pengolah angka (Spreadsheet) seperti Microsoft Excel sangat cocok digunakan untuk mengelola jenis data ....',
+                'question' => 'Aplikasi pengolah angka (Spreadsheet) seperti Microsoft Excel sangat cocok digunakan untuk mengelola jenis data....',
                 'image' => null,
                 'options' => [
                     'A' => 'Data Terstruktur',
@@ -171,7 +171,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Excel dirancang khusus untuk data tabular (terstruktur) yang terdiri dari baris dan kolom.'
             ],
             [
-                'question' => 'Mengapa komputer tradisional sulit memahami data tidak terstruktur (seperti foto kucing)?',
+                'question' => 'Alasan komputer tradisional sulit memahami data tidak terstruktur (seperti foto kucing) adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Karena ukuran filenya terlalu kecil',
@@ -186,7 +186,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
 
             // --- TOPIK: DATA PREPARATION & LABELING ---
             [
-                'question' => 'Istilah "Garbage In, Garbage Out" dalam dunia data memiliki arti ....',
+                'question' => 'Makna istilah “Garbage In, Garbage Out” dalam dunia data adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Data sampah harus dibuang ke tempat sampah',
@@ -199,7 +199,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Kualitas output AI/Analisis sangat bergantung pada kualitas input datanya. Data jelek = Hasil jelek.'
             ],
             [
-                'question' => 'Proses menghapus data ganda (duplikat), memperbaiki data kosong, dan membuang data yang salah disebut ....',
+                'question' => 'Proses menghapus data ganda (duplikat), memperbaiki data kosong, dan membuang data yang salah disebut....',
                 'image' => null,
                 'options' => [
                     'A' => 'Data Labeling',
@@ -212,7 +212,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Data Cleaning (Pembersihan Data) adalah langkah wajib sebelum data diolah agar hasilnya akurat.'
             ],
             [
-                'question' => 'Dalam melatih AI, apa fungsi dari proses "Labeling" (Pemberian Label)?',
+                'question' => 'Fungsi proses “Labeling” (Pemberian Label) dalam melatih AI adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Agar file terlihat berwarna-warni',
@@ -225,7 +225,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Labeling memberi tahu komputer "Ini adalah gambar Kucing", sehingga komputer bisa belajar ciri-ciri kucing.'
             ],
             [
-                'question' => 'Apa yang dimaksud dengan "Outlier" (Pencilan) dalam sebuah kumpulan data?',
+                'question' => 'Yang dimaksud dengan “Outlier” (Pencilan) dalam sebuah kumpulan data adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Data yang paling sering muncul',
@@ -238,7 +238,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Outlier adalah data ekstrem yang nilainya aneh atau jauh dari mayoritas data lain (misal: Nilai 1000 padahal lainnya 1-10).'
             ],
             [
-                'question' => 'Bagaimana cara AI belajar mengenali objek (seperti anak kecil belajar)?',
+                'question' => 'Cara AI belajar mengenali objek (seperti anak kecil belajar) adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Dengan menghafal kamus bahasa',
@@ -251,7 +251,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'AI belajar melalui "Supervised Learning" (pembelajaran terawasi) dengan melihat ribuan contoh yang sudah diberi label.'
             ],
             [
-                'question' => 'Jika kita ingin melatih AI untuk membedakan "Apel" dan "Jeruk", apa yang harus kita lakukan?',
+                'question' => 'Langkah yang tepat untuk melatih AI membedakan “Apel” dan “Jeruk” adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Memasukkan satu foto apel saja',
@@ -266,7 +266,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
 
             // --- TOPIK: ETIKA & TAMBAHAN ---
             [
-                'question' => 'Apa etika yang harus diperhatikan saat mengumpulkan data foto atau suara orang lain untuk proyek AI?',
+                'question' => 'Etika yang harus diperhatikan saat mengumpulkan data foto atau suara orang lain untuk proyek AI adalah....',
                 'image' => null,
                 'options' => [
                     'A' => 'Mengambil diam-diam agar natural',
@@ -279,7 +279,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Privasi dan izin (consent) adalah etika utama dalam pengumpulan data. Kita tidak boleh menggunakan data pribadi orang tanpa izin.'
             ],
             [
-                'question' => 'Format file manakah di bawah ini yang mewakili Data Terstruktur?',
+                'question' => 'Format file yang mewakili Data Terstruktur adalah....',
                 'image' => null,
                 'options' => [
                     'A' => '.mp3 (Audio)',
@@ -292,7 +292,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'CSV adalah format file teks sederhana yang menyimpan data dalam bentuk tabel (baris dan kolom).'
             ],
             [
-                'question' => 'Dalam proses "Data Science", peran manusia yang bertugas memberi label pada data disebut ....',
+                'question' => 'Peran manusia dalam proses “Data Science” yang bertugas memberi label pada data disebut....',
                 'image' => null,
                 'options' => [
                     'A' => 'Programmer',

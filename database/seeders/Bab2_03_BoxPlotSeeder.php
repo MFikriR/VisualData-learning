@@ -793,7 +793,7 @@ class Bab2_03_BoxPlotSeeder extends Seeder
 
             <div id="mini-quiz-data" class="hidden">
                 <div class="mini-quiz-item" 
-                    data-question="Berdasarkan materi di atas, apa perbedaan fungsi yang paling menonjol antara Histogram dan Box Plot?"
+                    data-question="Perbedaan fungsi yang paling menonjol antara Histogram dan Box Plot berdasarkan materi di atas adalah...."
                     data-opt-a="Histogram untuk mendeteksi outlier, sedangkan Box Plot untuk melihat rata-rata kelas."
                     data-opt-b="Histogram untuk membandingkan antar kelompok, sedangkan Box Plot untuk melihat bentuk distribusi."
                     data-opt-c="Histogram digunakan untuk melihat bentuk sebaran data, sedangkan Box Plot sangat ampuh untuk membandingkan kelompok secara cepat sekaligus mendeteksi Outlier."
@@ -802,7 +802,7 @@ class Bab2_03_BoxPlotSeeder extends Seeder
                     data-answer="C">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Dalam 'Anatomi Statistik Lima Serangkai', bagian Kotak (The Box) merepresentasikan persentase data di bagian mana?"
+                    data-question="Bagian kotak (The Box) dalam “Anatomi Statistik Lima Serangkai” merepresentasikan...."
                     data-opt-a="Mewakili 100% dari seluruh rentang data."
                     data-opt-b="Mewakili 50% data yang berada persis di tengah-tengah rentang."
                     data-opt-c="Mewakili 25% data terendah saja."
@@ -811,7 +811,7 @@ class Bab2_03_BoxPlotSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Garis yang memanjang ke luar (kiri dan kanan) dari kotak pada Box Plot disebut sebagai 'Kumis' (Whiskers). Apa arti dari garis kumis ini?"
+                    data-question="Arti garis yang memanjang ke luar (kiri dan kanan) dari kotak pada Box Plot yang disebut “Kumis” (Whiskers) adalah...."
                     data-opt-a="Menandakan batas nilai data yang masih dianggap 'normal'."
                     data-opt-b="Menunjukkan bahwa data tersebut adalah Outlier."
                     data-opt-c="Menunjukkan jumlah total (frekuensi) data."
@@ -820,7 +820,7 @@ class Bab2_03_BoxPlotSeeder extends Seeder
                     data-answer="A">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Jika sebuah data memiliki nilai Q1 = 50 dan nilai IQR = 20, di angka berapakah batas Pagar Bawah (Lower Fence) berada menurut rumus Pagar Bawah?"
+                    data-question="Nilai batas Pagar Bawah (Lower Fence) untuk data dengan Q1 = 50 dan IQR = 20 berdasarkan rumus Pagar Bawah adalah...."
                     data-opt-a="30"
                     data-opt-b="80"
                     data-opt-c="20"
@@ -829,7 +829,7 @@ class Bab2_03_BoxPlotSeeder extends Seeder
                     data-answer="C">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Berdasarkan hasil uji pada panel 'Verifikasi Panel Statistik' di DataViz Studio yang mensimulasikan perhitungan manualmu, elemen apa yang mendeteksi dan melabeli titik 150 secara otomatis?"
+                    data-question="Elemen yang mendeteksi dan melabeli titik 150 secara otomatis berdasarkan hasil uji pada panel “Verifikasi Panel Statistik” di DataViz Studio adalah...."
                     data-opt-a="Sistem mendeteksinya sebagai Median."
                     data-opt-b="Sistem mendeteksinya sebagai nilai batas Q3."
                     data-opt-c="Sistem melabelinya sebagai titik data biasa karena berada dalam batas IQR."

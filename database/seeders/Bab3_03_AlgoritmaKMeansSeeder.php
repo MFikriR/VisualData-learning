@@ -726,7 +726,7 @@ class Bab3_03_AlgoritmaKMeansSeeder extends Seeder
 
             <div id="mini-quiz-data" class="hidden">
                 <div class="mini-quiz-item" 
-                    data-question="Pada nama algoritma 'K-Means', apa maksud dari huruf 'K'?"
+                    data-question="Makna huruf “K” pada nama algoritma K-Means adalah...."
                     data-opt-a="Koordinat (Coordinate), yaitu titik lokasi data di grafik."
                     data-opt-b="Konvergensi (Convergence), yaitu saat algoritma sudah selesai."
                     data-opt-c="Konstanta angka yang mewakili berapa banyak jumlah kelompok (klaster) yang ingin kita buat."
@@ -735,7 +735,7 @@ class Bab3_03_AlgoritmaKMeansSeeder extends Seeder
                     data-answer="C">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Dalam algoritma K-Means, bagaimana cara sistem memindahkan posisi Centroid (titik pusat) pada langkah 'Update Centroid'?"
+                    data-question="Cara sistem memindahkan posisi Centroid (titik pusat) pada langkah Update Centroid dalam algoritma K-Means adalah...."
                     data-opt-a="Centroid dipindahkan ke titik data yang paling dekat dengannya."
                     data-opt-b="Menghitung nilai rata-rata (mean) dari semua anggota di klaster tersebut, lalu Centroid digeser ke titik rata-rata itu."
                     data-opt-c="Memindahkan centroid ke data Outlier."
@@ -744,7 +744,7 @@ class Bab3_03_AlgoritmaKMeansSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Kapan proses perulangan (Iterasi) pada algoritma K-Means akan dinyatakan berhenti atau selesai (Konvergen)?"
+                    data-question="Kondisi berhentinya proses perulangan (Iterasi) pada algoritma K-Means atau keadaan konvergen adalah...."
                     data-opt-a="Saat posisi Centroid sudah tidak berubah/bergeser lagi dan tidak ada data yang pindah kelompok."
                     data-opt-b="Setelah proses iterasi dilakukan tepat 100 kali."
                     data-opt-c="Saat semua data bergabung menjadi satu klaster besar."
@@ -753,7 +753,7 @@ class Bab3_03_AlgoritmaKMeansSeeder extends Seeder
                     data-answer="A">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Karena K-Means tidak bisa mencari tahu sendiri berapa jumlah kelompok (K) yang pas, para Data Scientist menggunakan sebuah teknik visual dengan melihat grafik yang melandai. Apa nama teknik ini?"
+                    data-question="Teknik visual yang digunakan Data Scientist untuk menentukan jumlah kelompok (K) yang paling sesuai dengan melihat grafik yang melandai disebut...."
                     data-opt-a="Metode Histogram"
                     data-opt-b="Aturan Sturges"
                     data-opt-c="Metode Elbow (Siku Tangan)"
@@ -762,7 +762,7 @@ class Bab3_03_AlgoritmaKMeansSeeder extends Seeder
                     data-answer="C">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Berdasarkan bagian Evaluasi Algoritma, apa salah satu kelemahan terbesar dari algoritma K-Means?"
+                    data-question="Salah satu kelemahan terbesar dari algoritma K-Means berdasarkan bagian Evaluasi Algoritma adalah...."
                     data-opt-a="Sangat lambat jika memproses jutaan baris data."
                     data-opt-b="Rumusnya terlalu rumit untuk dipahami manusia."
                     data-opt-c="Sangat sensitif terhadap data pencilan (Outlier) karena satu data ekstrem bisa menyeret Centroid terlalu jauh."

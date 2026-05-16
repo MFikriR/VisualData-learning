@@ -373,7 +373,7 @@ class Bab1_04_PersiapanLabelingSeeder extends Seeder
 
             <div id="mini-quiz-data" class="hidden">
                 <div class="mini-quiz-item" 
-                    data-question="Berdasarkan prinsip 'Garbage In, Garbage Out', apa yang akan terjadi jika kita melatih AI menggunakan data yang berisi kesalahan dan duplikat?"
+                    data-question="Dampak penggunaan data yang berisi kesalahan dan duplikat dalam pelatihan AI berdasarkan prinsip “Garbage In, Garbage Out” adalah...."
                     data-opt-a="AI akan otomatis membersihkan data tersebut."
                     data-opt-b="AI akan menjadi bias dan menghasilkan prediksi (output) yang keliru (bodoh)."
                     data-opt-c="Kecepatan komputer akan meningkat."
@@ -382,7 +382,7 @@ class Bab1_04_PersiapanLabelingSeeder extends Seeder
                     data-answer="B">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Dalam tahap Data Cleaning, jika terdapat baris data yang kosong atau tidak diisi sama sekali, jenis 'musuh data' apakah itu?"
+                    data-question="Baris data yang kosong atau tidak diisi sama sekali dalam tahap Data Cleaning termasuk jenis “musuh data” berupa...."
                     data-opt-a="Data Duplikat"
                     data-opt-b="Outlier (Pencilan)"
                     data-opt-c="Missing Values"
@@ -391,7 +391,7 @@ class Bab1_04_PersiapanLabelingSeeder extends Seeder
                     data-answer="C">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Data usia yang bernilai '160 tahun' di antara sekumpulan data usia belasan tahun merupakan contoh dari..."
+                    data-question="Data usia bernilai “160 tahun” di antara sekumpulan data usia belasan tahun merupakan contoh dari...."
                     data-opt-a="Missing Values"
                     data-opt-b="Data Duplikat"
                     data-opt-c="Outlier (Pencilan)"
@@ -400,7 +400,7 @@ class Bab1_04_PersiapanLabelingSeeder extends Seeder
                     data-answer="C">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Apa tujuan utama dari tahapan Data Labeling dalam mempersiapkan Data untuk AI?"
+                    data-question="Tujuan utama tahapan Data Labeling dalam mempersiapkan data untuk AI adalah...."
                     data-opt-a="Untuk menghapus data-data ganda agar ukuran file menjadi lebih kecil."
                     data-opt-b="Untuk mengubah semua format teks menjadi angka agar bisa dibaca komputer."
                     data-opt-c="Untuk memberikan 'kunci jawaban' pada data agar AI bisa mengenali pola belajar."
@@ -409,7 +409,7 @@ class Bab1_04_PersiapanLabelingSeeder extends Seeder
                     data-answer="C">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Apa prinsip etika paling utama yang harus dijaga saat seorang Data Scientist mengumpulkan data dari orang lain?"
+                    data-question="Prinsip etika paling utama yang harus dijaga saat seorang Data Scientist mengumpulkan data dari orang lain adalah...."
                     data-opt-a="Harus menyebarkan data tersebut secara gratis."
                     data-opt-b="Menjaga privasi dan selalu meminta izin dari pemilik data."
                     data-opt-c="Mengubah data tersebut agar sesuai dengan hasil yang diinginkan."
