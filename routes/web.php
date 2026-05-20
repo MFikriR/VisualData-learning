@@ -118,3 +118,8 @@ Route::middleware(['auth', 'teacher'])->prefix('teacher')->name('teacher.')->gro
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/bersih-cache', function () {
+    \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+    return 'Alhamdulillah! Ingatan masa lalu Laravel sudah dihapus. Silakan coba lagi Guru AI-nya!';
+});
