@@ -26,8 +26,8 @@ class Bab1_03_StrukturDataSeeder extends Seeder
                             <span class="text-yellow-400 animate-pulse">●</span> BENTUK DATA
                         </div>
                         
-                        <iframe class="absolute top-0 left-0 w-full h-full opacity-80 group-hover:opacity-100 transition-opacity" 
-                                src="https://www.youtube.com/embed/VZfc7x2CYkE?rel=0&modestbranding=1" 
+                        <iframe class="absolute top-0 left-0 w-full h-full opacity-80 group-hover:opacity-100 transition-opacity"
+                                src="https://www.youtube.com/embed/84dGjLgkWxw?rel=0&modestbranding=1" 
                                 title="Struktur Data" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

@@ -1,238 +1,277 @@
-{{-- 
-    FILE: resources/views/learning/simulations/bar_chart.blade.php
-    DESC: Panel Kontrol & Logika Three.js Khusus Diagram Batang
---}}
-
-{{-- A. PANEL KONTROL HTML --}}
 <div class="mt-6 p-6 bg-[#0f1115] rounded-xl border border-gray-700 shadow-2xl relative overflow-hidden">
-    {{-- Efek Glow Background --}}
-    <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
-    {{-- Header Kontrol --}}
-    <div class="flex flex-col md:flex-row justify-between items-center mb-6 relative z-10 gap-4">
-        <h4 class="text-white font-bold flex items-center gap-2 text-lg">
-            <span>🎛️</span> Laboratorium Data
+    {{-- Header --}}
+    <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+        <h4 class="text-white font-bold text-lg flex items-center gap-2">
+            📊 Statistik Aktivitas Siswa
         </h4>
-        
-        {{-- TOMBOL TAMBAH / KURANG --}}
+
         <div class="flex items-center gap-2 bg-gray-800 p-1 rounded-lg border border-gray-700">
-            <button id="btnRemoveBar" class="px-3 py-1.5 rounded-md bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white transition-all text-xs font-bold flex items-center gap-1 disabled:opacity-30 disabled:cursor-not-allowed">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M20 12H4"></path></svg>
+            <button id="btnRemoveBar"
+                class="px-3 py-1.5 rounded-md bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white transition-all text-xs font-bold">
                 Hapus
             </button>
-            <span class="text-gray-500 text-xs px-1" id="barCountDisplay">3 Data</span>
-            <button id="btnAddBar" class="px-3 py-1.5 rounded-md bg-green-500/10 text-green-400 hover:bg-green-500 hover:text-white transition-all text-xs font-bold flex items-center gap-1 disabled:opacity-30 disabled:cursor-not-allowed">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"></path></svg>
+
+            <span class="text-gray-400 text-xs px-2" id="barCountDisplay">3 Data</span>
+
+            <button id="btnAddBar"
+                class="px-3 py-1.5 rounded-md bg-green-500/10 text-green-400 hover:bg-green-500 hover:text-white transition-all text-xs font-bold">
                 Tambah
             </button>
         </div>
     </div>
-    
-    {{-- CONTAINER SLIDER DINAMIS --}}
-    <div id="sliders-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
-        {{-- Slider akan digenerate otomatis oleh Javascript --}}
+
+    {{-- Chart --}}
+    <div id="chart" class="w-full overflow-x-auto"></div>
+
+    {{-- Slider --}}
+    <div id="sliders-container"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
     </div>
 </div>
 
-{{-- B. LOGIKA JAVASCRIPT --}}
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Cek container & Three.js
-        const barContainer = document.getElementById('three-canvas-container');
-        
-        if (barContainer && typeof THREE !== 'undefined') {
-            
-            // Hide Loading
-            const loadingText = document.getElementById('loading-indicator');
-            if(loadingText) loadingText.style.display = 'none';
+document.addEventListener("DOMContentLoaded", function () {
 
-            // --- 1. SETUP THREE.JS ---
-            const scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x050505); 
-            scene.fog = new THREE.FogExp2(0x050505, 0.03);
+    // =========================
+    // DATA
+    // =========================
 
-            const camera = new THREE.PerspectiveCamera(50, barContainer.clientWidth / barContainer.clientHeight, 0.1, 1000);
-            camera.position.set(0, 12, 18);
-            camera.lookAt(0, 5, 0);
+    let data = [
+        { label: "Belajar", value: 4, color: "#3b82f6" },
+        { label: "TikTok", value: 7, color: "#ef4444" },
+        { label: "Gaming", value: 6, color: "#10b981" }
+    ];
 
-            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setSize(barContainer.clientWidth, barContainer.clientHeight);
-            renderer.shadowMap.enabled = true;
-            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-            barContainer.appendChild(renderer.domElement);
+    const maxBars = 8;
+    const minBars = 1;
 
-            // --- 2. LIGHTING ---
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
-            scene.add(ambientLight);
+    const chartWidth = 700;
+    const chartHeight = 400;
 
-            const spotLight = new THREE.SpotLight(0xffffff, 1.2);
-            spotLight.position.set(10, 20, 10);
-            spotLight.angle = Math.PI / 4;
-            spotLight.penumbra = 0.5;
-            spotLight.castShadow = true;
-            scene.add(spotLight);
+    // =========================
+    // SVG
+    // =========================
 
-            // --- 3. ENVIRONMENT ---
-            const gridHelper = new THREE.GridHelper(50, 50, 0x333333, 0x111111);
-            scene.add(gridHelper);
-            
-            const planeGeo = new THREE.PlaneGeometry(50, 50);
-            const planeMat = new THREE.MeshStandardMaterial({ color: 0x050505, roughness: 0.1, metalness: 0.5 });
-            const plane = new THREE.Mesh(planeGeo, planeMat);
-            plane.rotation.x = -Math.PI / 2;
-            plane.position.y = -0.01;
-            plane.receiveShadow = true;
-            scene.add(plane);
+    const svg = d3.select("#chart")
+        .append("svg")
+        .attr("width", chartWidth)
+        .attr("height", chartHeight);
 
-            // --- 4. STATE MANAGEMENT ---
-            let bars = []; 
-            const maxBars = 8;
-            const minBars = 1;
-            const colors = [0xef4444, 0x3b82f6, 0xeab308, 0x10b981, 0x8b5cf6, 0xec4899, 0x06b6d4, 0xf97316]; 
-            const colorHexes = ["#ef4444", "#3b82f6", "#eab308", "#10b981", "#8b5cf6", "#ec4899", "#06b6d4", "#f97316"];
+    // =========================
+    // SCALE
+    // =========================
 
-            // --- 5. HELPER FUNCTIONS ---
-            function createTextSprite(message, colorStr) {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                canvas.width = 256; canvas.height = 128;
-                ctx.font = 'Bold 40px Arial';
-                ctx.fillStyle = colorStr; 
-                ctx.textAlign = 'center';
-                ctx.shadowColor = "rgba(0,0,0,0.8)";
-                ctx.shadowBlur = 4;
-                ctx.fillText(message, 128, 70); 
-                const texture = new THREE.CanvasTexture(canvas);
-                const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: texture }));
-                sprite.scale.set(6, 3, 1);
-                return sprite;
-            }
+    const xScale = d3.scaleBand()
+        .padding(0.3)
+        .range([80, 650]);
 
-            function addBar(initialValue = 5, label = "Data") {
-                const idx = bars.length;
-                const color = colors[idx % colors.length];
-                const colorStr = colorHexes[idx % colorHexes.length];
-                const finalLabel = label + " " + (idx + 1);
+    const yScale = d3.scaleLinear()
+        .range([300, 50]);
 
-                // A. Buat 3D Object
-                const group = new THREE.Group();
-                const geometry = new THREE.BoxGeometry(2, 1, 2);
-                geometry.translate(0, 0.5, 0);
-                const material = new THREE.MeshStandardMaterial({ 
-                    color: color, roughness: 0.2, metalness: 0.1, emissive: color, emissiveIntensity: 0.2 
+    // =========================
+    // AXIS GROUP
+    // =========================
+
+    const xAxisGroup = svg.append("g")
+        .attr("transform", "translate(0,300)");
+
+    const yAxisGroup = svg.append("g")
+        .attr("transform", "translate(80,0)");
+
+    // =========================
+    // UPDATE CHART
+    // =========================
+
+    function updateChart() {
+
+        // Update scale
+        xScale.domain(data.map(d => d.label));
+        yScale.domain([0, 10]);
+
+        // Axis
+        xAxisGroup.call(d3.axisBottom(xScale));
+        yAxisGroup.call(d3.axisLeft(yScale));
+
+        // DATA JOIN
+        const bars = svg.selectAll(".bar")
+            .data(data);
+
+        // ENTER
+        bars.enter()
+            .append("rect")
+            .attr("class", "bar")
+
+            .attr("x", d => xScale(d.label))
+            .attr("width", xScale.bandwidth())
+
+            .attr("y", 300)
+            .attr("height", 0)
+
+            .attr("fill", d => d.color)
+
+            // HOVER EFFECT
+            .on("mouseenter", function () {
+                d3.select(this)
+                    .transition()
+                    .duration(200)
+                    .attr("opacity", 0.7);
+            })
+
+            .on("mouseleave", function () {
+                d3.select(this)
+                    .transition()
+                    .duration(200)
+                    .attr("opacity", 1);
+            })
+
+            .merge(bars)
+
+            // ANIMATION
+            .transition()
+            .duration(500)
+
+            .attr("x", d => xScale(d.label))
+            .attr("width", xScale.bandwidth())
+
+            .attr("y", d => yScale(d.value))
+            .attr("height", d => 300 - yScale(d.value))
+
+            .attr("fill", d => d.color);
+
+        // EXIT
+        bars.exit().remove();
+
+        // =========================
+        // LABEL ANGKA
+        // =========================
+
+        const texts = svg.selectAll(".value-text")
+            .data(data);
+
+        texts.enter()
+            .append("text")
+            .attr("class", "value-text")
+
+            .merge(texts)
+
+            .transition()
+            .duration(500)
+
+            .attr("x", d => xScale(d.label) + xScale.bandwidth()/2)
+            .attr("y", d => yScale(d.value) - 10)
+
+            .attr("text-anchor", "middle")
+
+            .attr("fill", "white")
+
+            .text(d => d.value + " Jam");
+
+        texts.exit().remove();
+
+        document.getElementById('barCountDisplay').innerText =
+            data.length + " Data";
+    }
+
+    // =========================
+    // SLIDER UI
+    // =========================
+
+    function renderSliders() {
+
+        const container = document.getElementById("sliders-container");
+
+        container.innerHTML = "";
+
+        data.forEach((item, index) => {
+
+            const div = document.createElement("div");
+
+            div.className =
+                "bg-gray-900 border border-gray-700 rounded-xl p-4";
+
+            div.innerHTML = `
+                <div class="flex justify-between mb-2">
+                    <input type="text"
+                        value="${item.label}"
+                        id="label-${index}"
+                        class="bg-transparent text-white font-bold w-24 border-b border-gray-600 focus:outline-none">
+
+                    <span class="text-gray-400 text-xs">
+                        ${item.value} Jam
+                    </span>
+                </div>
+
+                <input type="range"
+                    min="1"
+                    max="10"
+                    value="${item.value}"
+                    id="slider-${index}"
+                    class="w-full"
+                    style="accent-color:${item.color}">
+            `;
+
+            container.appendChild(div);
+
+            // Slider Event
+            document.getElementById(`slider-${index}`)
+                .addEventListener("input", function(e) {
+
+                    data[index].value = +e.target.value;
+
+                    updateChart();
+                    renderSliders();
                 });
-                const bar = new THREE.Mesh(geometry, material);
-                bar.castShadow = true; bar.receiveShadow = true;
-                group.add(bar);
 
-                const edges = new THREE.EdgesGeometry(geometry);
-                const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5 }));
-                bar.add(line);
+            // Label Event
+            document.getElementById(`label-${index}`)
+                .addEventListener("input", function(e) {
 
-                const sprite = createTextSprite(finalLabel, colorStr);
-                sprite.position.y = 2;
-                group.add(sprite);
-                scene.add(group);
+                    data[index].label = e.target.value;
 
-                // B. Buat UI Slider (HTML)
-                const sliderContainer = document.getElementById('sliders-container');
-                const sliderDiv = document.createElement('div');
-                sliderDiv.className = "relative group animate-fade-in";
-                sliderDiv.id = `slider-group-${idx}`;
-                sliderDiv.innerHTML = `
-                    <div class="flex justify-between items-center mb-2">
-                        <input type="text" id="labelInput-${idx}" value="${finalLabel}" class="bg-transparent border-b border-gray-600 focus:border-white text-[${colorStr}] font-bold text-xs uppercase tracking-wider w-24 focus:outline-none transition-colors" style="color:${colorStr}">
-                        <span class="text-xs text-gray-500">Idx ${idx+1}</span>
-                    </div>
-                    <input type="range" id="slider-${idx}" min="1" max="15" value="${initialValue}" step="0.1"
-                        class="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer hover:opacity-80 transition-all"
-                        style="accent-color: ${colorStr}">
-                    <div class="mt-2 flex justify-between items-center">
-                        <span class="text-2xl font-black text-white" id="valDisplay-${idx}">${initialValue}</span>
-                        <span class="text-[10px] text-gray-600">Freq</span>
-                    </div>
-                `;
-                sliderContainer.appendChild(sliderDiv);
-
-                // C. Simpan ke Array State
-                const barObj = { 
-                    group, bar, sprite, 
-                    targetHeight: initialValue,
-                    colorStr, domId: `slider-group-${idx}`
-                };
-                bars.push(barObj);
-
-                // D. Event Listeners
-                document.getElementById(`slider-${idx}`).addEventListener('input', (e) => {
-                    barObj.targetHeight = parseFloat(e.target.value);
-                    document.getElementById(`valDisplay-${idx}`).innerText = barObj.targetHeight;
+                    updateChart();
                 });
+        });
+    }
 
-                document.getElementById(`labelInput-${idx}`).addEventListener('input', (e) => {
-                    group.remove(sprite);
-                    barObj.sprite = createTextSprite(e.target.value, colorStr);
-                    group.add(barObj.sprite);
-                });
+    // =========================
+    // BUTTONS
+    // =========================
 
-                repositionBars();
-                updateButtonState();
-            }
+    document.getElementById("btnAddBar")
+        .addEventListener("click", function() {
 
-            function removeBar() {
-                if (bars.length <= minBars) return;
-                const lastBar = bars.pop();
-                scene.remove(lastBar.group);
-                const sliderDiv = document.getElementById(lastBar.domId);
-                if(sliderDiv) sliderDiv.remove();
-                repositionBars();
-                updateButtonState();
-            }
+            if(data.length >= maxBars) return;
 
-            function repositionBars() {
-                const spacing = 4;
-                const totalWidth = (bars.length - 1) * spacing;
-                const startX = -totalWidth / 2; 
-
-                bars.forEach((b, i) => {
-                    b.group.position.x = startX + (i * spacing);
-                });
-                document.getElementById('barCountDisplay').innerText = bars.length + " Data";
-            }
-
-            function updateButtonState() {
-                document.getElementById('btnAddBar').disabled = bars.length >= maxBars;
-                document.getElementById('btnRemoveBar').disabled = bars.length <= minBars;
-            }
-
-            // --- 6. INIT ---
-            addBar(5, "Apel");
-            addBar(8, "Jeruk");
-            addBar(12, "Mangga");
-
-            // Button Events
-            document.getElementById('btnAddBar').addEventListener('click', () => addBar(5, "Data"));
-            document.getElementById('btnRemoveBar').addEventListener('click', removeBar);
-
-            // --- 7. ANIMATION LOOP ---
-            function animate() {
-                requestAnimationFrame(animate);
-                bars.forEach(b => {
-                    b.bar.scale.y += (b.targetHeight - b.bar.scale.y) * 0.1;
-                    b.sprite.position.y = b.bar.scale.y + 1;
-                });
-                scene.rotation.y = Math.sin(Date.now() * 0.0003) * 0.05;
-                renderer.render(scene, camera);
-            }
-            animate();
-
-            // Resize
-            window.addEventListener('resize', () => {
-                if(barContainer) {
-                    renderer.setSize(barContainer.clientWidth, barContainer.clientHeight);
-                    camera.aspect = barContainer.clientWidth / barContainer.clientHeight;
-                    camera.updateProjectionMatrix();
-                }
+            data.push({
+                label: "Aktivitas",
+                value: 5,
+                color: "#" + Math.floor(Math.random()*16777215).toString(16)
             });
-        }
-    });
+
+            updateChart();
+            renderSliders();
+        });
+
+    document.getElementById("btnRemoveBar")
+        .addEventListener("click", function() {
+
+            if(data.length <= minBars) return;
+
+            data.pop();
+
+            updateChart();
+            renderSliders();
+        });
+
+    // =========================
+    // INIT
+    // =========================
+
+    updateChart();
+    renderSliders();
+
+});
 </script>

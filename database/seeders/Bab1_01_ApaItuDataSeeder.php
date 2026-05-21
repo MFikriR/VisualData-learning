@@ -45,7 +45,7 @@ class Bab1_01_ApaItuDataSeeder extends Seeder
                         </div>
                         
                         <iframe class="absolute top-0 left-0 w-full h-full" 
-                                src="https://www.youtube.com/embed/KuwikrIys5M?rel=0&modestbranding=1" 
+                                src="https://www.youtube.com/embed/63aGXxefHC8?rel=0&modestbranding=1" 
                                 title="Apa itu Data?" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

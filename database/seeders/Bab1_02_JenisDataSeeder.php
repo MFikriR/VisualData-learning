@@ -27,7 +27,7 @@ class Bab1_02_JenisDataSeeder extends Seeder
                         </div>
                         
                         <iframe class="absolute top-0 left-0 w-full h-full" 
-                                src="https://www.youtube.com/embed/Jd-B7-mAfCo?rel=0&modestbranding=1" 
+                                src="https://www.youtube.com/embed/9PN4tKUPzis?rel=0&modestbranding=1" 
                                 title="Apa itu Data?" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

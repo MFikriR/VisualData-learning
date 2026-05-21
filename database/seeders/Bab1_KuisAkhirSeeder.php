@@ -91,7 +91,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Warna mobil adalah label atau deskripsi kualitas (kualitatif), bukan angka yang bisa dihitung secara matematis.'
             ],
             [
-                'question' => 'Contoh Data Kualitatif (Kategorikal) adalah....',
+                'question' => 'Data “Tingkat Kepuasan Pelanggan” dengan pilihan Sangat Puas, Puas, Netral, dan Kecewa termasuk jenis data....',
                 'image' => null,
                 'options' => [
                     'A' => 'Nominal',
@@ -104,7 +104,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => 'Ordinal adalah data kategori yang memiliki urutan atau tingkatan (Ranking).'
             ],
             [
-                'question' => 'Data “Tingkat Kepuasan Pelanggan” dengan pilihan Sangat Puas, Puas, Netral, dan Kecewa termasuk jenis data....',
+                'question' => '6.	Data berupa angka bulat hasil pencacahan (menghitung), misalnya “Jumlah Siswa di Kelas”, disebut data....',
                 'image' => null,
                 'options' => [
                     'A' => 'Kontinu',

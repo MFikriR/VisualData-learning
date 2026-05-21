@@ -27,7 +27,7 @@ class Bab1_04_PersiapanLabelingSeeder extends Seeder
                         </div>
                         
                         <iframe class="absolute top-0 left-0 w-full h-full opacity-80 group-hover:opacity-100 transition-opacity" 
-                                src="https://www.youtube.com/embed/hULdMAQFyBk?rel=0&modestbranding=1" 
+                                src="https://www.youtube.com/embed/DXX1_36y9VE?rel=0&modestbranding=1" 
                                 title="Struktur Data" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

@@ -45,7 +45,7 @@ class Bab2_01_DiagramBatangSeeder extends Seeder
                         </div>
                         
                         <iframe class="absolute top-0 left-0 w-full h-full" 
-                                src="https://www.youtube.com/embed/Kmp3sZ2tqJw?rel=0&modestbranding=1" 
+                                src="https://www.youtube.com/embed/2As-0wySZmE?rel=0&modestbranding=1"
                                 title="Video Pengantar Diagram Batang" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
