@@ -12,8 +12,8 @@
             📋 Spreadsheet Data Lab
         </h1>
         <p class="text-slate-400 text-sm">
-            Buat, edit, dan simpan data secara langsung seperti menggunakan spreadsheet.
-            Data yang dibuat dapat digunakan pada Sandbox Data untuk visualisasi dan K-Means Clustering.
+            Buat, edit, dan simpan data secara langsung seperti menggunakan spreadsheet. 
+            Klik dua kali (double-click) pada sel untuk mulai mengetik.
         </p>
     </div>
 
@@ -36,24 +36,23 @@
     </div>
 
     {{-- Spreadsheet Container --}}
-    {{-- Diubah menjadi bg-white agar JSpreadsheet bisa terbaca dengan jelas --}}
-    <div class="bg-white border border-slate-700 rounded-2xl p-4 overflow-x-auto text-slate-800">
+    <div class="bg-white border border-slate-700 rounded-2xl p-4 overflow-x-auto text-slate-800 relative z-0">
         <div id="spreadsheet"></div>
     </div>
 
 </div>
 
-{{-- CSS Dependencies --}}
-<link rel="stylesheet" href="https://jspreadsheet.com/v4/jspreadsheet.css" type="text/css" />
-<link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+{{-- CSS Dependencies (Versi Community Edition - 100% Gratis) --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jspreadsheet-ce/dist/jspreadsheet.min.css" type="text/css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsuites/dist/jsuites.min.css" type="text/css" />
 
-{{-- JS Dependencies --}}
-<script src="https://jspreadsheet.com/v4/jspreadsheet.js"></script>
-<script src="https://jsuites.net/v4/jsuites.js"></script>
+{{-- JS Dependencies (Versi Community Edition - 100% Gratis) --}}
+<script src="https://cdn.jsdelivr.net/npm/jspreadsheet-ce/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsuites/dist/jsuites.min.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Data Dummy Default (Bekal awal agar tabel tidak kosong)
+    // 1. Data Dummy Default
     const initialData = [
         ['Titik A', 15, 25],
         ['Titik B', 20, 30],
@@ -62,38 +61,43 @@ document.addEventListener('DOMContentLoaded', function() {
         ['Titik E', 40, 50],
     ];
 
-    // 2. Inisialisasi JSpreadsheet ke dalam div #spreadsheet
+    // 2. Inisialisasi JSpreadsheet CE
     const table = jspreadsheet(document.getElementById('spreadsheet'), {
         data: initialData,
         columns: [
             { type: 'text', title: 'Nama Data', width: 150 },
             { type: 'numeric', title: 'Nilai X', width: 100 },
             { type: 'numeric', title: 'Nilai Y', width: 100 },
+            { type: 'text', title: 'Kolom Z', width: 100 }, // Kolom kosong tambahan
         ],
+        // Fitur ala Google Sheets
+        minDimensions: [6, 20], // Otomatis membuat tabel ukuran 6 kolom x 20 baris
         tableOverflow: true,
         tableWidth: "100%",
-        tableHeight: "350px",
+        tableHeight: "450px",
+        csvFileName: 'Dataset_VisualData_Lab', // Nama file default saat di-download
+        allowInsertRow: true,
+        allowInsertColumn: true,
+        allowDeleteRow: true,
+        allowDeleteColumn: true,
+        wordWrap: true,
     });
 
     // 3. Logika Tombol Tambah Baris
     document.getElementById('addRowBtn').addEventListener('click', () => {
-        table.insertRow(); // Sekarang fungsi ini tahu 'table' itu apa
+        table.insertRow(); 
     });
 
     // 4. Logika Tombol Export CSV
     document.getElementById('downloadCsvBtn').addEventListener('click', () => {
-        table.download();
+        // Mengunduh langsung dengan format CSV yang rapi
+        table.download(true);
     });
 
     // 5. Logika Tombol Kirim ke Sandbox
     document.getElementById('sendSandboxBtn').addEventListener('click', () => {
-        // Ambil semua data dari tabel yang baru diedit siswa
         const currentData = table.getData();
-
-        // Simpan ke memori browser
         localStorage.setItem('spreadsheetData', JSON.stringify(currentData));
-
-        // Pindahkan halaman ke rute sandbox K-Means (Pastikan rute '/sandbox' sudah kamu buat)
         window.location.href = '/sandbox';
     });
 });
