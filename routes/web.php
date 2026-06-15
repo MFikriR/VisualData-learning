@@ -123,3 +123,7 @@ Route::get('/bersih-cache', function () {
     \Illuminate\Support\Facades\Artisan::call('optimize:clear');
     return 'Alhamdulillah! Ingatan masa lalu Laravel sudah dihapus. Silakan coba lagi Guru AI-nya!';
 });
+
+Route::get('/spreadsheet-lab', function () {
+    return view('student.spreadsheet.index');
+})->name('spreadsheet.lab');

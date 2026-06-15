@@ -20,9 +20,11 @@
                 extend: {
                     fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
                     colors: {
-                        eduPrimary: '#2563eb', // Blue 600
-                        eduDark: '#0f172a', // Slate 900
-                        eduAccent: '#38bdf8', // Teal/Cyan
+                        eduPrimary: '#2563EB',
+                        eduDark: '#111827',
+                        eduAccent: '#60A5FA',
+                        eduLight: '#F8FAFC',
+                        eduBorder: '#E5E7EB',
                     },
                 }
             }
@@ -31,8 +33,8 @@
     <style>
         html { scroll-behavior: smooth; }
         body { 
-            background: #0f172a; 
-            color: #f8fafc;
+            background: #ffffff;
+            color: #111827;
             overflow-x: hidden;
         }
         
@@ -50,11 +52,12 @@
 
         /* Glass Panel Elegan */
         .glass-panel {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1.5rem;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 24px;
+            box-shadow:
+                0 1px 3px rgba(0,0,0,.05),
+                0 8px 24px rgba(0,0,0,.05);
         }
 
         /* Driver.js Theme Professional */
@@ -68,6 +71,94 @@
 
         .animate-fade-in { animation: fadeIn 0.3s ease-in-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        /* ===========================
+        APPLE + COURSERA LIGHT THEME
+        =========================== */
+
+        /* Hilangkan partikel */
+        .data-particles{
+            display:none;
+        }
+
+        /* Semua section */
+        section{
+            background:#ffffff !important;
+        }
+
+        /* Section selang-seling */
+        #daftar-materi,
+        #profil{
+            background:#f8fafc !important;
+        }
+
+        /* Card umum */
+        .bg-slate-800,
+        .bg-slate-900\/50{
+            background:#ffffff !important;
+        }
+
+        /* Border */
+        .border-slate-700,
+        .border-slate-800,
+        .border-slate-600{
+            border-color:#e5e7eb !important;
+        }
+
+        /* Judul */
+        .text-white{
+            color:#111827 !important;
+        }
+
+        /* Paragraf */
+        .text-slate-300{
+            color:#4b5563 !important;
+        }
+
+        .text-slate-400{
+            color:#6b7280 !important;
+        }
+
+        .text-slate-500{
+            color:#9ca3af !important;
+        }
+
+        /* Accordion Hover */
+        .hover\:bg-slate-700\/50:hover{
+            background:#f3f4f6 !important;
+        }
+
+        /* Card Hover */
+        .hover\:-translate-y-2:hover{
+            box-shadow:0 12px 32px rgba(0,0,0,.08);
+        }
+
+        /* Tentang Media */
+        .bg-slate-900\/50{
+            background:#f8fafc !important;
+        }
+
+        /* Footer */
+        footer{
+            background:#ffffff !important;
+            border-top:1px solid #e5e7eb !important;
+        }
+
+        footer .text-slate-400{
+            color:#374151 !important;
+        }
+
+        footer .text-slate-600{
+            color:#6b7280 !important;
+        }
+
+        /* Navbar */
+        nav a.text-slate-300{
+            color:#6b7280 !important;
+        }
+
+        nav a.text-slate-300:hover{
+            color:#2563eb !important;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-eduPrimary selection:text-white">
@@ -82,19 +173,19 @@
     </div>
 
     {{-- NAVBAR --}}
-    <nav class="fixed w-full z-50 top-0 start-0 bg-[#0f172a]/90 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
+    <nav class="fixed w-full z-50 top-0 start-0 bg-white/90 backdrop-blur-xl border-b border-gray-200">
         <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between p-4">
             
             <a href="#" class="flex items-center space-x-2 group">
                 <div class="w-8 h-8 bg-eduPrimary rounded-lg flex items-center justify-center text-white font-bold text-xl">V</div>
-                <span class="self-center text-xl font-bold whitespace-nowrap text-white tracking-wide">
+                <span class="self-center text-xl font-bold whitespace-nowrap text-gray-900 tracking-wide">
                     VisualData<span class="text-eduPrimary">.</span>
                 </span>
             </a>
 
             {{-- MENU UTAMA --}}
             <div class="hidden lg:flex items-center space-x-6">
-                <a id="nav-beranda" href="#" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors">Beranda</a>
+                <a id="nav-beranda" href="#" class="text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors">Beranda</a>
                 <a id="nav-kompetensi" href="#kompetensi" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors">Kompetensi</a>
                 <a id="nav-materi" href="#daftar-materi" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors">Daftar Materi</a>
                 <a id="nav-petunjuk" href="#petunjuk" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors">Petunjuk</a>
@@ -121,40 +212,91 @@
     </nav>
 
     {{-- 1. HERO SECTION --}}
-    <section class="relative min-h-[90vh] flex items-center justify-center pt-20 px-4 text-center z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 via-eduDark to-eduDark">
-        <div class="max-w-4xl mx-auto">
-            <div class="inline-block py-1.5 px-4 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-semibold text-sm mb-6 backdrop-blur-sm">
+    <section class="relative min-h-screen flex items-center justify-center bg-white pt-24 pb-20 px-6 overflow-hidden">
+
+        {{-- Background Dekorasi Blur --}}
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-100 rounded-full blur-3xl opacity-40"></div>
+
+        <div class="relative max-w-5xl mx-auto text-center">
+
+            {{-- Badge --}}
+            <div class="inline-flex items-center gap-2 py-2 px-5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-semibold text-sm mb-8">
                 Media Pembelajaran Interaktif Berbasis Web
             </div>
-            
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight text-white tracking-tight drop-shadow-lg">
-                Media Pembelajaran Interaktif<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Visualiasi dan Pengelompokan Data</span>
+
+            {{-- Judul Utama --}}
+            <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 leading-tight tracking-tight mb-8">
+
+                Mari Belajar
+
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-400">
+                    Visualisasi
+                </span>
+
+                <br>
+
+                dan
+
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-400">
+                    Pengelompokan Data
+                </span>
+
             </h1>
-            
-            <p class="mb-10 text-lg md:text-xl font-normal text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                Mari belajar mengenal data serta bagaimana data tersebut bisa di visualisasi kan. Mulai belajar melalui <strong>Model Tutorial</strong> interaktif.
+
+            {{-- Deskripsi --}}
+            <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-600 leading-relaxed mb-12">
+                Pelajari konsep data, visualisasi data, dan Pengelompokan
+                melalui materi interaktif, simulasi pembelajaran,
+                latihan mandiri, dan evaluasi berbasis web.
             </p>
-            
-            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
+
+            {{-- Tombol --}}
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="bg-eduPrimary text-white text-lg font-bold py-3.5 px-8 rounded-xl shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:bg-blue-700 hover:scale-105 transition-all flex items-center justify-center gap-2">
+                    <a href="{{ url('/dashboard') }}"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
                         Mulai Belajar
                     </a>
                 @else
-                    <a href="{{ route('register') }}" class="bg-eduPrimary text-white text-lg font-bold py-3.5 px-8 rounded-xl shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:bg-blue-700 hover:scale-105 transition-all flex items-center justify-center gap-2">
+                    <a href="{{ route('register') }}"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
                         Daftar & Mulai Belajar
                     </a>
                 @endauth
-                <a href="#daftar-materi" class="bg-slate-800 text-slate-200 border border-slate-600 text-lg font-semibold py-3.5 px-8 rounded-xl hover:bg-slate-700 transition-all flex items-center justify-center">
-                    Lihat Daftar Materi
+
+                <a href="#daftar-materi"
+                class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold text-lg px-8 py-4 rounded-2xl transition-all">
+                    Lihat Materi
                 </a>
+
             </div>
+
+            {{-- Statistik Singkat --}}
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
+
+                <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+                    <div class="text-3xl font-bold text-blue-600">3</div>
+                    <p class="text-gray-600 mt-2">Bab Pembelajaran</p>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+                    <div class="text-3xl font-bold text-blue-600">10+</div>
+                    <p class="text-gray-600 mt-2">Materi Interaktif</p>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+                    <div class="text-3xl font-bold text-blue-600">100%</div>
+                    <p class="text-gray-600 mt-2">Berbasis Web</p>
+                </div>
+
+            </div>
+
         </div>
     </section>
 
     {{-- 2. BAGIAN KOMPETENSI (KI, KD, INDIKATOR) --}}
-    <section id="kompetensi" class="py-20 relative bg-[#0f172a] border-t border-slate-800">
+    <section id="kompetensi" class="py-24 relative bg-white border-t border-gray-100">
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-black mb-4 text-white tracking-wide">Kompetensi Pembelajaran</h2>
@@ -200,7 +342,7 @@
     </section>
 
     {{-- 3. DAFTAR ISI MATERI (SILABUS CARDS) --}}
-    <section id="daftar-materi" class="py-20 relative z-10 bg-[#161b22] border-t border-slate-800">
+    <section id="daftar-materi" class="py-24 relative z-10 bg-gray-50 border-t border-gray-100">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-wide uppercase">Daftar Isi Materi</h2>
@@ -246,14 +388,43 @@
                 </div>
 
                 {{-- Evaluasi --}}
-                <div class="bg-gradient-to-b from-emerald-900/30 to-slate-800 border border-emerald-700/50 rounded-2xl p-6 shadow-lg hover:-translate-y-2 transition-transform">
-                    <span class="bg-emerald-500/20 text-emerald-400 font-black text-[10px] uppercase tracking-widest px-3 py-1 rounded border border-emerald-500/50 mb-4 inline-block">EVALUASI</span>
-                    <h3 class="text-xl font-bold text-white mb-4">Uji Pemahaman</h3>
-                    <ul class="space-y-3 text-sm text-slate-300">
-                        <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">•</span> Kuis Formatif (Mini-Quiz tiap materi)</li>
-                        <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">•</span> Syarat Kelulusan KKM (Nilai 70)</li>
-                        <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">•</span> Evaluasi Akhir Bab (Sumatif)</li>
+                <div class="bg-white border border-emerald-300 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all">
+
+                    <div class="flex items-center justify-between mb-5">
+                        <span class="bg-emerald-50 text-emerald-600 font-bold text-[10px] uppercase tracking-widest px-3 py-1 rounded border border-emerald-200">
+                            Evaluasi
+                        </span>
+
+                        <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-gray-900 mb-5">
+                        Uji Pemahaman
+                    </h3>
+
+                    <ul class="space-y-4 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-0.5">•</span>
+                            Kuis Formatif (Mini-Quiz tiap materi)
+                        </li>
+
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-0.5">•</span>
+                            Syarat Kelulusan KKM (Nilai 70)
+                        </li>
+
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-0.5">•</span>
+                            Evaluasi Akhir Bab (Sumatif)
+                        </li>
                     </ul>
+
                 </div>
 
             </div>
@@ -261,7 +432,7 @@
     </section>
 
     {{-- 4. PETUNJUK PENGGUNAAN (ACCORDION) --}}
-    <section id="petunjuk" class="py-20 relative z-10 bg-[#0f172a] border-t border-slate-800">
+    <section id="petunjuk" class="py-24 relative z-10 bg-white border-t border-gray-100">
         <div class="container mx-auto px-4 max-w-4xl">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-wide uppercase">Petunjuk Penggunaan</h2>
@@ -438,7 +609,7 @@
     </section>
 
     {{-- 5. PROFIL PENGEMBANG & ATRIBUSI --}}
-    <section id="profil" class="py-20 relative z-10 bg-[#161b22] border-t border-slate-800">
+    <section id="profil" class="py-24 relative z-10 bg-gray-50 border-t border-gray-100">
         <div class="container mx-auto px-4 max-w-5xl">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-wide uppercase">Tentang Media Ini</h2>
@@ -563,7 +734,7 @@
     </section>
 
     {{-- FOOTER --}}
-    <footer class="bg-black border-t border-slate-800 py-8 relative z-10 text-center">
+    <footer class="bg-white border-t border-gray-200 py-8 relative z-10 text-center">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-center space-x-2 mb-4 opacity-50">
                 <div class="w-6 h-6 bg-slate-700 rounded flex items-center justify-center text-white font-bold text-xs">V</div>

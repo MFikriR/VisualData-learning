@@ -154,6 +154,12 @@
                     <span class="ms-3 text-sm">Sandbox Data</span>
                 </div>
             @endif
+
+            <a href="{{ route('spreadsheet.lab') }}"
+            class="nav-item flex items-center px-4 py-3 rounded-xl transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800/50">
+                <span class="text-xl opacity-80">📋</span>
+                <span class="ms-3 text-sm">Spreadsheet Lab</span>
+            </a>
         </nav>
 
         <div class="mt-8 pt-4 border-t border-slate-700/50">
