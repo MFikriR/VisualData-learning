@@ -3,30 +3,28 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Chapter; // Jangan lupa import ini
+use App\Models\Chapter;
 
 class MateriBab2Seeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        // 1. BUAT BAB-NYA DULU DI SINI
-        // Agar saat file-file anak jalan, Bab 1 sudah tersedia
-        Chapter::firstOrCreate(
+        // 1. Buat/Update Bab 2 dengan judul baru
+        Chapter::updateOrCreate(
             ['sequence' => 2],
-            ['title' => 'Visualisasi Data']
+            [
+                'title' => 'Visualisasi dan Pengelompokan Data',
+                'description' => 'Menerapkan konsep visualisasi grafik dan memahami cara kerja algoritma pengelompokan data.',
+                'is_active' => true,
+            ]
         );
 
-        // 2. Panggil file anak-anak (Materi & Kuis)
+        // 2. Panggil file anak sesuai sub-bab baru secara berurutan
         $this->call([
-            Bab2_01_DiagramBatangSeeder::class,
-            Bab2_SimulasiBatangSeeder::class,
-            Bab2_02_HistogramSeeder::class,
-            Bab2_SimulasiHistogramSeeder::class,
-            Bab2_03_BoxPlotSeeder::class,
-            Bab2_SimulasiBoxPlotSeeder::class,
-            Bab2_04_ScatterPlotSeeder::class,
-            Bab2_SimulasiScatterSeeder::class,
-            Bab2_06_KuisAkhirSeeder::class, 
+            Bab2_01_VisualisasiDataSeeder::class,       // Sub-bab 1 (Visualisasi / 3D Chart)
+            Bab2_02_PengelompokanDataSeeder::class,      // Sub-bab 2 (Konsep K-Means Clustering)
+            Bab2_03_StudiKasusSeeder::class,             // Sub-bab 3 (Praktik Lab / Sandbox)
+            Bab2_06_KuisAkhirSeeder::class,              // Evaluasi Bab 2
         ]);
     }
 }

@@ -1,6 +1,5 @@
 /* resources/css/dashboard.css */
-/* Karena sebagian besar styling Sidebar & Dashboard sudah dipindah ke Tailwind (Blade),
-   file ini digunakan untuk mereset sisa-sisa CSS gamifikasi sebelumnya. */
+/* Reset sisa-sisa CSS gamifikasi sebelumnya ke tema Cream & Green */
 
 input[type="text"], 
 input[type="number"], 
@@ -8,10 +7,10 @@ input[type="email"],
 input[type="password"], 
 textarea, 
 select {
-    background-color: var(--edu-dark) !important;
+    background-color: var(--edu-dark) !important; /* Krem Terang */
     border: 1px solid var(--border-color) !important;
     border-radius: 12px !important;
-    color: var(--text-primary) !important; 
+    color: var(--text-primary) !important; /* Hijau Gelap */
     font-weight: 500 !important;
     font-family: var(--font-main) !important;
     padding: 10px 16px !important;
@@ -21,8 +20,8 @@ select {
 input:focus, textarea:focus, select:focus {
     outline: none !important;
     border-color: var(--edu-primary) !important;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2) !important;
-    background-color: var(--edu-dark) !important;
+    box-shadow: 0 0 0 3px rgba(48, 109, 41, 0.2) !important;
+    background-color: #ffffff !important;
     transform: none !important;
 }
 

@@ -13,14 +13,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: { 
                 extend: { 
                     fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }, 
                     colors: { 
-                        eduPrimary: '#2563eb', // Blue 600
-                        eduDark: '#0f172a', // Slate 900
-                        eduAccent: '#38bdf8', // Sky 400
+                        eduPrimary: '#306d29',       // Hijau Utama
+                        eduPrimaryHover: '#0d530e',  // Hijau Gelap
+                        eduDark: '#fbf5dd',          // Krem Terang
+                        eduPanel: '#e7e1b1',         // Krem Gelap
+                        eduAccent: '#306d29',        // Hijau
+                        borderLight: 'rgba(48, 109, 41, 0.2)',
                     } 
                 } 
             }
@@ -30,31 +32,26 @@
     {{-- ALPINE JS --}}
     <script src="//unpkg.com/alpinejs" defer></script>
 
-    <script>
-        // Paksa Dark Mode untuk konsistensi tema
-        document.documentElement.classList.add('dark');
-    </script>
-
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/simulation.js'])
+    @vite(['resources/css/variables.css', 'resources/css/app.css', 'resources/css/dashboard.css', 'resources/js/app.js', 'resources/js/simulation.js'])
 
     <style>
         body { 
-            background-color: #0f172a; /* Slate 900 */
-            color: #f8fafc; /* Slate 50 */
+            background-color: #fbf5dd; 
+            color: #0d530e; 
             overflow-x: auto;
             font-family: '"Plus Jakarta Sans"', sans-serif;
         }
         
         .sidebar {
-            background-color: rgba(15, 23, 42, 0.95); /* EduDark translusen */
+            background-color: #e7e1b1; 
             backdrop-filter: blur(12px); 
-            border-right: 1px solid rgba(255,255,255,0.05);
+            border-right: 1px solid rgba(48,109,41,0.2);
         }
         
         .nav-item.active {
-            background: rgba(37, 99, 235, 0.15); /* eduPrimary opacity */
-            color: #38bdf8; /* eduAccent */
-            border-right: 3px solid #2563eb;
+            background: rgba(48, 109, 41, 0.15); 
+            color: #0d530e; 
+            border-right: 3px solid #306d29;
             font-weight: 700;
         }
         
@@ -74,16 +71,16 @@
         @media (max-width: 768px) { 
             .main-content { margin-left: 0; } 
             .sidebar { transform: translateX(-100%); z-index: 50; } 
-            .sidebar.open { transform: translateX(0); box-shadow: 10px 0 50px rgba(0,0,0,0.8); } 
+            .sidebar.open { transform: translateX(0); box-shadow: 10px 0 50px rgba(13,83,14,0.2); } 
         }
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(48,109,41,0.3); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #306d29; }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-eduPrimary selection:text-white">
+<body class="font-sans antialiased selection:bg-eduPrimary selection:text-eduDark">
     
-    <div class="app-layout min-h-screen flex bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-slate-800 via-eduDark to-eduDark">
+    <div class="app-layout min-h-screen flex bg-eduDark">
         
         @if(Auth::check() && Auth::user()->role === 'teacher')
             @include('layouts.sidebar_teacher')
@@ -94,13 +91,13 @@
         <main class="main-content flex-1 flex flex-col min-h-screen transition-all duration-300 relative z-10">
             
             {{-- HEADER TRANSPARAN --}}
-            <header class="sticky top-0 z-40 bg-[#0f172a]/80 backdrop-blur-md border-b border-white/5 px-6 py-4 flex items-center justify-between">
+            <header class="sticky top-0 z-40 bg-eduDark/80 backdrop-blur-md border-b border-borderLight px-6 py-4 flex items-center justify-between">
                 
                 <div class="flex items-center gap-4">
-                    <button id="sidebar-toggle" class="md:hidden text-slate-300 hover:text-white">
+                    <button id="sidebar-toggle" class="md:hidden text-eduPrimaryHover hover:text-eduPrimary">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
                     </button>
-                    <h2 class="text-xl font-bold text-white tracking-tight flex items-center gap-3">
+                    <h2 class="text-xl font-bold text-eduPrimaryHover tracking-tight flex items-center gap-3">
                         <span class="w-1.5 h-6 bg-eduPrimary rounded-full"></span>
                         @yield('header', 'Dashboard') 
                     </h2>
@@ -110,10 +107,10 @@
                     {{-- TOMBOL PROFIL --}}
                     <a href="{{ route('profile.edit') }}" class="flex items-center gap-3 focus:outline-none group transition-transform duration-200" title="Profil">
                         <div class="text-right hidden sm:block">
-                            <div class="text-sm font-bold text-white tracking-wide">
+                            <div class="text-sm font-bold text-eduPrimaryHover tracking-wide">
                                 {{ Auth::user()->name }}
                             </div>
-                            <div class="text-[10px] text-eduAccent font-bold uppercase tracking-wider">
+                            <div class="text-[10px] text-eduPrimary font-bold uppercase tracking-wider">
                                 @if(Auth::user()->role == 'teacher')
                                     Guru Pengampu
                                 @else
@@ -121,7 +118,7 @@
                                 @endif
                             </div>
                         </div>
-                        <img class="h-10 w-10 rounded-xl border border-slate-600 group-hover:border-eduAccent shadow-sm object-cover transition-colors" 
+                        <img class="h-10 w-10 rounded-xl border border-borderLight group-hover:border-eduPrimary shadow-sm object-cover transition-colors" 
                              src="{{ Auth::user()->profile_photo_url }}" 
                              alt="{{ Auth::user()->name }}">
                     </a>
@@ -133,7 +130,7 @@
             </div>
         </main>
         
-        <div id="sidebar-overlay" class="fixed inset-0 bg-black/80 z-40 hidden md:hidden backdrop-blur-sm"></div>
+        <div id="sidebar-overlay" class="fixed inset-0 bg-eduPrimaryHover/20 z-40 hidden md:hidden backdrop-blur-sm"></div>
     </div>
 
     <script>

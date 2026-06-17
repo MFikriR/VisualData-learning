@@ -23,13 +23,12 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
             return;
         }
 
-        // 2. Buat atau Update Quiz Header
-        // PENTING: Gunakan 'time_limit' bukan 'duration_minutes'
+        // 2. Buat atau Update Quiz Header (Sesuai Kolom Database Asli)
         $quiz = Quiz::updateOrCreate(
             ['chapter_id' => $chapter->id], 
             [
-                'title' => 'Evaluasi Akhir Bab 2: Visualisasi Data',
-                'description' => 'Uji pemahamanmu tentang Diagram Batang, Histogram, Box Plot, dan Scatter Plot.',
+                'title' => 'Evaluasi Akhir Bab 2: Visualisasi & Pengelompokan',
+                'description' => 'Uji pemahamanmu tentang materi visualisasi grafik (Bar, Histogram, Box Plot, Scatter Plot) dan konsep pengelompokan data menggunakan algoritma K-Means.',
                 'type' => 'final',
                 'time_limit' => 45, 
             ]
@@ -38,290 +37,296 @@ class Bab2_06_KuisAkhirSeeder extends Seeder
         // 3. Bersihkan soal lama agar tidak duplikat
         Question::where('quiz_id', $quiz->id)->delete();
 
-        // 4. Daftar Soal Lengkap
+        // 4. Daftar 20 Soal Lengkap (Kunci Jawaban Merata: A-B-C-D-E x4)
         $questions = [
+            // --- KELOMPOK 1 ---
             [
-                'question' => 'Perbedaan visual utama yang membedakan antara Diagram Batang (Bar Chart) dan Histogram adalah....',
+                'question' => 'Proses menyajikan sekumpulan angka ke dalam format grafis seperti diagram atau gambar agar pola dan trennya lebih mudah dipahami oleh otak manusia disebut dengan istilah....',
                 'image' => null,
                 'options' => [
-                    'A' => 'Diagram Batang memiliki celah antar batang, sedangkan Histogram batang-batangnya saling menempel',
-                    'B' => 'Diagram Batang selalu berbentuk vertikal, sedangkan Histogram selalu horizontal',
-                    'C' => 'Histogram digunakan untuk data kategori, sedangkan Diagram Batang untuk data numerik',
-                    'D' => 'Histogram menggunakan garis, sedangkan Diagram Batang menggunakan titik',
-                    'E' => 'Diagram Batang memiliki sumbu negatif, sedangkan Histogram tidak'
+                    'A' => 'Visualisasi data',
+                    'B' => 'Manipulasi data',
+                    'C' => 'Pengumpulan data',
+                    'D' => 'Pengelompokan data',
+                    'E' => 'Pembersihan data'
                 ],
                 'correct_answer' => 'a',
-                'explanation' => 'Pada Histogram (data kontinu) batang saling berimpit, sedangkan Diagram Batang (data kategori) terpisah.'
+                'explanation' => 'Visualisasi data adalah proses menerjemahkan tabel angka menjadi grafik atau visual.'
             ],
             [
-                'question' => 'Berdasarkan Diagram Batang data penjualan buah di atas ini, buah yang memiliki jumlah penjualan paling sedikit adalah....',
-                'image' => 'images/quiz/q2_diagram_buah.png',
+                'question' => 'Jenis grafik yang menggunakan persegi panjang terpisah dan paling tepat digunakan ketika kita ingin membandingkan jumlah antar kategori yang berbeda adalah....',
+                'image' => null,
                 'options' => [
-                    'A' => 'Apel',
-                    'B' => 'Anggur',
-                    'C' => 'Mangga',
-                    'D' => 'Jeruk',
-                    'E' => 'Melon'
+                    'A' => 'Diagram lingkaran',
+                    'B' => 'Diagram batang',
+                    'C' => 'Diagram garis lurus',
+                    'D' => 'Diagram titik pencar',
+                    'E' => 'Diagram kotak garis'
                 ],
                 'correct_answer' => 'b',
-                'explanation' => 'Batang terpendek pada diagram menunjukkan buah Anggur.'
+                'explanation' => 'Diagram batang (Bar Chart) sangat ideal untuk membandingkan nilai antar kategori diskrit.'
             ],
             [
-                'question' => 'Alasan batang-batang pada grafik Histogram digambarkan saling berhimpit tanpa celah adalah....',
+                'question' => 'Ciri khas visual paling utama dari Histogram yang membedakannya secara langsung dengan diagram batang biasa adalah letak batang-batangnya yang digambar secara....',
                 'image' => null,
                 'options' => [
-                    'A' => 'Agar grafik terlihat lebih rapi dan hemat tempat',
-                    'B' => 'Karena datanya bersifat kategorikal yang terpisah',
-                    'C' => 'Karena merepresentasikan data numerik kontinu di mana interval nilai saling bersambung',
-                    'D' => 'Untuk menunjukkan adanya korelasi antar variabel',
-                    'E' => 'Supaya bisa memuat lebih banyak kategori data'
+                    'A' => 'Menyebar menjadi titik kecil',
+                    'B' => 'Melingkar membentuk irisan',
+                    'C' => 'Saling berdempetan tanpa celah',
+                    'D' => 'Bertumpuk di satu garis lurus',
+                    'E' => 'Terpisah dengan jarak sangat jauh'
                 ],
                 'correct_answer' => 'c',
-                'explanation' => 'Histogram digunakan untuk data kontinu (interval), sehingga tidak ada jeda antar kelas.'
+                'explanation' => 'Histogram merepresentasikan rentang data numerik kontinu, sehingga batangnya saling menempel.'
             ],
             [
-                'question' => 'Gambar Histogram berikut memiliki ekor yang memanjang ke arah kanan (Skewed Right). Hal ini mengindikasikan bahwa distribusi datanya....',
-                'image' => 'images/quiz/q4_histogram_skewed.png',
+                'question' => 'Pada visualisasi Box Plot, indikator statistik yang melambangkan posisi batas 75% data teratas dalam sebuah kelompok persebaran data disebut sebagai....',
+                'image' => null,
                 'options' => [
-                    'A' => 'Terdistribusi normal (simetris sempurna)',
-                    'B' => 'Mayoritas data bernilai besar atau tinggi',
-                    'C' => 'Tidak memiliki data outlier sama sekali',
-                    'D' => 'Miring positif, di mana mayoritas data bernilai kecil namun ada sedikit data bernilai sangat besar',
-                    'E' => 'Data tidak valid dan harus dibuang'
+                    'A' => 'Nilai rata-rata kelas',
+                    'B' => 'Batas kuartil bawah (Q1)',
+                    'C' => 'Nilai tengah (Median)',
+                    'D' => 'Batas kuartil atas (Q3)',
+                    'E' => 'Nilai batas minimum'
                 ],
                 'correct_answer' => 'd',
-                'explanation' => 'Skewed Right (Positif) berarti ekor memanjang ke kanan, artinya ada sebagian kecil data yang bernilai sangat besar.'
+                'explanation' => 'Kuartil Atas (Q3) adalah batas yang menandakan 75% sebaran data.'
             ],
             [
-                'question' => 'Jika seorang peneliti memiliki data nilai ujian dari 100 siswa, jumlah kelas (batang) ideal yang sebaiknya dibuat menggunakan Aturan Sturges adalah....',
+                'question' => 'Visualisasi data yang memanfaatkan titik-titik pada sumbu kartesius untuk melihat apakah ada hubungan (korelasi) antara dua variabel numerik yang berbeda dikenal dengan nama....',
                 'image' => null,
                 'options' => [
-                    'A' => '5 batang',
-                    'B' => '6 batang',
-                    'C' => '7 batang',
-                    'D' => '10 batang',
-                    'E' => '8 batang'
+                    'A' => 'Grafik batang ganda',
+                    'B' => 'Histogram kontinu',
+                    'C' => 'Diagram lingkaran',
+                    'D' => 'Diagram kotak garis',
+                    'E' => 'Scatter plot'
                 ],
                 'correct_answer' => 'e',
-                'explanation' => 'Rumus Sturges: k = 1 + 3.322 log(100) = 1 + 3.322(2) = 7.644, dibulatkan menjadi 8.'
+                'explanation' => 'Scatter Plot (Diagram Pencar) adalah standar untuk mencari korelasi dua variabel numerik.'
             ],
+
+            // --- KELOMPOK 2 ---
             [
-                'question' => 'Dalam analisis statistik menggunakan Box Plot, yang dimaksud dengan nilai IQR (Interquartile Range) adalah....',
+                'question' => 'Dalam dunia ilmu komputer, sebuah proses yang bertujuan untuk membagi ratusan data ke dalam beberapa kelompok berdasarkan tingkat kemiripan karakteristiknya disebut....',
                 'image' => null,
                 'options' => [
-                    'A' => 'Selisih antara Kuartil Atas (Q3) dan Kuartil Bawah (Q1)',
-                    'B' => 'Nilai rata-rata dari seluruh kumpulan data',
-                    'C' => 'Selisih antara nilai Maksimum dan Minimum',
-                    'D' => 'Nilai tengah data (Median)',
-                    'E' => 'Batas garis untuk menentukan data pencilan'
+                    'A' => 'Clustering',
+                    'B' => 'Visualisasi',
+                    'C' => 'Verifikasi',
+                    'D' => 'Pengurutan',
+                    'E' => 'Pembersihan'
                 ],
                 'correct_answer' => 'a',
-                'explanation' => 'IQR adalah rentang antar kuartil, dihitung dengan Q3 dikurangi Q1.'
+                'explanation' => 'Clustering adalah teknik untuk mengelompokkan data yang mirip ke dalam satu cluster.'
             ],
             [
-                'question' => 'Perhatikan gambar anatomi Box Plot berikut. Bagian garis di tengah-tengah kotak merepresentasikan nilai....',
-                'image' => 'images/quiz/q7_boxplot_anatomi.png',
+                'question' => 'Berdasarkan logika pengukuran pada algoritma pengelompokan, dua buah data akan dianggap memiliki tingkat kemiripan yang tinggi apabila jarak keduanya di dalam grafik semakin....',
+                'image' => null,
                 'options' => [
-                    'A' => 'Mean (Rata-rata)',
-                    'B' => 'Median (Q2)',
-                    'C' => 'Modus',
-                    'D' => 'Outlier',
-                    'E' => 'Kuartil 3 (Q3)'
+                    'A' => 'Berjauhan letaknya',
+                    'B' => 'Berdekatan posisinya',
+                    'C' => 'Bersilangan arahnya',
+                    'D' => 'Acak-acakan polanya',
+                    'E' => 'Menghilang titiknya'
                 ],
                 'correct_answer' => 'b',
-                'explanation' => 'Garis horizontal di dalam kotak pada Box Plot selalu menunjukkan nilai Median (Q2).'
+                'explanation' => 'Semakin dekat jarak antar data, komputer menganggapnya semakin mirip.'
             ],
             [
-                'question' => 'Diketahui sebuah data memiliki Kuartil Bawah (Q1) = 40 dan Kuartil Atas (Q3) = 60. Nilai Pagar Atas (Upper Fence) untuk mendeteksi adanya outlier pada data tersebut adalah....',
+                'question' => 'Pada algoritma pembelajaran mesin K-Means, peran huruf "K" di bagian awal namanya memiliki makna penting yang merepresentasikan....',
                 'image' => null,
                 'options' => [
-                    'A' => '70',
-                    'B' => '80',
-                    'C' => '90',
-                    'D' => '100',
-                    'E' => '110'
+                    'A' => 'Kecepatan proses pencarian',
+                    'B' => 'Jumlah nilai yang dihapus',
+                    'C' => 'Jumlah kelompok yang dibuat',
+                    'D' => 'Konstanta jarak kemiringan',
+                    'E' => 'Total data ekstrem dibuang'
                 ],
                 'correct_answer' => 'c',
-                'explanation' => 'IQR = 60-40 = 20. Upper Fence = Q3 + (1.5 * IQR) = 60 + (1.5 * 20) = 60 + 30 = 90.'
+                'explanation' => 'Huruf K melambangkan jumlah cluster (kelompok) yang ingin dibentuk oleh pengguna.'
             ],
             [
-                'question' => 'Simbol titik kecil yang berada terpisah jauh di luar garis kumis (whisker) pada sebuah grafik Box Plot disebut sebagai....',
-                'image' => 'images/quiz/q9_boxplot_outlier.png',
-                'options' => [
-                    'A' => 'Median',
-                    'B' => 'Quartile',
-                    'C' => 'Range',
-                    'D' => 'Outlier (Pencilan)',
-                    'E' => 'Centroid'
-                ],
-                'correct_answer' => 'd',
-                'explanation' => 'Titik di luar whisker menandakan data tersebut adalah outlier (pencilan) yang jauh dari sebaran data normal.'
-            ],
-            [
-                'question' => 'Pola titik-titik pada Scatter Plot yang bergerak naik dari kiri bawah ke kanan atas menunjukkan adanya hubungan....',
-                'image' => 'images/quiz/q10_scatter_positive.png',
-                'options' => [
-                    'A' => 'Korelasi Negatif',
-                    'B' => 'Tidak ada korelasi',
-                    'C' => 'Korelasi Non-linear',
-                    'D' => 'Distribusi Normal',
-                    'E' => 'Korelasi Positif'
-                ],
-                'correct_answer' => 'e',
-                'explanation' => 'Jika X naik dan Y ikut naik (arah kanan atas), itu adalah korelasi positif.'
-            ],
-            [
-                'question' => 'Kesimpulan yang tepat untuk gambar Scatter Plot dengan titik-titik menyebar secara acak tanpa pola yang jelas adalah....',
+                'question' => 'Salah satu contoh nyata penerapan konsep pengelompokan data (clustering) yang biasa kita temui secara otomatis pada layanan digital seperti YouTube atau Spotify adalah fitur....',
                 'image' => null,
                 'options' => [
-                    'A' => 'Tidak ada korelasi antara kedua variabel',
-                    'B' => 'Terdapat korelasi positif kuat',
-                    'C' => 'Terdapat korelasi negatif kuat',
-                    'D' => 'Terdapat banyak data outlier',
-                    'E' => 'Data memiliki distribusi normal'
+                    'A' => 'Mengubah batas resolusi video',
+                    'B' => 'Menghapus riwayat penjelajahan',
+                    'C' => 'Mempercepat durasi otomatis',
+                    'D' => 'Memberikan rekomendasi konten',
+                    'E' => 'Menampilkan lirik pada layar'
+                ],
+                'correct_answer' => 'd',
+                'explanation' => 'Sistem rekomendasi mengelompokkan pengguna dengan selera mirip untuk memberikan saran.'
+            ],
+            [
+                'question' => 'Sebuah titik data tunggal yang nilainya melompat sangat jauh dan berbeda secara drastis dari mayoritas kerumunan data utama di dalam Box Plot sering kali dijuluki sebagai....',
+                'image' => null,
+                'options' => [
+                    'A' => 'Data minimum',
+                    'B' => 'Data kuartil',
+                    'C' => 'Data median',
+                    'D' => 'Data frekuensi',
+                    'E' => 'Data outlier'
+                ],
+                'correct_answer' => 'e',
+                'explanation' => 'Outlier (pencilan) adalah data yang menyimpang sangat jauh dari mayoritas kelompok data.'
+            ],
+
+            // --- KELOMPOK 3 ---
+            [
+                'question' => 'Jika kita mengamati titik-titik pada Scatter Plot dan melihat bahwa polanya terus bergerak naik memanjang ke arah kanan atas, hal ini menjadi bukti bahwa kedua variabel memiliki....',
+                'image' => null,
+                'options' => [
+                    'A' => 'Korelasi positif',
+                    'B' => 'Korelasi negatif',
+                    'C' => 'Korelasi acak',
+                    'D' => 'Korelasi stabil',
+                    'E' => 'Korelasi nol'
                 ],
                 'correct_answer' => 'a',
-                'explanation' => 'Penyebaran acak menandakan tidak ada hubungan (korelasi) yang jelas antara variabel X dan Y.'
+                'explanation' => 'Korelasi positif terjadi ketika variabel X naik, maka variabel Y juga ikut naik (arah kanan atas).'
             ],
             [
-                'question' => 'Pola titik-titik pada Scatter Plot yang bergerak turun dari kiri atas ke kanan bawah menunjukkan adanya hubungan yang bersifat....',
-                'image' => 'images/quiz/q12_scatter_negative.png',
+                'question' => 'Untuk menentukan jumlah pembagian kelompok interval kelas yang paling ideal agar bentuk Histogram terlihat seimbang, para ilmuwan data sering menggunakan rumus matematis yang disebut Aturan....',
+                'image' => null,
                 'options' => [
-                    'A' => 'Korelasi Positif',
-                    'B' => 'Korelasi Negatif',
-                    'C' => 'Tidak ada korelasi',
-                    'D' => 'Distribusi Normal',
-                    'E' => 'Distribusi Bimodal'
+                    'A' => 'Pythagoras',
+                    'B' => 'Sturges',
+                    'C' => 'Bayes',
+                    'D' => 'Newton',
+                    'E' => 'Cramer'
                 ],
                 'correct_answer' => 'b',
-                'explanation' => 'Jika X naik tapi Y turun (arah kanan bawah), itu adalah korelasi negatif.'
+                'explanation' => 'Aturan Sturges digunakan untuk menghitung jumlah bin ideal pada pembuatan Histogram.'
             ],
             [
-                'question' => 'Jika sebuah Histogram memiliki ekor yang memanjang ke arah kiri (Skewed Left), hal ini mengindikasikan bahwa sebagian besar data berkumpul di area nilai....',
+                'question' => 'Alasan logis mengapa batang-batang pada Histogram harus selalu berdempetan dan tidak memiliki jarak pemisah adalah karena sumbu horizontalnya digunakan untuk merepresentasikan jenis data....',
                 'image' => null,
                 'options' => [
-                    'A' => 'Rendah',
-                    'B' => 'Rata-rata',
-                    'C' => 'Tinggi',
-                    'D' => 'Nol',
-                    'E' => 'Negatif'
+                    'A' => 'Deskriptif',
+                    'B' => 'Kualitatif',
+                    'C' => 'Kontinu',
+                    'D' => 'Nominal',
+                    'E' => 'Ordinal'
                 ],
                 'correct_answer' => 'c',
-                'explanation' => 'Skewed Left artinya ekor di kiri (nilai kecil), sehingga gunungan data (mayoritas) ada di kanan (nilai tinggi).'
+                'explanation' => 'Data kontinu adalah rangkaian angka yang saling bersambung tanpa jeda.'
             ],
             [
-                'question' => 'Panjang kotak di bagian tengah pada grafik Box Plot (jarak antara garis Q1 dan Q3) merepresentasikan nilai....',
+                'question' => 'Pada tahapan awal saat menjalankan algoritma K-Means, hal pertama yang harus diletakkan ke dalam bidang grafik sebelum komputer dapat menghitung jarak kedekatan setiap data adalah....',
                 'image' => null,
                 'options' => [
-                    'A' => 'Median (Q2)',
-                    'B' => 'Jangkauan (Range)',
-                    'C' => 'Rata-rata (Mean)',
-                    'D' => 'Interquartile Range (IQR)',
-                    'E' => 'Batas Outlier'
+                    'A' => 'Nilai simpangan acak',
+                    'B' => 'Titik letak pencilan',
+                    'C' => 'Garis pembatas batas',
+                    'D' => 'Titik centroid awal',
+                    'E' => 'Nilai rata-rata asli'
                 ],
                 'correct_answer' => 'd',
-                'explanation' => 'Panjang kotak (box) adalah visualisasi dari IQR.'
+                'explanation' => 'Centroid (titik pusat kelompok) harus ditentukan posisinya terlebih dahulu sebelum menghitung jarak.'
             ],
             [
-                'question' => 'Penggunaan Diagram Batang Horizontal (Horizontal Bar Chart) sangat disarankan apabila data yang akan ditampilkan memiliki karakteristik....',
+                'question' => 'Proses pergeseran letak kelompok pada langkah K-Means akan dinyatakan selesai atau berhenti berulang apabila posisi akhir dari anggota kelompoknya dalam keadaan....',
                 'image' => null,
                 'options' => [
-                    'A' => 'Data bersifat numerik kontinu',
-                    'B' => 'Jumlah kategori sangat sedikit (kurang dari 3)',
-                    'C' => 'Ingin melihat tren kenaikan waktu',
-                    'D' => 'Ingin melihat komposisi persentase (donat)',
-                    'E' => 'Label kategori berupa teks yang panjang'
+                    'A' => 'Berjauhan letaknya',
+                    'B' => 'Saling bertabrakan',
+                    'C' => 'Terus berpindah',
+                    'D' => 'Bersilangan arah',
+                    'E' => 'Stabil tidak berubah'
                 ],
                 'correct_answer' => 'e',
-                'explanation' => 'Batang horizontal memberikan ruang lebih banyak untuk menulis label kategori yang panjang agar mudah dibaca.'
+                'explanation' => 'Algoritma akan berhenti (konvergen) ketika pusat kelompok (centroid) sudah tidak bergeser lagi.'
             ],
+
+            // --- KELOMPOK 4 ---
             [
-                'question' => 'Dalam rumus statistik Box Plot, sebuah data akan dianggap sebagai outlier bawah jika nilainya lebih kecil dari batas....',
+                'question' => 'Di antara lima buah indikator penting yang secara ringkas dirangkum ke dalam satu visualisasi Box Plot, indikator yang melambangkan titik pembagi dua sebaran data secara seimbang adalah....',
                 'image' => null,
                 'options' => [
-                    'A' => 'Q1 - (1.5 X IQR)',
-                    'B' => 'Q3 + (1.5 X IQR)',
-                    'C' => 'Q1 - IQR',
-                    'D' => 'Q3 + IQR',
-                    'E' => 'Median - (1.5 X IQR)'
+                    'A' => 'Nilai median',
+                    'B' => 'Batas jumlah',
+                    'C' => 'Nilai rentang',
+                    'D' => 'Kuartil atas',
+                    'E' => 'Batas pencilan'
                 ],
                 'correct_answer' => 'a',
-                'explanation' => 'Rumus pagar bawah (lower fence) adalah Q1 dikurangi 1.5 kali IQR.'
+                'explanation' => 'Median (Q2) atau nilai tengah selalu ditandai dengan garis di dalam kotak Box Plot.'
             ],
             [
-                'question' => 'Agar tidak memanipulasi persepsi pembaca terhadap perbedaan tinggi batang yang sebenarnya kecil, sumbu nilai (Sumbu Y) pada Diagram Batang harus selalu dimulai dari angka....',
+                'question' => 'Apabila titik-titik koordinat di dalam bidang Scatter Plot tampak menyebar sangat berantakan dan gagal membentuk pola lintasan yang jelas, maka pengamat dapat mengambil kesimpulan bahwa kedua variabel tersebut....',
                 'image' => null,
                 'options' => [
-                    'A' => '100',
-                    'B' => 'Angka Nol (0)',
-                    'C' => '10',
-                    'D' => '1',
-                    'E' => '0,5'
+                    'A' => 'Membentuk pola terbalik',
+                    'B' => 'Tidak memiliki korelasi',
+                    'C' => 'Memiliki relasi positif',
+                    'D' => 'Saling terikat sangat kuat',
+                    'E' => 'Membentuk pola eksponensial'
                 ],
                 'correct_answer' => 'b',
-                'explanation' => 'Bar chart harus mulai dari 0 (zero baseline) agar proporsi visual akurat.'
+                'explanation' => 'Bentuk acak yang menyebar tanpa pola menandakan kedua variabel tidak saling berhubungan.'
             ],
             [
-                'question' => 'Jika seorang Data Scientist ingin mengetahui apakah variabel "Luas Tanah" memiliki hubungan (korelasi) dengan variabel "Harga Rumah", jenis visualisasi yang paling tepat dipilih adalah....',
+                'question' => 'Jika seorang analis mengatur jumlah interval (kelompok) terlalu banyak sehingga jaraknya sangat sempit pada Histogram, maka grafik yang dihasilkannya akan rusak karena memunculkan banyak....',
                 'image' => null,
                 'options' => [
-                    'A' => 'Histogram',
-                    'B' => 'Diagram Batang',
-                    'C' => 'Scatter Plot',
-                    'D' => 'Box Plot',
-                    'E' => 'Pie Chart'
+                    'A' => 'Margin kesesatan',
+                    'B' => 'Titik perpotongan',
+                    'C' => 'Gangguan informasi (noise)',
+                    'D' => 'Garis persilangan',
+                    'E' => 'Kotak ruang hampa'
                 ],
                 'correct_answer' => 'c',
-                'explanation' => 'Scatter plot adalah standar untuk melihat korelasi antara dua variabel numerik.'
+                'explanation' => 'Interval yang terlalu banyak akan membuat grafik berduri-duri yang mengganggu analisis (noise).'
             ],
             [
-                'question' => 'Jenis grafik yang paling tepat digunakan untuk membandingkan data kategori seperti Jumlah Siswa antar Kelas 10, Kelas 11, dan Kelas 12 adalah....',
+                'question' => 'Sikap dan tindakan analitis yang paling tepat ketika kita menemukan keberadaan sebuah angka ekstrem (outlier) di dalam kelompok data kita sebelum memutuskan untuk menghapusnya adalah....',
                 'image' => null,
                 'options' => [
-                    'A' => 'Scatter Plot',
-                    'B' => 'Box Plot',
-                    'C' => 'Histogram',
-                    'D' => 'Diagram Batang (Bar Chart)',
-                    'E' => 'Line Chart'
+                    'A' => 'Mengganti angkanya menjadi nol',
+                    'B' => 'Menggabungkannya secara paksa',
+                    'C' => 'Membiarkannya tanpa dianalisis',
+                    'D' => 'Memeriksa penyebab kemunculannya',
+                    'E' => 'Menduplikasi nilainya agar sama'
                 ],
                 'correct_answer' => 'd',
-                'explanation' => 'Perbandingan antar kategori diskrit paling baik menggunakan Diagram Batang.'
+                'explanation' => 'Outlier tidak selalu salah ketik, bisa jadi adalah kejadian unik yang penting untuk diteliti lebih lanjut.'
             ],
             [
-                'question' => 'Grafik yang harus digunakan untuk melihat distribusi frekuensi data numerik kontinu seperti Tinggi Badan seluruh siswa adalah....',
+                'question' => 'Ketika data pada Scatter Plot semakin padat, titik-titik tersebut secara alami akan saling berdekatan membentuk sebuah kerumunan, yang mana hal ini menjadi pondasi utama diciptakannya teknik....',
                 'image' => null,
                 'options' => [
-                    'A' => 'Diagram Batang',
-                    'B' => 'Pie Chart',
-                    'C' => 'Scatter Plot',
-                    'D' => 'Map Chart',
-                    'E' => 'Histogram'
+                    'A' => 'Normalisasi data',
+                    'B' => 'Interpolasi titik',
+                    'C' => 'Manipulasi grafik',
+                    'D' => 'Ekstrapolasi waktu',
+                    'E' => 'Clustering algoritma'
                 ],
                 'correct_answer' => 'e',
-                'explanation' => 'Data numerik kontinu seperti tinggi badan divisualisasikan distribusinya menggunakan Histogram.'
-            ],
+                'explanation' => 'Kerumunan titik yang mirip secara jarak adalah pondasi dari metode pengelompokan (Clustering).'
+            ]
         ];
 
-        // 5. Insert Batch (INI BAGIAN KUNCI YANG DIPERBAIKI)
+        // 5. Insert Batch dengan Mapping ke Database
         foreach ($questions as $q) {
             Question::create([
                 'quiz_id' => $quiz->id,
                 'question_text' => $q['question'],
                 'image' => $q['image'],
                 
-                // MAPPING MANUAL (WAJIB ADA)
                 'option_a' => $q['options']['A'],
                 'option_b' => $q['options']['B'],
                 'option_c' => $q['options']['C'],
                 'option_d' => $q['options']['D'],
                 'option_e' => $q['options']['E'],
                 
-                'correct_answer' => strtolower($q['correct_answer']), // Pastikan huruf kecil
-                'points' => 5,
+                'correct_answer' => strtolower($q['correct_answer']), 
+                'points' => 5, // Menggunakan points, bukan score
                 'explanation' => $q['explanation']
             ]);
         }
         
-        $this->command->info('Berhasil menyuntikkan 20 Soal Evaluasi Akhir Bab 1 dengan Struktur Baru!');
+        $this->command->info('Berhasil menyuntikkan 20 Soal Evaluasi Akhir Bab 2!');
     }
 }

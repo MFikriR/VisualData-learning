@@ -3,21 +3,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-    /* --- 1. EDTECH PROFESSIONAL PALETTE --- */
-    --edu-primary: #2563eb;       /* Blue 600 (Warna Utama/Tombol) */
-    --edu-primary-hover: #1d4ed8; /* Blue 700 (Hover) */
-    --edu-dark: #0f172a;          /* Slate 900 (Background Utama) */
-    --edu-panel: #1e293b;         /* Slate 800 (Card/Sidebar) */
-    --edu-accent: #38bdf8;        /* Sky 400 (Highlight/Icon) */
+    /* --- 1. EDTECH PROFESSIONAL PALETTE (CREAM & GREEN) --- */
+    --edu-primary: #306d29;       /* Green 600 (Warna Utama/Tombol) */
+    --edu-primary-hover: #0d530e; /* Green 900 (Hover) */
+    --edu-dark: #fbf5dd;          /* Cream Light (Background Utama) */
+    --edu-panel: #e7e1b1;         /* Cream Beige (Card/Sidebar/Input) */
+    --edu-accent: #306d29;        /* Green (Highlight/Icon) */
     
     /* --- 2. TEXT COLORS --- */
-    --text-primary: #f8fafc;      /* Slate 50 (Judul/Teks Utama) */
-    --text-secondary: #cbd5e1;    /* Slate 300 (Subjudul/Paragraf) */
-    --text-muted: #64748b;        /* Slate 500 (Keterangan kecil) */
+    --text-primary: #0d530e;      /* Green 900 (Judul/Teks Utama) */
+    --text-secondary: #306d29;    /* Green 600 (Subjudul/Paragraf) */
+    --text-muted: rgba(13, 83, 14, 0.7); /* Green dengan transparansi (Keterangan kecil) */
 
     /* --- 3. BORDERS --- */
-    --border-color: #334155;      /* Slate 700 (Border Card/Input) */
-    --border-light: rgba(255, 255, 255, 0.1); 
+    --border-color: rgba(48, 109, 41, 0.2);  /* Border hijau transparan */
+    --border-light: rgba(231, 225, 177, 0.5); /* Border krem terang */
 
     /* --- 4. TYPOGRAPHY --- */
     --font-main: '"Plus Jakarta Sans"', sans-serif;
@@ -38,8 +38,8 @@ body {
     min-height: 100vh;
 }
 
-/* Scrollbar Elegan */
+/* Scrollbar Elegan (Disesuaikan dengan Tema Terang) */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: var(--edu-dark); }
-::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: var(--edu-panel); border-radius: 10px; border: 1px solid var(--border-color); }
 ::-webkit-scrollbar-thumb:hover { background: var(--edu-primary); }

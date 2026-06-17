@@ -12,7 +12,6 @@ class ContentSeeder extends Seeder
             Bab0_PengantarSeeder::class, 
             MateriBab1Seeder::class,
             MateriBab2Seeder::class,
-            MateriBab3Seeder::class,
             UjiKompetensiAkhirSeeder::class
         ]);
     }

@@ -17,13 +17,13 @@
 }
 
 @layer utilities {
-    /* Glassmorphism Global Class */
+    /* Glassmorphism Global Class (Disesuaikan dengan Tema Terang) */
     .glass-panel {
-        background: rgba(30, 41, 59, 0.7);
+        background: rgba(251, 245, 221, 0.85); /* Krem transparan */
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         border: 1px solid var(--border-light);
         border-radius: 1.5rem;
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 10px 30px -10px rgba(13, 83, 14, 0.15); /* Bayangan hijau lembut */
     }
 }

@@ -17,299 +17,249 @@ class Bab1_01_ApaItuDataSeeder extends Seeder
             return;
         }
 
-        $content = <<<EOT
-            <div id="areaMateriPelajaran" class="space-y-12 text-gray-800 dark:text-gray-100 font-sans transition-all duration-1000 relative z-10">
+        $content = <<<'EOT'
+            <div id="areaMateriPelajaran" class="space-y-12 text-[#0d530e] font-sans transition-all duration-1000 relative z-10 pb-20">
 
-                <div class="mb-12 bg-gradient-to-r from-emerald-900/40 to-slate-900/40 border-l-4 border-emerald-500 p-6 md:p-8 rounded-r-2xl shadow-[0_5px_20px_rgba(16,185,129,0.15)] relative overflow-hidden">
-                    <div class="absolute -right-6 -top-6 text-8xl opacity-10 rotate-12">🎯</div>
-                    <h3 class="text-xl md:text-2xl font-black text-emerald-400 mb-5 flex items-center gap-3">
-                        <span class="p-2 bg-emerald-500/20 rounded-lg text-emerald-300 shadow-inner">🎯</span> 
-                        Tujuan Pembelajaran Bab 1
+                <div class="mb-12 bg-[#e7e1b1] border-l-4 border-[#306d29] p-6 md:p-8 rounded-r-2xl shadow-lg relative overflow-hidden">
+                    <h3 class="text-xl md:text-2xl font-black text-[#306d29] mb-5">
+                        Tujuan Pembelajaran
                     </h3>
-                    <ul class="space-y-4 text-gray-200">
+                    <ul class="space-y-4 text-[#0d530e]">
                         <li class="flex items-start gap-3">
-                            <span class="mt-0.5 flex-shrink-0 w-6 h-6 bg-emerald-500/20 text-emerald-400 font-bold rounded-full flex items-center justify-center text-sm border border-emerald-500/30">1</span>
-                            <p class="leading-relaxed">Peserta didik mampu <strong>menjelaskan konsep dasar data, membedakan jenis-jenis data</strong> (kualitatif dan kuantitatif), serta mengklasifikasikan struktur data sebagai fondasi pemahaman sebelum memanfaatkan sumber data untuk pengolahan informasi.</p>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="mt-0.5 flex-shrink-0 w-6 h-6 bg-emerald-500/20 text-emerald-400 font-bold rounded-full flex items-center justify-center text-sm border border-emerald-500/30">2</span>
-                            <p class="leading-relaxed">Peserta didik mampu <strong>menerapkan proses persiapan data</strong> (data preparation) yang mencakup pembersihan data (data cleaning dari duplikasi, missing values, dan outlier) serta pelabelan data (data labeling) pada himpunan data sederhana agar siap diolah untuk keperluan prediksi dan pengambilan keputusan yang efektif oleh sistem/AI.</p>
+                            <span class="mt-0.5 flex-shrink-0 w-6 h-6 bg-[#fbf5dd] text-[#306d29] font-bold rounded-full flex items-center justify-center text-sm border border-[#306d29]/30">1</span>
+                            <p class="leading-relaxed">Peserta didik mampu <strong>menjelaskan konsep dasar data</strong>, membedakan data dan informasi, serta memahami peran penting data sebagai bahan bakar Kecerdasan Buatan (AI).</p>
                         </li>
                     </ul>
                 </div>
 
-                <div class="mb-10">
-                    <div class="relative w-full md:max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-[0_10px_20px_rgba(0,0,0,0.5)] border-4 border-indigo-500 bg-black aspect-video group">
-                        <div class="absolute top-4 left-4 z-10 bg-black/80 backdrop-blur-md text-white text-xs font-bold px-4 py-2 rounded-full border border-indigo-400/50 flex items-center gap-2 pointer-events-none">
-                            <span class="text-yellow-400 animate-pulse">●</span> KONSEP DASAR
-                        </div>
-                        
-                        <iframe class="absolute top-0 left-0 w-full h-full" 
-                                src="https://www.youtube.com/embed/63aGXxefHC8?rel=0&modestbranding=1" 
-                                title="Apa itu Data?" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                        </iframe>
-                    </div>
-                    <p class="text-sm text-gray-200 bg-black/40 backdrop-blur-sm inline-block px-4 py-1 rounded-full italic text-center mt-4 mx-auto block w-fit border border-white/10">
-                        👆 Simak video ilustrasi singkat tentang data di dunia digital.
-                    </p>
-                </div>
-
                 <div>
-                    <h3 class="text-4xl md:text-5xl font-black text-yellow-400 text-outline-bold mb-6 flex items-center gap-3">
+                    <h3 class="text-3xl md:text-4xl font-black text-[#0d530e] mb-6 border-b border-[#306d29]/30 pb-4">
                         1. Apa Itu Data?
                     </h3>
                     
                     <div class="space-y-6">
-                        <p class="text-lg md:text-xl leading-relaxed text-gray-200">
-                             <strong class="text-yellow-300 text-outline-sm">Data</strong> adalah kumpulan fakta, angka, hasil pengukuran, atau deskripsi dari suatu kejadian yang <em class="text-pink-300">belum diolah</em>. Di dunia digital, data bisa berwujud apa saja: mulai dari teks, angka, foto, hingga rekaman suara.
+                        <p class="text-lg leading-relaxed text-[#0d530e]">
+                             <strong>Data</strong> adalah kumpulan fakta, angka, hasil pengukuran, atau deskripsi dari suatu kejadian yang belum diolah. Di dunia digital, data dapat berwujud angka, teks, gambar, suara, maupun video. Contoh data yang sering ditemui dalam kehidupan sehari-hari ditunjukkan pada Tabel 1.
+                        </p>
+
+                        <div class="bg-[#e7e1b1] border border-[#306d29]/30 rounded-xl overflow-hidden shadow-lg mt-6 max-w-4xl mx-auto">
+                            <div class="bg-[#306d29] py-3 px-5 border-b border-[#0d530e] text-center">
+                                <h4 class="text-sm font-bold text-[#fbf5dd] italic">Tabel 1. Contoh Berbagai Jenis Data</h4>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left text-sm text-[#0d530e]">
+                                    <thead class="bg-[#306d29] text-[#fbf5dd]">
+                                        <tr>
+                                            <th class="px-6 py-4 font-bold w-1/3">Jenis Data</th>
+                                            <th class="px-6 py-4 font-bold border-l border-[#0d530e]/50">Contoh</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-[#306d29]/20 bg-[#fbf5dd]">
+                                        <tr class="hover:bg-[#e7e1b1] transition-colors"><td class="px-6 py-4 font-bold">Angka</td><td class="px-6 py-4 border-l border-[#306d29]/20 font-mono text-[#306d29] font-bold">80, 75, 90</td></tr>
+                                        <tr class="hover:bg-[#e7e1b1] transition-colors"><td class="px-6 py-4 font-bold">Teks</td><td class="px-6 py-4 border-l border-[#306d29]/20 font-mono text-[#306d29] font-bold">"Budi", "Bandung"</td></tr>
+                                        <tr class="hover:bg-[#e7e1b1] transition-colors"><td class="px-6 py-4 font-bold">Tanggal</td><td class="px-6 py-4 border-l border-[#306d29]/20 font-mono text-[#306d29] font-bold">10 Januari 2026</td></tr>
+                                        <tr class="hover:bg-[#e7e1b1] transition-colors"><td class="px-6 py-4 font-bold">Gambar</td><td class="px-6 py-4 border-l border-[#306d29]/20">Foto profil, hasil tangkapan layar</td></tr>
+                                        <tr class="hover:bg-[#e7e1b1] transition-colors"><td class="px-6 py-4 font-bold">Suara</td><td class="px-6 py-4 border-l border-[#306d29]/20">Rekaman percakapan, musik</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <p class="text-lg leading-relaxed text-[#0d530e] mt-6">
+                            Berdasarkan contoh pada Tabel 1, data dapat berupa berbagai bentuk. Data-data tersebut belum memiliki makna yang utuh sebelum diberikan konteks dan diolah menjadi informasi. Perhatikan contoh data mentah (<em>raw data</em>) pada Gambar berikut.
                         </p>
                         
-                        <p class="text-lg leading-relaxed text-gray-200">
-                            Coba perhatikan tumpukan teks di bawah ini:
-                        </p>
-                        
-                        <div class="bg-[#0f1115] border-2 border-gray-600 p-6 md:p-8 rounded-2xl shadow-xl relative overflow-hidden flex flex-col justify-center max-w-4xl mx-auto">
-                            <div class="absolute top-0 right-0 bg-yellow-500 text-black text-xs font-black px-4 py-1 rounded-bl-xl tracking-wider">RAW DATA</div>
-                            
-                            <div class="mt-4 p-4 md:p-6 bg-black rounded-lg border border-gray-700">
-                                <code class="text-sm md:text-base font-mono text-green-400 break-all leading-relaxed">
-                                    > 010101, 34.5, "Budi", 1200, JPG, NULL, "Lulus", 404 Error, 90%, TRUE...
-                                </code>
-                            </div>
-                            
-                            <p class="mt-6 text-center text-base font-bold text-gray-400 italic">
-                                "Tanpa konteks, data hanyalah tumpukan karakter yang membingungkan."
-                            </p>
+                        <div class="mt-8 mb-8 max-w-4xl mx-auto bg-white rounded-xl p-2 shadow-lg border border-[#e7e1b1]">
+                            <img src="/images/raw-data.png" alt="Ilustrasi Raw Data" class="w-full h-auto rounded-lg">
+                            <p class="text-center text-sm text-[#306d29] font-medium italic mt-3 mb-2">Gambar 1. Tumpukan teks acak tanpa maksud jelas</p>
                         </div>
 
-                        <div class="bg-indigo-900/40 backdrop-blur-md border-l-4 border-yellow-400 p-6 rounded-r-2xl shadow-md mt-6">
-                            <h4 class="text-xl font-bold text-yellow-300 mb-3 flex items-center gap-2"><span>💡</span> FAKTA PENTING:</h4>
-                            <p class="text-gray-200 leading-relaxed text-base md:text-lg">
-                                Angka <strong>34.5</strong> di atas tidak memiliki makna jika kita tidak tahu konteksnya. Apakah itu suhu badan orang sakit? Atau harga barang dalam dolar? Ketika data mentah tersebut diolah dan diberi konteks, barulah ia berubah menjadi sebuah <strong>Informasi</strong>.
-                            </p>
+                        <div class="bg-[#e7e1b1] border-l-4 border-[#306d29] p-6 rounded-r-xl mt-6 shadow-sm">
+                            <h4 class="font-bold text-[#306d29] mb-2">Fakta Penting:</h4>
+                            <p class="text-[#0d530e] font-medium">"Tanpa konteks, data hanyalah tumpukan karakter yang membingungkan."</p>
                         </div>
-                    </div>
-                </div>
-
-                <div class="bg-gradient-to-br from-red-600 to-orange-500 p-6 md:p-8 rounded-3xl border-4 border-white shadow-[0_10px_20px_rgba(239,68,68,0.4)] relative overflow-hidden mt-12">
-                    <div class="absolute -right-10 -top-10 text-9xl opacity-20">🔥</div>
-
-                    <h3 class="text-3xl font-black text-white text-outline-bold mb-6 relative z-10 flex items-center gap-3">
-                        <span>📚</span> Data adalah "Bahan Bakar"
-                    </h3>
-                    
-                    <div class="flex flex-col md:flex-row gap-8 items-center relative z-10">
-                        <div class="w-28 h-28 flex-shrink-0 bg-white rounded-full flex items-center justify-center text-6xl shadow-2xl border-4 border-yellow-300 animate-bounce">
-                            ⛽
-                        </div>
-                        <div class="text-white text-lg drop-shadow-md">
-                            <p class="leading-relaxed mb-4 font-medium">
-                                Bayangkan sebuah mobil balap super canggih (ini ibarat <strong class="text-yellow-300 text-outline-sm text-xl">Kecerdasan Buatan / AI</strong>). Sehebat apapun mesinnya, mobil itu <strong>tidak akan bergerak</strong> jika tangki bensinnya kosong!
-                            </p>
-                            <div class="bg-black/20 p-4 rounded-xl border border-white/20 backdrop-blur-sm">
-                                <p class="leading-relaxed font-bold">
-                                    Sama seperti AI. Tanpa adanya data, AI ibarat "otak tanpa pengalaman". Ia tidak bisa belajar, tidak bisa mengenali pola, dan tidak bisa membantu manusia.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gradient-to-br from-indigo-900 to-purple-800 p-6 md:p-8 rounded-3xl border-4 border-indigo-400 shadow-[0_10px_30px_rgba(79,70,229,0.4)] relative overflow-hidden mt-12">
-                    <div class="absolute -right-10 -bottom-10 text-9xl opacity-10">🧠</div>
-
-                    <h3 class="text-3xl font-black text-white text-outline-bold mb-6 relative z-10 flex items-center gap-3">
-                        <span>🤖</span> AI = Mesin Belajar
-                    </h3>
-                    
-                    <div class="flex flex-col md:flex-row gap-8 items-stretch relative z-10">
-                        
-                        <!-- Kolom Kiri: Penjelasan & Contoh (Tetap Sama) -->
-                        <div class="flex-1 text-white text-lg drop-shadow-md space-y-5 flex flex-col justify-center">
-                            <p class="leading-relaxed font-medium">
-                                Kecerdasan Buatan sebenarnya adalah sebuah <strong>Mesin Belajar</strong> (<em>Machine Learning</em>). 
-                                Pengalaman bagi mesin tersebut adalah <strong>DATA</strong>. Makin banyak data diserap, AI akan semakin pintar! Mari kita lihat buktinya di kehidupan sehari-hari:
-                            </p>
-                            
-                            <div class="space-y-4">
-                                <div class="bg-black/30 p-4 rounded-xl border border-white/10 flex gap-4 items-center hover:bg-black/50 transition-colors">
-                                    <div class="text-4xl">🎬</div>
-                                    <div>
-                                        <h5 class="font-bold text-yellow-300">Rekomendasi Tontonan</h5>
-                                        <p class="text-sm text-gray-200">YouTube tahu persis video kesukaanmu karena AI <em>mempelajari</em> data riwayat tontonanmu sebelumnya.</p>
-                                    </div>
-                                </div>
-                                <div class="bg-black/30 p-4 rounded-xl border border-white/10 flex gap-4 items-center hover:bg-black/50 transition-colors">
-                                    <div class="text-4xl">🛡️</div>
-                                    <div>
-                                        <h5 class="font-bold text-green-400">Filter Spam Email</h5>
-                                        <p class="text-sm text-gray-200">Emailmu otomatis membuang pesan penipuan karena sistemnya sudah <em>belajar</em> dari ribuan data email spam di masa lalu.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Kolom Kanan: Siklus Belajar AI (Telah Diperbarui menjadi Timeline) -->
-                        <div class="w-full md:w-5/12 lg:w-1/3 flex flex-col">
-                            <div class="bg-indigo-950/80 p-6 rounded-2xl border-2 border-indigo-400/50 border-dashed backdrop-blur-md w-full h-full flex flex-col justify-center shadow-inner">
-                                <div class="text-sm text-indigo-300 font-bold tracking-widest mb-6 text-center">SIKLUS BELAJAR AI</div>
-                                
-                                <!-- Alur Timeline -->
-                                <div class="relative z-10 space-y-6">
-                                    
-                                    <!-- Langkah 1 -->
-                                    <div class="flex items-start gap-4 relative group">
-                                        <!-- Garis Konektor -->
-                                        <div class="absolute left-6 top-12 bottom-[-1.5rem] w-0.5 bg-gradient-to-b from-blue-500/50 to-purple-500/50"></div>
-                                        
-                                        <div class="w-12 h-12 shrink-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30 border border-white/20 relative z-10 group-hover:scale-110 transition-transform">
-                                            <span class="text-xl">📊</span>
-                                        </div>
-                                        <div class="pt-1">
-                                            <h5 class="text-white font-bold text-sm">1. Input Data</h5>
-                                            <p class="text-slate-400 text-xs leading-relaxed mt-1">Sistem mengumpulkan data kebiasaanmu.</p>
-                                        </div>
-                                    </div>
-
-                                    <!-- Langkah 2 -->
-                                    <div class="flex items-start gap-4 relative group">
-                                        <!-- Garis Konektor -->
-                                        <div class="absolute left-6 top-12 bottom-[-1.5rem] w-0.5 bg-gradient-to-b from-purple-500/50 to-yellow-500/50"></div>
-                                        
-                                        <div class="w-12 h-12 shrink-0 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/30 border border-white/20 relative z-10 group-hover:scale-110 transition-transform">
-                                            <span class="text-xl">🤖</span>
-                                        </div>
-                                        <div class="pt-1">
-                                            <h5 class="text-white font-bold text-sm">2. AI Belajar</h5>
-                                            <p class="text-slate-400 text-xs leading-relaxed mt-1">Memproses data & mencari pola (Clustering).</p>
-                                        </div>
-                                    </div>
-
-                                    <!-- Langkah 3 -->
-                                    <div class="flex items-start gap-4 relative group">
-                                        <div class="w-12 h-12 shrink-0 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center shadow-lg shadow-yellow-500/30 border border-white/20 relative z-10 group-hover:scale-110 transition-transform">
-                                            <span class="text-xl animate-pulse">💡</span>
-                                        </div>
-                                        <div class="pt-1">
-                                            <h5 class="text-white font-bold text-sm">3. Keputusan Pintar</h5>
-                                            <p class="text-slate-400 text-xs leading-relaxed mt-1">Memberikan rekomendasi yang akurat.</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
                 <div class="mt-16">
-                    <h3 class="text-3xl font-black text-white text-outline mb-4 flex items-center gap-3">
-                        <span>💻</span> Percobaan: Ubah Data Jadi Informasi
+                    <h3 class="text-3xl font-black text-[#0d530e] mb-6 border-b border-[#306d29]/30 pb-4">
+                        2. Data dan Informasi
                     </h3>
-                    
-                    <p class="text-gray-200 text-lg leading-relaxed mb-4">
-                        Data mentah seringkali sulit dipahami oleh mata telanjang. Kita perlu mengolahnya agar menjadi <strong>Informasi</strong> yang berguna. Ayo kita coba langsung!
-                    </p>
-                    <p class="text-gray-200 text-lg leading-relaxed mb-6">
-                        Coba olah angka-angka acak di bawah ini pada media pembelajaran web:
+                    <p class="text-lg leading-relaxed text-[#0d530e] mb-6">
+                        Data dan informasi sering dianggap sama, padahal keduanya memiliki perbedaan. Data adalah fakta atau nilai mentah yang belum memiliki makna yang jelas. Sementara itu, <strong>informasi adalah data yang telah diolah, diberi konteks, dan memiliki makna</strong> sehingga dapat digunakan untuk memahami suatu keadaan atau mengambil keputusan.
                     </p>
 
-                    <div class="lab-container bg-[#1a1c23] border-2 border-indigo-500 rounded-2xl p-6 shadow-2xl">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                        <div class="bg-[#e7e1b1] p-6 rounded-xl border border-[#306d29]/30 shadow-md">
+                            <h4 class="text-lg font-bold text-[#0d530e] mb-4 border-b border-[#306d29]/20 pb-2">Contoh Data Mentah</h4>
+                            <div class="bg-[#fbf5dd] p-4 rounded-lg font-mono text-[#306d29] text-lg border border-[#306d29]/30 text-center font-bold">34,5</div>
+                            <p class="text-[#306d29] font-medium text-sm mt-4 leading-relaxed">Angka di atas tidak memiliki makna jika kita tidak mengetahui konteksnya. Apakah angka tersebut menunjukkan suhu tubuh seseorang, harga suatu barang, atau nilai hasil pengukuran tertentu?</p>
+                        </div>
+                        <div class="bg-[#306d29]/10 p-6 rounded-xl border border-[#306d29]/40 shadow-md">
+                            <h4 class="text-lg font-bold text-[#306d29] mb-4 border-b border-[#306d29]/30 pb-2">Menjadi Informasi</h4>
+                            <div class="bg-[#306d29] p-4 rounded-lg font-mono text-[#fbf5dd] text-lg border border-[#0d530e] text-center font-bold">"Suhu tubuh pasien adalah 34,5°C"</div>
+                            <p class="text-[#0d530e] font-medium text-sm mt-4 leading-relaxed">Ketika data tersebut diberi konteks, data tersebut berubah menjadi informasi yang dapat dipahami dan siap digunakan untuk mengambil keputusan medis.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-16">
+                    <h3 class="text-2xl font-black text-[#0d530e] mb-6">
+                        Lab Mini: Mesin Pemberi Konteks
+                    </h3>
+                    
+                    <p class="text-[#0d530e] leading-relaxed mb-6">
+                        Mari kita buktikan bahwa data mentah tidak akan berguna jika tidak memiliki konteks! Masukkan sebuah angka bebas, lalu pilih konteksnya. Lihat bagaimana angka tersebut berubah menjadi informasi.
+                    </p>
+
+                    <div class="bg-[#e7e1b1] border border-[#306d29]/30 rounded-xl p-6 shadow-xl">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             
                             <div class="space-y-4">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="bg-indigo-600 text-white px-3 py-1 rounded border border-indigo-400 text-xs font-bold tracking-widest">INPUT</span>
-                                    <h4 class="font-bold text-gray-200">Data Mentah (Nilai Ujian)</h4>
+                                <div>
+                                    <h4 class="font-bold text-[#0d530e] text-sm mb-2">1. Ketik Data Mentah (Angka/Kata)</h4>
+                                    <input type="text" id="rawInputData" class="w-full p-3 bg-[#fbf5dd] border border-[#306d29]/30 text-[#0d530e] rounded-lg font-mono text-lg focus:ring-2 focus:ring-[#306d29] focus:border-[#306d29] transition-all outline-none" placeholder="Contoh: 100">
                                 </div>
-                                <p class="text-xs text-gray-400">Pisahkan dengan koma (contoh: 80, 90, 75)</p>
-                                <textarea id="rawDataInput" rows="3" class="w-full p-4 bg-black border-2 border-gray-700 text-green-400 rounded-xl font-mono text-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all shadow-inner" placeholder="80, 70, 90...">80, 70, 90, 65, 85, 95, 60, 75</textarea>
                                 
-                                <button onclick="processData()" class="w-full py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-black text-lg rounded-xl shadow-[0_5px_0px_#4338ca] hover:shadow-[0_2px_0px_#4338ca] hover:translate-y-[3px] transition-all flex items-center justify-center gap-2">
-                                    <span>⚙️</span> OLAH DATA SEKARANG
+                                <div class="mt-4">
+                                    <h4 class="font-bold text-[#0d530e] text-sm mb-2">2. Pilih Konteks</h4>
+                                    <select id="contextSelector" class="w-full p-3 bg-[#fbf5dd] border border-[#306d29]/30 text-[#0d530e] rounded-lg font-sans focus:ring-2 focus:ring-[#306d29] focus:border-[#306d29] transition-all cursor-pointer outline-none font-medium">
+                                        <option value="suhu">🌡️ Suhu (°C)</option>
+                                        <option value="kecepatan">🚗 Kecepatan (km/jam)</option>
+                                        <option value="harga">💰 Harga Barang (Rupiah)</option>
+                                        <option value="nilai">📝 Nilai Ujian Siswa</option>
+                                        <option value="jarak">📏 Jarak (Meter)</option>
+                                    </select>
+                                </div>
+                                
+                                <button onclick="generateInformation()" class="w-full py-3 mt-2 bg-[#306d29] hover:bg-[#0d530e] text-[#fbf5dd] font-bold rounded-lg transition-all flex items-center justify-center gap-2 shadow-md">
+                                    <span>✨</span> Ubah Menjadi Informasi
                                 </button>
                             </div>
 
-                            <div class="relative bg-black text-green-400 p-6 rounded-xl font-mono shadow-[inset_0_0_20px_rgba(0,0,0,1)] border-2 border-gray-700 h-full min-h-[200px] flex flex-col">
-                                <div class="absolute top-0 right-0 bg-green-600 text-white text-xs font-bold px-4 py-1 rounded-bl-xl border-b border-l border-green-800">OUTPUT INFORMASI</div>
-                                <div id="outputScreen" class="flex-1 flex flex-col justify-center space-y-3 mt-4">
-                                    <p class="opacity-50 text-sm animate-pulse">// Menunggu input data...</p>
+                            <div class="relative bg-[#306d29] text-[#fbf5dd] p-6 rounded-lg font-mono border border-[#0d530e] h-full min-h-[220px] flex flex-col shadow-inner">
+                                <div class="absolute top-0 right-0 bg-[#0d530e] text-[#e7e1b1] text-xs font-bold px-3 py-1 rounded-bl-lg border-b border-l border-[#0d530e]">OUTPUT PANEL</div>
+                                <div id="infoOutputScreen" class="flex-1 flex flex-col justify-center space-y-3 mt-4">
+                                    <p class="opacity-70 text-sm animate-pulse text-[#e7e1b1]">// Menunggu input dari pengguna...</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-16 mb-16">
+                <div class="mt-20">
+                    <h3 class="text-3xl md:text-4xl font-black text-[#0d530e] border-b border-[#306d29]/30 pb-4 mb-8">
+                        3. Data sebagai Bahan Bakar AI
+                    </h3>
                     
-                    <div class="bg-gradient-to-b from-[#1e293b]/95 to-[#0f172a]/95 backdrop-blur-xl p-8 rounded-3xl border border-gray-600 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_10px_40px_rgba(250,204,21,0.2)] hover:-translate-y-3 transition-all duration-300 group relative overflow-hidden">
-                        <div class="absolute -top-6 left-8 w-20 h-20 bg-yellow-400/20 rounded-full blur-2xl group-hover:bg-yellow-400/40 transition-colors"></div>
-                        <div class="w-16 h-16 bg-gradient-to-br from-yellow-300 to-orange-500 rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg transform -rotate-6 group-hover:rotate-0 transition-transform relative z-10 border-2 border-yellow-200">👶</div>
-                        <h4 class="font-black text-2xl text-white mb-4 text-outline">Prosesnya Seperti Anak Kecil!</h4>
-                        <p class="text-base text-gray-200 leading-relaxed font-medium">
-                            Bagaimana seorang anak kecil tahu mana hewan yang bernama "Kucing"? Jawabannya: Karena dia melihat banyak <strong class="text-yellow-400 bg-yellow-900/40 px-2 py-0.5 rounded border border-yellow-500/30">data visual</strong> (gambar kucing) berulang kali dan diberi tahu labelnya oleh orang tuanya.
-                        </p>
+                    <div class="mb-8 max-w-4xl mx-auto bg-white rounded-xl p-2 shadow-lg border border-[#e7e1b1]">
+                        <img src="/images/bahan-bakar-ai.png" alt="Data adalah Bahan Bakar AI" class="w-full h-auto rounded-lg">
+                        <p class="text-center text-sm text-[#306d29] font-medium italic mt-3 mb-2">Gambar 2. Data sebagai bahan bakar AI</p>
                     </div>
 
-                    <div class="bg-gradient-to-b from-[#1e293b]/95 to-[#0f172a]/95 backdrop-blur-xl p-8 rounded-3xl border border-gray-600 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_10px_40px_rgba(168,85,247,0.2)] hover:-translate-y-3 transition-all duration-300 group relative overflow-hidden">
-                        <div class="absolute -top-6 left-8 w-20 h-20 bg-purple-500/20 rounded-full blur-2xl group-hover:bg-purple-500/40 transition-colors"></div>
-                        <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-indigo-600 rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg transform -rotate-6 group-hover:rotate-0 transition-transform relative z-10 border-2 border-purple-200">🤖</div>
-                        <h4 class="font-black text-2xl text-white mb-4 text-outline">AI Belajar Pola</h4>
-                        <p class="text-base text-gray-200 leading-relaxed font-medium">
-                            Komputer melakukan hal yang sama persis. Kita memberinya ribuan foto (Data), lalu komputer mencari pola persamaan di antaranya untuk belajar secara mandiri.
+                    <div class="space-y-6 text-lg leading-relaxed text-[#0d530e]">
+                        <p class="font-bold text-xl text-[#306d29]">
+                            Mengapa AI Membutuhkan Data?
+                        </p>
+                        <p>
+                            Bayangkan sebuah mobil balap super canggih. Sehebat apa pun mesinnya, mobil tersebut tidak akan dapat bergerak tanpa bahan bakar. Begitu pula dengan Artificial Intelligence (AI). AI membutuhkan data untuk mempelajari pola, memahami hubungan antar data, dan menghasilkan rekomendasi atau keputusan yang bermanfaat.
+                        </p>
+                        <p>
+                            Tanpa data, AI tidak dapat memahami kebiasaan pengguna, mengenali objek, ataupun memberikan rekomendasi yang sesuai. Selain digunakan untuk melatih AI, data juga digunakan untuk membuat visualisasi, menemukan pola, dan mendukung pengambilan keputusan. Oleh karena itu, sebelum dimanfaatkan, data perlu dikumpulkan, dibersihkan, dan diolah dengan benar.
                         </p>
                     </div>
+                </div>
 
-                    <div class="bg-gradient-to-b from-[#1e293b]/95 to-[#0f172a]/95 backdrop-blur-xl p-8 rounded-3xl border border-gray-600 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_10px_40px_rgba(34,197,94,0.2)] hover:-translate-y-3 transition-all duration-300 group relative overflow-hidden">
-                        <div class="absolute -top-6 left-8 w-20 h-20 bg-green-500/20 rounded-full blur-2xl group-hover:bg-green-500/40 transition-colors"></div>
-                        <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg transform -rotate-6 group-hover:rotate-0 transition-transform relative z-10 border-2 border-green-200">🎯</div>
-                        <h4 class="font-black text-2xl text-white mb-4 text-outline">Keputusan Tepat</h4>
-                        <p class="text-base text-gray-200 leading-relaxed font-medium">
-                            Dengan data yang cukup dan berkualitas, kita tidak lagi menebak-nebak atau berasumsi, tapi bisa mengambil keputusan berdasarkan <strong class="text-green-400 bg-green-900/40 px-2 py-0.5 rounded border border-green-500/30">fakta dan bukti</strong> yang kuat serta akurat.
-                        </p>
+                <div class="mt-16">
+                    <h3 class="text-2xl font-bold text-[#0d530e] mb-6">Contoh Penggunaan Data pada AI</h3>
+                    <p class="text-[#0d530e] mb-8 leading-relaxed">
+                        Kecerdasan Buatan (AI) memanfaatkan data untuk mempelajari pola dan menghasilkan rekomendasi atau keputusan yang membantu manusia. Semakin banyak data yang berkualitas, relevan, dan akurat, semakin baik kemampuan AI dalam memberikan hasil yang tepat. Berikut beberapa contoh pemanfaatan AI:
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                        <div class="bg-[#e7e1b1] p-6 rounded-xl border border-[#306d29]/30 shadow-sm hover:shadow-md transition-shadow">
+                            <h4 class="font-bold text-[#306d29] text-lg mb-3">1. Rekomendasi Tontonan</h4>
+                            <p class="text-[#0d530e] text-sm leading-relaxed">YouTube dapat merekomendasikan video yang sesuai dengan minat pengguna karena sistemnya mempelajari data riwayat tontonan yang pernah dilihat sebelumnya.</p>
+                        </div>
+                        <div class="bg-[#e7e1b1] p-6 rounded-xl border border-[#306d29]/30 shadow-sm hover:shadow-md transition-shadow">
+                            <h4 class="font-bold text-[#306d29] text-lg mb-3">2. Filter Spam Email</h4>
+                            <p class="text-[#0d530e] text-sm leading-relaxed">Layanan email dapat memisahkan pesan penting dan pesan spam secara otomatis karena AI telah mempelajari pola dari ribuan contoh email sebelumnya.</p>
+                        </div>
+                        <div class="bg-[#e7e1b1] p-6 rounded-xl border border-[#306d29]/30 shadow-sm hover:shadow-md transition-shadow">
+                            <h4 class="font-bold text-[#306d29] text-lg mb-3">3. Asisten Virtual</h4>
+                            <p class="text-[#0d530e] text-sm leading-relaxed">Asisten virtual seperti Google Assistant atau Siri memanfaatkan data suara pengguna untuk memahami perintah dan memberikan jawaban yang sesuai.</p>
+                        </div>
                     </div>
 
+                    <h3 class="text-2xl font-bold text-[#0d530e] mt-12 mb-6">Siklus Belajar AI</h3>
+                    <p class="text-[#0d530e] mb-6 leading-relaxed">
+                        AI bekerja melalui tiga tahapan utama:
+                    </p>
+
+                    <div class="mb-8 max-w-4xl mx-auto bg-white rounded-xl p-2 shadow-lg border border-[#e7e1b1]">
+                        <img src="/images/siklus-ai.png" alt="Siklus Belajar AI" class="w-full h-auto rounded-lg">
+                        <p class="text-center text-sm text-[#306d29] font-medium italic mt-3 mb-2">Gambar 3. Siklus AI Belajar</p>
+                    </div>
+
+                    <p class="text-[#0d530e] leading-relaxed">
+                        Proses inilah yang memungkinkan AI membantu manusia dalam menyelesaikan berbagai permasalahan sehari-hari.
+                    </p>
+                </div>
+
+                <div class="mt-20">
+                    <h3 class="text-3xl font-black text-[#0d530e] border-b border-[#306d29]/30 pb-4 mb-6">4. Pentingnya Kualitas Data</h3>
+                    <p class="text-lg leading-relaxed text-[#0d530e] mb-8">
+                        Kualitas data sangat memengaruhi hasil yang diberikan oleh AI. Semakin lengkap, akurat, dan relevan data yang digunakan, semakin baik hasil yang dihasilkan. Sebaliknya, data yang tidak lengkap atau mengandung kesalahan dapat menyebabkan rekomendasi maupun keputusan yang kurang tepat.
+                    </p>
+
+                    <div class="mb-8 max-w-4xl mx-auto bg-white rounded-xl p-2 shadow-lg border border-[#e7e1b1]">
+                        <img src="/images/kualitas-data.png" alt="Pentingnya Kualitas Data" class="w-full h-auto rounded-lg">
+                        <p class="text-center text-sm text-[#306d29] font-medium italic mt-3 mb-2">Gambar 4. Data Berkualitas vs Tidak Berkualitas</p>
+                    </div>
+
+                    <p class="text-lg leading-relaxed text-[#0d530e]">
+                        Oleh karena itu, sebelum data digunakan untuk visualisasi, analisis, maupun kecerdasan buatan, data perlu dikumpulkan, dibersihkan, dan diolah dengan benar. Tahapan tersebut akan dipelajari lebih lanjut pada materi pengolahan data.
+                    </p>
                 </div>
 
                 <script>
-                    function processData() {
-                        let inputStr = document.getElementById('rawDataInput').value;
-                        let numbers = inputStr.split(',').map(n => parseFloat(n.trim())).filter(n => !isNaN(n));
-                        let outputDiv = document.getElementById('outputScreen');
+                    function generateInformation() {
+                        let rawVal = document.getElementById('rawInputData').value.trim();
+                        let ctx = document.getElementById('contextSelector').value;
+                        let ctxText = document.getElementById('contextSelector').options[document.getElementById('contextSelector').selectedIndex].text;
+                        let outputDiv = document.getElementById('infoOutputScreen');
 
-                        if (numbers.length === 0) {
-                            outputDiv.innerHTML = '<p class="text-red-500 font-bold bg-red-900/30 p-2 rounded">❌ ERROR: Masukkan angka yang valid!</p>';
+                        if (rawVal === '') {
+                            outputDiv.innerHTML = '<p class="text-red-200 font-bold bg-red-900/50 border border-red-400 p-3 rounded-lg">Error: Data mentah tidak boleh kosong!</p>';
                             return;
                         }
 
-                        let total = numbers.reduce((a, b) => a + b, 0);
-                        let avg = (total / numbers.length).toFixed(1);
-                        let maxVal = Math.max(...numbers);
-                        let minVal = Math.min(...numbers);
-                        let status = avg >= 75 ? "KELAS LULUS ✅" : "KELAS REMEDIAL ⚠️";
-                        let statusColor = avg >= 75 ? "text-green-400 bg-green-900/30" : "text-yellow-400 bg-yellow-900/30";
-
-                        outputDiv.innerHTML = '<div class="animate-pulse text-indigo-400">> Memproses ' + numbers.length + ' data...</div>';
+                        outputDiv.innerHTML = '<div class="animate-pulse text-[#e7e1b1]">Menyisipkan konteks ke dalam data...</div>';
 
                         setTimeout(() => {
-                            outputDiv.innerHTML = 
-                                '<div><span class="text-gray-500">></span> Total Data : <span class="text-white font-bold">' + numbers.length + ' Siswa</span></div>' +
-                                '<div><span class="text-gray-500">></span> Rata-rata  : <span class="text-blue-400 font-black text-xl">' + avg + '</span></div>' +
-                                '<div><span class="text-gray-500">></span> Tertinggi  : <span class="text-white">' + maxVal + '</span></div>' +
-                                '<div><span class="text-gray-500">></span> Terendah   : <span class="text-white">' + minVal + '</span></div>' +
-                                '<div class="mt-4 pt-3 border-t border-gray-700">' +
-                                    '<span class="text-gray-500">></span> KESIMPULAN : <br>' +
-                                    '<span class="' + statusColor + ' font-black text-lg px-2 py-1 rounded inline-block mt-1">' + status + '</span>' +
-                                '</div>';
-                        }, 800);
-                    }
-                </script>
+                            let resultStr = '';
+                            if (ctx === 'suhu') {
+                                resultStr = `Berdasarkan hasil pemeriksaan, suhu tubuh pasien saat ini adalah ${rawVal}°C.`;
+                            } else if (ctx === 'kecepatan') {
+                                resultStr = `Kendaraan tersebut melaju dengan kecepatan konstan sebesar ${rawVal} km/jam di jalan tol.`;
+                            } else if (ctx === 'harga') {
+                                resultStr = `Total harga barang yang harus dibayar oleh pelanggan adalah Rp ${rawVal}.`;
+                            } else if (ctx === 'nilai') {
+                                resultStr = `Siswa tersebut mendapatkan nilai ${rawVal} pada ujian akhir semester.`;
+                            } else if (ctx === 'jarak') {
+                                resultStr = `Jarak dari rumah menuju sekolah adalah ${rawVal} meter.`;
+                            }
 
-                <script>
+                            outputDiv.innerHTML = 
+                                '<div><span class="text-[#e7e1b1]">></span> Data Mentah : <span class="text-[#fbf5dd] font-bold">' + rawVal + '</span></div>' +
+                                '<div><span class="text-[#e7e1b1]">></span> Konteks &nbsp;&nbsp;&nbsp;: <span class="text-[#fbf5dd] font-bold">' + ctxText + '</span></div>' +
+                                '<div class="mt-4 pt-3 border-t border-[#fbf5dd]/30">' +
+                                    '<span class="text-[#e7e1b1]">></span> INFORMASI BERMAKNA: <br>' +
+                                    '<span class="text-[#fbf5dd] font-bold text-lg mt-2 block leading-relaxed">"' + resultStr + '"</span>' +
+                                '</div>';
+                        }, 600);
+                    }
+
                     document.addEventListener('click', function(e) {
                         let textTombol = e.target.innerText || '';
                         let isKuisButton = textTombol.toLowerCase().includes('uji pemahaman') || 
@@ -318,12 +268,9 @@ class Bab1_01_ApaItuDataSeeder extends Seeder
                                            
                         if (isKuisButton || e.target.closest('.tombol-mulai-kuis')) {
                             let areaMateri = document.getElementById('areaMateriPelajaran');
-                            if(areaMateri) {
-                                areaMateri.classList.add('blur-md', 'pointer-events-none', 'opacity-30', 'select-none');
-                            }
-                            
+                            if(areaMateri) areaMateri.classList.add('blur-md', 'pointer-events-none', 'opacity-30', 'select-none');
                             let aiTool = document.getElementById('floating-tools-container'); 
-                            if(aiTool) { aiTool.style.display = 'none'; }
+                            if(aiTool) aiTool.style.display = 'none';
                         }
                         
                         let isResetButton = textTombol.toLowerCase().includes('ulangi') || 
@@ -332,63 +279,59 @@ class Bab1_01_ApaItuDataSeeder extends Seeder
                                             
                         if (isResetButton) {
                             let areaMateri = document.getElementById('areaMateriPelajaran');
-                            if(areaMateri) {
-                                areaMateri.classList.remove('blur-md', 'pointer-events-none', 'opacity-30', 'select-none');
-                            }
-                            
+                            if(areaMateri) areaMateri.classList.remove('blur-md', 'pointer-events-none', 'opacity-30', 'select-none');
                             let aiTool = document.getElementById('floating-tools-container'); 
-                            if(aiTool) { aiTool.style.display = 'flex'; }
+                            if(aiTool) aiTool.style.display = 'flex';
                         }
                     });
                 </script>
-
             </div>
 
             <div id="mini-quiz-data" class="hidden">
                 <div class="mini-quiz-item" 
-                    data-question="Definisi yang paling tepat tentang “Data” adalah...."
-                    data-opt-a="Kumpulan fakta, angka, atau deskripsi yang belum diolah."
-                    data-opt-b="Informasi yang sudah disajikan dalam bentuk grafik."
-                    data-opt-c="Hasil dari sebuah keputusan pintar komputer."
-                    data-opt-d="Komponen hardware (perangkat keras) dari sebuah komputer."
-                    data-opt-e="Sebuah program aplikasi perangkat lunak untuk mengedit gambar."
+                    data-question="Pernyataan yang paling tepat mengenai pengertian data adalah ...."
+                    data-opt-a="Kumpulan fakta, angka, hasil pengukuran, atau deskripsi suatu kejadian yang belum diolah."
+                    data-opt-b="Hasil analisis yang digunakan untuk mengambil keputusan."
+                    data-opt-c="Grafik yang digunakan untuk menyajikan informasi."
+                    data-opt-d="Sekumpulan rekomendasi yang dihasilkan AI."
+                    data-opt-e="Hasil akhir dari proses pengolahan data."
                     data-answer="A">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Dalam analogi materi ini, data bagi mesin Kecerdasan Buatan (AI) diibaratkan sebagai...."
-                    data-opt-a="Sebagai setir kemudi"
-                    data-opt-b="Sebagai bahan bakar"
-                    data-opt-c="Sebagai ban penggerak"
-                    data-opt-d="Sebagai rem otomatis"
-                    data-opt-e="Sebagai kerangka besi pelindung"
-                    data-answer="B">
+                    data-question="Pernyataan yang sesuai dengan perbedaan data dan informasi adalah ...."
+                    data-opt-a="Data dan informasi memiliki makna yang sama."
+                    data-opt-b="Data selalu berbentuk grafik, sedangkan informasi berbentuk tabel."
+                    data-opt-c="Informasi adalah data yang belum diproses."
+                    data-opt-d="Data hanya dapat berupa angka."
+                    data-opt-e="Informasi merupakan data yang telah diolah dan diberi konteks sehingga memiliki makna."
+                    data-answer="E">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="“Raw Data” atau data mentah (seperti tulisan acak: 010101, 34.5, “Budi”) sulit dipahami oleh manusia karena...."
-                    data-opt-a="Karena harus dibaca menggunakan mikroskop khusus."
-                    data-opt-b="Karena tidak memiliki konteks dan belum diolah menjadi informasi."
-                    data-opt-c="Karena menggunakan bahasa pemrograman tingkat tinggi yang dirahasiakan."
-                    data-opt-d="Karena data tersebut memiliki ukuran file yang terlalu besar."
-                    data-opt-e="Karena ditulis murni menggunakan bahasa asing purba."
-                    data-answer="B">
+                    data-question="Pernyataan yang sesuai dengan fakta penting pada materi adalah ...."
+                    data-opt-a="Data selalu dapat dipahami tanpa penjelasan tambahan."
+                    data-opt-b="Data mentah selalu berbentuk angka."
+                    data-opt-c="Tanpa konteks, data hanyalah tumpukan karakter yang membingungkan."
+                    data-opt-d="Semua data langsung menjadi informasi."
+                    data-opt-e="Data hanya digunakan oleh komputer."
+                    data-answer="C">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Urutan proses yang paling benar berdasarkan “Siklus Belajar AI” pada materi adalah...."
-                    data-opt-a="AI Belajar ➔ Keputusan Pintar ➔ Data"
-                    data-opt-b="Keputusan Pintar ➔ Data ➔ AI Belajar"
-                    data-opt-c="Data ➔ Keputusan Pintar ➔ AI Belajar"
-                    data-opt-d="Data ➔ AI Belajar ➔ Keputusan Pintar"
-                    data-opt-e="Keputusan Pintar ➔ AI Belajar ➔ Data"
+                    data-question="Pernyataan yang paling tepat mengenai hubungan data dan AI adalah ...."
+                    data-opt-a="AI dapat bekerja dengan baik meskipun tidak memiliki data."
+                    data-opt-b="Data hanya digunakan AI untuk menyimpan informasi."
+                    data-opt-c="AI memanfaatkan data untuk mengganti peran manusia sepenuhnya."
+                    data-opt-d="Data sering disebut sebagai bahan bakar AI karena digunakan untuk mempelajari pola dan menghasilkan keputusan atau rekomendasi."
+                    data-opt-e="AI hanya membutuhkan data gambar untuk bekerja."
                     data-answer="D">
                 </div>
                 <div class="mini-quiz-item" 
-                    data-question="Contoh wujud data berupa “Visual” yang disebutkan dalam bacaan adalah...."
-                    data-opt-a="Teks tweet dan nama jalan"
-                    data-opt-b="Rekaman suara atau musik"
-                    data-opt-c="Foto kucing dan rekaman CCTV"
-                    data-opt-d="Angka nilai ujian mahasiswa"
-                    data-opt-e="Dokumen laporan berformat PDF"
-                    data-answer="C">
+                    data-question="Pernyataan yang sesuai dengan pentingnya kualitas data adalah ...."
+                    data-opt-a="Semakin banyak data, hasil AI selalu benar."
+                    data-opt-b="Data yang lengkap, akurat, dan relevan membantu AI menghasilkan hasil yang lebih tepat."
+                    data-opt-c="Data yang tidak lengkap akan meningkatkan akurasi AI."
+                    data-opt-d="Data yang mengandung kesalahan tidak memengaruhi hasil analisis."
+                    data-opt-e="Kualitas data hanya penting untuk visualisasi data."
+                    data-answer="B">
                 </div>
             </div>
 EOT;
@@ -405,6 +348,6 @@ EOT;
             ]
         );
         
-        $this->command->info('Materi Bab 1: Apa Itu Data berhasil disinkronisasi dengan Modul Ajar!');
+        $this->command->info('Materi Bab 1: Apa Itu Data berhasil disinkronisasi dengan Tema Baru dan Soal Kuis!');
     }
 }

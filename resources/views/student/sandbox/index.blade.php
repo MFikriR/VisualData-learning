@@ -223,37 +223,25 @@
     let headers = [];
 
     // ====================================================================
-    // --- TAMBAHKAN KODE PENANGKAP DATA DARI SPREADSHEET DI SINI ---
+    // --- PENANGKAP DATA DINAMIS DARI SPREADSHEET ---
     // ====================================================================
     document.addEventListener('DOMContentLoaded', function() {
         const rawData = localStorage.getItem('spreadsheetData');
+        const rawHeaders = localStorage.getItem('spreadsheetHeaders');
         
-        if (rawData) {
-            const sheetData = JSON.parse(rawData);
+        if (rawData && rawHeaders) {
+            const formattedData = JSON.parse(rawData);
+            const dynamicHeaders = JSON.parse(rawHeaders);
 
-            // 1. Definisikan header (Sesuai dengan kolom di file Spreadsheet-mu)
-            const sheetHeaders = ['Nama Data', 'Nilai X', 'Nilai Y']; 
+            // Buat metadata buatan dari header yang diketik siswa di Baris 1
+            const meta = { fields: dynamicHeaders };
 
-            // 2. Ubah format Array 2D menjadi Array of Objects agar cocok dengan Plotly
-            const formattedData = sheetData.map(row => {
-                let obj = {};
-                sheetHeaders.forEach((h, i) => {
-                    // Paksa konversi ke angka jika memungkinkan, agar K-Means tidak error
-                    let val = row[i];
-                    if (!isNaN(val) && val !== "") val = Number(val);
-                    obj[h] = val;
-                });
-                return obj;
-            });
-
-            // 3. Buat metadata buatan untuk memanipulasi fungsi PapaParse milikmu
-            const meta = { fields: sheetHeaders };
-
-            // 4. Jalankan fungsi utama Sandbox-mu!
+            // Lempar ke mesin Sandbox-mu
             processParsedResult(formattedData, meta, "Data_Spreadsheet_Siswa.csv");
 
-            // 5. Hapus memori agar jika siswa refresh halaman, Sandbox kembali bersih
+            // Hapus memori agar Sandbox kembali bersih saat di-refresh
             localStorage.removeItem('spreadsheetData');
+            localStorage.removeItem('spreadsheetHeaders');
         }
     });
     // ====================================================================
