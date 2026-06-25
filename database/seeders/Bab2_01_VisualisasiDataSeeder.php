@@ -59,7 +59,7 @@ class Bab2_01_VisualisasiDataSeeder extends Seeder
                     <div class="bg-[#fbf5dd] p-6 md:p-8 rounded-3xl border-2 border-dashed border-[#306d29]/40 shadow-sm my-8 relative overflow-hidden">
                         <div class="absolute -right-8 -top-8 text-7xl opacity-10 rotate-12 select-none">⚡</div>
                         <h4 class="text-xl font-black text-[#0d530e] mb-2 flex items-center gap-2">
-                            <span>🚀</span> Aktivitas Pemantik: Tantangan Detektif Data
+                            <span></span> Aktivitas Pemantik: Tantangan Detektif Data
                         </h4>
                         <p class="text-sm text-[#306d29] leading-relaxed mb-6 font-medium">
                             Sebelum kita membahas teori lebih jauh, mari kita uji seberapa cepat otakmu memproses informasi. Kantin sekolah mengumpulkan data acak dari puluhan transaksi penjualan. Tugasmu: <strong>Temukan menu makanan apa yang paling tidak laku (penjualan paling sedikit)!</strong>
@@ -70,13 +70,13 @@ class Bab2_01_VisualisasiDataSeeder extends Seeder
                             <div id="pemantik-start-zone" class="py-6">
                                 <p class="text-sm text-gray-500 mb-4 font-sans">Waktu akan dihitung secara real-time saat kamu menekan tombol di bawah.</p>
                                 <button type="button" onclick="startPemantikChallenge()" class="px-8 py-3.5 bg-[#306d29] hover:bg-[#0d530e] text-[#fbf5dd] font-black rounded-xl text-base transition-all transform hover:-translate-y-0.5 shadow-md active:scale-95">
-                                    ⏱️ MULAI TANTANGAN WAKTU
+                                     MULAI TANTANGAN WAKTU
                                 </button>
                             </div>
 
                             <div id="pemantik-quiz-zone" class="hidden space-y-6">
                                 <div class="flex justify-between items-center bg-[#fbf5dd] px-4 py-2 rounded-xl text-xs font-mono font-bold text-[#306d29] border border-[#e7e1b1]">
-                                    <span>⏱️ WAKTU BERJALAN: <span id="pemantik-timer" class="text-red-600">0.0</span> detik</span>
+                                    <span>WAKTU BERJALAN: <span id="pemantik-timer" class="text-red-600">0.0</span> detik</span>
                                     <span class="animate-pulse text-red-600">● LIVE TEST</span>
                                 </div>
                                 
@@ -125,7 +125,7 @@ class Bab2_01_VisualisasiDataSeeder extends Seeder
                             </div>
 
                             <div id="pemantik-result-zone" class="hidden p-4 bg-green-50 rounded-xl border border-green-200 animate-fade-in text-left">
-                                <h5 class="font-black text-lg text-[#0d530e] mb-1">🎉 Jawabanmu Tepat: Nasi Kuning!</h5>
+                                <h5 class="font-black text-lg text-[#0d530e] mb-1"> Jawabanmu Tepat: Nasi Kuning!</h5>
                                 <p class="text-sm text-[#306d29] mb-4">Kamu membutuhkan waktu <span id="pemantik-final-time" class="font-mono font-black text-red-600">0.0</span> detik untuk menyisir angka-angka di atas.</p>
                                 
                                 <div class="border-t border-[#306d29]/20 pt-3 space-y-2 text-xs md:text-sm text-[#0d530e] leading-relaxed">
@@ -138,7 +138,7 @@ class Bab2_01_VisualisasiDataSeeder extends Seeder
 
                     <div class="bg-[#e7e1b1] p-6 md:p-8 rounded-3xl border border-[#306d29]/30 shadow-xl my-8">
                         <div class="text-center mb-6">
-                            <h4 class="text-xl font-black text-[#0d530e] mb-1">🏪 Lab Mandiri: Live Grafik Kantin</h4>
+                            <h4 class="text-xl font-black text-[#0d530e] mb-1">Lab Mandiri: Live Grafik Kantin</h4>
                             <p class="text-xs text-[#306d29] font-medium">Sebagai perbandingan, ubah nilai porsi terjual pada tabel putih di bawah, lalu amati bagaimana panjang grafik di sebelahnya merespon secara instan!</p>
                         </div>
 
@@ -199,7 +199,7 @@ class Bab2_01_VisualisasiDataSeeder extends Seeder
                     </div>
 
                     <div class="bg-[#fbf5dd] p-6 md:p-8 rounded-2xl border border-[#e7e1b1] shadow-sm my-6">
-                        <h4 class="font-bold text-[#306d29] text-xl mb-4 flex items-center gap-2"><span>📋</span> Manfaat Visualisasi Data</h4>
+                        <h4 class="font-bold text-[#306d29] text-xl mb-4 flex items-center gap-2"><span></span> Manfaat Visualisasi Data</h4>
                         <p class="text-sm mb-4 font-medium">Visualisasi data memiliki beberapa manfaat penting dalam tata kelola informasi, antara lain:</p>
                         <ul class="list-decimal pl-6 space-y-3 text-sm md:text-base font-medium">
                             <li><strong class="text-[#306d29]">Mempermudah memahami data dalam jumlah besar:</strong> Mampu merangkum ribuan baris data kaku ke dalam format satu halaman gambar grafik yang informatif.</li>
@@ -319,7 +319,7 @@ class Bab2_01_VisualisasiDataSeeder extends Seeder
 
                             <div class="bg-[#e7e1b1] p-6 md:p-8 rounded-3xl border border-[#306d29]/30 shadow-xl my-6">
                                 <div class="text-center mb-6">
-                                    <h4 class="text-2xl font-black text-[#0d530e] mb-1">📊 Lab DataViz: D3.js Canteen Visualizer</h4>
+                                    <h4 class="text-2xl font-black text-[#0d530e] mb-1">Lab Data: D3.js Visualisasi Data kantin</h4>
                                     <p class="text-sm text-[#306d29]">Unggah file CSV berisi data penjualan kantin untuk melihat bagaimana mesin D3.js membangun grafik secara otomatis!</p>
                                 </div>
 
@@ -498,7 +498,7 @@ class Bab2_01_VisualisasiDataSeeder extends Seeder
 
                         <div class="bg-[#e7e1b1] p-6 md:p-8 rounded-3xl border border-[#306d29]/30 shadow-xl my-10 relative overflow-hidden">
                             <div class="text-center mb-6 relative z-10">
-                                <h4 class="text-2xl font-black text-[#0d530e] mb-1">🎮 Aktivitas Interaktif: Analisis Data Kelas</h4>
+                                <h4 class="text-2xl font-black text-[#0d530e] mb-1">Aktivitas Interaktif: Analisis Data Kelas</h4>
                                 <p class="text-sm text-[#306d29] font-medium">Buat file <code>kelas.csv</code> sesuai panduan, unggah ke mesin D3.js, dan jawab ketiga pertanyaan di bawahnya berdasarkan grafik yang terbentuk!</p>
                             </div>
 
@@ -795,7 +795,7 @@ class Bab2_01_VisualisasiDataSeeder extends Seeder
                         <div class="bg-[#e7e1b1] p-6 md:p-8 rounded-3xl border border-[#306d29]/30 shadow-xl my-10 relative">
                             
                             <div class="text-center mb-8 border-b border-[#306d29]/20 pb-6">
-                                <h4 class="text-2xl font-black text-[#0d530e] mb-2">📊 Aktivitas Interaktif 1: Mengamati Sebaran Nilai</h4>
+                                <h4 class="text-2xl font-black text-[#0d530e] mb-2">Aktivitas Interaktif 1: Mengamati Sebaran Nilai</h4>
                                 <p class="text-sm text-[#306d29]">Siswa mengunggah file CSV yang berisi nilai siswa (Contoh format: <code>Nama,Nilai</code>), kemudian memilih menu Histogram pada aplikasi web.</p>
                             </div>
 
@@ -1129,7 +1129,7 @@ class Bab2_01_VisualisasiDataSeeder extends Seeder
 
                         <div class="bg-[#e7e1b1] p-6 md:p-8 rounded-3xl border border-[#306d29]/30 shadow-xl my-10 relative overflow-hidden">
                             <div class="text-center mb-6 relative z-10 border-b border-[#306d29]/20 pb-4">
-                                <h4 class="text-2xl font-black text-[#0d530e] mb-1">📦 Aktivitas Interaktif: Menemukan Outlier</h4>
+                                <h4 class="text-2xl font-black text-[#0d530e] mb-1">Aktivitas Interaktif: Menemukan Outlier</h4>
                                 <p class="text-sm text-[#306d29] font-medium">Buat file <code>outlier.csv</code> sesuai panduan di bawah, unggah ke aplikasi web, dan perhatikan Box Plot yang terbentuk secara otomatis!</p>
                             </div>
 
@@ -1432,27 +1432,43 @@ class Bab2_01_VisualisasiDataSeeder extends Seeder
                             </div>
                         </div>
 
-                        <div class="mt-10">
-                            <h4 class="font-bold text-[#306d29] text-xl mb-4 border-b border-[#306d29]/20 pb-2">Jenis Hubungan pada Scatter Plot</h4>
-                            
-                            <div class="bg-[#e7e1b1] p-6 md:p-8 rounded-3xl border border-[#306d29]/30 shadow-xl my-6">
-                                <div class="text-center mb-6">
-                                    <h4 class="text-2xl font-black text-[#0d530e] mb-1">🌌 Lab Korelasi: Matriks Titik Pencar</h4>
-                                    <p class="text-sm text-[#306d29]">Pilih jenis korelasi di bawah ini untuk melihat contoh visualisasi pola persebaran titik-titik koordinatnya!</p>
-                                </div>
+                        <div class="bg-[#e7e1b1] p-6 md:p-8 rounded-3xl border border-[#306d29]/30 shadow-xl my-6">
+                            <div class="text-center mb-6">
+                                <h4 class="text-2xl font-black text-[#0d530e] mb-1">Lab Korelasi: Matriks Titik Pencar</h4>
+                                <p class="text-sm text-[#306d29]">Pilih jenis korelasi di bawah ini untuk melihat contoh visualisasi pola persebaran titik-titik koordinatnya!</p>
+                            </div>
 
-                                <div class="flex flex-wrap justify-center gap-2 mb-6">
-                                    <button onclick="changeScatterPattern('positif')" id="btn-s-pos" class="px-3 py-1.5 rounded-xl font-bold text-xs transition-all bg-[#306d29] text-[#fbf5dd] shadow">📈 Korelasi Positif</button>
-                                    <button onclick="changeScatterPattern('negatif')" id="btn-s-neg" class="px-3 py-1.5 rounded-xl font-bold text-xs transition-all bg-[#fbf5dd] text-[#306d29] border border-[#306d29]/20">📉 Korelasi Negatif</button>
-                                    <button onclick="changeScatterPattern('acak')" id="btn-s-aca" class="px-3 py-1.5 rounded-xl font-bold text-xs transition-all bg-[#fbf5dd] text-[#306d29] border border-[#306d29]/20">🎲 Tidak Ada Hubungan</button>
-                                </div>
+                            <div class="flex flex-wrap justify-center gap-2 mb-8 relative z-10">
+                                <button onclick="changeScatterPattern('positif')" id="btn-s-pos" class="px-3 py-1.5 rounded-xl font-bold text-xs transition-all bg-[#306d29] text-[#fbf5dd] shadow">Korelasi Positif</button>
+                                <button onclick="changeScatterPattern('negatif')" id="btn-s-neg" class="px-3 py-1.5 rounded-xl font-bold text-xs transition-all bg-[#fbf5dd] text-[#306d29] border border-[#306d29]/20">Korelasi Negatif</button>
+                                <button onclick="changeScatterPattern('acak')" id="btn-s-aca" class="px-3 py-1.5 rounded-xl font-bold text-xs transition-all bg-[#fbf5dd] text-[#306d29] border border-[#306d29]/20">Tidak Ada Hubungan</button>
+                            </div>
 
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-                                    <div class="md:col-span-2 bg-white rounded-2xl border border-gray-200 p-4 shadow-inner relative h-48 flex items-center justify-center overflow-hidden" id="scatter-canvas"></div>
-                                    <div class="bg-[#fbf5dd] p-5 rounded-2xl border border-[#306d29]/20 text-xs md:text-sm font-medium leading-relaxed" id="scatter-desc">
-                                        <strong>Korelasi Positif:</strong><br>
-                                        <span class="text-gray-600">Jika variabel X naik, maka variabel Y ikut naik. Titik-titik membentuk pola bergerak ke atas.</span>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 items-center">
+                                
+                                <div class="md:col-span-2 relative h-64 pr-4">
+                                    
+                                    <div class="w-full h-full pl-10 pb-8 pr-1 pt-1 flex items-center justify-center relative">
+                                        
+                                        <div class="absolute left-0 top-[calc(50%-16px)] -translate-y-1/2 -rotate-90 origin-center text-[10px] font-black text-[#0d530e] tracking-widest uppercase whitespace-nowrap z-0">SUMBU Y</div>
+                                        
+                                        <div class="absolute bottom-0 left-[calc(50%+16px)] -translate-x-1/2 text-[10px] font-black text-[#0d530e] tracking-widest uppercase z-0">SUMBU X</div>
+
+                                        <div class="w-full h-full bg-white rounded-tr-xl border-l-4 border-b-4 border-t border-r border-l-[#0d530e] border-b-[#0d530e] border-t-[#306d29]/10 border-r-[#306d29]/10 shadow-inner relative">
+                                            
+                                            <div class="absolute -top-[14px] -left-[9px] text-[#0d530e] text-lg leading-none select-none">▲</div>
+                                            
+                                            <div class="absolute -right-[14px] -bottom-[9px] text-[#0d530e] text-lg leading-none select-none">▶</div>
+
+                                            <div id="scatter-canvas" class="absolute inset-0 w-full h-full overflow-hidden">
+                                                </div>
+                                            
+                                        </div>
                                     </div>
+                                </div>
+                                <div class="bg-[#fbf5dd] p-5 rounded-2xl border border-[#306d29]/20 text-xs md:text-sm font-medium leading-relaxed shadow-sm relative z-10" id="scatter-desc">
+                                    <strong class="text-[#0d530e] flex items-center gap-2 mb-1"><span>📈</span> Korelasi Positif:</strong>
+                                    <span class="text-[#306d29]">Jika variabel X naik, maka variabel Y ikut naik. Titik-titik membentuk pola bergerak miring ke kanan atas. (Contoh: Jam Belajar vs Nilai Ujian).</span>
                                 </div>
                             </div>
                         </div>
@@ -1468,7 +1484,7 @@ class Bab2_01_VisualisasiDataSeeder extends Seeder
 
                         <div class="bg-[#e7e1b1] p-6 md:p-8 rounded-3xl border border-[#306d29]/30 shadow-xl my-10 relative overflow-hidden">
                             <div class="text-center mb-6 border-b border-[#306d29]/20 pb-4">
-                                <h4 class="text-2xl font-black text-[#0d530e] mb-1">🎯 Aktivitas Interaktif 1 & 2: Analisis & Manipulasi Titik</h4>
+                                <h4 class="text-2xl font-black text-[#0d530e] mb-1">Aktivitas Interaktif: Analisis & Manipulasi Titik</h4>
                                 <p class="text-sm text-[#306d29] font-medium">Unggah file CSV, analisis hubungannya, lalu ubah data secara langsung untuk melihat efek pergerakan titik koordinatnya!</p>
                             </div>
 
@@ -1515,7 +1531,7 @@ class Bab2_01_VisualisasiDataSeeder extends Seeder
                                     <div class="bg-[#fbf5dd] p-5 rounded-2xl border border-[#306d29]/20 shadow-md relative">
                                         <div id="scatter-quiz-locker" class="absolute inset-0 z-20 bg-[#fbf5dd]/90 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center transition-all duration-500">
                                             <span class="text-4xl mb-2">🔒</span>
-                                            <span class="font-black text-[#0d530e] text-sm text-center px-4">Selesaikan Aktivitas 1 & 2<br>(Unggah & Edit Data) untuk membuka pertanyaan!</span>
+                                            <span class="font-black text-[#0d530e] text-sm text-center px-4">Selesaikan Aktivitas<br>(Unggah & Edit Data) untuk membuka pertanyaan!</span>
                                         </div>
 
                                         <div class="space-y-4 text-sm font-medium relative z-10 h-64 overflow-y-auto pr-2">
@@ -1559,13 +1575,13 @@ class Bab2_01_VisualisasiDataSeeder extends Seeder
 
                         <div class="mt-12 space-y-6">
                             <div class="bg-[#fbf5dd] p-5 rounded-xl border-l-4 border-[#306d29] shadow-sm">
-                                <h4 class="font-black text-[#0d530e] text-lg mb-1 flex items-center gap-2"><span>📌</span> Fakta Penting</h4>
+                                <h4 class="font-black text-[#0d530e] text-lg mb-1 flex items-center gap-2"><span></span> Fakta Penting</h4>
                                 <p class="text-sm font-medium text-[#306d29]">Scatter Plot digunakan untuk melihat hubungan antara dua variabel numerik dan membantu menemukan pola yang mungkin tidak terlihat pada tabel data.</p>
                             </div>
 
                             <div class="bg-white p-6 md:p-8 rounded-2xl border border-[#e7e1b1] shadow-lg text-center max-w-3xl mx-auto relative overflow-hidden">
                                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-[#306d29]"></div>
-                                <h4 class="font-black text-amber-600 text-xl mb-3">💡 Mini Refleksi</h4>
+                                <h4 class="font-black text-amber-600 text-xl mb-3">Mini Refleksi</h4>
                                 <p class="text-[#0d530e] font-medium text-sm md:text-base leading-relaxed mb-2">
                                     Perhatikan sebuah Scatter Plot yang menunjukkan hubungan antara jam belajar dan nilai ujian. Berdasarkan pola titik-titik pada Scatter Plot, jelaskan apakah kedua variabel memiliki hubungan positif, hubungan negatif, atau tidak memiliki hubungan yang jelas.
                                 </p>
@@ -1574,7 +1590,7 @@ class Bab2_01_VisualisasiDataSeeder extends Seeder
 
                         <div class="mt-16 bg-[#306d29] text-[#fbf5dd] p-8 rounded-3xl shadow-2xl relative overflow-hidden">
                             <div class="absolute -right-10 -bottom-10 text-9xl opacity-10">🔗</div>
-                            <h3 class="text-2xl font-black mb-4 flex items-center gap-2"><span>🌉</span> Penghubung ke Clustering</h3>
+                            <h3 class="text-2xl font-black mb-4 flex items-center gap-2"><span></span> Penghubung ke Pengelompokan Data</h3>
                             <p class="text-lg leading-relaxed font-medium">
                                 Pada Scatter Plot, setiap data ditampilkan sebagai sebuah titik. Ketika jumlah data semakin banyak, titik-titik pada Scatter Plot sering kali membentuk kelompok secara alami. Kelompok tersebut menunjukkan bahwa beberapa data memiliki karakteristik yang mirip. <strong class="text-amber-300">Proses menemukan kelompok data yang memiliki kemiripan inilah yang disebut clustering (pengelompokan data).</strong>
                             </p>
@@ -1586,35 +1602,65 @@ class Bab2_01_VisualisasiDataSeeder extends Seeder
 
                 <script src="https://d3js.org/d3.v7.min.js"></script>
                 <script>
-                    // 1. Script Simulator Korelasi Lama
+                    // 1. Script Simulator Korelasi Baru (Menggunakan Persentase Lebar/Tinggi Penuh)
                     function changeScatterPattern(mode) {
                         const canvas = document.getElementById('scatter-canvas');
                         const desc = document.getElementById('scatter-desc');
                         canvas.innerHTML = '';
+                        
+                        // Reset warna tombol
                         ['pos', 'neg', 'aca'].forEach(m => {
                             document.getElementById(`btn-s-${m}`).className = "px-3 py-1.5 rounded-xl font-bold text-xs transition-all bg-[#fbf5dd] text-[#306d29] border border-[#306d29]/20";
                         });
 
-                        if(mode === 'positif') {
+                        const totalDots = 25;
+
+                        if (mode === 'positif') {
                             document.getElementById('btn-s-pos').className = "px-3 py-1.5 rounded-xl font-bold text-xs transition-all bg-[#306d29] text-[#fbf5dd] shadow";
-                            desc.innerHTML = `<strong>📈 Korelasi Positif:</strong><br><span class="text-gray-600">Titik-titik naik miring ke kanan atas. Artinya jika X naik, Y ikut naik. (Contoh: Jam Belajar vs Nilai Ujian).</span>`;
-                            for(let i=0; i<25; i++) createDot(i * 14 + (Math.random()*20), 150 - (i * 6) - (Math.random()*20));
+                            desc.innerHTML = `<strong class="text-[#0d530e] flex items-center gap-2 mb-1"><span>📈</span> Korelasi Positif:</strong><span class="text-[#306d29]">Jika variabel X naik, maka variabel Y ikut naik. Titik-titik membentuk pola bergerak miring ke kanan atas.</span>`;
+                            
+                            for (let i = 0; i < totalDots; i++) {
+                                // X bergerak ke kanan (0% -> 95%), Y bergerak ke atas (95% -> 0% karena Top 0 ada di atas)
+                                let percentX = (i / totalDots) * 95 + (Math.random() * 5);
+                                let percentY = 95 - ((i / totalDots) * 90) + (Math.random() * 10 - 5);
+                                createDot(percentX, percentY);
+                            }
                         } else if (mode === 'negatif') {
                             document.getElementById('btn-s-neg').className = "px-3 py-1.5 rounded-xl font-bold text-xs transition-all bg-[#306d29] text-[#fbf5dd] shadow";
-                            desc.innerHTML = `<strong>📉 Korelasi Negatif:</strong><br><span class="text-gray-600">Titik-titik menurun ke kanan bawah. Jika X naik, Y justru turun. (Contoh: Jam Main Game vs Nilai Ujian).</span>`;
-                            for(let i=0; i<25; i++) createDot(i * 14 + (Math.random()*20), (i * 6) + (Math.random()*20) + 10);
+                            desc.innerHTML = `<strong class="text-[#0d530e] flex items-center gap-2 mb-1"><span>📉</span> Korelasi Negatif:</strong><span class="text-[#306d29]">Jika variabel X naik, maka variabel Y justru turun. Titik-titik membentuk pola bergerak miring ke kanan bawah.</span>`;
+                            
+                            for (let i = 0; i < totalDots; i++) {
+                                // X bergerak ke kanan (0% -> 95%), Y bergerak ke bawah (0% -> 95%)
+                                let percentX = (i / totalDots) * 95 + (Math.random() * 5);
+                                let percentY = ((i / totalDots) * 90) + (Math.random() * 10 - 5);
+                                createDot(percentX, percentY);
+                            }
                         } else if (mode === 'acak') {
                             document.getElementById('btn-s-aca').className = "px-3 py-1.5 rounded-xl font-bold text-xs transition-all bg-[#306d29] text-[#fbf5dd] shadow";
-                            desc.innerHTML = `<strong>🎲 Tidak Ada Hubungan:</strong><br><span class="text-gray-600">Titik-titik menyebar berantakan secara acak. Menandakan tidak ada hubungan logis antar variabel.</span>`;
-                            for(let i=0; i<25; i++) createDot(Math.random() * 320 + 20, Math.random() * 140 + 20);
+                            desc.innerHTML = `<strong class="text-[#0d530e] flex items-center gap-2 mb-1"><span>🎲</span> Tidak Ada Hubungan:</strong><span class="text-[#306d29]">Titik-titik menyebar berantakan secara acak. Menandakan tidak ada hubungan logis antar variabel.</span>`;
+                            
+                            for (let i = 0; i < totalDots; i++) {
+                                // X dan Y murni acak di seluruh ruang (0% - 95%)
+                                createDot(Math.random() * 95, Math.random() * 95);
+                            }
                         }
                     }
-                    function createDot(x, y) {
+
+                    function createDot(xPercent, yPercent) {
+                        // Membatasi nilai maksimal di 95% agar titik (yang memiliki lebar w-3 h-3) tidak terpotong border ujung
+                        const finalX = Math.max(0, Math.min(95, xPercent));
+                        const finalY = Math.max(0, Math.min(95, yPercent));
+
                         const dot = document.createElement('div');
                         dot.className = "absolute w-3 h-3 bg-[#306d29] rounded-full shadow-sm transition-all duration-700 hover:scale-150";
-                        dot.style.left = x + "px"; dot.style.top = y + "px";
+                        
+                        // Perhatikan unitnya sekarang menggunakan % (Persentase), bukan px
+                        dot.style.left = finalX + "%"; 
+                        dot.style.top = finalY + "%"; 
+                        
                         document.getElementById('scatter-canvas').appendChild(dot);
                     }
+
                     setTimeout(() => changeScatterPattern('positif'), 500);
 
                     // 2. Script Mesin D3.js Scatter Plot (Aktivitas 1 & 2)

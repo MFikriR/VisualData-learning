@@ -90,7 +90,7 @@
             <a href="#" class="flex items-center space-x-2 group">
                 <div class="w-8 h-8 bg-palette3 rounded-lg flex items-center justify-center text-palette1 font-bold text-xl">V</div>
                 <span class="self-center text-xl font-bold whitespace-nowrap text-palette4 tracking-wide">
-                    VisualData<span class="text-palette3">.</span>
+                    Visual Data<span class="text-palette3"></span>
                 </span>
             </a>
 
@@ -136,29 +136,22 @@
             </div>
 
             {{-- Judul Utama --}}
-            <h1 class="text-5xl md:text-7xl font-extrabold text-palette4 leading-tight tracking-tight mb-8">
-
+            <h1 class="text-5xl md:text-7xl font-extrabold text-palette4 leading-[1.25] tracking-tight mb-8">
                 Mari Belajar
-
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-palette4 to-palette3">
                     Visualisasi
                 </span>
-
                 <br>
-
                 dan
-
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-palette4 to-palette3">
                     Pengelompokan Data
                 </span>
-
             </h1>
 
             {{-- Deskripsi --}}
             <p class="max-w-3xl mx-auto text-lg md:text-xl text-palette3 leading-relaxed mb-12">
-                Pelajari konsep data, visualisasi data, dan Pengelompokan
-                melalui materi interaktif, simulasi pembelajaran,
-                latihan mandiri, dan evaluasi berbasis web.
+                Pelajari materi konsep data, pengolahan data, visualisasi data dan Pengelompokan data
+                melalui media pembelajaran interaktif berbasis web ini
             </p>
 
             {{-- Tombol --}}
@@ -206,48 +199,87 @@
         </div>
     </section>
 
-    {{-- 2. BAGIAN KOMPETENSI (KI, KD, INDIKATOR) --}}
+    {{-- 2. BAGIAN CAPAIAN & TUJUAN PEMBELAJARAN --}}
     <section id="kompetensi" class="py-24 relative bg-palette1 border-t border-palette3/30">
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-black mb-4 text-palette4 tracking-wide">Kompetensi Pembelajaran</h2>
+                <h2 class="text-3xl md:text-4xl font-black mb-4 text-palette4 tracking-wide">
+                    Capaian & Tujuan Pembelajaran
+                </h2>
                 <div class="w-20 h-1 bg-palette3 mx-auto rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+
+                {{-- CAPAIAN PEMBELAJARAN --}}
                 <div class="glass-panel p-8 group hover:border-palette4 transition-colors">
                     <div class="w-12 h-12 bg-palette3/20 rounded-lg flex items-center justify-center text-palette4 mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-palette4">Kompetensi Inti (KI)</h3>
+
+                    <h3 class="text-xl font-bold mb-4 text-palette4">
+                        Capaian Pembelajaran
+                    </h3>
+
+                    <p class="text-palette3 text-sm leading-relaxed">
+                        Pada akhir Fase F, peserta didik mampu memanfaatkan sumber data yang
+                        terbuka, terpercaya, dan legal untuk mengumpulkan, mengolah,
+                        menyajikan, serta menginterpretasikan data secara efektif dan
+                        bertanggung jawab guna mendukung pengambilan keputusan sederhana
+                        dengan atau tanpa bantuan komputer.
+                    </p>
+                </div>
+
+                {{-- BAB 1 --}}
+                <div class="glass-panel p-8 group hover:border-palette4 transition-colors">
+                    <div class="w-12 h-12 bg-palette3/20 rounded-lg flex items-center justify-center text-palette4 mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6.253v13m0-13C10.832 5.483 9.246 5 7.5 5S4.168 5.483 3 6.253v13C4.168 18.483 5.754 18 7.5 18s3.332.483 4.5 1.253m0-13C13.168 5.483 14.754 5 16.5 5s3.332.483 4.5 1.253v13C19.832 18.483 18.246 18 16.5 18s-3.332.483-4.5 1.253">
+                            </path>
+                        </svg>
+                    </div>
+
+                    <h3 class="text-xl font-bold mb-4 text-palette4">
+                        Tujuan Pembelajaran Bab 1
+                    </h3>
+
                     <ul class="list-disc list-outside ml-4 space-y-3 text-palette3 text-sm">
-                        <li>Memahami pengetahuan faktual, konseptual, dan prosedural berdasarkan rasa ingin tahu tentang ilmu pengetahuan dan teknologi.</li>
-                        <li>Mengolah dan menyaji data secara konkret menggunakan metode sesuai kaidah keilmuan.</li>
+                        <li>Menjelaskan pengertian data dan informasi.</li>
+                        <li>Mengidentifikasi sumber data yang terbuka, terpercaya, dan legal.</li>
+                        <li>Membedakan jenis serta struktur data.</li>
+                        <li>Menerapkan tahapan pengolahan data.</li>
+                        <li>Menerapkan prinsip etika data dalam penggunaan data.</li>
                     </ul>
                 </div>
 
+                {{-- BAB 2 --}}
                 <div class="glass-panel p-8 group hover:border-palette4 transition-colors">
                     <div class="w-12 h-12 bg-palette3/20 rounded-lg flex items-center justify-center text-palette4 mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 3v18m8-14H7m10 4H7m8 4H7">
+                            </path>
+                        </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-palette4">Kompetensi Dasar (KD)</h3>
+
+                    <h3 class="text-xl font-bold mb-4 text-palette4">
+                        Tujuan Pembelajaran Bab 2
+                    </h3>
+
                     <ul class="list-disc list-outside ml-4 space-y-3 text-palette3 text-sm">
-                        <li>3.1 Memahami konsep dasar data, jenis visualisasi, dan pengelompokan data (Clustering) menggunakan algoritma K-Means.</li>
-                        <li>4.1 Mengolah dan menyajikan data melalui visualisasi serta menerapkan analisis algoritma K-Means secara komputasional.</li>
+                        <li>Menjelaskan tujuan dan manfaat visualisasi data.</li>
+                        <li>Membuat dan menginterpretasikan diagram batang, histogram, box plot, dan scatter plot.</li>
+                        <li>Menjelaskan konsep kemiripan data dan clustering.</li>
+                        <li>Menginterpretasikan hasil pengelompokan data sederhana.</li>
+                        <li>Menggunakan aplikasi web untuk visualisasi dan clustering data.</li>
                     </ul>
                 </div>
 
-                <div class="glass-panel p-8 group hover:border-palette4 transition-colors">
-                    <div class="w-12 h-12 bg-palette3/20 rounded-lg flex items-center justify-center text-palette4 mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-palette4">Indikator Pencapaian</h3>
-                    <ul class="list-disc list-outside ml-4 space-y-3 text-palette3 text-sm">
-                        <li>Siswa mampu menjelaskan konsep, jenis, dan proses persiapan data. <strong>(Bab 1)</strong></li>
-                        <li>Siswa mampu membuat dan membaca berbagai jenis grafik visualisasi data. <strong>(Bab 2)</strong></li>
-                        <li>Siswa mampu menerapkan dan mengevaluasi langkah-langkah algoritma K-Means Clustering. <strong>(Bab 3)</strong></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </section>
@@ -260,52 +292,41 @@
                 <div class="w-20 h-1 bg-palette3 mx-auto rounded-full"></div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {{-- Ubah grid menjadi 3 kolom agar rapi dan berada di tengah --}}
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 
-                {{-- Bab 1 --}}
+                {{-- Bab 1: Data dan Pengolahannya --}}
                 <div class="bg-palette1 border border-palette3 rounded-2xl p-6 shadow-lg hover:-translate-y-2 transition-transform">
                     <span class="bg-palette3/20 text-palette4 font-black text-[10px] uppercase tracking-widest px-3 py-1 rounded border border-palette3/50 mb-4 inline-block">BAB 1</span>
-                    <h3 class="text-xl font-bold text-palette4 mb-4">Pengantar Data</h3>
+                    <h3 class="text-xl font-bold text-palette4 mb-4">Data dan Pengolahannya</h3>
                     <ul class="space-y-3 text-sm text-palette3">
-                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Pengertian & Konsep Data</li>
-                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Jenis-Jenis Data (Nominal, Kontinu, dll)</li>
-                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Struktur Data (Terstruktur & Bebas)</li>
-                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Persiapan: Cleaning & Labeling</li>
+                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Pengertian Data & Informasi</li>
+                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Sumber & Jenis Data (Kualitatif/Kuantitatif)</li>
+                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Klasifikasi Struktur Data</li>
+                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Tahapan Pengolahan Data</li>
+                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Pembersihan Data (Data Cleaning)</li>
                     </ul>
                 </div>
 
-                {{-- Bab 2 --}}
+                {{-- Bab 2: Visualisasi dan Pengelompokan Data --}}
                 <div class="bg-palette1 border border-palette3 rounded-2xl p-6 shadow-lg hover:-translate-y-2 transition-transform">
                     <span class="bg-palette3/20 text-palette4 font-black text-[10px] uppercase tracking-widest px-3 py-1 rounded border border-palette3/50 mb-4 inline-block">BAB 2</span>
-                    <h3 class="text-xl font-bold text-palette4 mb-4">Visualisasi Data</h3>
+                    <h3 class="text-xl font-bold text-palette4 mb-4">Visualisasi & Pengelompokan</h3>
                     <ul class="space-y-3 text-sm text-palette3">
-                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Konsep Diagram Batang (Bar)</li>
-                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Histogram & Bentuk Distribusi</li>
-                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Box Plot & Deteksi Outlier</li>
-                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Scatter Plot & Arah Korelasi</li>
-                    </ul>
-                </div>
-
-                {{-- Bab 3 --}}
-                <div class="bg-palette1 border border-palette3 rounded-2xl p-6 shadow-lg hover:-translate-y-2 transition-transform">
-                    <span class="bg-palette3/20 text-palette4 font-black text-[10px] uppercase tracking-widest px-3 py-1 rounded border border-palette3/50 mb-4 inline-block">BAB 3</span>
-                    <h3 class="text-xl font-bold text-palette4 mb-4">Pengelompokan</h3>
-                    <ul class="space-y-3 text-sm text-palette3">
-                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Konsep Clustering & Terminologi AI</li>
-                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Peran Jarak (Euclidean) & Normalisasi</li>
-                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Algoritma K-Means (5 Langkah)</li>
-                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Evaluasi: Metode Elbow</li>
+                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Pemilihan Jenis Visualisasi yang Tepat</li>
+                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Diagram Batang & Histogram</li>
+                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Box Plot & Deteksi Pencilan (Outlier)</li>
+                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Scatter Plot & Analisis Korelasi</li>
+                        <li class="flex items-start gap-2"><span class="text-palette3 mt-0.5">•</span> Konsep Kemiripan & Algoritma K-Means</li>
                     </ul>
                 </div>
 
                 {{-- Evaluasi --}}
                 <div class="bg-palette1 border border-palette3 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all">
-
                     <div class="flex items-center justify-between mb-5">
                         <span class="bg-palette2 text-palette4 font-bold text-[10px] uppercase tracking-widest px-3 py-1 rounded border border-palette3/50">
                             Evaluasi
                         </span>
-
                         <div class="w-12 h-12 bg-palette2 rounded-xl flex items-center justify-center">
                             <svg class="w-6 h-6 text-palette3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -324,18 +345,19 @@
                             <span class="text-palette3 mt-0.5">•</span>
                             Kuis Formatif (Mini-Quiz tiap materi)
                         </li>
-
+                        <li class="flex items-start gap-2">
+                            <span class="text-palette3 mt-0.5">•</span>
+                            Refleksi Capaian Kompetensi Siswa
+                        </li>
                         <li class="flex items-start gap-2">
                             <span class="text-palette3 mt-0.5">•</span>
                             Syarat Kelulusan KKM (Nilai 70)
                         </li>
-
                         <li class="flex items-start gap-2">
                             <span class="text-palette3 mt-0.5">•</span>
-                            Evaluasi Akhir Bab (Sumatif)
+                            Evaluasi Akhir Sumatif
                         </li>
                     </ul>
-
                 </div>
 
             </div>
@@ -359,7 +381,7 @@
                     </button>
                     <div id="acc1" class="hidden px-6 pb-6 text-palette4 text-sm bg-palette2 pt-4 border-t border-palette3">
                         
-                        <p class="mb-8 text-palette3 max-w-xl mx-auto text-center">Berikut adalah panduan langkah demi langkah untuk mendaftar akun dan masuk ke dalam platform VisualData.</p>
+                        <p class="mb-8 text-palette3 max-w-xl mx-auto text-center">Berikut adalah panduan langkah demi langkah untuk mendaftar akun dan masuk ke dalam platform Visual Data</p>
                         
                         {{-- ALUR PROSES DAFTAR --}}
                         <div class="space-y-12">
@@ -538,7 +560,7 @@
                 </p>
 
                 <h4 class="text-xl md:text-2xl font-black text-palette4 text-center mb-10 leading-relaxed uppercase">
-                    Pengembangan Media Pembelajaran Berbasis Web Pada Materi Visualisasi dan Pengelompokan Data Menggunakan Metode Tutorial Untuk Siswa SMA
+                    Pengembangan Media Pembelajaran Berbasis Web Pada Materi Visualisasi dan Pengelompokan Data Menggunakan Model Tutorial Untuk Siswa SMA
                 </h4>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-10 text-sm">
@@ -592,6 +614,10 @@
                             <li class="flex items-start gap-3">
                                 <span class="text-palette3 mt-1">✔</span> 
                                 <span>Basra, N., Singh, D., & Kaur, K. (2025). Introduction to data visualization. In S. Chopra, N. Basra, Simran, & D. Mohapatra (Eds.), <em>Fundamentals of data handling and visualization</em> (pp. 7-42). Kolhapur: Bhumi Publishing.</span>
+                            </li >
+                            <li class="flex items-start gap-3">
+                                <span class="text-palette3 mt-1">✔</span> 
+                                <span>Chaerani, D., Kodir, S., Sumardi, I., & Permana, B. (2024). <em>Informatika untuk SMA/MA Kelas XI (Edisi Revisi)</em>. Jakarta: Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi Republik Indonesia.</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <span class="text-palette3 mt-1">✔</span> 
@@ -600,6 +626,10 @@
                             <li class="flex items-start gap-3">
                                 <span class="text-palette3 mt-1">✔</span> 
                                 <span>Junaidi, & Purbo, O. (2025). Pengenalan Orange Data Mining, Eksplorasi Dataset Sederhana: Buah, Cuaca, Emosi T, dan Visualisasi Data & Pengelompokan. In Junaidi, & O. W. Purbo, <em>Langkah awal jadi data scientist: AI, visualisasi, dan analisis emosi (Buku AI SMA kelas 11 semester 1)</em> (pp. 45-94). Institut Teknologi Tangerang Selatan.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-palette3 mt-1">✔</span> 
+                                <span>Permana, B., Widyudin, R. K., Chaerani, D., & Kodir, S. (2022). <em>Informatika untuk SMA/MA Kelas XII</em>. Jakarta: Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi Republik Indonesia.</span>
                             </li>
                         </ul>
                     </div>
@@ -649,7 +679,7 @@
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-center space-x-2 mb-4 opacity-70">
                 <div class="w-6 h-6 bg-palette3 rounded flex items-center justify-center text-palette1 font-bold text-xs">V</div>
-                <span class="text-lg font-bold text-palette4">VisualData.</span>
+                <span class="text-lg font-bold text-palette4">Visual Data</span>
             </div>
             <p class="text-palette3 text-xs tracking-wider uppercase font-semibold">
                 © {{ date('Y') }} Muhammad Fikri Ramadhan - Pendidikan Komputer ULM. All rights reserved.

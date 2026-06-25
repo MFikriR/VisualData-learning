@@ -5,11 +5,14 @@
 @section('content')
 <div class="max-w-7xl mx-auto">
     
-    <div class="mb-6 flex flex-col md:flex-row md:justify-between md:items-center gap-4 border-b border-slate-700/50 pb-4">
-        <div>
-            <h1 class="text-2xl font-bold text-white mb-1">{{ $quiz->title }}</h1>
-            <p class="text-sm text-slate-400">{{ $quiz->description ?? 'Kerjakan soal dengan teliti. Waktu akan terus berjalan.' }}</p>
-        </div>
+    <div class="mb-6 bg-eduPanel border border-borderLight rounded-2xl p-6 shadow-sm">
+        <h1 class="text-2xl font-black text-eduPrimaryHover mb-2">
+            {{ $quiz->title }}
+        </h1>
+
+        <p class="text-sm text-eduPrimary">
+            {{ $quiz->description ?? 'Kerjakan soal dengan teliti. Waktu akan terus berjalan.' }}
+        </p>
     </div>
 
     <form id="quizForm" action="{{ route('quiz.submit', $quiz->id) }}" method="POST" class="flex flex-col md:flex-row gap-6 relative items-start">

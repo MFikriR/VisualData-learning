@@ -12,10 +12,10 @@ class TeacherSeeder extends Seeder
     {
         // Gunakan updateOrCreate untuk mencegah error duplikat
         User::updateOrCreate(
-            ['email' => 'guru@sekolah.id'], // Kondisi Pencarian (Cek email)
+            ['email' => 'guru@gmail.com'], // Kondisi Pencarian (Cek email)
             [
                 'name' => 'Guru Pengampu',
-                'password' => Hash::make('password'), // Ganti dengan password aslimu jika perlu
+                'password' => Hash::make('guru-sekolah'), // Ganti dengan password aslimu jika perlu
                 'role' => 'teacher',
                 'email_verified_at' => now(),
             ] // Data yang diupdate/dibuat

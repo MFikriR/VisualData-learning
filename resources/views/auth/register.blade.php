@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    @vite(['resources/css/variables.css', 'resources/css/app.css', 'resources/js/app.js']) 
+    @vite(['resources/css/variables.css', 'resources/css/app.css', 'resources/js/app.js'])
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -61,39 +61,43 @@
         <div class="w-full max-w-md bg-palette1 border border-palette3/20 rounded-3xl p-10 shadow-2xl backdrop-blur-md">
             <div class="text-center mb-8">
                 <h2 class="text-2xl md:text-3xl font-bold mb-2 text-palette4 tracking-tight">Daftar Akun Baru</h2>
-                <p class="text-sm font-medium text-palette3">Buat akun akademik untuk mengakses modul pembelajaran data science SMA Kelas XI.</p>
+                <p class="text-sm font-medium text-palette3">Buat akun akademik untuk mengakses modul pembelajaran Visualisasi dan Pengelompokan Data SMA Kelas XI.</p>
             </div>
 
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
+                {{-- INPUT NAMA --}}
                 <div class="mb-5">
                     <label for="name" class="block text-sm font-semibold text-palette4 mb-2">Nama Lengkap Siswa</label>
-                    <input id="name" type="text" name="name" class="w-full px-4 py-3 rounded-xl border border-palette3/30 bg-palette2 text-palette4 font-medium focus:ring-2 focus:ring-palette3 focus:border-palette3 transition-all outline-none placeholder:text-palette3/70" value="{{ old('name') }}" required autofocus autocomplete="name" placeholder="Masukkan nama lengkap siswa">
+                    <input id="name" type="text" name="name" class="w-full px-4 py-3 rounded-xl border border-palette3/30 bg-palette2 text-white font-medium focus:ring-2 focus:ring-palette3 focus:border-palette3 transition-all outline-none placeholder:text-white/60" value="{{ old('name') }}" required autofocus autocomplete="name" placeholder="Masukkan nama lengkap siswa">
                     @error('name')
                         <p class="text-red-600 font-medium text-xs mt-1.5">{{ $message }}</p>
                     @enderror
                 </div>
 
+                {{-- INPUT EMAIL --}}
                 <div class="mb-5">
                     <label for="email" class="block text-sm font-semibold text-palette4 mb-2">Email Akademik / Sekolah</label>
-                    <input id="email" type="email" name="email" class="w-full px-4 py-3 rounded-xl border border-palette3/30 bg-palette2 text-palette4 font-medium focus:ring-2 focus:ring-palette3 focus:border-palette3 transition-all outline-none placeholder:text-palette3/70" value="{{ old('email') }}" required autocomplete="username" placeholder="siswa@sekolah.com">
+                    <input id="email" type="email" name="email" class="w-full px-4 py-3 rounded-xl border border-palette3/30 bg-palette2 text-white font-medium focus:ring-2 focus:ring-palette3 focus:border-palette3 transition-all outline-none placeholder:text-white/60" value="{{ old('email') }}" required autocomplete="username" placeholder="siswa@gmail.com">
                     @error('email')
                         <p class="text-red-600 font-medium text-xs mt-1.5">{{ $message }}</p>
                     @enderror
                 </div>
 
+                {{-- INPUT KATA SANDI --}}
                 <div class="mb-5">
                     <label for="password" class="block text-sm font-semibold text-palette4 mb-2">Kata Sandi</label>
-                    <input id="password" type="password" name="password" class="w-full px-4 py-3 rounded-xl border border-palette3/30 bg-palette2 text-palette4 font-medium focus:ring-2 focus:ring-palette3 focus:border-palette3 transition-all outline-none placeholder:text-palette3/70" required autocomplete="new-password" placeholder="Minimal 8 karakter">
+                    <input id="password" type="password" name="password" class="w-full px-4 py-3 rounded-xl border border-palette3/30 bg-palette2 text-white font-medium focus:ring-2 focus:ring-palette3 focus:border-palette3 transition-all outline-none placeholder:text-white/60" required autocomplete="new-password" placeholder="Minimal 8 karakter">
                     @error('password')
                         <p class="text-red-600 font-medium text-xs mt-1.5">{{ $message }}</p>
                     @enderror
                 </div>
 
+                {{-- INPUT KONFIRMASI KATA SANDI --}}
                 <div class="mb-5">
                     <label for="password_confirmation" class="block text-sm font-semibold text-palette4 mb-2">Konfirmasi Kata Sandi</label>
-                    <input id="password_confirmation" type="password" name="password_confirmation" class="w-full px-4 py-3 rounded-xl border border-palette3/30 bg-palette2 text-palette4 font-medium focus:ring-2 focus:ring-palette3 focus:border-palette3 transition-all outline-none placeholder:text-palette3/70" required autocomplete="new-password" placeholder="Ulangi kata sandi">
+                    <input id="password_confirmation" type="password" name="password_confirmation" class="w-full px-4 py-3 rounded-xl border border-palette3/30 bg-palette2 text-white font-medium focus:ring-2 focus:ring-palette3 focus:border-palette3 transition-all outline-none placeholder:text-white/60" required autocomplete="new-password" placeholder="Ulangi kata sandi">
                 </div>
 
                 {{-- DROPDOWN JENIS KELAMIN --}}

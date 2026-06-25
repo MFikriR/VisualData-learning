@@ -4,7 +4,7 @@
             <div class="flex">
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="font-bold text-xl text-white italic">
-                        VisualData<span class="text-[#0088cc]">.</span>
+                        Visual Data<span class="text-[#0088cc]"></span>
                     </a>
                 </div>
 

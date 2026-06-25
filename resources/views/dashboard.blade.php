@@ -101,7 +101,7 @@
 
         <div class="opacity-40 pointer-events-none filter blur-[2px] mt-12">
             <h3 class="text-xl font-bold text-[#0d530e] mb-6 flex items-center gap-2 border-b border-[#306d29]/20 pb-4">
-                <span>📚</span> Daftar Materi Belajar (Terkunci)
+                <span></span> Daftar Materi Belajar (Terkunci)
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-[#e7e1b1] border border-[#306d29]/20 rounded-xl p-5 h-40"></div>
@@ -121,7 +121,7 @@
                         {{ Auth::user()->name }}
                     </h1>
                     <p class="text-[#306d29] mt-2 max-w-lg text-sm leading-relaxed">
-                        Lanjutkan pemahaman komputasionalmu. Tuntaskan semua materi dan kerjakan Post-Test di akhir materi! 📚
+                        Lanjutkan pemahaman komputasionalmu. Tuntaskan semua materi dan kerjakan Post-Test di akhir materi!
                     </p>
                 </div>
 
@@ -186,7 +186,7 @@
 
         <div id="modul-belajar" class="bg-[#e7e1b1] p-8 rounded-3xl border border-[#306d29]/20 shadow-sm mt-8">
             <h3 class="text-xl font-bold text-[#0d530e] mb-6 flex items-center gap-3 border-b border-[#306d29]/20 pb-4">
-                <div class="w-8 h-8 bg-[#fbf5dd] text-[#306d29] rounded-lg flex items-center justify-center border border-[#306d29]/20">📚</div>
+                <div class="w-8 h-8 bg-[#fbf5dd] text-[#306d29] rounded-lg flex items-center justify-center border border-[#306d29]/20"></div>
                 Daftar Materi Belajar
             </h3>
             

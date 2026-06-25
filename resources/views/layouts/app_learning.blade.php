@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>VisualData - Learning Platform</title>
+    <title>Visual Data - Learning Platform</title>
     
     {{-- FONT PROFESIONAL (PLUS JAKARTA SANS) --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,11 +48,12 @@
             border-right: 1px solid rgba(48,109,41,0.2);
         }
         
-        .nav-item.active {
-            background: rgba(48, 109, 41, 0.15); 
-            color: #0d530e; 
-            border-right: 3px solid #306d29;
-            font-weight: 700;
+        .nav-item.active{
+            background:#d8d38d;
+            color:#0d530e !important;
+            border:1px solid #306d29;
+            box-shadow:0 0 0 2px rgba(48,109,41,.15);
+            font-weight:700;
         }
         
         .main-content { 

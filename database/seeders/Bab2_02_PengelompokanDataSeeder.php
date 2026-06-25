@@ -28,10 +28,7 @@ class Bab2_02_PengelompokanDataSeeder extends Seeder
                 </div>
 
                 <div>
-                    <h3 class="text-3xl font-black text-[#0d530e] mb-6 border-b border-[#306d29]/30 pb-4">
-                        A. Pengertian Clustering
-                    </h3>
-                    
+                                  
                     <div class="space-y-6 text-lg leading-relaxed">
                         <div>
                             <h4 class="font-bold text-[#306d29] text-xl mb-2">Mengapa Data Perlu Dikelompokkan?</h4>
@@ -137,7 +134,7 @@ class Bab2_02_PengelompokanDataSeeder extends Seeder
                     <div class="bg-[#fbf5dd] p-6 md:p-8 rounded-3xl border-2 border-dashed border-[#306d29]/40 shadow-sm my-10 relative overflow-hidden">
                         <div class="absolute -right-8 -top-8 text-7xl opacity-10 rotate-12 select-none">🎯</div>
                         <h4 class="text-xl font-black text-[#0d530e] mb-2 flex items-center gap-2">
-                            <span>🚀</span> Aktivitas Pemantik
+                            <span></span> Aktivitas Pemantik
                         </h4>
                         <p class="text-sm text-[#306d29] leading-relaxed mb-6 font-medium">
                             Perhatikan daftar hobi siswa di bawah ini. Menurutmu, bagaimana cara mengelompokkan data tersebut secara logis? <strong>Klik pada baris data untuk memasukkannya ke dalam kelompok yang sesuai!</strong>
@@ -294,7 +291,7 @@ class Bab2_02_PengelompokanDataSeeder extends Seeder
 
                         <div class="bg-[#e7e1b1] p-6 md:p-8 rounded-3xl border border-[#306d29]/30 shadow-2xl my-12 relative overflow-hidden">
                             <div class="text-center mb-6 relative z-10 border-b border-[#306d29]/20 pb-4">
-                                <h4 class="text-2xl font-black text-[#0d530e] mb-1">🤖 Aktivitas Interaktif: Menjadi Sistem Clustering</h4>
+                                <h4 class="text-2xl font-black text-[#0d530e] mb-1">Aktivitas Interaktif: Menjadi Sistem Clustering</h4>
                                 <p class="text-sm text-[#306d29] font-medium">Jalankan peranmu sebagai Algoritma K-Means tanpa harus menghitung rumus rumit!</p>
                             </div>
 
@@ -342,15 +339,6 @@ class Bab2_02_PengelompokanDataSeeder extends Seeder
                                 <p class="text-xs font-bold text-[#306d29] bg-white/50 inline-block px-4 py-2 rounded-full border border-[#306d29]/20 shadow-sm">Melalui aktivitas ini siswa dapat memahami cara kerja K-Means tanpa harus menghitung rumus yang rumit.</p>
                             </div>
                         </div>
-
-                        <div class="mt-16 bg-gradient-to-br from-[#306d29] to-[#0d530e] text-[#fbf5dd] p-8 rounded-3xl shadow-2xl relative overflow-hidden">
-                            <div class="absolute -right-5 -bottom-10 text-9xl opacity-10">🚀</div>
-                            <h3 class="text-2xl font-black mb-3 flex items-center gap-2"><span>🌉</span> Penghubung ke Studi Kasus</h3>
-                            <p class="text-base leading-relaxed font-medium">
-                                Pada materi berikutnya, kita akan menggunakan <strong>aplikasi web interaktif</strong> untuk melakukan visualisasi data dan mencoba proses clustering secara langsung menggunakan algoritma K-Means. Dengan demikian, konsep yang telah dipelajari dapat diamati dan dipraktikkan secara nyata.
-                            </p>
-                        </div>
-
                     </div>
                 </div>
 

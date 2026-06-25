@@ -15,7 +15,7 @@ class Bab0_PengantarSeeder extends Seeder
             ['sequence' => 0],
             [
                 'title' => 'Pengantar Data Science',
-                'description' => 'Peta konsep pembelajaran dan apersepsi mengapa Data Science sangat penting di era modern.',
+                'description' => 'Peta konsep pembelajaran dan apersepsi mengapa Visualisasi Data sangat penting di era modern.',
                 'is_active' => true
             ]
         );

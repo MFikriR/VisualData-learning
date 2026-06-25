@@ -5,10 +5,15 @@
 @section('content')
 <div class="max-w-7xl mx-auto">
     
-    <div class="mb-6 flex flex-col md:flex-row md:justify-between md:items-center gap-4 border-b border-slate-700/50 pb-4">
+    <div class="mb-6 flex flex-col md:flex-row md:justify-between md:items-center gap-4 border-b border-slate-300 pb-4">
         <div>
-            <h1 class="text-2xl font-bold text-white mb-1">{{ $quiz->title }}</h1>
-            <p class="text-sm text-slate-400">Kerjakan soal dengan teliti. Waktu akan terus berjalan.</p>
+            <h1 class="text-3xl font-black text-slate-900 mb-2 tracking-tight">
+                {{ $quiz->title }}
+            </h1>
+
+            <p class="text-base text-slate-600">
+                {{ $quiz->description }}
+            </p>
         </div>
     </div>
 

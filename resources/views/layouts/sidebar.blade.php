@@ -6,7 +6,7 @@
             <div class="flex items-center gap-2">
                 <div class="w-8 h-8 bg-eduPrimary rounded-lg flex items-center justify-center text-eduDark font-bold text-xl">V</div>
                 <span class="text-xl font-bold tracking-wide text-eduPrimaryHover">
-                    Visual<span class="text-eduPrimary">Data.</span>
+                    Visual <span class="text-eduPrimary">Data</span>
                 </span>
             </div>
             <button id="sidebar-close" class="md:hidden text-eduPrimaryHover hover:text-eduPrimary">

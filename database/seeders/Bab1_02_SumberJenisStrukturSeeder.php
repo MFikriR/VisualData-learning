@@ -116,11 +116,84 @@ class Bab1_02_SumberJenisStrukturSeeder extends Seeder
                             <p class="text-sm text-[#306d29] italic mt-3">Gambar 15. Jenis Data Kualitatif</p>
                         </div>
 
+                        <h4 class="text-2xl font-bold text-[#306d29] mt-12 border-b border-[#306d29]/20 pb-2">2.2.2. Data Kualitatif</h4>
+                        <p class="mb-6">Data kualitatif adalah data yang berupa kategori, label, atau karakteristik tertentu dan tidak digunakan untuk operasi perhitungan matematika secara langsung. Data kualitatif dibagi menjadi dua jenis, yaitu data nominal dan data ordinal.</p>
+
+                        <div class="bg-white p-4 rounded-xl border border-[#e7e1b1] shadow-sm text-center mb-10">
+                            <img src="/images/jenis-data-kualitatif.png" alt="Jenis Data Kualitatif" class="w-full max-w-4xl mx-auto rounded-lg" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'bg-[#e7e1b1] text-[#306d29] p-10 rounded-lg border-2 border-dashed border-[#306d29]\'>Letakkan gambar jenis-data-kualitatif.png di folder public/images/</div>';">
+                            <p class="text-sm text-[#306d29] italic mt-3">Gambar 15. Jenis Data Kualitatif</p>
+                        </div>
+
+                        <div class="bg-[#fbf5dd] p-6 md:p-8 rounded-3xl border-2 border-dashed border-[#306d29]/40 shadow-sm mb-12 relative overflow-hidden">
+                            <div class="text-center mb-6 relative z-10 border-b border-[#306d29]/10 pb-4">
+                                <h4 class="text-2xl font-black text-[#0d530e] mb-1">Simulasi Interaktif: Memilih Data Nominal</h4>
+                                <p class="text-sm text-[#306d29] font-medium">Klik dan pilih opsi pada kategori di bawah ini. Perhatikan bahwa setiap pilihan diwakili oleh sebuah angka!</p>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+                                <div class="bg-white p-5 rounded-2xl border border-[#306d29]/20 shadow-sm">
+                                    <h5 class="font-bold text-[#0d530e] mb-3 text-sm flex items-center gap-2"><span>👫</span> Jenis Kelamin</h5>
+                                    <div class="space-y-2" id="sim-kelamin">
+                                        <button onclick="pilihNominal('kelamin', this, 'Laki-laki', 1)" class="w-full text-left py-2 px-4 rounded-xl border border-[#306d29]/30 text-[#306d29] font-bold hover:bg-[#306d29]/10 transition-all flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-[#306d29]/20 flex items-center justify-center text-xs font-black">1</span> Laki-laki</button>
+                                        <button onclick="pilihNominal('kelamin', this, 'Perempuan', 2)" class="w-full text-left py-2 px-4 rounded-xl border border-[#306d29]/30 text-[#306d29] font-bold hover:bg-[#306d29]/10 transition-all flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-[#306d29]/20 flex items-center justify-center text-xs font-black">2</span> Perempuan</button>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white p-5 rounded-2xl border border-[#306d29]/20 shadow-sm">
+                                    <h5 class="font-bold text-[#0d530e] mb-3 text-sm flex items-center gap-2"><span>🕌</span> Agama</h5>
+                                    <div class="space-y-2" id="sim-agama">
+                                        <button onclick="pilihNominal('agama', this, 'Islam', 1)" class="w-full text-left py-1.5 px-3 rounded-xl border border-[#306d29]/30 text-[#306d29] font-bold hover:bg-[#306d29]/10 transition-all flex items-center gap-3 text-sm"><span class="w-5 h-5 rounded-full bg-[#306d29]/20 flex items-center justify-center text-[10px] font-black flex-shrink-0">1</span> Islam</button>
+                                        <button onclick="pilihNominal('agama', this, 'Kristen', 2)" class="w-full text-left py-1.5 px-3 rounded-xl border border-[#306d29]/30 text-[#306d29] font-bold hover:bg-[#306d29]/10 transition-all flex items-center gap-3 text-sm"><span class="w-5 h-5 rounded-full bg-[#306d29]/20 flex items-center justify-center text-[10px] font-black flex-shrink-0">2</span> Kristen</button>
+                                        <button onclick="pilihNominal('agama', this, 'Katolik', 3)" class="w-full text-left py-1.5 px-3 rounded-xl border border-[#306d29]/30 text-[#306d29] font-bold hover:bg-[#306d29]/10 transition-all flex items-center gap-3 text-sm"><span class="w-5 h-5 rounded-full bg-[#306d29]/20 flex items-center justify-center text-[10px] font-black flex-shrink-0">3</span> Katolik</button>
+                                        <button onclick="pilihNominal('agama', this, 'Hindu', 4)" class="w-full text-left py-1.5 px-3 rounded-xl border border-[#306d29]/30 text-[#306d29] font-bold hover:bg-[#306d29]/10 transition-all flex items-center gap-3 text-sm"><span class="w-5 h-5 rounded-full bg-[#306d29]/20 flex items-center justify-center text-[10px] font-black flex-shrink-0">4</span> Hindu</button>
+                                        <button onclick="pilihNominal('agama', this, 'Buddha', 5)" class="w-full text-left py-1.5 px-3 rounded-xl border border-[#306d29]/30 text-[#306d29] font-bold hover:bg-[#306d29]/10 transition-all flex items-center gap-3 text-sm"><span class="w-5 h-5 rounded-full bg-[#306d29]/20 flex items-center justify-center text-[10px] font-black flex-shrink-0">5</span> Buddha</button>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white p-5 rounded-2xl border border-[#306d29]/20 shadow-sm">
+                                    <h5 class="font-bold text-[#0d530e] mb-3 text-sm flex items-center gap-2"><span>🩸</span> Golongan Darah</h5>
+                                    <div class="space-y-2" id="sim-darah">
+                                        <button onclick="pilihNominal('darah', this, 'Golongan A', 1)" class="w-full text-left py-2 px-4 rounded-xl border border-[#306d29]/30 text-[#306d29] font-bold hover:bg-[#306d29]/10 transition-all flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-[#306d29]/20 flex items-center justify-center text-xs font-black">1</span> Golongan A</button>
+                                        <button onclick="pilihNominal('darah', this, 'Golongan B', 2)" class="w-full text-left py-2 px-4 rounded-xl border border-[#306d29]/30 text-[#306d29] font-bold hover:bg-[#306d29]/10 transition-all flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-[#306d29]/20 flex items-center justify-center text-xs font-black">2</span> Golongan B</button>
+                                        <button onclick="pilihNominal('darah', this, 'Golongan AB', 3)" class="w-full text-left py-2 px-4 rounded-xl border border-[#306d29]/30 text-[#306d29] font-bold hover:bg-[#306d29]/10 transition-all flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-[#306d29]/20 flex items-center justify-center text-xs font-black">3</span> Golongan AB</button>
+                                        <button onclick="pilihNominal('darah', this, 'Golongan O', 4)" class="w-full text-left py-2 px-4 rounded-xl border border-[#306d29]/30 text-[#306d29] font-bold hover:bg-[#306d29]/10 transition-all flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-[#306d29]/20 flex items-center justify-center text-xs font-black">4</span> Golongan O</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="nominal-feedback" class="hidden mt-6 bg-[#306d29] text-[#fbf5dd] p-5 rounded-2xl shadow-lg border border-[#0d530e] text-sm md:text-base leading-relaxed animate-fade-in relative">
+                                <div class="absolute -top-3 left-6 bg-[#e7e1b1] text-[#0d530e] font-black px-3 py-1 rounded-full text-xs shadow-md">Insight Data!</div>
+                                Meskipun kamu memilih angka <strong id="nominal-selected-angka" class="text-amber-300 text-lg mx-1"></strong> untuk mewakili <strong id="nominal-selected-val" class="text-amber-300 text-lg mx-1"></strong>, angka tersebut <strong class="text-amber-300 border-b border-amber-300 border-dashed pb-0.5">TIDAK BISA dihitung secara matematika</strong>. Angka 2 tidak lebih tinggi atau lebih besar dari angka 1. Angka tersebut murni hanya digunakan sistem komputer sebagai "Label" atau "Simbol". Inilah inti dari <strong>Data Kualitatif Nominal!</strong>
+                            </div>
+                            
+                            <script>
+                                function pilihNominal(kategori, btnEl, nilai, angka) {
+                                    // 1. Reset warna semua tombol di kategori yang sama
+                                    let buttons = document.querySelectorAll('#sim-' + kategori + ' button');
+                                    let isKecil = kategori === 'agama'; // khusus agama paddingnya lebih kecil
+
+                                    buttons.forEach(b => {
+                                        b.className = "w-full text-left rounded-xl border border-[#306d29]/30 text-[#306d29] font-bold hover:bg-[#306d29]/10 transition-all flex items-center gap-3 " + (isKecil ? "py-1.5 px-3 text-sm" : "py-2 px-4");
+                                        b.firstChild.className = "rounded-full bg-[#306d29]/20 flex items-center justify-center font-black flex-shrink-0 " + (isKecil ? "w-5 h-5 text-[10px]" : "w-6 h-6 text-xs");
+                                    });
+                                    
+                                    // 2. Set warna menyala pada tombol yang diklik
+                                    btnEl.className = "w-full text-left rounded-xl border border-[#0d530e] bg-[#306d29] text-[#fbf5dd] font-bold shadow-md transition-all flex items-center gap-3 transform scale-[1.02] " + (isKecil ? "py-1.5 px-3 text-sm" : "py-2 px-4");
+                                    btnEl.firstChild.className = "rounded-full bg-[#fbf5dd] text-[#0d530e] flex items-center justify-center font-black shadow-sm flex-shrink-0 " + (isKecil ? "w-5 h-5 text-[10px]" : "w-6 h-6 text-xs");
+                                    
+                                    // 3. Tampilkan pesan feedback beserta angka dan nilai yang dipilih
+                                    document.getElementById('nominal-feedback').classList.remove('hidden');
+                                    document.getElementById('nominal-selected-val').innerText = nilai;
+                                    document.getElementById('nominal-selected-angka').innerText = angka;
+                                }
+                            </script>
+                        </div>
+
                         <div class="bg-[#e7e1b1] p-6 md:p-8 rounded-3xl border border-[#306d29]/30 shadow-lg mt-8 mb-12 relative overflow-hidden">
                             <div class="absolute top-0 right-0 w-40 h-40 bg-[#306d29]/5 rounded-full blur-3xl pointer-events-none"></div>
                             
                             <div class="text-center mb-8 relative z-10">
-                                <h4 class="text-2xl font-black text-[#0d530e] mb-2">✨ Lab Mini: Generator Kartu Pelajar</h4>
+                                <h4 class="text-2xl font-black text-[#0d530e] mb-2">Lab Mini: Generator Kartu Pelajar</h4>
                                 <p class="text-sm text-[#306d29] font-medium">Ketikkan data identitas pelajarmu di bawah ini. Mari kita lihat bagaimana komputer membaca tipe datanya secara otomatis!</p>
                             </div>
 
@@ -168,7 +241,7 @@ class Bab1_02_SumberJenisStrukturSeeder extends Seeder
                                     </div>
                                     
                                     <button id="btn-analyze-id" onclick="analyzeIdCard()" disabled class="mt-4 w-full py-4 bg-[#0d530e] border border-[#306d29] text-[#e7e1b1] font-black rounded-2xl opacity-50 cursor-not-allowed transition-all uppercase tracking-widest shadow-lg flex items-center justify-center gap-2">
-                                        <span class="text-xl">🔍</span> Analisis Struktur Data Kartu
+                                        <span class="text-xl"></span> Analisis Struktur Data Kartu
                                     </button>
                                 </div>
                             </div>
@@ -392,7 +465,7 @@ class Bab1_02_SumberJenisStrukturSeeder extends Seeder
 
                 <div class="mt-8 mb-16 bg-[#fbf5dd] border-2 border-[#306d29]/30 rounded-3xl p-8 shadow-xl max-w-3xl mx-auto relative overflow-hidden">
                     <div class="text-center mb-8">
-                        <h3 class="text-2xl font-black mb-2 text-[#0d530e]">🎮 Uji Cepat: Data Sorter</h3>
+                        <h3 class="text-2xl font-black mb-2 text-[#0d530e]">Uji Cepat: Data Sorter</h3>
                         <p class="text-sm text-[#306d29] mb-4">Uji pemahamanmu tentang jenis-jenis data di atas!</p>
                         <div class="inline-block bg-[#e7e1b1] text-[#306d29] px-4 py-1 rounded-full text-xs font-bold tracking-widest mb-4 border border-[#306d29]/20">
                             DATA KE-<span id="qIdx">1</span> DARI 5
@@ -517,7 +590,7 @@ class Bab1_02_SumberJenisStrukturSeeder extends Seeder
                 </div>
 
                 <div class="mt-16">
-                    <h3 class="text-2xl font-black text-center mb-4 text-[#0d530e]">🛠️ Lab AI: Ekstraktor Data</h3>
+                    <h3 class="text-2xl font-black text-center mb-4 text-[#0d530e]">Lab AI: Ekstraktor Data</h3>
                     <p class="text-center text-[#306d29] mb-8 max-w-2xl mx-auto">
                         AI yang canggih bisa membaca <strong>data tidak terstruktur (teks chat berantakan)</strong> dan mengubahnya menjadi <strong>data terstruktur (tabel)</strong>. Mari kita simulasikan!
                     </p>
@@ -539,7 +612,7 @@ class Bab1_02_SumberJenisStrukturSeeder extends Seeder
                             </div>
                             
                             <button onclick="structureData()" id="btnProcess" class="mt-6 w-full py-4 bg-[#306d29] hover:bg-[#0d530e] text-[#fbf5dd] rounded-xl font-black text-lg transition-all shadow-md flex items-center justify-center gap-2 group active:scale-95">
-                                <span>⚡</span> EKSTRAK KE TABEL
+                                <span></span> EKSTRAK KE TABEL
                                 <span class="group-hover:translate-x-1 transition-transform">→</span>
                             </button>
                         </div>
