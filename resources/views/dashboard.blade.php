@@ -8,43 +8,132 @@
 <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
 
 <style>
-    /* Tema Cream & Green untuk Tutorial Pop-up */
+    /* =========================================
+       APPLE DESIGN TOKENS — CSS REFERENCE
+       ========================================= */
+    :root {
+        /* Accent / Brand */
+        --color-primary:          #0066cc;
+        --color-primary-focus:    #0071e3;
+        --color-primary-on-dark:  #2997ff;
+
+        /* Surface */
+        --color-canvas:           #ffffff;
+        --color-canvas-parchment: #f5f5f7;
+        --color-surface-pearl:    #fafafc;
+        --color-surface-tile-1:   #272729;
+        --color-surface-tile-2:   #2a2a2c;
+        --color-surface-tile-3:   #252527;
+        --color-surface-black:    #000000;
+        --color-chip-translucent: rgba(210, 210, 215, 0.64);
+
+        /* Text */
+        --color-ink:              #1d1d1f;
+        --color-ink-muted-80:     #333333;
+        --color-ink-muted-48:     #7a7a7a;
+        --color-on-dark:          #ffffff;
+        --color-body-muted:       #cccccc;
+
+        /* Border */
+        --color-divider-soft:     #f0f0f0;
+        --color-hairline:         #e0e0e0;
+
+        /* Spacing */
+        --space-xxs:     4px;
+        --space-xs:      8px;
+        --space-sm:      12px;
+        --space-md:      17px;
+        --space-lg:      24px;
+        --space-xl:      32px;
+        --space-xxl:     48px;
+        --space-section: 80px;
+
+        /* Border Radius */
+        --radius-none: 0px;
+        --radius-xs:   5px;
+        --radius-sm:   8px;
+        --radius-md:   11px;
+        --radius-lg:   18px;
+        --radius-pill: 9999px;
+        --radius-full: 9999px;
+    }
+
+    /* TYPOGRAPHY */
+    .type-display-md  { font-size: 34px; font-weight: 600; line-height: 1.47; letter-spacing: -0.374px; font-family: 'SF Pro Display', 'Inter', sans-serif; }
+    .type-lead        { font-size: 28px; font-weight: 600; line-height: 1.14; letter-spacing: 0.196px; font-family: 'SF Pro Display', 'Inter', sans-serif; }
+    .type-tagline     { font-size: 21px; font-weight: 600; line-height: 1.19; letter-spacing: 0.231px; font-family: 'SF Pro Display', 'Inter', sans-serif; }
+    .type-body-strong { font-size: 17px; font-weight: 600; line-height: 1.24; letter-spacing: -0.374px; font-family: 'SF Pro Text', 'Inter', sans-serif; }
+    .type-body        { font-size: 17px; font-weight: 400; line-height: 1.47; letter-spacing: -0.374px; font-family: 'SF Pro Text', 'Inter', sans-serif; }
+    .type-caption     { font-size: 14px; font-weight: 400; line-height: 1.43; letter-spacing: -0.224px; font-family: 'SF Pro Text', 'Inter', sans-serif; }
+    .type-caption-str { font-size: 14px; font-weight: 600; line-height: 1.29; letter-spacing: -0.224px; font-family: 'SF Pro Text', 'Inter', sans-serif; }
+    .type-micro       { font-size: 10px; font-weight: 600; line-height: 1.3;  letter-spacing: -0.08px; font-family: 'SF Pro Text', 'Inter', sans-serif; text-transform: uppercase; }
+
+    /* COMPONENTS */
+    .card-utility {
+        background: var(--color-canvas);
+        border: 1px solid var(--color-hairline);
+        border-radius: var(--radius-lg);
+        padding: var(--space-lg);
+        box-shadow: none; /* No shadow by default */
+    }
+
+    .btn-primary {
+        background: var(--color-primary); color: #fff;
+        border-radius: var(--radius-pill); padding: 11px 22px;
+        font-size: 17px; font-weight: 400; letter-spacing: -0.374px;
+        border: none; cursor: pointer; text-decoration: none;
+        display: inline-flex; align-items: center; justify-content: center;
+        transition: transform 0.1s;
+    }
+    .btn-primary:active { transform: scale(0.95); }
+    .btn-primary:hover  { background: var(--color-primary-focus); }
+
+    .btn-secondary {
+        background: transparent; color: var(--color-primary);
+        border: 1px solid var(--color-primary); border-radius: var(--radius-pill);
+        padding: 11px 22px; font-size: 17px; font-weight: 400; letter-spacing: -0.374px;
+        cursor: pointer; text-decoration: none; display: inline-flex; justify-content: center;
+        transition: transform 0.1s;
+    }
+    .btn-secondary:active { transform: scale(0.95); }
+
+    .btn-store-hero {
+        background: var(--color-primary); color: #fff; border-radius: var(--radius-pill);
+        padding: 14px 28px; font-size: 18px; font-weight: 300; border: none; cursor: pointer;
+        text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+        transition: transform 0.1s;
+    }
+    .btn-store-hero:active { transform: scale(0.95); }
+
+    .btn-pearl {
+        background: var(--color-surface-pearl); color: var(--color-ink-muted-80);
+        border-radius: var(--radius-md); border: 1px solid var(--color-hairline);
+        padding: 6px 14px; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center;
+    }
+
+    /* Progress Bar */
+    .apple-progress-track {
+        width: 100%; background: var(--color-divider-soft); border-radius: var(--radius-pill); height: 6px; overflow: hidden;
+    }
+    .apple-progress-fill {
+        height: 100%; border-radius: var(--radius-pill); background: var(--color-primary); transition: width 1s ease;
+    }
+
+    /* Driver.js Theme Clean Apple Override */
     .driver-popover.driverjs-theme {
-        background-color: #fbf5dd;
-        color: #0d530e;
-        border: 1px solid #306d29;
-        border-radius: 12px;
-        box-shadow: 0 20px 25px -5px rgba(13, 83, 14, 0.3);
+        background-color: var(--color-canvas); color: var(--color-ink); border: 1px solid var(--color-hairline); 
+        border-radius: var(--radius-lg); font-family: inherit; box-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
         z-index: 100000 !important;
-        font-family: '"Plus Jakarta Sans"', sans-serif;
     }
-    .driver-popover.driverjs-theme .driver-popover-title {
-        font-size: 18px;
-        font-weight: 800;
-        color: #306d29; 
+    .driver-popover.driverjs-theme .driver-popover-title { color: var(--color-ink); font-weight: 600; font-size: 21px; letter-spacing: -0.02em;}
+    .driver-popover.driverjs-theme .driver-popover-description { font-size: 14px; line-height: 1.43; margin-bottom: 15px; color: var(--color-ink-muted-80); letter-spacing: -0.224px; }
+    .driver-popover.driverjs-theme button { 
+        background-color: var(--color-primary); color: #ffffff; border: none; text-shadow: none; 
+        border-radius: var(--radius-pill); padding: 8px 16px; font-weight: 400; font-size: 14px;
     }
-    .driver-popover.driverjs-theme .driver-popover-description {
-        font-size: 14px;
-        line-height: 1.5;
-        margin-bottom: 15px;
-        color: #0d530e;
-    }
-    .driver-popover.driverjs-theme button {
-        background-color: #306d29;
-        color: #fbf5dd;
-        border-radius: 6px;
-        padding: 8px 16px;
-        font-size: 13px;
-        font-weight: bold;
-        border: none;
-        text-shadow: none;
-        cursor: pointer;
-    }
-    .driver-popover.driverjs-theme button:hover {
-        background-color: #0d530e;
-    }
+    .driver-popover.driverjs-theme button:hover { background-color: var(--color-primary-focus); }
     .driver-popover-close-btn { display: none !important; }
-    .driver-overlay { background-color: rgba(13, 83, 14, 0.7) !important; }
+    .driver-overlay { background-color: rgba(0,0,0,0.4) !important; backdrop-filter: blur(4px); }
 </style>
 
 @php
@@ -66,72 +155,64 @@
     }
 @endphp
 
-<div class="space-y-8">
+<div class="space-y-8 pb-16">
 
     @if(session('error'))
-        <div class="p-4 bg-red-100 border border-red-400 rounded-xl text-red-700 font-bold flex items-center gap-3 shadow-sm">
-            <span class="text-xl">⚠️</span> {{ session('error') }}
+        <div class="p-4 rounded-lg flex items-center gap-3" style="background: var(--color-surface-pearl); border: 1px solid #ff3b30; color: var(--color-ink);">
+            <span class="text-xl">⚠️</span> <span class="type-body-strong">{{ session('error') }}</span>
         </div>
     @endif
 
+    {{-- KONDISI 1: JIKA BELUM PRE-TEST --}}
     @if(!$hasDonePreTest)
-        <div class="bg-[#e7e1b1] rounded-3xl border border-[#306d29]/30 shadow-lg overflow-hidden relative">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-[#306d29]/5 blur-[80px] rounded-full pointer-events-none"></div>
-            
-            <div class="p-10 md:p-16 flex flex-col items-center text-center relative z-10">
-                <div class="w-20 h-20 bg-[#fbf5dd] rounded-full flex items-center justify-center mb-6 border border-[#306d29]/30 shadow-md animate-pulse">
-                    <svg class="w-10 h-10 text-[#306d29]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
-                </div>
-                
-                <span class="px-4 py-1 rounded-full bg-red-100 text-red-600 text-xs font-extrabold uppercase tracking-widest mb-4 border border-red-200">
-                    Tugas Wajib Akademik
-                </span>
-                
-                <h1 class="text-3xl md:text-5xl font-black text-[#0d530e] mb-4 tracking-tight">Evaluasi Kemampuan Awal (Pre-Test)</h1>
-                
-                <p class="text-[#306d29] text-lg max-w-2xl leading-relaxed mb-10">
-                    Selamat datang di VisualData! Sebelum memulai pembelajaran, Anda <strong>diwajibkan</strong> mengikuti Pre-Test ini. Tujuannya adalah untuk mengukur pemahaman awal Anda terhadap materi Visualisasi dan Pengelompokan Data. Nilai Pre-Test tidak akan mempengaruhi nilai akhir rapor Anda.
-                </p>
-
-                <a href="{{ route('quiz.show', $preTest->id) }}" class="px-10 py-4 bg-[#306d29] hover:bg-[#0d530e] text-[#fbf5dd] text-lg font-bold rounded-xl shadow-lg hover:-translate-y-1 transition-all flex items-center gap-3">
-                    Mulai Kerjakan Pre-Test Sekarang ➔
-                </a>
+        <div class="card-utility text-center" style="background: var(--color-canvas-parchment); padding: 80px 24px;">
+            <div class="mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background: var(--color-canvas); border: 1px solid var(--color-hairline); box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;">
+                <svg class="w-8 h-8" style="color: var(--color-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
             </div>
+            
+            <span class="type-caption-str uppercase tracking-wider" style="color: #d53b00;">
+                Tugas Wajib Akademik
+            </span>
+            
+            <h1 class="type-display-md mt-4 mb-4" style="color: var(--color-ink);">Evaluasi Kemampuan Awal (Pre-Test)</h1>
+            
+            <p class="type-body max-w-2xl mx-auto mb-10" style="color: var(--color-ink-muted-80);">
+                Selamat datang di VisualData! Sebelum memulai pembelajaran, Anda <strong>diwajibkan</strong> mengikuti Pre-Test ini. Tujuannya adalah untuk mengukur pemahaman awal Anda terhadap materi. Nilai Pre-Test tidak akan mempengaruhi nilai akhir Anda.
+            </p>
+
+            <a href="{{ route('quiz.show', $preTest->id) }}" class="btn-store-hero">
+                Mulai Kerjakan Pre-Test &rarr;
+            </a>
         </div>
 
-        <div class="opacity-40 pointer-events-none filter blur-[2px] mt-12">
-            <h3 class="text-xl font-bold text-[#0d530e] mb-6 flex items-center gap-2 border-b border-[#306d29]/20 pb-4">
-                <span></span> Daftar Materi Belajar (Terkunci)
+        {{-- Blurred Background for Locked Modules --}}
+        <div class="mt-12" style="opacity: 0.4; filter: blur(3px); pointer-events: none;">
+            <h3 class="type-lead mb-6 pb-4" style="border-bottom: 1px solid var(--color-hairline); color: var(--color-ink);">
+                Daftar Materi Belajar (Terkunci)
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-[#e7e1b1] border border-[#306d29]/20 rounded-xl p-5 h-40"></div>
-                <div class="bg-[#e7e1b1] border border-[#306d29]/20 rounded-xl p-5 h-40"></div>
+                <div class="card-utility h-40" style="background: var(--color-canvas-parchment);"></div>
+                <div class="card-utility h-40" style="background: var(--color-canvas-parchment);"></div>
             </div>
         </div>
     @endif
 
+    {{-- KONDISI 2: JIKA SUDAH PRE-TEST (Dashboard Utama) --}}
     @if($hasDonePreTest)
         
-        <div id="hero-section" class="relative rounded-2xl p-1 bg-[#306d29] shadow-xl overflow-hidden">
-            <div class="bg-[#e7e1b1] rounded-xl p-8 relative z-10 h-full flex flex-col md:flex-row items-center justify-between gap-6">
-                
-                <div class="z-20">
-                    <p class="text-[#306d29] font-bold tracking-widest text-xs uppercase mb-2">Selamat Datang Kembali,</p>
-                    <h1 class="text-4xl md:text-5xl font-extrabold text-[#0d530e] tracking-tight">
-                        {{ Auth::user()->name }}
-                    </h1>
-                    <p class="text-[#306d29] mt-2 max-w-lg text-sm leading-relaxed">
-                        Lanjutkan pemahaman komputasionalmu. Tuntaskan semua materi dan kerjakan Post-Test di akhir materi!
-                    </p>
-                </div>
-
-                <div class="hidden md:block z-20 text-right">
-                    <div class="text-6xl drop-shadow-md">
-                        🎓
-                    </div>
-                </div>
-
-                <div class="absolute top-0 right-0 w-64 h-64 bg-[#fbf5dd]/30 blur-[60px] rounded-full pointer-events-none"></div>
+        {{-- Welcome Hero Card (Dark Tile Mode) --}}
+        <div id="hero-section" class="card-utility flex flex-col md:flex-row items-center justify-between gap-6" style="background: var(--color-surface-tile-1); border: none; padding: 48px 40px;">
+            <div class="z-20 text-left">
+                <p class="type-micro mb-2" style="color: var(--color-body-muted);">Selamat Datang Kembali,</p>
+                <h1 class="type-display-md mb-2" style="color: var(--color-on-dark);">
+                    {{ Auth::user()->name }}
+                </h1>
+                <p class="type-body max-w-lg" style="color: var(--color-body-muted);">
+                    Lanjutkan pemahaman komputasionalmu. Tuntaskan semua materi dan kerjakan Post-Test di akhir materi!
+                </p>
+            </div>
+            <div class="hidden md:block z-20 text-right">
+                <div class="text-7xl" style="text-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px;">🎓</div>
             </div>
         </div>
 
@@ -142,51 +223,52 @@
             }
         @endphp
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div id="stat-pretest" class="bg-[#e7e1b1] border border-[#306d29]/20 p-6 rounded-2xl shadow-sm flex items-center gap-4 hover:border-[#306d29]/50 transition-colors">
-                <div class="p-3.5 bg-[#fbf5dd] text-[#306d29] rounded-xl border border-[#306d29]/10">
+        {{-- Statistics Grid --}}
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
+            <div id="stat-pretest" class="card-utility flex items-center gap-4">
+                <div class="btn-pearl" style="width: 50px; height: 50px; border-radius: var(--radius-sm); border: none; background: var(--color-canvas-parchment); color: var(--color-primary);">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                 </div>
                 <div>
-                    <p class="text-[10px] text-[#306d29] font-bold uppercase tracking-wider">Nilai Pre-Test</p>
-                    <h3 class="text-2xl font-black text-[#0d530e]">{{ $preTestScore }}</h3>
+                    <p class="type-micro mb-1" style="color: var(--color-ink-muted-80);">Nilai Pre-Test</p>
+                    <h3 class="type-lead" style="color: var(--color-ink);">{{ $preTestScore }}</h3>
                 </div>
             </div>
 
-            <div id="stat-materi" class="bg-[#e7e1b1] border border-[#306d29]/20 p-6 rounded-2xl shadow-sm flex items-center gap-4 hover:border-[#306d29]/50 transition-colors">
-                <div class="p-3.5 bg-[#fbf5dd] text-[#306d29] rounded-xl border border-[#306d29]/10">
+            <div id="stat-materi" class="card-utility flex items-center gap-4">
+                <div class="btn-pearl" style="width: 50px; height: 50px; border-radius: var(--radius-sm); border: none; background: var(--color-canvas-parchment); color: var(--color-primary);">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                 </div>
                 <div>
-                    <p class="text-[10px] text-[#306d29] font-bold uppercase tracking-wider">Materi Selesai</p>
-                    <h3 class="text-2xl font-black text-[#0d530e]">{{ $finishedItems }} <span class="text-xs text-[#306d29]/70">/ {{ $totalItems }}</span></h3>
+                    <p class="type-micro mb-1" style="color: var(--color-ink-muted-80);">Materi Selesai</p>
+                    <h3 class="type-lead" style="color: var(--color-ink);">{{ $finishedItems }} <span class="type-body" style="color: var(--color-ink-muted-48);">/ {{ $totalItems }}</span></h3>
                 </div>
             </div>
 
-            <div id="stat-rata" class="bg-[#e7e1b1] border border-[#306d29]/20 p-6 rounded-2xl shadow-sm flex items-center gap-4 hover:border-[#306d29]/50 transition-colors">
-                <div class="p-3.5 bg-[#fbf5dd] text-[#306d29] rounded-xl border border-[#306d29]/10">
+            <div id="stat-rata" class="card-utility flex items-center gap-4">
+                <div class="btn-pearl" style="width: 50px; height: 50px; border-radius: var(--radius-sm); border: none; background: var(--color-canvas-parchment); color: var(--color-primary);">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                 </div>
                 <div>
-                    <p class="text-[10px] text-[#306d29] font-bold uppercase tracking-wider">Rata-rata Evaluasi</p>
-                    <h3 class="text-2xl font-black text-[#0d530e]">{{ $avgScore }}</h3>
+                    <p class="type-micro mb-1" style="color: var(--color-ink-muted-80);">Rata-rata Evaluasi</p>
+                    <h3 class="type-lead" style="color: var(--color-ink);">{{ $avgScore }}</h3>
                 </div>
             </div>
 
-            <div id="stat-progress" class="bg-[#e7e1b1] border border-[#306d29]/20 p-6 rounded-2xl shadow-sm flex items-center gap-4 hover:border-[#306d29]/50 transition-colors">
-                <div class="p-3.5 bg-[#fbf5dd] text-[#306d29] rounded-xl border border-[#306d29]/10">
+            <div id="stat-progress" class="card-utility flex items-center gap-4">
+                <div class="btn-pearl" style="width: 50px; height: 50px; border-radius: var(--radius-sm); border: none; background: var(--color-canvas-parchment); color: var(--color-primary);">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                 </div>
                 <div>
-                    <p class="text-[10px] text-[#306d29] font-bold uppercase tracking-wider">Progres Belajar</p>
-                    <h3 class="text-2xl font-black text-[#0d530e]">{{ $progressPercentage }}%</h3>
+                    <p class="type-micro mb-1" style="color: var(--color-ink-muted-80);">Progres Belajar</p>
+                    <h3 class="type-lead" style="color: var(--color-ink);">{{ $progressPercentage }}%</h3>
                 </div>
             </div>
         </div>
 
-        <div id="modul-belajar" class="bg-[#e7e1b1] p-8 rounded-3xl border border-[#306d29]/20 shadow-sm mt-8">
-            <h3 class="text-xl font-bold text-[#0d530e] mb-6 flex items-center gap-3 border-b border-[#306d29]/20 pb-4">
-                <div class="w-8 h-8 bg-[#fbf5dd] text-[#306d29] rounded-lg flex items-center justify-center border border-[#306d29]/20"></div>
+        {{-- Modules List Container --}}
+        <div id="modul-belajar" class="mt-12">
+            <h3 class="type-lead mb-6 pb-4" style="border-bottom: 1px solid var(--color-hairline); color: var(--color-ink);">
                 Daftar Materi Belajar
             </h3>
             
@@ -221,10 +303,10 @@
                     @endphp
 
                     @if($isChapterUnlocked)
-                        <div class="bg-[#fbf5dd] border border-[#306d29]/20 rounded-2xl p-6 hover:border-[#306d29]/50 transition-colors flex flex-col justify-between shadow-sm">
+                        <div class="card-utility flex flex-col justify-between transition-colors hover:border-[var(--color-primary)]">
                             <div>
                                 <div class="flex justify-between items-start mb-3">
-                                    <h4 class="text-lg font-bold text-[#0d530e]">
+                                    <h4 class="type-body-strong" style="color: var(--color-ink);">
                                         @if($chapter->sequence == 0)
                                             Pengantar & Apersepsi
                                         @elseif($chapter->sequence == 99)
@@ -233,7 +315,7 @@
                                             {{ $chapter->title }}
                                         @endif
                                     </h4>
-                                    <span class="text-[10px] font-bold px-2.5 py-1 bg-[#e7e1b1] rounded-md text-[#306d29] border border-[#306d29]/30">
+                                    <span class="btn-pearl">
                                         @if($chapter->sequence == 0)
                                             Pendahuluan
                                         @elseif($chapter->sequence == 99)
@@ -243,20 +325,22 @@
                                         @endif
                                     </span>
                                 </div>
-                                <p class="text-sm text-[#306d29] mb-8 line-clamp-2 leading-relaxed">{{ $chapter->description ?? 'Materi pembelajaran interaktif Visualisasi dan Pengelompokan Data.' }}</p>
+                                <p class="type-caption mb-8 line-clamp-2" style="color: var(--color-ink-muted-80);">
+                                    {{ $chapter->description ?? 'Materi pembelajaran interaktif Visualisasi dan Pengelompokan Data.' }}
+                                </p>
                             </div>
 
                             <div>
-                                <div class="flex justify-between text-xs mb-2 font-bold uppercase tracking-wider">
-                                    <span class="text-[#306d29]">Progres Bab</span>
-                                    <span class="text-[#306d29]">{{ $chapterPercentage }}%</span>
+                                <div class="flex justify-between type-caption-str mb-2" style="color: var(--color-ink);">
+                                    <span>Progres Bab</span>
+                                    <span>{{ $chapterPercentage }}%</span>
                                 </div>
-                                <div class="w-full bg-[#e7e1b1] rounded-full h-2 mb-5 overflow-hidden border border-[#306d29]/10">
-                                    <div class="bg-[#306d29] h-full rounded-full transition-all duration-1000" style="width: {{ $chapterPercentage }}%"></div>
+                                <div class="apple-progress-track mb-5">
+                                    <div class="apple-progress-fill" style="width: {{ $chapterPercentage }}%;"></div>
                                 </div>
                                 
                                 @if($chapterMaterials->isNotEmpty())
-                                    <a href="{{ route('learning.show', $chapterMaterials->first()->slug) }}" class="block w-full py-3 text-center rounded-xl bg-[#306d29] hover:bg-[#0d530e] text-[#fbf5dd] font-bold text-sm transition-all shadow-md">
+                                    <a href="{{ route('learning.show', $chapterMaterials->first()->slug) }}" class="{{ $chapterPercentage == 100 ? 'btn-secondary' : 'btn-primary' }} w-full text-center" style="display: block;">
                                         @if($chapterPercentage == 0)
                                             Mulai Belajar
                                         @elseif($chapterPercentage == 100)
@@ -267,11 +351,13 @@
                                     </a>
                                 @else
                                     @if($chapter->sequence == 99 && $chapterQuiz)
-                                        <a href="{{ route('quiz.show', $chapterQuiz->id) }}" class="block w-full py-3 text-center rounded-xl bg-[#306d29] hover:bg-[#0d530e] text-[#fbf5dd] font-bold text-sm transition-all shadow-md">
+                                        <a href="{{ route('quiz.show', $chapterQuiz->id) }}" class="btn-primary w-full text-center" style="display: block;">
                                             Mulai Evaluasi Akhir
                                         </a>
                                     @else
-                                        <button disabled class="block w-full py-3 text-center rounded-xl bg-[#e7e1b1] border border-[#306d29]/20 text-[#306d29]/70 font-bold text-sm cursor-not-allowed">Belum Ada Materi</button>
+                                        <button disabled class="w-full text-center" style="background: var(--color-surface-pearl); color: var(--color-ink-muted-48); border: 1px solid var(--color-hairline); border-radius: var(--radius-pill); padding: 11px 22px; cursor: not-allowed; font-size: 17px;">
+                                            Belum Ada Materi
+                                        </button>
                                     @endif
                                 @endif
                             </div>
@@ -284,36 +370,30 @@
                             }
                         @endphp
                     @else
-                        <div class="bg-[#fbf5dd]/60 border border-[#306d29]/10 rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group">
-                            <div class="absolute inset-0 bg-[#fbf5dd]/80 backdrop-blur-sm z-10 flex flex-col items-center justify-center border border-[#306d29]/20 rounded-2xl transition-all duration-300">
-                                <span class="text-4xl mb-2 drop-shadow-md">🔒</span>
-                                <h4 class="font-bold text-[#0d530e]">Materi Terkunci</h4>
-                                <p class="text-[10px] text-[#306d29] mt-1 px-8 text-center leading-relaxed">Selesaikan 100% materi di bab sebelumnya untuk membuka materi ini.</p>
+                        {{-- LOCKED CHAPTER --}}
+                        <div class="card-utility" style="background: var(--color-canvas-parchment); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center z-10" style="background: rgba(245, 245, 247, 0.7); backdrop-filter: saturate(180%) blur(8px);">
+                                <span class="text-4xl mb-2">🔒</span>
+                                <h4 class="type-body-strong" style="color: var(--color-ink);">Materi Terkunci</h4>
+                                <p class="type-caption text-center px-8 mt-1" style="color: var(--color-ink-muted-80);">Selesaikan 100% materi di bab sebelumnya untuk membuka materi ini.</p>
                             </div>
                             
-                            <div class="opacity-20 filter blur-[3px] select-none pointer-events-none">
+                            <div style="opacity: 0.3; pointer-events: none;">
                                 <div>
                                     <div class="flex justify-between items-start mb-3">
-                                        <h4 class="text-lg font-bold text-[#0d530e]">Materi Tersembunyi</h4>
-                                        <span class="text-[10px] font-bold px-2.5 py-1 bg-[#e7e1b1] rounded-md text-[#306d29] border border-[#306d29]/30">
-                                            @if($chapter->sequence == 0)
-                                                Pendahuluan
-                                            @elseif($chapter->sequence == 99) 
-                                                Evaluasi 
-                                            @else 
-                                                Bab {{ $chapter->sequence }} 
-                                            @endif
+                                        <h4 class="type-body-strong" style="color: var(--color-ink);">Materi Tersembunyi</h4>
+                                        <span class="btn-pearl">
+                                            @if($chapter->sequence == 0) Pendahuluan @elseif($chapter->sequence == 99) Evaluasi @else Bab {{ $chapter->sequence }} @endif
                                         </span>
                                     </div>
-                                    <p class="text-sm text-[#306d29] mb-8 line-clamp-2 leading-relaxed">Deskripsi materi ini disembunyikan untuk menjaga alur metode tutorial.</p>
+                                    <p class="type-caption mb-8" style="color: var(--color-ink-muted-80);">Deskripsi materi ini disembunyikan untuk menjaga alur metode tutorial.</p>
                                 </div>
                                 <div>
-                                    <div class="flex justify-between text-xs text-[#306d29] mb-2 font-bold uppercase tracking-wider">
-                                        <span>Progres Bab</span>
-                                        <span>0%</span>
+                                    <div class="flex justify-between type-caption-str mb-2" style="color: var(--color-ink);">
+                                        <span>Progres Bab</span><span>0%</span>
                                     </div>
-                                    <div class="w-full bg-[#e7e1b1] rounded-full h-2 mb-5 overflow-hidden"></div>
-                                    <button disabled class="block w-full py-3 text-center rounded-xl bg-[#e7e1b1] border border-[#306d29]/20 text-[#306d29]/70 font-bold text-sm">Terkunci</button>
+                                    <div class="apple-progress-track mb-5"></div>
+                                    <button disabled class="w-full text-center" style="background: var(--color-hairline); color: var(--color-ink-muted-48); border: none; border-radius: var(--radius-pill); padding: 11px 22px;">Terkunci</button>
                                 </div>
                             </div>
                         </div>
@@ -333,20 +413,20 @@
             @endphp
             
             @if($postTest)
-            <div id="post-test-section" class="mt-8 p-6 bg-[#306d29] border border-[#0d530e] rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
+            <div id="post-test-section" class="card-utility mt-8 flex flex-col md:flex-row items-center justify-between gap-6" style="background: var(--color-surface-pearl);">
                 <div>
-                    <h4 class="text-lg font-bold text-[#fbf5dd] mb-1 flex items-center gap-2">
-                        <span class="text-xl">🏆</span> Evaluasi Akhir Pembelajaran (Post-Test)
+                    <h4 class="type-body-strong mb-1" style="color: var(--color-ink);">
+                        🏆 Evaluasi Akhir Pembelajaran (Post-Test)
                     </h4>
-                    <p class="text-sm text-[#e7e1b1]">Kerjakan evaluasi akhir ini setelah menyelesaikan semua bab untuk mendapatkan nilai akhir.</p>
+                    <p class="type-caption" style="color: var(--color-ink-muted-80);">Kerjakan evaluasi akhir ini setelah menyelesaikan semua bab untuk mendapatkan nilai akhir.</p>
                 </div>
                 
                 @if($progressPercentage == 100) 
-                    <a href="{{ route('quiz.show', $postTest->id) }}" class="shrink-0 px-8 py-3 bg-[#fbf5dd] hover:bg-[#e7e1b1] text-[#0d530e] font-bold rounded-xl shadow-lg transition-colors">
+                    <a href="{{ route('quiz.show', $postTest->id) }}" class="btn-primary text-center whitespace-nowrap">
                         {{ $isPostTestDone ? 'Lihat Hasil Evaluasi' : 'Mulai Evaluasi Akhir' }}
                     </a>
                 @else
-                    <button disabled title="Selesaikan semua bab terlebih dahulu" class="shrink-0 px-8 py-3 bg-[#0d530e] border border-[#0d530e] text-[#fbf5dd]/60 font-bold rounded-xl cursor-not-allowed">
+                    <button disabled title="Selesaikan semua bab terlebih dahulu" class="text-center whitespace-nowrap" style="background: var(--color-divider-soft); color: var(--color-ink-muted-48); border: none; border-radius: var(--radius-pill); padding: 11px 22px; font-size: 17px; cursor: not-allowed;">
                         Terkunci 🔒
                     </button>
                 @endif
@@ -373,9 +453,9 @@
             overlayClickNext: false,
             allowKeyboardControl: false,
             
-            nextBtnText: 'Lanjut →',
-            prevBtnText: '← Kembali',
-            doneBtnText: 'Siap Belajar! 🚀',
+            nextBtnText: 'Lanjut',
+            prevBtnText: 'Kembali',
+            doneBtnText: 'Selesai',
             popoverClass: 'driverjs-theme',
 
             steps: [

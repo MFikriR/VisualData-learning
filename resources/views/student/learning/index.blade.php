@@ -3,12 +3,12 @@
 @section('title', $material->title)
 
 @section('content')
-{{-- Container Utama: Langsung Flex Column, hapus sidebar internal --}}
-<div class="flex flex-col h-screen overflow-hidden bg-[#0a0a0a] relative">
+{{-- Container Utama: Menggunakan skema warna hitam pekat premium --}}
+<div class="apple-learning-viewport flex flex-col h-screen overflow-hidden bg-[#000000] relative">
     
-    {{-- Header Mobile (Hanya muncul di layar kecil) --}}
-    <div class="lg:hidden p-3 bg-[#1a1a1a] border-b border-[#333] flex justify-between items-center">
-        <a href="{{ route('dashboard') }}" class="text-xs font-bold text-gray-400">← Kembali</a>
+    {{-- Header Mobile --}}
+    <div class="lg:hidden p-3 bg-[#1c1c1e] border-b border-white/5 flex justify-between items-center">
+        <a href="{{ route('dashboard') }}" class="text-xs font-medium text-[#7a7a7a] hover:text-white transition-colors">Kembali</a>
     </div>
 
     {{-- AREA SCROLLABLE (Video & Teks) --}}
@@ -18,21 +18,21 @@
             {{-- Header Judul Materi --}}
             <div class="mb-6">
                 <div class="flex items-center gap-3 mb-3">
-                    <span class="px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider
-                        {{ $material->type == 'video' ? 'bg-red-500/10 text-red-400 border border-red-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20' }}">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider
+                        {{ $material->type == 'video' ? 'bg-[#ff453a]/10 text-[#ff453a] border border-[#ff453a]/20' : 'bg-[#2997ff]/10 text-[#2997ff] border border-[#2997ff]/20' }}">
                         {{ $material->type == 'video' ? 'VIDEO' : 'BACAAN' }}
                     </span>
-                    <span class="text-xs text-gray-500 font-mono">Bab {{ $material->chapter->sequence }} - Part {{ $material->sequence }}</span>
+                    <span class="text-xs text-[#7a7a7a] font-mono">Bab {{ $material->chapter->sequence }} - Bagian {{ $material->sequence }}</span>
                 </div>
-                <h1 class="text-2xl md:text-4xl font-black text-white leading-tight">{{ $material->title }}</h1>
+                <h1 class="text-2xl md:text-4xl font-semibold text-white leading-tight tracking-tight">{{ $material->title }}</h1>
             </div>
 
-            {{-- KOTAK KONTEN UTAMA --}}
-            <div class="bg-[#151515] border border-[#222] rounded-2xl overflow-hidden shadow-2xl mb-8">
+            {{-- KOTAK KONTEN UTAMA (Menggunakan Apple Surface Tile) --}}
+            <div class="bg-[#272729] border border-white/10 rounded-2xl overflow-hidden">
                 
                 {{-- 1. VIDEO PLAYER (Full Width) --}}
                 @if($material->type == 'video' && $material->video_url)
-                    <div class="aspect-video w-full bg-black relative">
+                    <div class="aspect-video w-full bg-black relative border-b border-white/5">
                         <iframe 
                             class="w-full h-full"
                             src="{{ $material->youtube_embed_url }}" 
@@ -46,33 +46,33 @@
 
                 {{-- 2. TEKS KONTEN --}}
                 @if($material->content)
-                    <div class="p-6 md:p-10 prose prose-invert max-w-none text-gray-300 text-base md:text-lg leading-relaxed">
+                    <div class="p-6 md:p-10 prose prose-invert max-w-none text-[#cccccc] text-base md:text-lg leading-relaxed article-body">
                         {!! nl2br(e($material->content)) !!}
                     </div>
                 @endif
 
                 {{-- INFO JIKA KOSONG --}}
                 @if($material->type == 'text' && !$material->content)
-                     <div class="p-10 text-center text-gray-500 italic">
+                     <div class="p-10 text-center text-[#7a7a7a] italic text-sm">
                          Belum ada konten teks untuk materi ini.
                      </div>
                 @endif
 
-                {{-- FOOTER NAVIGASI (Tombol Selesai) --}}
-                <div class="p-6 bg-[#1a1a1a] border-t border-[#333] flex justify-between items-center gap-4">
+                {{-- FOOTER NAVIGASI (Tombol Aksi Minimalis Tanpa Shadow) --}}
+                <div class="p-6 bg-[#2a2a2c] border-t border-white/5 flex justify-between items-center gap-4">
                     {{-- Tombol Dashboard --}}
-                    <a href="{{ route('dashboard') }}" class="px-5 py-2.5 rounded-xl font-bold text-gray-400 hover:text-white hover:bg-[#252525] transition-colors">
-                        ← Dashboard
+                    <a href="{{ route('dashboard') }}" class="px-5 py-2.5 rounded-full font-medium text-[#7a7a7a] hover:text-white hover:bg-white/5 transition-colors text-sm">
+                        Kembali ke Dashboard
                     </a>
 
                     {{-- Tombol Selesai / Lanjut --}}
                     <form action="{{ route('learning.complete', $material->slug) }}" method="POST">
                         @csrf
-                        <button type="submit" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 transition-all flex items-center gap-2 transform hover:-translate-y-0.5">
+                        <button type="submit" class="px-8 py-2.5 bg-[#2997ff] hover:bg-[#0071e3] text-white rounded-full font-medium text-sm transition-colors cursor-pointer flex items-center gap-1">
                             @if($nextMaterial)
-                                <span>Lanjut Materi Berikutnya</span> <span>→</span>
+                                <span>Lanjut Materi Berikutnya</span>
                             @else
-                                <span>🎉 Selesai Bab Ini!</span>
+                                <span>Selesai Bab Ini</span>
                             @endif
                         </button>
                     </form>
@@ -84,10 +84,34 @@
 </div>
 
 <style>
-    /* Styling scrollbar */
-    .custom-scrollbar::-webkit-scrollbar { width: 8px; }
-    .custom-scrollbar::-webkit-scrollbar-track { background: #0a0a0a; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #555; }
+    /* Tipografi & Kompatibilitas CSS Reference Apple */
+    .apple-learning-viewport {
+        font-family: "SF Pro Display", "-apple-system", BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .article-body p {
+        color: #cccccc !important;
+    }
+    
+    .article-body strong {
+        color: #ffffff !important;
+        font-weight: 600;
+    }
+
+    /* Kustomisasi scrollbar halus berpadu dengan kanvas hitam */
+    .custom-scrollbar::-webkit-scrollbar { 
+        width: 6px; 
+    }
+    .custom-scrollbar::-webkit-scrollbar-track { 
+        background: #000000; 
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb { 
+        background: rgba(255, 255, 255, 0.15); 
+        border-radius: 9999px; 
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { 
+        background: rgba(255, 255, 255, 0.3); 
+    }
 </style>
 @endsection

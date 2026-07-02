@@ -4,46 +4,174 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Daftar Akun Akademik - VisualData</title>
-    
-    {{-- FONT PROFESIONAL (PLUS JAKARTA SANS) --}}
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     @vite(['resources/css/variables.css', 'resources/css/app.css', 'resources/js/app.js'])
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
-                    colors: {
-                        palette1: '#fbf5dd', /* Lightest / Background */
-                        palette2: '#e7e1b1', /* Light / Form & Input Background */
-                        palette3: '#306d29', /* Medium / Primary Green (Buttons) */
-                        palette4: '#0d530e', /* Darkest / Text & Hover States */
-                    },
-                }
-            }
-        }
-    </script>
 
     <style>
-        body { 
-            font-family: '"Plus Jakarta Sans"', sans-serif; 
-            background-color: #fbf5dd; /* palette1 */
-            color: #0d530e; /* palette4 */
+        :root {
+            --color-primary:          #0066cc;
+            --color-primary-focus:    #0071e3;
+            --color-canvas:           #ffffff;
+            --color-canvas-parchment: #f5f5f7;
+            --color-surface-black:    #000000;
+            --color-ink:              #1d1d1f;
+            --color-ink-muted-80:     #333333;
+            --color-ink-muted-48:     #7a7a7a;
+            --color-divider-soft:     #f0f0f0;
+            --color-hairline:         #e0e0e0;
+            --radius-sm:   8px;
+            --radius-lg:   18px;
+            --radius-pill: 9999px;
         }
-        /* Latar Belakang Partikel Data */
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'SF Pro Text', 'Inter', system-ui, -apple-system, sans-serif;
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.47;
+            letter-spacing: -0.374px;
+            background: var(--color-canvas-parchment);
+            color: var(--color-ink);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Partikel — warna disesuaikan ke biru */
         .data-particles { position: fixed; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-        .particle { position: absolute; bottom: -100px; background: rgba(48, 109, 41, 0.15); border-radius: 50%; opacity: 0.5; animation: rise 10s infinite linear; border: 1px solid rgba(48, 109, 41, 0.3); box-shadow: 0 0 15px rgba(48, 109, 41, 0.2); }
-        @keyframes rise { 0% { bottom: -100px; transform: translateX(0); } 50% { transform: translateX(50px); } 100% { bottom: 120vh; transform: translateX(-50px); } }
+        .particle {
+            position: absolute; bottom: -100px;
+            background: rgba(0, 102, 204, 0.07);
+            border-radius: 50%; opacity: 0.5;
+            animation: rise 10s infinite linear;
+            border: 1px solid rgba(0, 102, 204, 0.12);
+        }
+        @keyframes rise {
+            0%   { bottom: -100px; transform: translateX(0); }
+            50%  { transform: translateX(50px); }
+            100% { bottom: 120vh; transform: translateX(-50px); }
+        }
+
+        /* Card form */
+        .form-card {
+            background: var(--color-canvas);
+            border: 1px solid var(--color-hairline);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            width: 100%;
+            max-width: 440px;
+        }
+
+        /* Input fields */
+        .field-input {
+            width: 100%;
+            padding: 11px 16px;
+            border: 1px solid var(--color-hairline);
+            border-radius: var(--radius-sm);
+            background: var(--color-canvas);
+            color: var(--color-ink);
+            font-family: inherit;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: -0.374px;
+            outline: none;
+            transition: border-color 0.15s, box-shadow 0.15s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .field-input::placeholder { color: var(--color-ink-muted-48); }
+        .field-input:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.12);
+        }
+
+        /* Label */
+        .field-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: -0.224px;
+            color: var(--color-ink);
+            margin-bottom: 6px;
+        }
+
+        /* Select wrapper */
+        .select-wrap { position: relative; }
+        .select-wrap select { cursor: pointer; }
+        .select-arrow {
+            position: absolute;
+            right: 14px; top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: var(--color-ink-muted-48);
+        }
+
+        /* Primary button */
+        .btn-primary {
+            width: 100%;
+            background: var(--color-primary);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-pill);
+            padding: 14px 28px;
+            font-family: inherit;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: -0.374px;
+            cursor: pointer;
+            transition: background 0.15s, transform 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-primary:hover  { background: var(--color-primary-focus); }
+        .btn-primary:active { transform: scale(0.98); }
+        .btn-primary:focus-visible { outline: 2px solid var(--color-primary-focus); outline-offset: 2px; }
+
+        /* Error text */
+        .field-error {
+            font-size: 12px;
+            color: #d70015;
+            margin-top: 5px;
+            letter-spacing: -0.12px;
+        }
+
+        /* Divider */
+        .divider {
+            border: none;
+            border-top: 1px solid var(--color-hairline);
+            margin: 28px 0;
+        }
+
+        /* Logo mark */
+        .logo-mark {
+            width: 44px; height: 44px;
+            background: var(--color-primary);
+            border-radius: var(--radius-sm);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'SF Pro Display', 'Inter', system-ui, sans-serif;
+            font-size: 22px; font-weight: 600;
+            color: #fff;
+        }
+        .logo-name {
+            font-family: 'SF Pro Display', 'Inter', system-ui, sans-serif;
+            font-size: 21px; font-weight: 600;
+            letter-spacing: 0.231px;
+            color: var(--color-ink);
+        }
     </style>
 </head>
-<body class="antialiased selection:bg-palette3 selection:text-palette1">
-    
-    {{-- EFEK PARTIKEL --}}
+<body class="antialiased">
+
+    {{-- PARTIKEL --}}
     <div class="data-particles">
         <div class="particle" style="left:15%; width:4px; height:4px; animation-duration:12s;"></div>
         <div class="particle" style="left:35%; width:6px; height:6px; animation-duration:15s; animation-delay:1s;"></div>
@@ -51,78 +179,95 @@
         <div class="particle" style="left:85%; width:5px; height:5px; animation-duration:14s; animation-delay:0.5s;"></div>
     </div>
 
-    <div class="min-h-screen flex flex-col items-center justify-center p-6 relative z-10">
-        {{-- LOGO (Bersih & Profesional) --}}
-        <a href="/" class="flex flex-col items-center gap-3 mb-10">
-            <div class="w-12 h-12 bg-palette3 rounded-xl flex items-center justify-center text-palette1 font-bold text-2xl shadow-lg shadow-palette4/20">V</div>
-            <span class="text-2xl font-bold tracking-wide text-palette4">Visual<span class="text-palette3">Data.</span></span>
+    <div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 24px;position:relative;z-index:1;">
+
+        {{-- LOGO --}}
+        <a href="/" style="display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none;margin-bottom:32px;">
+            <div class="logo-mark">V</div>
+            <span class="logo-name">VisualData</span>
         </a>
 
-        <div class="w-full max-w-md bg-palette1 border border-palette3/20 rounded-3xl p-10 shadow-2xl backdrop-blur-md">
-            <div class="text-center mb-8">
-                <h2 class="text-2xl md:text-3xl font-bold mb-2 text-palette4 tracking-tight">Daftar Akun Baru</h2>
-                <p class="text-sm font-medium text-palette3">Buat akun akademik untuk mengakses modul pembelajaran Visualisasi dan Pengelompokan Data SMA Kelas XI.</p>
+        {{-- FORM CARD --}}
+        <div class="form-card">
+
+            <div style="text-align:center;margin-bottom:32px;">
+                <h1 style="font-family:'SF Pro Display','Inter',system-ui,sans-serif;font-size:28px;font-weight:600;line-height:1.14;letter-spacing:0.196px;color:var(--color-ink);margin-bottom:8px;">
+                    Daftar Akun Baru
+                </h1>
+                <p style="font-size:14px;color:var(--color-ink-muted-80);letter-spacing:-0.224px;line-height:1.5;">
+                    Buat akun akademik untuk mengakses media pembelajaran<br>Visualisasi dan Pengelompokan Data SMA Kelas XI.
+                </p>
             </div>
 
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
-                {{-- INPUT NAMA --}}
-                <div class="mb-5">
-                    <label for="name" class="block text-sm font-semibold text-palette4 mb-2">Nama Lengkap Siswa</label>
-                    <input id="name" type="text" name="name" class="w-full px-4 py-3 rounded-xl border border-palette3/30 bg-palette2 text-white font-medium focus:ring-2 focus:ring-palette3 focus:border-palette3 transition-all outline-none placeholder:text-white/60" value="{{ old('name') }}" required autofocus autocomplete="name" placeholder="Masukkan nama lengkap siswa">
+                {{-- NAMA --}}
+                <div style="margin-bottom:16px;">
+                    <label for="name" class="field-label">Nama Lengkap Siswa</label>
+                    <input id="name" type="text" name="name" class="field-input"
+                        value="{{ old('name') }}" required autofocus autocomplete="name"
+                        placeholder="Masukkan nama lengkap siswa">
                     @error('name')
-                        <p class="text-red-600 font-medium text-xs mt-1.5">{{ $message }}</p>
+                        <p class="field-error">{{ $message }}</p>
                     @enderror
                 </div>
 
-                {{-- INPUT EMAIL --}}
-                <div class="mb-5">
-                    <label for="email" class="block text-sm font-semibold text-palette4 mb-2">Email Akademik / Sekolah</label>
-                    <input id="email" type="email" name="email" class="w-full px-4 py-3 rounded-xl border border-palette3/30 bg-palette2 text-white font-medium focus:ring-2 focus:ring-palette3 focus:border-palette3 transition-all outline-none placeholder:text-white/60" value="{{ old('email') }}" required autocomplete="username" placeholder="siswa@gmail.com">
+                {{-- EMAIL --}}
+                <div style="margin-bottom:16px;">
+                    <label for="email" class="field-label">Email Akademik / Sekolah</label>
+                    <input id="email" type="email" name="email" class="field-input"
+                        value="{{ old('email') }}" required autocomplete="username"
+                        placeholder="siswa@gmail.com">
                     @error('email')
-                        <p class="text-red-600 font-medium text-xs mt-1.5">{{ $message }}</p>
+                        <p class="field-error">{{ $message }}</p>
                     @enderror
                 </div>
 
-                {{-- INPUT KATA SANDI --}}
-                <div class="mb-5">
-                    <label for="password" class="block text-sm font-semibold text-palette4 mb-2">Kata Sandi</label>
-                    <input id="password" type="password" name="password" class="w-full px-4 py-3 rounded-xl border border-palette3/30 bg-palette2 text-white font-medium focus:ring-2 focus:ring-palette3 focus:border-palette3 transition-all outline-none placeholder:text-white/60" required autocomplete="new-password" placeholder="Minimal 8 karakter">
+                {{-- PASSWORD --}}
+                <div style="margin-bottom:16px;">
+                    <label for="password" class="field-label">Kata Sandi</label>
+                    <input id="password" type="password" name="password" class="field-input"
+                        required autocomplete="new-password"
+                        placeholder="Minimal 8 karakter">
                     @error('password')
-                        <p class="text-red-600 font-medium text-xs mt-1.5">{{ $message }}</p>
+                        <p class="field-error">{{ $message }}</p>
                     @enderror
                 </div>
 
-                {{-- INPUT KONFIRMASI KATA SANDI --}}
-                <div class="mb-5">
-                    <label for="password_confirmation" class="block text-sm font-semibold text-palette4 mb-2">Konfirmasi Kata Sandi</label>
-                    <input id="password_confirmation" type="password" name="password_confirmation" class="w-full px-4 py-3 rounded-xl border border-palette3/30 bg-palette2 text-white font-medium focus:ring-2 focus:ring-palette3 focus:border-palette3 transition-all outline-none placeholder:text-white/60" required autocomplete="new-password" placeholder="Ulangi kata sandi">
+                {{-- KONFIRMASI PASSWORD --}}
+                <div style="margin-bottom:16px;">
+                    <label for="password_confirmation" class="field-label">Konfirmasi Kata Sandi</label>
+                    <input id="password_confirmation" type="password" name="password_confirmation" class="field-input"
+                        required autocomplete="new-password"
+                        placeholder="Ulangi kata sandi">
                 </div>
 
-                {{-- DROPDOWN JENIS KELAMIN --}}
-                <div class="mb-5">
-                    <label for="gender" class="block text-sm font-semibold text-palette4 mb-2">Jenis Kelamin</label>
-                    <div class="relative">
-                        <select id="gender" name="gender" class="w-full px-4 py-3 rounded-xl border border-palette3/30 bg-palette2 text-palette4 font-medium focus:ring-2 focus:ring-palette3 focus:border-palette3 transition-all outline-none appearance-none cursor-pointer" required>
+                {{-- JENIS KELAMIN --}}
+                <div style="margin-bottom:16px;">
+                    <label for="gender" class="field-label">Jenis Kelamin</label>
+                    <div class="select-wrap">
+                        <select id="gender" name="gender" class="field-input" required>
                             <option value="" disabled {{ old('gender') ? '' : 'selected' }}>Pilih Jenis Kelamin...</option>
-                            <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Laki-laki</option>
+                            <option value="male"   {{ old('gender') == 'male'   ? 'selected' : '' }}>Laki-laki</option>
                             <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Perempuan</option>
                         </select>
-                        <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-palette3">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+                        <div class="select-arrow">
+                            <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                            </svg>
                         </div>
                     </div>
                     @error('gender')
-                        <p class="text-red-600 font-medium text-xs mt-1.5">{{ $message }}</p>
+                        <p class="field-error">{{ $message }}</p>
                     @enderror
                 </div>
 
-                {{-- DROPDOWN PILIHAN KELAS --}}
-                <div class="mb-6">
-                    <label for="kelas" class="block text-sm font-semibold text-palette4 mb-2">Pilih Kelas</label>
-                    <div class="relative">
-                        <select id="kelas" name="kelas" class="w-full px-4 py-3 rounded-xl border border-palette3/30 bg-palette2 text-palette4 font-medium focus:ring-2 focus:ring-palette3 focus:border-palette3 transition-all outline-none appearance-none cursor-pointer" required>
+                {{-- KELAS --}}
+                <div style="margin-bottom:28px;">
+                    <label for="kelas" class="field-label">Pilih Kelas</label>
+                    <div class="select-wrap">
+                        <select id="kelas" name="kelas" class="field-input" required>
                             <option value="" disabled {{ old('kelas') ? '' : 'selected' }}>Pilih Kelas Kamu...</option>
                             <option value="11-1" {{ old('kelas') == '11-1' ? 'selected' : '' }}>Kelas 11-1</option>
                             <option value="11-2" {{ old('kelas') == '11-2' ? 'selected' : '' }}>Kelas 11-2</option>
@@ -133,26 +278,38 @@
                             <option value="11-7" {{ old('kelas') == '11-7' ? 'selected' : '' }}>Kelas 11-7</option>
                             <option value="11-8" {{ old('kelas') == '11-8' ? 'selected' : '' }}>Kelas 11-8</option>
                         </select>
-                        <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-palette3">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+                        <div class="select-arrow">
+                            <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                            </svg>
                         </div>
                     </div>
                     @error('kelas')
-                        <p class="text-red-600 font-medium text-xs mt-1.5">{{ $message }}</p>
+                        <p class="field-error">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <input type="hidden" name="role" value="student">
 
-                <button type="submit" class="w-full flex justify-center items-center gap-2.5 py-3.5 px-5 bg-palette3 text-palette1 font-bold rounded-xl hover:bg-palette4 transition-all shadow-md mt-8">
-                    Daftar Sekarang ➔
+                <button type="submit" class="btn-primary">
+                    Daftar Sekarang
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
                 </button>
 
-                <div class="mt-8 text-center text-sm font-medium text-palette4">
-                    Sudah memiliki akun masuk? <a href="{{ route('login') }}" class="text-palette3 font-bold hover:underline transition-colors">Masuk di sini</a>
-                </div>
+                <hr class="divider">
+
+                <p style="text-align:center;font-size:14px;color:var(--color-ink-muted-80);letter-spacing:-0.224px;">
+                    Sudah memiliki akun?
+                    <a href="{{ route('login', ['role' => 'student']) }}" style="color:var(--color-primary);font-weight:400;text-decoration:none;">
+                        Masuk di sini
+                    </a>
+                </p>
+
             </form>
         </div>
+
     </div>
 </body>
 </html>

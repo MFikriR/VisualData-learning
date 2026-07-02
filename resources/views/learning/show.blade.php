@@ -3,25 +3,25 @@
 @section('header', $material->chapter->title)
 
 @section('content')
-    {{-- 1. NOTIFIKASI BERHASIL --}}
+    {{-- 1. NOTIFIKASI BERHASIL (Frosted Translucent Chip) --}}
     @if (session('success'))
-        <div class="mb-6 p-4 rounded-xl bg-[#e7e1b1] border border-[#306d29]/30 flex items-center gap-3 animate-bounce-short shadow-sm">
-            <div class="p-2 bg-[#fbf5dd] rounded-full text-[#306d29] border border-[#306d29]/20">
+        <div class="mb-6 p-4 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3">
+            <div class="p-2 bg-white/10 rounded-full text-[#2997ff]">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
             </div>
             <div>
-                <h4 class="font-bold text-[#0d530e]">Progres Tersimpan!</h4>
-                <p class="text-sm text-[#306d29]">{{ session('success') }}</p>
+                <h4 class="font-semibold text-white">Progres Tersimpan</h4>
+                <p class="text-sm text-[#7a7a7a]">{{ session('success') }}</p>
             </div>
         </div>
     @endif
 
-    {{-- 2. KONTEN UTAMA (Kertas/Kanvas Materi) --}}
-    <div class="bg-[#fbf5dd] rounded-2xl border border-[#e7e1b1] p-8 shadow-md min-h-[60vh] relative transition-colors duration-300">
+    {{-- 2. KONTEN UTAMA (Apple Surface Tile 1 Canvas) --}}
+    <div class="bg-[#272729] rounded-2xl border border-white/10 p-8 min-h-[60vh] relative transition-colors duration-300 apple-material-viewport">
         
         {{-- Header Judul --}}
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-[#306d29]/20 pb-4">
-            <h1 class="text-3xl md:text-4xl font-extrabold text-[#0d530e]">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
+            <h1 class="text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight">
                 {{ $material->title }}
             </h1>
         </div>
@@ -29,30 +29,30 @@
         {{-- Badge Tipe Materi --}}
         <div class="mb-8">
             @if($material->type == 'simulation_3d')
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold bg-[#e7e1b1] text-[#306d29] border border-[#306d29]/30 shadow-sm">
-                    🧊 Simulasi 3D Interaktif
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium bg-[#2997ff]/10 text-[#2997ff] border border-[#2997ff]/20">
+                    Simulasi 3D Interaktif
                 </span>
             @elseif($material->type == 'simulation_jenis_data' || $material->type == 'simulation_labeling')
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold bg-[#e7e1b1] text-[#306d29] border border-[#306d29]/30 shadow-sm">
-                    💻 Simulator Interaktif
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium bg-[#2997ff]/10 text-[#2997ff] border border-[#2997ff]/20">
+                    Simulator Interaktif
                 </span>
             @else
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold bg-[#e7e1b1] text-[#306d29] border border-[#306d29]/30 shadow-sm">
-                    📄 Materi Bacaan
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium bg-white/5 text-[#cccccc] border border-white/10">
+                    Materi Bacaan
                 </span>
             @endif
         </div>
 
-        <div class="text-[#0d530e] leading-relaxed text-lg">
+        <div class="text-[#cccccc] leading-relaxed text-lg">
             
             {{-- A. AREA SIMULASI (3D & 2D) --}}
             @if($material->type == 'simulation_3d')
                 <div id="three-canvas-container" 
-                    class="w-full h-[500px] rounded-xl overflow-hidden shadow-xl border-2 border-[#306d29]/40 relative bg-[#e7e1b1] mb-12"
+                    class="w-full h-[500px] rounded-xl overflow-hidden border border-white/10 relative bg-[#1c1c1e] mb-12"
                     data-sim-type="{{ $material->slug }}">
                     
                     <div id="loading-indicator" class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                        <span class="text-[#306d29] font-mono font-bold text-sm animate-pulse bg-[#fbf5dd] px-4 py-2 rounded-lg border border-[#306d29]/20 shadow-md">Memuat Laboratorium 3D...</span>
+                        <span class="text-[#2997ff] font-mono font-medium text-sm bg-[#272729] px-4 py-2 rounded-lg border border-white/10">Memuat Laboratorium 3D...</span>
                     </div>
                 </div>
 
@@ -81,17 +81,17 @@
             @endif
 
             {{-- B. KONTEN TEKS PENJELASAN --}}
-            <div id="material-content-area" class="mt-8 max-w-none text-[#0d530e]">
+            <div id="material-content-area" class="mt-8 max-w-none text-[#cccccc]">
                 {!! $material->content !!}
             </div>
 
         </div>
 
-        {{-- 3. NAVIGASI BAWAH --}}
-        <div id="bottom-navigation" class="mt-16 pt-8 border-t border-[#306d29]/20 flex flex-col md:flex-row justify-between items-center gap-4 hidden opacity-0 transition-opacity duration-1000">
+        {{-- 3. NAVIGASI BAWAH (Pill Shape Minimalis Tanpa Shadow) --}}
+        <div id="bottom-navigation" class="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 hidden opacity-0 transition-opacity duration-1000">
             @if($prevMaterial)
-                <a href="{{ route('learning.show', $prevMaterial->slug) }}" class="w-full md:w-auto px-6 py-3 rounded-xl border border-[#306d29]/40 bg-[#e7e1b1] text-[#306d29] font-bold hover:bg-[#306d29] hover:text-[#fbf5dd] transition-colors flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                <a href="{{ route('learning.show', $prevMaterial->slug) }}" class="w-full md:w-auto px-6 py-2.5 rounded-full border border-white/20 bg-transparent text-[#2997ff] font-medium hover:bg-white/5 transition-colors flex items-center justify-center gap-2 text-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                     {{ $prevMaterial->title }}
                 </a>
             @else
@@ -101,9 +101,9 @@
             @if($nextMaterial)
                 <form action="{{ route('learning.complete', $material->slug) }}" method="POST" class="w-full md:w-auto">
                     @csrf
-                    <button type="submit" class="w-full md:w-auto px-8 py-3 rounded-xl bg-[#306d29] hover:bg-[#0d530e] text-[#fbf5dd] font-bold shadow-lg shadow-[#306d29]/30 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group">
+                    <button type="submit" class="w-full md:w-auto px-8 py-2.5 rounded-full bg-[#2997ff] hover:bg-[#0071e3] text-white font-medium transition-colors flex items-center justify-center gap-2 group text-sm cursor-pointer border-none">
                         @if($isCompleted) <span>Lanjut Materi Berikutnya</span> @else <span>Tandai Selesai & Lanjut</span> @endif
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                     </button>
                 </form>
             @else
@@ -117,21 +117,21 @@
                         <form action="{{ route('learning.complete', $material->slug) }}" method="POST" class="w-full md:w-auto">
                             @csrf
                             <input type="hidden" name="redirect_to_quiz" value="{{ $targetQuiz->id }}">
-                            <button type="submit" class="w-full md:w-auto px-8 py-3 rounded-xl bg-[#306d29] hover:bg-[#0d530e] text-[#fbf5dd] font-bold shadow-lg shadow-[#306d29]/30 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 animate-pulse">
+                            <button type="submit" class="w-full md:w-auto px-8 py-2.5 rounded-full bg-[#2997ff] hover:bg-[#0071e3] text-white font-medium transition-colors flex items-center justify-center gap-2 text-sm border-none cursor-pointer">
                                 @if($isCompleted) 
                                     <span>Lanjut ke Evaluasi Akhir</span> 
                                 @else 
                                     <span>Selesai & Lanjut Evaluasi</span> 
                                 @endif
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </button>
                         </form>
                     @else
                         <form action="{{ route('learning.complete', $material->slug) }}" method="POST" class="w-full md:w-auto">
                             @csrf
-                            <button type="submit" class="w-full md:w-auto px-8 py-3 rounded-xl bg-[#306d29] hover:bg-[#0d530e] text-[#fbf5dd] font-bold shadow-lg shadow-[#306d29]/30 hover:-translate-y-1 transition-all">
+                            <button type="submit" class="w-full md:w-auto px-8 py-2.5 rounded-full bg-[#2997ff] hover:bg-[#0071e3] text-white font-medium transition-all text-sm border-none cursor-pointer">
                                 @if($material->chapter->sequence == 0)
-                                    Mulai belajar
+                                    Mulai Belajar
                                 @else
                                     Selesaikan Bab Ini
                                 @endif
@@ -143,20 +143,22 @@
         </div>
     </div>
     
-    {{-- CSS Global Khusus Canvas --}}
+    {{-- CSS Global Khusus Canvas (Apple Styling Integration) --}}
     <style>
-        @keyframes bounce-short { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-        .animate-bounce-short { animation: bounce-short 0.5s ease-in-out 1; }
-        .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .apple-material-viewport {
+            font-family: "SF Pro Display", "-apple-system", BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
         .material-section {
             transition: all 0.5s ease;
             position: relative;
         }
         .material-section.locked {
-            filter: blur(5px) grayscale(80%);
-            opacity: 0.4;
+            filter: blur(6px) grayscale(100%);
+            opacity: 0.3;
             pointer-events: none;
             user-select: none;
             max-height: 180px;
@@ -164,26 +166,30 @@
             border-radius: 12px;
         }
         .material-section.locked::after {
-            content: "🔒 Lanjutkan membaca di atas untuk membuka bagian ini";
+            content: "Lanjutkan membaca di atas untuk membuka bagian ini";
             position: absolute;
             top: 50%;
             left: 50%;
             width: 100%;
             text-align: center;
             transform: translate(-50%, -50%);
-            font-size: 16px;
-            font-weight: bold;
-            color: #0d530e;
-            text-shadow: 0 2px 4px #e7e1b1;
+            font-size: 15px;
+            font-weight: 500;
+            color: #7a7a7a;
             filter: blur(0); 
             z-index: 10;
         }
+
+        /* Custom Scrollbar Inside CBT */
+        .custom-scrollbar::-webkit-scrollbar { height: 5px; width: 5px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
     </style>
 
     @include('learning.partials.floating_tools')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
-    {{-- 🔥 SCRIPT STEPPER + MINI QUIZ 🔥 --}}
+    {{-- 🔥 SCRIPT STEPPER + MINI QUIZ ENGINE 🔥 --}}
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             
@@ -220,8 +226,8 @@
                             btnContainer.className = 'mt-8 text-center animate-fade-in relative z-50'; 
                             
                             const btn = document.createElement('button');
-                            btn.innerHTML = 'Saya Paham, Lanjut Baca 👇';
-                            btn.className = 'px-8 py-3 bg-[#306d29] hover:bg-[#0d530e] text-[#fbf5dd] font-bold rounded-full shadow-lg shadow-[#306d29]/30 transition-all transform hover:scale-105 border border-[#0d530e]';
+                            btn.innerHTML = 'Saya Paham, Lanjut Baca';
+                            btn.className = 'px-8 py-2.5 bg-[#2997ff] hover:bg-[#0071e3] text-white font-medium rounded-full transition-colors border-none cursor-pointer text-sm';
                             
                             btn.onclick = function() {
                                 btnContainer.style.display = 'none'; 
@@ -243,15 +249,15 @@
                             const finalBtn = document.createElement('button');
                             
                             if (quizItems.length > 0) {
-                                finalBtn.innerHTML = 'Uji Pemahamanmu 🧠';
-                                finalBtn.className = 'px-8 py-3 bg-[#306d29] hover:bg-[#0d530e] text-[#fbf5dd] font-bold rounded-full shadow-lg shadow-[#306d29]/30 transition-all transform hover:scale-105 border border-[#0d530e]';
+                                finalBtn.innerHTML = 'Uji Pemahaman';
+                                finalBtn.className = 'px-8 py-2.5 bg-[#2997ff] hover:bg-[#0071e3] text-white font-medium rounded-full transition-colors border-none cursor-pointer text-sm';
                                 finalBtn.onclick = function() {
                                     btnContainer.style.display = 'none';
                                     renderMultiQuiz(quizItems);
                                 };
                             } else {
-                                finalBtn.innerHTML = 'Saya Sudah Paham ✅';
-                                finalBtn.className = 'px-8 py-3 bg-[#0d530e] hover:bg-[#306d29] text-[#fbf5dd] font-bold rounded-full shadow-lg shadow-[#0d530e]/30 transition-all transform hover:scale-105';
+                                finalBtn.innerHTML = 'Saya Sudah Paham';
+                                finalBtn.className = 'px-8 py-2.5 bg-[#2997ff] hover:bg-[#0071e3] text-white font-medium rounded-full transition-colors border-none cursor-pointer text-sm';
                                 finalBtn.onclick = function() {
                                     btnContainer.style.display = 'none';
                                     showBottomNav();
@@ -272,7 +278,7 @@
             }
 
             // ==============================================================
-            // 🔥 ENGINE MULTI-QUIZ CBT MODE (Navigasi & Simpan State) 🔥
+            // 🔥 ENGINE MULTI-QUIZ CBT MODE (Apple Dark Token Styles) 🔥
             // ==============================================================
             function renderMultiQuiz(items) {
                 let currentIdx = 0;
@@ -290,29 +296,26 @@
                 }));
 
                 const quizBox = document.createElement('div');
-                quizBox.className = 'mt-10 bg-[#e7e1b1] border-2 border-[#306d29]/40 rounded-3xl shadow-xl animate-fade-in relative overflow-hidden flex flex-col';
+                quizBox.className = 'mt-10 bg-[#2a2a2c] border border-white/10 rounded-2xl animate-fade-in relative overflow-hidden flex flex-col';
                 contentArea.appendChild(quizBox);
                 quizBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
                 quizBox.innerHTML = `
-                    <div class="bg-[#306d29]/10 p-4 border-b border-[#306d29]/20">
-                        <div class="text-sm text-[#306d29] mb-3 flex justify-between items-center">
-                            <span class="font-bold tracking-wide">NAVIGASI SOAL</span>
-                            <span class="font-black text-[#fbf5dd] bg-[#306d29] px-3 py-1 rounded shadow-inner" id="quiz-counter"></span>
+                    <div class="bg-white/5 p-4 border-b border-white/10">
+                        <div class="text-xs text-[#7a7a7a] mb-3 flex justify-between items-center tracking-wider font-semibold">
+                            <span>NAVIGASI SOAL</span>
+                            <span class="font-medium text-white bg-white/10 px-2.5 py-1 rounded" id="quiz-counter"></span>
                         </div>
-                        <div class="flex gap-2 overflow-x-auto pb-2 custom-scrollbar" id="quiz-nav-container">
-                            </div>
+                        <div class="flex gap-2 overflow-x-auto pb-2 custom-scrollbar" id="quiz-nav-container"></div>
                     </div>
-                    <div class="p-6 md:p-8 flex-1 bg-[#fbf5dd]" id="quiz-body">
-                        </div>
-                    <div class="bg-[#e7e1b1] p-4 md:px-8 border-t border-[#306d29]/20 flex justify-between items-center">
-                        <button id="btn-prev-quiz" class="px-5 py-2.5 bg-[#fbf5dd] border border-[#306d29]/40 hover:bg-[#306d29] hover:text-[#fbf5dd] text-[#306d29] font-bold rounded-lg transition-all flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <div class="p-6 md:p-8 flex-1 bg-[#272729]" id="quiz-body"></div>
+                    <div class="bg-[#2a2a2c] p-4 md:px-8 border-t border-white/5 flex justify-between items-center">
+                        <button id="btn-prev-quiz" class="px-5 py-2 rounded-full bg-transparent border border-white/10 text-[#7a7a7a] font-medium transition-colors text-sm disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer">
                             Kembali
                         </button>
-                        <button id="btn-next-quiz" class="px-6 py-2.5 bg-[#306d29] hover:bg-[#0d530e] text-[#fbf5dd] font-bold rounded-lg shadow-md transition-all flex items-center gap-2">
+                        <button id="btn-next-quiz" class="px-6 py-2 bg-[#2997ff] hover:bg-[#0071e3] text-white font-medium rounded-full transition-colors text-sm border-none cursor-pointer flex items-center gap-1">
                             <span id="btn-next-text">Selanjutnya</span>
-                            <svg class="w-5 h-5" id="btn-next-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            <svg class="w-4 h-4" id="btn-next-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </button>
                     </div>
                 `;
@@ -327,25 +330,25 @@
 
                 for(let i = 0; i < totalQuestions; i++) {
                     let navBtn = document.createElement('button');
-                    navBtn.className = 'flex-shrink-0 w-10 h-10 rounded-lg font-bold transition-all border flex items-center justify-center nav-number-btn';
+                    navBtn.className = 'flex-shrink-0 w-9 h-9 rounded-lg font-medium transition-colors border flex items-center justify-center text-sm cursor-pointer';
                     navBtn.innerText = i + 1;
                     navBtn.onclick = () => { currentIdx = i; loadQuestion(currentIdx); };
                     navContainer.appendChild(navBtn);
                 }
 
                 function updateNavUI() {
-                    const navBtns = navContainer.querySelectorAll('.nav-number-btn');
+                    const navBtns = navContainer.querySelectorAll('button');
                     navBtns.forEach((btn, idx) => {
-                        btn.className = 'flex-shrink-0 w-10 h-10 rounded-lg font-bold transition-all border flex items-center justify-center nav-number-btn';
+                        btn.className = 'flex-shrink-0 w-9 h-9 rounded-lg font-medium transition-all border flex items-center justify-center text-sm cursor-pointer';
                         
                         if (userAnswers[idx] !== null) {
-                            btn.classList.add('bg-[#306d29]', 'text-[#fbf5dd]', 'border-[#306d29]');
+                            btn.classList.add('bg-[#2997ff]', 'text-white', 'border-[#2997ff]');
                         } else {
-                            btn.classList.add('bg-[#fbf5dd]', 'text-[#306d29]', 'border-[#306d29]/30', 'hover:bg-[#306d29]/10');
+                            btn.classList.add('bg-[#1c1c1e]', 'text-[#cccccc]', 'border-white/5', 'hover:bg-white/5');
                         }
 
                         if (idx === currentIdx) {
-                            btn.classList.add('ring-2', 'ring-[#306d29]', 'ring-offset-2', 'ring-offset-[#e7e1b1]', 'transform', 'scale-110');
+                            btn.classList.add('ring-2', 'ring-[#2997ff]', 'ring-offset-2', 'ring-offset-[#272729]');
                         }
                     });
                 }
@@ -354,29 +357,27 @@
                     const data = questions[index];
                     let selectedChoice = userAnswers[index]; 
                     
-                    counterText.innerText = `Soal ${index + 1} / ${totalQuestions}`;
+                    counterText.innerText = `${index + 1} / ${totalQuestions}`;
                     updateNavUI();
 
                     btnPrev.disabled = index === 0;
                     
                     if (index === totalQuestions - 1) {
-                        btnNextText.innerText = "Kumpulkan Ujian 📝";
+                        btnNextText.innerText = "Kumpulkan";
                         btnNextIcon.classList.add('hidden');
-                        btnNext.classList.remove('bg-[#306d29]', 'hover:bg-[#0d530e]');
-                        btnNext.classList.add('bg-[#0d530e]', 'hover:bg-[#306d29]', 'animate-pulse');
                     } else {
                         btnNextText.innerText = "Selanjutnya";
                         btnNextIcon.classList.remove('hidden');
-                        btnNext.classList.add('bg-[#306d29]', 'hover:bg-[#0d530e]');
-                        btnNext.classList.remove('bg-[#0d530e]', 'hover:bg-[#306d29]', 'animate-pulse');
                     }
 
                     let buildOption = (choice, text) => {
                         if (!text) return '';
                         let isSelected = selectedChoice === choice;
-                        let bgClass = isSelected ? 'border-[#306d29] bg-[#306d29]/10 shadow-[0_0_10px_rgba(48,109,41,0.2)]' : 'border-[#306d29]/30 bg-[#fbf5dd] hover:border-[#306d29] hover:bg-[#306d29]/5';
-                        return `<button class="quiz-opt-btn w-full text-left px-5 py-4 rounded-xl border-2 ${bgClass} text-[#0d530e] transition-all font-medium flex items-start gap-3" data-choice="${choice}">
-                            <span class="font-black text-[#306d29] mt-0.5 flex-shrink-0 w-6">${choice.toLowerCase()}.</span> <span>${text}</span>
+                        let borderBGClass = isSelected 
+                            ? 'border-[#2997ff] bg-[#2997ff]/10 text-white' 
+                            : 'border-white/10 bg-[#1c1c1e] text-[#cccccc] hover:border-white/20 hover:bg-white/5';
+                        return `<button class="quiz-opt-btn w-full text-left px-5 py-4 rounded-xl border ${borderBGClass} transition-colors font-medium flex items-start gap-3 cursor-pointer" data-choice="${choice}">
+                            <span class="font-semibold text-[#2997ff] flex-shrink-0 w-5">${choice.toLowerCase()}.</span> <span>${text}</span>
                         </button>`;
                     };
 
@@ -386,7 +387,7 @@
                     if (data.e) optionsHtml += buildOption('E', data.e);
 
                     quizBody.innerHTML = `
-                        <h4 class="text-xl font-extrabold text-[#0d530e] mb-8 leading-relaxed">${data.q}</h4>
+                        <h4 class="text-xl font-medium text-white mb-8 leading-relaxed">${data.q}</h4>
                         <div class="space-y-3" id="quiz-options">
                             ${optionsHtml}
                         </div>
@@ -396,13 +397,10 @@
                     btns.forEach(btn => {
                         btn.onclick = function() {
                             btns.forEach(b => {
-                                b.classList.remove('border-[#306d29]', 'bg-[#306d29]/10', 'shadow-[0_0_10px_rgba(48,109,41,0.2)]');
-                                b.classList.add('border-[#306d29]/30', 'bg-[#fbf5dd]');
+                                b.className = 'quiz-opt-btn w-full text-left px-5 py-4 rounded-xl border border-white/10 bg-[#1c1c1e] text-[#cccccc] hover:border-white/20 hover:bg-white/5 transition-colors font-medium flex items-start gap-3 cursor-pointer';
                             });
                             
-                            this.classList.remove('border-[#306d29]/30', 'bg-[#fbf5dd]');
-                            this.classList.add('border-[#306d29]', 'bg-[#306d29]/10', 'shadow-[0_0_10px_rgba(48,109,41,0.2)]');
-                            
+                            this.className = 'quiz-opt-btn w-full text-left px-5 py-4 rounded-xl border border-[#2997ff] bg-[#2997ff]/10 text-white transition-colors font-medium flex items-start gap-3 cursor-pointer';
                             userAnswers[index] = this.getAttribute('data-choice');
                             updateNavUI();
                         }
@@ -421,13 +419,13 @@
                         
                         if (unanswered.length > 0) {
                             Swal.fire({
-                                title: 'Belum Selesai!',
+                                title: 'Belum Selesai',
                                 text: 'Kamu belum menjawab soal nomor: ' + unanswered.join(', '),
                                 icon: 'warning',
-                                confirmButtonText: 'Lanjutkan Mengerjakan',
-                                confirmButtonColor: '#306d29',
-                                background: '#fbf5dd',
-                                color: '#0d530e'
+                                confirmButtonText: 'Lanjutkan',
+                                confirmButtonColor: '#0066cc',
+                                background: '#272729',
+                                color: '#ffffff'
                             });
                             return; 
                         }
@@ -447,12 +445,11 @@
 
                     if (isPassed) {
                         quizBox.innerHTML = `
-                            <div class="text-center py-12 px-6 animate-fade-in bg-[#fbf5dd]">
-                                <div class="text-7xl mb-6 drop-shadow-lg animate-bounce-short">🎉</div>
-                                <h4 class="text-3xl font-black text-[#306d29] mb-3">Lulus! Pemahamanmu Hebat!</h4>
-                                <p class="text-[#0d530e] mb-8 font-medium text-lg">Kamu menjawab ${correctCount} dari ${totalQuestions} soal dengan benar.</p>
+                            <div class="text-center py-12 px-6 animate-fade-in bg-[#272729]">
+                                <h4 class="text-3xl font-semibold text-white mb-3">Lulus Evaluasi</h4>
+                                <p class="text-[#cccccc] mb-8 font-medium text-lg">Kamu menjawab ${correctCount} dari ${totalQuestions} soal dengan benar.</p>
                                 
-                                <div class="inline-block px-10 py-5 bg-[#306d29]/10 border-2 border-[#306d29] rounded-2xl text-[#0d530e] font-mono font-black text-4xl mb-4 shadow-[0_0_20px_rgba(48,109,41,0.2)]">
+                                <div class="inline-block px-10 py-5 bg-[#2997ff]/10 border border-[#2997ff] rounded-2xl text-[#2997ff] font-mono font-semibold text-4xl mb-4">
                                     Skor: ${finalScore}
                                 </div>
                             </div>
@@ -472,21 +469,19 @@
                         showBottomNav(); 
                     } else {
                         quizBox.innerHTML = `
-                            <div class="text-center py-10 px-6 animate-fade-in bg-[#fbf5dd]">
-                                <div class="text-7xl mb-4 drop-shadow-lg">⚠️</div>
-                                <h4 class="text-3xl font-black text-red-600 mb-2">Belum Memenuhi KKM</h4>
-                                <p class="text-[#0d530e] mb-6 font-medium">Kamu hanya menjawab ${correctCount} soal dengan benar. Butuh minimal skor 80 untuk lulus.</p>
+                            <div class="text-center py-10 px-6 animate-fade-in bg-[#272729]">
+                                <h4 class="text-3xl font-semibold text-[#ff453a] mb-2">Belum Memenuhi KKM</h4>
+                                <p class="text-[#cccccc] mb-6 font-medium">Kamu menjawab ${correctCount} soal dengan benar. Butuh minimal skor 80 untuk lulus.</p>
                                 
-                                <div class="inline-block px-8 py-4 bg-red-100 border border-red-500 rounded-2xl text-red-600 font-mono font-black text-2xl mb-8 shadow-sm">
+                                <div class="inline-block px-8 py-4 bg-[#ff453a]/10 border border-[#ff453a]/30 rounded-2xl text-[#ff453a] font-mono font-semibold text-2xl mb-8">
                                     Skor: ${finalScore}
                                 </div>
                                 
-                                <div class="p-4 bg-orange-100 border border-orange-400 rounded-xl mb-6 text-sm text-orange-800">
-                                    🚨 <strong>Sistem Terkunci.</strong> Kamu harus membaca ulang materi dari awal agar dapat mengikuti kuis ini kembali.
+                                <div class="max-w-md mx-auto p-4 bg-white/5 border border-white/5 rounded-xl mb-6 text-sm text-[#7a7a7a]">
+                                    Materi Terkunci. Kamu harus membaca ulang materi dari awal agar dapat mengikuti kuis ini kembali.
                                 </div>
 
-                                <button onclick="window.scrollTo(0,0); setTimeout(()=>window.location.reload(), 500);" class="px-8 py-3 bg-[#0d530e] hover:bg-[#306d29] text-[#fbf5dd] font-bold rounded-xl shadow-lg transition-all hover:-translate-y-1 inline-flex items-center gap-2">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                                <button onclick="window.scrollTo(0,0); setTimeout(()=>window.location.reload(), 500);" class="px-8 py-2.5 bg-[#2997ff] hover:bg-[#0071e3] text-white font-medium rounded-full transition-colors border-none cursor-pointer text-sm">
                                     Ulangi Baca Materi
                                 </button>
                             </div>
