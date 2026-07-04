@@ -23,7 +23,6 @@ class MateriBab2Seeder extends Seeder
         $this->call([
             Bab2_01_VisualisasiDataSeeder::class,       // Sub-bab 1 (Visualisasi / 3D Chart)
             Bab2_02_PengelompokanDataSeeder::class,      // Sub-bab 2 (Konsep K-Means Clustering)
-            Bab2_03_StudiKasusSeeder::class,             // Sub-bab 3 (Praktik Lab / Sandbox)
             Bab2_06_KuisAkhirSeeder::class,              // Evaluasi Bab 2
         ]);
     }
