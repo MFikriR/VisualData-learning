@@ -34,7 +34,7 @@ class Bab1_01_ApaItuDataSeeder extends Seeder
 
                 <div>
                     <h3 class="text-3xl md:text-4xl font-semibold text-[#1d1d1f] mb-6 border-b border-[#e0e0e0] pb-4">
-                        1. Mengenal Data?
+                        1. Mengenal Data
                     </h3>
                     
                     <div class="space-y-6">

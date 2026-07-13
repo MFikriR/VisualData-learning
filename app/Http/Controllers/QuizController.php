@@ -11,11 +11,48 @@ use Illuminate\Support\Facades\Auth;
 class QuizController extends Controller
 {
     /**
-     * 1. TAMPILKAN HALAMAN PENGERJAAN KUIS
+     * 1. TAMPILKAN HALAMAN PENGERJAAN KUIS (Dengan Fitur Lock 1x Percobaan)
      */
     public function show($id)
     {
         $quiz = Quiz::with('questions')->findOrFail($id);
+        
+        // KUNCI EVALUASI AKHIR: Jika bertipe 'final' dan sudah pernah dikerjakan, langsung lempar ke halaman hasil
+        if ($quiz->type == 'final') {
+            $attempt = QuizAttempt::where('user_id', Auth::id())
+                ->where('quiz_id', $quiz->id)
+                ->latest()
+                ->first();
+                
+            if ($attempt) {
+                $userAnswers = json_decode($attempt->answers, true) ?? [];
+                $totalQuestions = $quiz->questions->count();
+                $correctCount = 0;
+                
+                foreach ($quiz->questions as $question) {
+                    $userAnswer = $userAnswers[$question->id] ?? null;
+                    if ($userAnswer && strtolower($userAnswer) == strtolower($question->correct_answer)) {
+                        $correctCount++;
+                    }
+                }
+                
+                $score = $attempt->score;
+                $passed = $score >= 70;
+                
+                // Kirim flash message pemberitahuan bahwa akses pengerjaan ulang dikunci
+                session()->flash('error', '🚫 Akses Dikunci: Evaluasi akhir bab ini hanya dapat ditempuh 1 kali pengerjaan.');
+
+                return view('student.quiz.result', [
+                    'quiz'           => $quiz,
+                    'score'          => $score,
+                    'passed'         => $passed,
+                    'correctCount'   => $correctCount,
+                    'totalQuestions' => $totalQuestions,
+                    'userAnswers'    => $userAnswers
+                ]);
+            }
+        }
+
         return view('student.quiz.show', compact('quiz'));
     }
 
@@ -58,7 +95,6 @@ class QuizController extends Controller
         $passed = $score >= $kkm;
         
         // 6. Simpan UserProgress
-        // 🔥 PERBAIKAN: Jika lulus KKM atau ini adalah Pre/Post test, tandai is_completed = true
         $isCompleted = ($passed || in_array($quiz->type, ['pre_test', 'post_test'])) ? true : false;
 
         UserProgress::updateOrCreate(
@@ -68,7 +104,7 @@ class QuizController extends Controller
             ],
             [
                 'score' => $score,
-                'is_completed' => $isCompleted, // <-- Ini yang sebelumnya hilang!
+                'is_completed' => $isCompleted,
                 'completed_at' => now(),
             ]
         );

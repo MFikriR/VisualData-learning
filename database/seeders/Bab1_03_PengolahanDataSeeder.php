@@ -1,25 +1,19 @@
 <?php
-
 namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
 use App\Models\Material;
 use App\Models\Chapter;
-
 class Bab1_03_PengolahanDataSeeder extends Seeder
 {
     public function run(): void
     {
         $chapterId = Chapter::where('sequence', 1)->value('id');
-
         if (!$chapterId) {
             $this->command->info('Bab 1 belum dibuat! Pastikan ChapterSeeder sudah dijalankan.');
             return;
         }
-
         $content = <<<'EOT'
             <div id="areaMateriPelajaran" class="space-y-12 text-[#1d1d1f] font-sans transition-all duration-1000 relative z-10 pb-20">
-
                 <div class="mb-12 bg-[#f5f5f7] border-l-4 border-[#0066cc] p-6 md:p-8 rounded-r-xl">
                     <h3 class="text-xl md:text-2xl font-semibold text-[#1d1d1f] mb-5">
                         Tujuan Pembelajaran
@@ -31,7 +25,6 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                         </li>
                     </ul>
                 </div>
-
                 <div>
                     <h3 class="text-2xl md:text-3xl font-semibold text-[#1d1d1f] mb-6 border-b border-[#e0e0e0] pb-4">
                         A. Mendefinisikan Permasalahan
@@ -40,21 +33,17 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                         <p class="text-[#333333]">Sebelum mengumpulkan data, kita harus mengetahui terlebih dahulu masalah atau pertanyaan yang ingin dijawab. Tanpa tujuan yang jelas, data yang dikumpulkan bisa menjadi tidak relevan dan sulit digunakan untuk menghasilkan informasi yang bermanfaat.</p>
                         <p class="text-[#333333]">Sebagai contoh, seorang guru ingin mengetahui apakah hasil belajar siswa sudah baik. Untuk menjawab pertanyaan tersebut, guru perlu mengumpulkan data nilai siswa, bukan data tinggi badan atau warna kesukaan siswa.</p>
                         <p class="text-[#333333]">Oleh karena itu, langkah pertama dalam pengolahan data adalah mendefinisikan permasalahan yang ingin diselesaikan.</p>
-
                         <div class="bg-[#fafafc] p-4 rounded-xl border border-[#e0e0e0] text-center mb-8 mt-6">
                             <img src="/images/mendefinisikan-permasalahan.png" alt="Siklus Mendefinisikan Permasalahan" class="w-full max-w-4xl mx-auto rounded-lg" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'bg-[#f5f5f7] text-[#0066cc] p-10 rounded-lg border border-dashed border-[#e0e0e0]\'>Letakkan gambar mendefinisikan-permasalahan.png di folder public/images/</div>';">
                             <p class="text-sm text-[#7a7a7a] italic mt-3">Gambar 17. Mendefinisikan Permasalahan</p>
                         </div>
-
                         <p class="text-[#333333]">Gambar 17 menunjukkan bahwa proses pengolahan data diawali dengan mengidentifikasi permasalahan yang ingin diselesaikan. Permasalahan tersebut kemudian diterjemahkan menjadi pertanyaan, sehingga dapat ditentukan data yang perlu dikumpulkan dan dianalisis.</p>
-
                         <div class="bg-[#fafafc] p-4 rounded-xl border border-[#e0e0e0] text-center mb-8 mt-6">
                             <img src="/images/hubungan-masalah-data.png" alt="Hubungan Permasalahan dan Data yang Dibutuhkan" class="w-full max-w-4xl mx-auto rounded-lg" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'bg-[#f5f5f7] text-[#0066cc] p-10 rounded-lg border border-dashed border-[#e0e0e0]\'>Letakkan gambar hubungan-masalah-data.png di folder public/images/</div>';">
                             <p class="text-sm text-[#7a7a7a] italic mt-3">Gambar 18. Hubungan Permasalahan dan Data yang Dibutuhkan</p>
                         </div>
                     </div>
                 </div>
-
                 <div class="mt-20">
                     <h3 class="text-2xl md:text-3xl font-semibold text-[#1d1d1f] mb-6 border-b border-[#e0e0e0] pb-4">
                         B. Pengumpulan Data
@@ -74,7 +63,6 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                         </div>
                     </div>
                 </div>
-
                 <div class="mt-16">
                     <h3 class="text-2xl md:text-3xl font-semibold text-[#1d1d1f] mb-6 border-b border-[#e0e0e0] pb-4">
                         C. Teknik Pengumpulan Data
@@ -85,7 +73,6 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                         <img src="/images/teknik-pengumpulan-data.png" alt="Teknik Pengumpulan Data" class="w-full max-w-4xl mx-auto rounded-lg" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'bg-[#f5f5f7] text-[#0066cc] p-10 rounded-lg border border-dashed border-[#e0e0e0]\'>Letakkan gambar teknik-pengumpulan-data.png di folder public/images/</div>';">
                         <p class="text-sm text-[#7a7a7a] italic mt-3">Gambar Teknik Pengumpulan Data</p>
                     </div>
-
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                         <div class="bg-[#fafafc] p-6 rounded-xl border border-[#e0e0e0]">
                             <h4 class="font-semibold text-[#1d1d1f] text-lg mb-2">1. Observasi</h4>
@@ -105,7 +92,6 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                         </div>
                     </div>
                 </div>
-
                 <div class="mt-20">
                     <h3 class="text-2xl md:text-3xl font-semibold text-[#1d1d1f] mb-6 border-b border-[#e0e0e0] pb-4">
                         D. Pembersihan Data (Data Cleaning)
@@ -114,11 +100,9 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                         <p class="font-semibold text-xl text-[#0066cc]">Mengapa data perlu dibersihkan?</p>
                         <p class="text-[#333333]">Sebelum dianalisis atau divisualisasikan, data perlu diperiksa terlebih dahulu. Data yang tidak lengkap, berulang, atau mengandung kesalahan dapat menyebabkan hasil analisis menjadi kurang akurat.</p>
                         <p class="text-[#333333]">Bayangkan seorang guru ingin menghitung rata-rata nilai siswa. Jika ada nama siswa yang tercatat dua kali atau ada nilai yang kosong, hasil perhitungan dapat menjadi tidak tepat. Proses memperbaiki dan merapikan data ini disebut pembersihan data (data cleaning).</p>
-
                         <div class="bg-[#fafafc] p-4 rounded-xl border border-[#e0e0e0] text-center mb-10 mt-6">
                             <img src="/images/alur-data-cleaning.png" alt="Alur Data Cleaning" class="w-full max-w-4xl mx-auto rounded-lg" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'bg-[#f5f5f7] text-[#0066cc] p-10 rounded-lg border border-dashed border-[#e0e0e0]\'>Letakkan gambar alur-data-cleaning.png di folder public/images/</div>';">
                         </div>
-
                         <div class="bg-[#fafafc] p-6 rounded-xl border border-[#e0e0e0]">
                             <h4 class="text-lg font-semibold text-[#1d1d1f] mb-2">1. Data Duplikat</h4>
                             <p class="text-sm text-[#7a7a7a]">Data yang tercatat lebih dari satu kali. Dampaknya, jumlah data menjadi tidak akurat dan perhitungan nilai rata-rata kelas berubah.</p>
@@ -132,7 +116,6 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                             <p class="text-sm text-[#7a7a7a]">Kesalahan ketik atau ketidakseragaman format (Misal: Jakarta vs JAKARTA vs Jakrta). Komputer akan mengidentifikasi ketiganya sebagai kota yang berbeda.</p>
                         </div>
                     </div>
-
                     <div style="background:#fafafc; border:1px solid #e0e0e0;" class="p-6 md:p-8 rounded-2xl mt-8 mb-12 relative overflow-hidden">
                         <div class="text-center mb-6">
                             <h4 style="color:#1d1d1f !important;" class="text-2xl font-semibold mb-2">Aktivitas Interaktif: Menjadi Data Cleaner</h4>
@@ -194,10 +177,8 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                                 <span style="color:#7a7a7a !important;">Selesai Diperbaiki</span>
                                 <span style="color:#7a7a7a !important; font-size:12px;">Sukses</span>
                             `;
-
                             const rowDup = document.getElementById('row-dup');
                             const rowTypo = document.getElementById('row-typo');
-
                             if (type === 'empty') {
                                 document.getElementById('row-empty').innerHTML = `
                                     <td class="p-3" style="background:rgba(0,102,204,0.05); color:#0066cc !important;">Mie Ayam</td>
@@ -211,7 +192,6 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                                     <td class="p-3 text-center" style="background:rgba(0,102,204,0.05); color:#0066cc !important;">25</td>
                                 `;
                             }
-
                             cleanProgress++;
                             if (cleanProgress === 3) {
                                 document.getElementById('clean-success').classList.remove('hidden');
@@ -231,7 +211,6 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                         }
                     </script>
                 </div>
-
                 <div class="mt-20">
                     <h3 class="text-2xl md:text-3xl font-semibold text-[#1d1d1f] mb-6 border-b border-[#e0e0e0] pb-4">
                         E. Penyimpanan Data dengan Spreadsheet
@@ -239,11 +218,9 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                     <div class="space-y-6 text-lg leading-relaxed">
                         <p class="text-[#333333]">Spreadsheet adalah aplikasi yang digunakan untuk menyimpan, mengatur, menghitung, dan mengolah data dalam bentuk tabel. Beberapa aplikasi yang sering digunakan antara lain <strong>Microsoft Excel</strong>, <strong>Google Sheets</strong>, dan <strong>LibreOffice Calc</strong>.</p>
                         <p class="text-[#333333]">Spreadsheet banyak digunakan karena memudahkan pengguna dalam mengelola data secara terstruktur.</p>
-
                         <div class="bg-[#fafafc] p-4 rounded-xl border border-[#e0e0e0] text-center mb-8 mt-6">
                             <img src="/images/ui-spreadsheet.png" alt="Tampilan Antarmuka Spreadsheet" class="w-full max-w-4xl mx-auto rounded-lg" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'bg-[#f5f5f7] text-[#0066cc] p-10 rounded-lg border border-dashed border-[#e0e0e0]\'>Letakkan gambar ui-spreadsheet.png di folder public/images/</div>';">
                         </div>
-
                         <div class="bg-[#fafafc] p-6 rounded-xl border border-[#e0e0e0]">
                             <h4 class="font-semibold text-[#1d1d1f] text-2xl mb-4">Baris dan Kolom</h4>
                             <p class="mb-4 text-sm text-[#7a7a7a]">Data pada spreadsheet disusun dalam format terstruktur:</p>
@@ -276,7 +253,6 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                                 <p class="text-sm text-[#333333]">Pertemuan antara koordinat baris dan kolom disebut sel. Contoh: Sel <strong>B3</strong> berarti bidang tersebut terletak di <strong>Kolom B, Baris 3</strong>.</p>
                             </div>
                         </div>
-
                         <div class="mt-8">
                             <h4 class="font-semibold text-[#1d1d1f] text-2xl mb-4">Memasukkan Data</h4>
                             <p class="text-[#333333]">Data dapat dimasukkan dengan memilih koordinat sel kemudian mengetik informasi yang diperlukan. Setiap data ditempatkan pada posisi sel yang sesuai agar mudah dibaca dan diolah komputer.</p>
@@ -312,7 +288,6 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                                 <p class="text-[#333333]">Menyimpan data secara teratur membantu mencegah resiko kehilangan berkas penting and memudahkan proses manajemen berkas di kemudian hari.</p>
                             </div>
                         </div>
-
                         <div class="mt-8">
                             <h4 class="font-semibold text-[#1d1d1f] text-2xl mb-4">Contoh Tabel Data Siswa</h4>
                             <p class="mb-4 text-sm text-[#7a7a7a]">Berikut contoh visual data catatan administrasi siswa yang disimpan menggunakan spreadsheet.</p>
@@ -331,7 +306,6 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                         </div>
                     </div>
                 </div>
-
                 <div class="mt-20">
                     <h3 class="text-2xl md:text-3xl font-semibold text-[#1d1d1f] mb-6 border-b border-[#e0e0e0] pb-4">
                         F. Analisis Data Sederhana
@@ -365,7 +339,6 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                                 </div>
                             </div>
                         </div>
-
                         <div class="bg-[#fafafc] p-6 rounded-xl border border-[#e0e0e0] mt-6 mb-12">
                             <h4 class="font-semibold text-[#1d1d1f] text-xl mb-2">Menentukan Nilai Terbesar dan Terkecil</h4>
                             <p class="text-sm text-[#7a7a7a] mb-3">Dalam analisis statistika data, kita sering perlu melacak batas ambang nilai tertinggi (MAX) dan nilai terendah (MIN).</p>
@@ -376,13 +349,11 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                             </div>
                         </div>
                     </div>
-
                     <div class="bg-[#fafafc] p-6 md:p-8 rounded-2xl border border-[#e0e0e0] mt-8 mb-12 relative">
                         <div class="text-center mb-8">
                             <h4 class="text-2xl font-semibold text-[#1d1d1f] mb-2">Aktivitas Sederhana: Mini Spreadsheet</h4>
                             <p class="text-sm text-[#7a7a7a] font-medium">Lengkapi data yang masih kosong! Ketikkan angka nilai ujian pada kolom sel yang tersedia untuk kalkulasi otomatis.</p>
                         </div>
-
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                             <div class="bg-white rounded-xl border border-[#e0e0e0] overflow-hidden font-sans">
                                 <div class="bg-[#f5f5f7] border-b border-[#e0e0e0] p-3 flex items-center gap-2 text-[#7a7a7a] text-xs">
@@ -398,93 +369,172 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                                         </tr>
                                     </thead>
                                     <tbody class="text-[#1d1d1f] divide-y divide-[#e0e0e0]">
-                                        <tr class="bg-[#fafafc]"><td class="p-2 text-center border-r border-[#e0e0e0] text-[#7a7a7a]">1</td><td class="p-2 border-r border-[#e0e0e0] font-medium text-center">Nama</td><td class="p-2 font-medium text-center">Nilai</td></tr>
-                                        <tr><td class="p-2 text-center border-r border-[#e0e0e0] text-[#7a7a7a]">2</td><td class="p-2 border-r border-[#e0e0e0] text-center">Andi</td><td class="p-1"><input type="number" class="nilai-input w-full p-1 text-center outline-none" style="background-color: #ffffff !important; color: #1d1d1f !important; border: 1px solid transparent;" oninput="calcSpreadsheet()" value="80"></td></tr>
-                                        <tr><td class="p-2 text-center border-r border-[#e0e0e0] text-[#7a7a7a]">3</td><td class="p-2 border-r border-[#e0e0e0] text-center">Budi</td><td class="p-1"><input type="number" class="nilai-input w-full p-1 text-center outline-none" style="background-color: #ffffff !important; color: #1d1d1f !important; border: 1px solid transparent;" oninput="calcSpreadsheet()" placeholder="Ketik..."></td></tr>
-                                        <tr><td class="p-2 text-center border-r border-[#e0e0e0] text-[#7a7a7a]">4</td><td class="p-2 border-r border-[#e0e0e0] text-center">Citra</td><td class="p-1"><input type="number" class="nilai-input w-full p-1 text-center outline-none" style="background-color: #ffffff !important; color: #1d1d1f !important; border: 1px solid transparent;" oninput="calcSpreadsheet()" value="85"></td></tr>
-                                        <tr><td class="p-2 text-center border-r border-[#e0e0e0] text-[#7a7a7a]">5</td><td class="p-2 border-r border-[#e0e0e0] text-center">Deni</td><td class="p-1"><input type="number" class="nilai-input w-full p-1 text-center outline-none" style="background-color: #ffffff !important; color: #1d1d1f !important; border: 1px solid transparent;" oninput="calcSpreadsheet()" placeholder="Ketik..."></td></tr>
-                                        <tr><td class="p-2 text-center border-r border-[#e0e0e0] text-[#7a7a7a]">6</td><td class="p-2 border-r border-[#e0e0e0] text-center">Eka</td><td class="p-1"><input type="number" class="nilai-input w-full p-1 text-center outline-none" style="background-color: #ffffff !important; color: #1d1d1f !important; border: 1px solid transparent;" oninput="calcSpreadsheet()" placeholder="Ketik..."></td></tr>
+                                        <tr class="bg-[#fafafc]">
+                                            <td class="p-2 text-center border-r border-[#e0e0e0] text-[#7a7a7a]">1</td>
+                                            <td class="p-2 border-r border-[#e0e0e0] font-medium text-center">Nama</td>
+                                            <td class="p-2 font-medium text-center">Nilai</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 text-center border-r border-[#e0e0e0] text-[#7a7a7a]">2</td>
+                                            <td class="p-2 border-r border-[#e0e0e0] text-center">Andi</td>
+                                            <td class="p-1"><input type="number" class="nilai-input w-full p-2 rounded-lg text-center outline-none transition-all duration-200" style="background-color:#ffffff !important; color:#1d1d1f !important; border:1px solid #e0e0e0 !important;" value="80"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 text-center border-r border-[#e0e0e0] text-[#7a7a7a]">3</td>
+                                            <td class="p-2 border-r border-[#e0e0e0] text-center">Budi</td>
+                                            <td class="p-1"><input type="number" class="nilai-input w-full p-2 rounded-lg text-center outline-none transition-all duration-200" style="background-color:#fff8f0 !important; color:#1d1d1f !important; border:1px dashed #f0a860 !important;" placeholder="Ketik..."></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 text-center border-r border-[#e0e0e0] text-[#7a7a7a]">4</td>
+                                            <td class="p-2 border-r border-[#e0e0e0] text-center">Citra</td>
+                                            <td class="p-1"><input type="number" class="nilai-input w-full p-2 rounded-lg text-center outline-none transition-all duration-200" style="background-color:#ffffff !important; color:#1d1d1f !important; border:1px solid #e0e0e0 !important;" value="85"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 text-center border-r border-[#e0e0e0] text-[#7a7a7a]">5</td>
+                                            <td class="p-2 border-r border-[#e0e0e0] text-center">Deni</td>
+                                            <td class="p-1"><input type="number" class="nilai-input w-full p-2 rounded-lg text-center outline-none transition-all duration-200" style="background-color:#fff8f0 !important; color:#1d1d1f !important; border:1px dashed #f0a860 !important;" placeholder="Ketik..."></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 text-center border-r border-[#e0e0e0] text-[#7a7a7a]">6</td>
+                                            <td class="p-2 border-r border-[#e0e0e0] text-center">Eka</td>
+                                            <td class="p-1"><input type="number" class="nilai-input w-full p-2 rounded-lg text-center outline-none transition-all duration-200" style="background-color:#fff8f0 !important; color:#1d1d1f !important; border:1px dashed #f0a860 !important;" placeholder="Ketik..."></td>
+                                        </tr>
                                     </tbody>
                                 </table>
+                                <div class="p-3 bg-[#f5f5f7] border-t border-[#e0e0e0] flex items-center gap-2 text-[10px] text-[#7a7a7a]">
+                                    <span class="w-3 h-3 rounded border border-dashed" style="border-color:#f0a860; background:#fff8f0;"></span>
+                                    <span>Sel dengan garis putus-putus oranye = data belum lengkap</span>
+                                </div>
                             </div>
-
                             <div class="space-y-4">
                                 <div class="bg-white p-5 rounded-xl border border-[#e0e0e0] flex items-center justify-between">
-                                    <div><p class="text-[10px] text-[#7a7a7a] font-semibold uppercase tracking-widest">Fungsi COUNT</p><h5 class="text-base font-semibold text-[#1d1d1f]">Jumlah Siswa Terisi</h5></div>
-                                    <div class="text-2xl font-semibold text-[#1d1d1f]" id="res-count">2</div>
+                                    <div>
+                                        <p class="text-[10px] text-[#7a7a7a] font-semibold uppercase tracking-widest">Fungsi COUNT</p>
+                                        <h5 class="text-base font-semibold text-[#1d1d1f]">Jumlah Siswa Terisi</h5>
+                                    </div>
+                                    <div class="text-2xl font-semibold text-[#1d1d1f] transition-all duration-300" id="res-count" style="color:#1d1d1f !important;">2</div>
                                 </div>
                                 <div class="bg-white p-5 rounded-xl border border-[#e0e0e0] flex items-center justify-between">
-                                    <div><p class="text-[10px] text-[#7a7a7a] font-semibold uppercase tracking-widest">Fungsi AVERAGE</p><h5 class="text-base font-semibold text-[#1d1d1f]">Rata-Rata Nilai</h5></div>
-                                    <div class="text-2xl font-semibold text-[#0066cc]" id="res-avg">82.5</div>
+                                    <div>
+                                        <p class="text-[10px] text-[#7a7a7a] font-semibold uppercase tracking-widest">Fungsi AVERAGE</p>
+                                        <h5 class="text-base font-semibold text-[#1d1d1f]">Rata-Rata Nilai</h5>
+                                    </div>
+                                    <div class="text-2xl font-semibold transition-all duration-300" id="res-avg" style="color:#0066cc !important;">82.5</div>
                                 </div>
                                 <div class="grid grid-cols-2 gap-4">
-                                    <div class="bg-[#0066cc]/5 p-4 rounded-xl border border-[#0066cc]/10 text-center">
-                                        <p class="text-[10px] font-semibold text-[#7a7a7a] uppercase tracking-widest mb-1">Fungsi MAX</p>
-                                        <h5 class="text-xs font-semibold text-[#1d1d1f] mb-1">Tertinggi</h5>
-                                        <div class="text-xl font-semibold text-[#0066cc]" id="res-max">85</div>
+                                    <div class="p-4 rounded-xl text-center transition-all duration-300" style="background:rgba(0,102,204,0.05); border:1px solid rgba(0,102,204,0.15);">
+                                        <p class="text-[10px] font-semibold uppercase tracking-widest mb-1" style="color:#7a7a7a !important;">Fungsi MAX</p>
+                                        <h5 class="text-xs font-semibold mb-1" style="color:#1d1d1f !important;">Tertinggi</h5>
+                                        <div class="text-xl font-semibold" id="res-max" style="color:#0066cc !important;">85</div>
                                     </div>
-                                    <div class="bg-[#ff453a]/5 p-4 rounded-xl border border-[#ff453a]/10 text-center">
-                                        <p class="text-[10px] font-semibold text-[#7a7a7a] uppercase tracking-widest mb-1">Fungsi MIN</p>
-                                        <h5 class="text-xs font-semibold text-[#1d1d1f] mb-1">Terendah</h5>
-                                        <div class="text-xl font-semibold text-[#ff453a]" id="res-min">80</div>
+                                    <div class="p-4 rounded-xl text-center transition-all duration-300" style="background:rgba(255,69,58,0.05); border:1px solid rgba(255,69,58,0.15);">
+                                        <p class="text-[10px] font-semibold uppercase tracking-widest mb-1" style="color:#7a7a7a !important;">Fungsi MIN</p>
+                                        <h5 class="text-xs font-semibold mb-1" style="color:#1d1d1f !important;">Terendah</h5>
+                                        <div class="text-xl font-semibold" id="res-min" style="color:#ff453a !important;">80</div>
                                     </div>
                                 </div>
-                                
-                                <div id="res-conclusion" class="mt-4 p-4 bg-white rounded-xl border border-[#e0e0e0] text-sm text-[#1d1d1f] leading-relaxed font-medium">
-                                    <strong>Kesimpulan Analisis:</strong> Berdasarkan <span id="txt-count" class="font-semibold text-[#0066cc]">2</span> data siswa yang masuk, rata-rata kelas adalah <span id="txt-avg" class="font-semibold text-[#0066cc]">82.5</span>. Nilai tertinggi saat ini adalah <span id="txt-max" class="font-semibold text-[#0066cc]">85</span>, dan terendah <span id="txt-min" class="font-semibold text-[#ff453a]">80</span>. Isi data siswa yang kosong untuk melihat kesimpulan akhirnya.
+                                <div id="res-conclusion" class="mt-4 p-4 bg-white rounded-xl border border-[#e0e0e0] text-sm leading-relaxed font-medium transition-all duration-300" style="color:#1d1d1f !important;">
+                                    <strong>Kesimpulan Analisis:</strong> Berdasarkan <span id="txt-count" class="font-semibold" style="color:#0066cc !important;">2</span> data siswa yang masuk, rata-rata kelas adalah <span id="txt-avg" class="font-semibold" style="color:#0066cc !important;">82.5</span>. Nilai tertinggi saat ini adalah <span id="txt-max" class="font-semibold" style="color:#0066cc !important;">85</span>, dan terendah <span id="txt-min" class="font-semibold" style="color:#ff453a !important;">80</span>. Isi data siswa yang kosong untuk melihat kesimpulan akhirnya.
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <script>
+                    (function() {
+                        const inputs = document.querySelectorAll('.nilai-input');
+
+                        function flashUpdate(el) {
+                            if (!el) return;
+                            el.style.transform = 'scale(1.08)';
+                            setTimeout(() => { el.style.transform = 'scale(1)'; }, 150);
+                        }
+
+                        // Helper aman: cek elemen ada sebelum diubah, kalau tidak ada beri peringatan di console
+                        // tapi TIDAK menghentikan seluruh fungsi (beda dengan versi lama yang crash total)
+                        function safeSetText(id, value) {
+                            const el = document.getElementById(id);
+                            if (!el) {
+                                console.warn('[Mini Spreadsheet] Elemen dengan id="' + id + '" tidak ditemukan di halaman.');
+                                return null;
+                            }
+                            el.innerText = value;
+                            return el;
+                        }
+
+                        function safeSetHTML(id, html) {
+                            const el = document.getElementById(id);
+                            if (!el) {
+                                console.warn('[Mini Spreadsheet] Elemen dengan id="' + id + '" tidak ditemukan di halaman.');
+                                return null;
+                            }
+                            el.innerHTML = html;
+                            return el;
+                        }
+
                         function calcSpreadsheet() {
-                            const inputs = document.querySelectorAll('.nilai-input');
                             let validValues = [];
                             let sum = 0;
 
                             inputs.forEach(input => {
                                 let val = parseFloat(input.value);
-                                if(!isNaN(val)) {
+                                if (!isNaN(val)) {
                                     validValues.push(val);
                                     sum += val;
                                     input.style.setProperty('background-color', '#ffffff', 'important');
+                                    input.style.setProperty('border', '1px solid #e0e0e0', 'important');
                                 } else {
-                                    input.style.setProperty('background-color', '#0066cc/5', 'important');
+                                    input.style.setProperty('background-color', '#fff8f0', 'important');
+                                    input.style.setProperty('border', '1px dashed #f0a860', 'important');
                                 }
                             });
 
-                            let count = validValues.length;
-                            document.getElementById('res-count').innerText = count;
-                            document.getElementById('txt-count').innerText = count;
+                            const count = validValues.length;
 
-                            if(count > 0) {
-                                let avg = (sum / count).toFixed(1);
-                                let max = Math.max(...validValues);
-                                let min = Math.min(...validValues);
+                            // Setiap update sekarang independen satu sama lain.
+                            // Kalau satu id hilang, yang lain tetap lanjut jalan (tidak saling menjatuhkan).
+                            const elCount = safeSetText('res-count', count);
+                            safeSetText('txt-count', count);
+                            flashUpdate(elCount);
 
-                                let cleanAvg = avg.replace('.0', '');
-                                document.getElementById('res-avg').innerText = cleanAvg;
-                                document.getElementById('res-max').innerText = max;
-                                document.getElementById('res-min').innerText = min;
+                            if (count > 0) {
+                                const avg = (sum / count).toFixed(1);
+                                const max = Math.max(...validValues);
+                                const min = Math.min(...validValues);
+                                const cleanAvg = avg.replace('.0', '');
 
-                                document.getElementById('res-conclusion').classList.remove('hidden');
-                                document.getElementById('txt-avg').innerText = cleanAvg;
-                                document.getElementById('txt-max').innerText = max;
-                                document.getElementById('txt-min').innerText = min;
+                                const elAvg = safeSetText('res-avg', cleanAvg);
+                                const elMax = safeSetText('res-max', max);
+                                const elMin = safeSetText('res-min', min);
+                                flashUpdate(elAvg);
+                                flashUpdate(elMax);
+                                flashUpdate(elMin);
 
-                                if (count === 5) {
-                                    document.getElementById('res-conclusion').innerHTML = `<strong>Kesimpulan Akhir:</strong> Seluruh data telah masuk! Secara umum hasil belajar siswa cukup baik dengan rata-rata nilai <span class="font-semibold text-[#0066cc]">${cleanAvg}</span>. Nilai tertinggi adalah <span class="font-semibold text-[#0066cc]">${max}</span>, sedangkan nilai yang perlu mendapat perhatian (terendah) adalah <span class="font-semibold text-[#ff453a]">${min}</span>.`;
+                                safeSetText('txt-avg', cleanAvg);
+                                safeSetText('txt-max', max);
+                                safeSetText('txt-min', min);
+
+                                if (count === inputs.length) {
+                                    safeSetHTML('res-conclusion', `<strong>Kesimpulan Akhir:</strong> Seluruh data telah masuk! Secara umum hasil belajar siswa cukup baik dengan rata-rata nilai <span class="font-semibold" style="color:#0066cc !important;">${cleanAvg}</span>. Nilai tertinggi adalah <span class="font-semibold" style="color:#0066cc !important;">${max}</span>, sedangkan nilai yang perlu mendapat perhatian (terendah) adalah <span class="font-semibold" style="color:#ff453a !important;">${min}</span>.`);
                                 } else {
-                                    document.getElementById('res-conclusion').innerHTML = `<strong>Kesimpulan Analisis:</strong> Berdasarkan <span class="font-semibold text-[#0066cc]">${count}</span> data siswa yang masuk, rata-rata kelas adalah <span class="font-semibold text-[#0066cc]">${cleanAvg}</span>. Nilai tertinggi saat ini adalah <span class="font-semibold text-[#0066cc]">${max}</span>, dan terendah <span class="font-semibold text-[#ff453a]">${min}</span>. Isi data siswa yang kosong untuk melihat kesimpulan akhirnya.`;
+                                    safeSetHTML('res-conclusion', `<strong>Kesimpulan Analisis:</strong> Berdasarkan <span class="font-semibold" style="color:#0066cc !important;">${count}</span> data siswa yang masuk, rata-rata kelas adalah <span class="font-semibold" style="color:#0066cc !important;">${cleanAvg}</span>. Nilai tertinggi saat ini adalah <span class="font-semibold" style="color:#0066cc !important;">${max}</span>, dan terendah <span class="font-semibold" style="color:#ff453a !important;">${min}</span>. Isi data siswa yang kosong untuk melihat kesimpulan akhirnya.`);
                                 }
                             } else {
-                                document.getElementById('res-avg').innerText = '0';
-                                document.getElementById('res-max').innerText = '-';
-                                document.getElementById('res-min').innerText = '-';
-                                document.getElementById('res-conclusion').classList.add('hidden');
+                                safeSetText('res-avg', '0');
+                                safeSetText('res-max', '-');
+                                safeSetText('res-min', '-');
+                                safeSetHTML('res-conclusion', `<strong>Kesimpulan Analisis:</strong> Belum ada data siswa yang masuk. Silakan isi nilai pada tabel di sebelah kiri untuk melihat hasil kalkulasi.`);
                             }
                         }
+
+                        // Pasang listener lewat JS (bukan atribut inline oninput),
+                        // supaya tetap berfungsi meski atribut event inline pada <input> difilter/di-strip oleh sanitizer HTML
+                        inputs.forEach(input => {
+                            input.addEventListener('input', calcSpreadsheet);
+                        });
+
+                        // Hitung sekali di awal supaya tampilan sinkron dengan nilai default
+                        calcSpreadsheet();
+                    })();
                     </script>
                     
                     <div class="bg-[#f5f5f7] p-6 rounded-xl border border-[#e0e0e0]">
@@ -498,7 +548,6 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                     </div>
                 </div>
             </div>
-
             <div id="mini-quiz-data" class="hidden">
                 <div class="mini-quiz-item" 
                     data-question="Langkah pertama yang paling krusial sebelum mulai mengumpulkan data menurut siklus pengolahan data adalah...."
@@ -547,7 +596,6 @@ class Bab1_03_PengolahanDataSeeder extends Seeder
                 </div>
             </div>
 EOT;
-
         Material::updateOrCreate(
             ['slug' => 'pengolahan-data'], 
             [

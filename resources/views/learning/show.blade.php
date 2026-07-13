@@ -3,15 +3,18 @@
 @section('header', $material->chapter->title)
 
 @section('content')
-    {{-- 1. NOTIFIKASI BERHASIL (Frosted Translucent Chip) --}}
+    {{-- 1. NOTIFIKASI BERHASIL (Apple Light Success Banner Style - Memperbaiki Teks Gaib) --}}
     @if (session('success'))
-        <div class="mb-6 p-4 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3">
-            <div class="p-2 bg-white/10 rounded-full text-[#2997ff]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        <div class="mb-6 p-4 rounded-xl flex items-center gap-3 animate-fade-in" style="background-color: rgba(52, 199, 89, 0.08) !important; border: 1px solid rgba(52, 199, 89, 0.2) !important;">
+            {{-- Lingkaran Indikator Menggunakan Warna Hijau iOS Resmi (#34c759) --}}
+            <div class="p-2 rounded-full flex-shrink-0" style="background-color: rgba(52, 199, 89, 0.12) !important;">
+                <svg class="w-5 h-5" style="color: #34c759 !important;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
             </div>
-            <div>
-                <h4 class="font-semibold text-white">Progres Tersimpan</h4>
-                <p class="text-sm text-[#7a7a7a]">{{ session('success') }}</p>
+            <div class="text-left">
+                <h4 class="text-sm font-semibold" style="color: #1d1d1f !important; margin: 0 !important; line-height: 1.2 !important;">Progres Diperbarui</h4>
+                <p class="text-xs mt-0.5" style="color: #333333 !important; margin: 0 !important; line-height: 1.4 !important;">{{ session('success') }}</p>
             </div>
         </div>
     @endif
@@ -301,6 +304,15 @@
                 quizBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
                 quizBox.innerHTML = `
+                    <div class="p-5 border-b border-white/10" style="background-color: rgba(255, 255, 255, 0.02) !important;">
+                        <h5 class="text-sm font-semibold text-white mb-2">Petunjuk Pengerjaan Kuis Formatif</h5>
+                        <ul class="list-decimal pl-4 text-xs text-[#cccccc] space-y-1">
+                            <li>Kuis ini bertujuan untuk menguji pemahaman Anda pada sub-bab materi yang baru saja dipelajari.</li>
+                            <li>Pilihlah salah satu opsi jawaban yang Anda anggap paling tepat.</li>
+                            <li>Batas kelulusan kuis ini adalah minimal 80%. Jika belum memenuhi, Anda diharapkan mempelajari kembali materi di atas.</li>
+                        </ul>
+                    </div>
+
                     <div class="bg-white/5 p-4 border-b border-white/10">
                         <div class="text-xs text-[#7a7a7a] mb-3 flex justify-between items-center tracking-wider font-semibold">
                             <span>NAVIGASI SOAL</span>
