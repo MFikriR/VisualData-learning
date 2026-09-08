@@ -10,7 +10,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\SandboxController;
 use App\Http\Controllers\TeacherQuizController; 
-use App\Http\Controllers\QuestionController; // ✅ Import yang benar
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\TeacherSettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,6 +116,13 @@ Route::middleware(['auth', 'teacher'])->prefix('teacher')->name('teacher.')->gro
     Route::get('/questions/{id}/edit', [QuestionController::class, 'edit'])->name('questions.edit');
     Route::put('/questions/{id}', [QuestionController::class, 'update'])->name('questions.update');
     Route::delete('/questions/{id}', [QuestionController::class, 'destroy'])->name('questions.destroy');
+
+    // H. Halaman Bantuan / FAQ Guru
+    Route::get('/help', [TeacherController::class, 'help'])->name('help');
+
+    // J. Setting KKM
+    Route::get('/settings', [App\Http\Controllers\TeacherSettingController::class, 'index'])->name('teacher.settings.index');
+    Route::put('/settings', [App\Http\Controllers\TeacherSettingController::class, 'update'])->name('teacher.settings.update');
 });
 
 require __DIR__.'/auth.php';

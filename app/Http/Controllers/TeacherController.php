@@ -9,6 +9,7 @@ use App\Models\QuizAttempt;
 use App\Models\UserProgress;
 use App\Models\Chapter;
 use App\Models\Material;
+use App\Models\Setting;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,28 +21,28 @@ class TeacherController extends Controller
         $totalStudents = $students->count();
         $totalAttempts = QuizAttempt::count();
 
-        // MENGHAPUS GAMIFIKASI: Mengganti Average XP dengan Average Score (Rata-rata Nilai)
+        // Rata-rata Nilai Keseluruhan
         $averageScore = 0;
         if ($totalAttempts > 0) {
             $averageScore = round(QuizAttempt::avg('score'), 1);
         }
 
-        // MENGHAPUS GAMIFIKASI: Top Students sekarang berdasarkan Rata-rata Nilai Ujian, bukan XP
+        // Top 5 Siswa berdasarkan Rata-rata Nilai
         $topStudents = $students->map(function($student) {
             $student->avg_score = $student->quizAttempts->avg('score') ?? 0;
             return $student;
         })->sortByDesc('avg_score')->take(5);
 
         $recentStudents = User::where('role', 'student')
-                              ->orderBy('created_at', 'desc')
-                              ->take(5)
-                              ->get();
+                             ->orderBy('created_at', 'desc')
+                             ->take(5)
+                             ->get();
 
         $quizPerformance = Quiz::withAvg('attempts', 'score')->get();
 
         return view('teacher.dashboard', compact(
             'totalStudents', 
-            'averageScore', // Variabel baru pengganti averageXp
+            'averageScore', 
             'totalAttempts', 
             'topStudents',
             'recentStudents',
@@ -57,15 +58,18 @@ class TeacherController extends Controller
             $query->where('name', 'like', '%' . $request->search . '%');
         }
         
-        // Tambahan Filter Kelas di Menu Manajemen Siswa
         if ($request->filled('kelas')) {
             $query->where('kelas', $request->kelas);
         }
 
         $students = $query->orderBy('kelas', 'asc')->orderBy('name', 'asc')->paginate(10);
         
-        // Ambil daftar kelas untuk dropdown filter
-        $availableClasses = User::where('role', 'student')->whereNotNull('kelas')->select('kelas')->distinct()->orderBy('kelas')->pluck('kelas');
+        $availableClasses = User::where('role', 'student')
+                                ->whereNotNull('kelas')
+                                ->select('kelas')
+                                ->distinct()
+                                ->orderBy('kelas')
+                                ->pluck('kelas');
 
         return view('teacher.students.index', compact('students', 'availableClasses'));
     }
@@ -79,12 +83,15 @@ class TeacherController extends Controller
         $completedQuizzes = $student->progress->where('is_completed', true)->whereNotNull('quiz_id')->count();
         $averageScore = $student->quizAttempts->avg('score') ?? 0;
 
-        return view('teacher.students.show', compact('student', 'completedQuizzes', 'averageScore'));
+        // KKM Dinamis dari Settings
+        $kkmEvaluasiBab = Setting::get('kkm_evaluasi_bab', 70);
+
+        return view('teacher.students.show', compact('student', 'completedQuizzes', 'averageScore', 'kkmEvaluasiBab'));
     }
 
     /**
-     * 🔥 BUKU NILAI (GRADEBOOK) YANG DISEMPURNAKAN 🔥
-     * Memuat Filter Kelas, Pre-Test, Semua Kuis Bab, Evaluasi Akhir, dan Post-Test!
+     * BUKU NILAI (GRADEBOOK)
+     * Memuat Filter Kelas, Gender, Pre-Test, Mini-Quiz, Evaluasi Bab, Post-Test, serta KKM Dinamis.
      */
     public function gradebook(Request $request)
     {
@@ -96,13 +103,12 @@ class TeacherController extends Controller
                                 ->orderBy('kelas', 'asc')
                                 ->pluck('kelas');
 
-        // 2. Query Siswa (Ambil progress materi & riwayat kuis tertinggi)
+        // 2. Query Siswa (Progress materi & riwayat kuis tertinggi)
         $query = User::where('role', 'student')
                      ->with(['progress', 'quizAttempts' => function($q) {
-                         $q->orderBy('score', 'desc'); // Urutkan dari nilai tertinggi
+                         $q->orderBy('score', 'desc');
                      }]);
 
-        // 3. Terapkan Filter Kelas jika ada
         if ($request->filled('kelas')) {
             $query->where('kelas', $request->kelas);
         }
@@ -113,19 +119,27 @@ class TeacherController extends Controller
 
         $students = $query->orderBy('kelas', 'asc')->orderBy('name', 'asc')->get();
 
-        // 4. Ambil Bab dan Materinya secara berurutan (Untuk Mini-Quiz)
+        // 3. Ambil Bab dan Materinya secara berurutan
         $chapters = Chapter::with(['materials' => function($q) {
             $q->orderBy('sequence', 'asc');
         }])->orderBy('sequence', 'asc')->get();
 
-        // 5. Ambil Semua Kuis (Pre-Test, Evaluasi Bab, Post-Test)
+        // 4. Ambil Semua Kuis
         $quizzes = Quiz::all();
+
+        // 5. Ambil Nilai KKM Dinamis
+        $kkmMiniQuiz    = Setting::get('kkm_mini_quiz', 70);
+        $kkmEvaluasiBab = Setting::get('kkm_evaluasi_bab', 70);
+        $kkmPostTest    = Setting::get('kkm_post_test', 70);
 
         return view('teacher.gradebook', compact(
             'students', 
             'availableClasses', 
             'chapters', 
-            'quizzes'
+            'quizzes',
+            'kkmMiniQuiz',
+            'kkmEvaluasiBab',
+            'kkmPostTest'
         ));
     }
 
@@ -195,5 +209,10 @@ class TeacherController extends Controller
         $student->delete();
 
         return redirect()->route('teacher.students.index')->with('success', 'Siswa berhasil dihapus!');
+    }
+
+    public function help()
+    {
+        return view('teacher.help');
     }
 }

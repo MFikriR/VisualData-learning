@@ -160,9 +160,11 @@
                 <a href="{{ route('dashboard') }}" class="px-8 py-3 rounded-full border border-[#e0e0e0] bg-white text-[#1d1d1f] font-medium hover:bg-[#f5f5f7] transition-colors text-sm">
                     Pelajari Ulang Materi
                 </a>
-                <a href="{{ route('quiz.show', $quiz->id) }}" class="px-8 py-3 bg-[#ff453a] hover:bg-[#e03b30] text-white font-medium rounded-full transition-colors flex items-center justify-center gap-2 text-sm border-none cursor-pointer">
-                    Ulangi Evaluasi
-                </a>
+                @if(!in_array($quiz->type, ['final', 'pre_test', 'post_test']))
+                    <a href="{{ route('quiz.show', $quiz->id) }}" class="px-8 py-3 bg-[#ff453a] hover:bg-[#e03b30] text-white font-medium rounded-full transition-colors flex items-center justify-center gap-2 text-sm border-none cursor-pointer">
+                        Ulangi Evaluasi
+                    </a>
+                @endif
             @else
                 <a href="{{ route('dashboard') }}" class="px-8 py-3 bg-[#0066cc] hover:bg-[#0071e3] text-white font-medium rounded-full transition-colors text-sm border-none cursor-pointer">
                     Lanjut ke Bab Berikutnya

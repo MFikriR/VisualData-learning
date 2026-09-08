@@ -198,7 +198,7 @@
             
             const contentArea = document.getElementById('material-content-area');
             const navBottom = document.getElementById('bottom-navigation');
-            const isAlreadyCompleted = {{ $isCompleted ? 'true' : 'false' }};
+            const isAlreadyCompleted = {{ ($isCompleted || (Auth::check() && Auth::user()->role === 'teacher')) ? 'true' : 'false' }};
             
             if (contentArea && !isAlreadyCompleted) {
                 let mainWrapper = contentArea.firstElementChild;

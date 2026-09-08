@@ -17,10 +17,12 @@
 
         {{-- USER CARD --}}
         <div class="mb-6 p-3.5 bg-white/80 rounded-2xl border border-appleHairline flex items-center gap-3 shadow-sm">
-            <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="w-10 h-10 rounded-xl object-cover border border-appleHairline">
+            <img src="{{ Auth::user()->profile_photo_url ?? 'https://ui-avatars.com/api/?name='.urlencode(Auth::user()->name).'&color=ffffff&background=1d1d1f' }}" alt="{{ Auth::user()->name }}" class="w-10 h-10 rounded-xl object-cover border border-appleHairline">
             <div class="overflow-hidden">
                 <div class="text-sm font-bold text-appleInk truncate">{{ Auth::user()->name }}</div>
-                <div class="text-[10px] text-applePrimary font-bold uppercase tracking-wider">Siswa / Pelajar</div>
+                <div class="text-[10px] text-applePrimary font-bold uppercase tracking-wider">
+                    Siswa / Pelajar
+                </div>
             </div>
         </div>
 
@@ -39,7 +41,7 @@
 
         <nav class="space-y-4 font-medium flex-1">
             
-            {{-- DASHBOARD --}}
+            {{-- DASHBOARD SISWA --}}
             <a id="sidebar-dashboard" href="{{ route('dashboard') }}" 
                class="nav-item flex items-center px-4 py-3 rounded-xl transition-all duration-200 text-appleInk hover:bg-white/60 {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                 <span class="text-xl opacity-80">📊</span>
@@ -58,7 +60,6 @@
 
                 <div class="space-y-4 opacity-40 filter blur-[1px] pointer-events-none select-none">
                     @foreach($globalChapters as $chapter)
-                        {{-- KOTAK PEMBUNGKUS DENGAN BORDER PEMISAH BAB --}}
                         <div class="chapter-group bg-white/40 p-2.5 rounded-2xl border border-appleHairline space-y-1">
                             <div class="w-full flex items-center justify-between px-2 py-1 text-[11px] font-bold text-appleInk uppercase tracking-wider">
                                 <span>
@@ -83,16 +84,18 @@
                     @endforeach
                 </div>
 
-            {{-- KONDISI 2: PRE-TEST SUDAH SELESAI (MUNCULKAN BAB & SUBBAB) --}}
+            {{-- KONDISI 2: TAMPILKAN BAB & SUBBAB --}}
             @elseif($sidebarHasDonePreTest && isset($globalChapters))
                 <div id="sidebar-chapters" class="space-y-4"> 
-                    @php $isUnlocked = true; @endphp
+                    @php 
+                        $isUnlocked = true; 
+                    @endphp
+
                     @foreach($globalChapters as $chapter)
                         
-                        {{-- 🟢 KOTAK / GROUPING BAB DENGAN BORDER PENYEKAT --}}
                         <div class="chapter-group bg-white/50 p-2 rounded-2xl border border-appleHairline shadow-sm transition-all">
                             
-                            {{-- HEADER BAB (TOGGLE) --}}
+                            {{-- HEADER BAB --}}
                             <button class="chapter-toggle w-full flex items-center justify-between px-3 py-2 text-[11px] font-bold text-appleInk hover:text-applePrimary uppercase tracking-wider transition-colors cursor-pointer rounded-xl hover:bg-white/80" data-target="chapter-content-{{ $chapter->id }}">
                                 <span>
                                     @if($chapter->sequence == 0)
@@ -106,7 +109,7 @@
                                 <svg class="chevron-icon w-4 h-4 transition-transform duration-300 text-appleMuted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                             </button>
 
-                            {{-- KONTEN SUBBAB (DAFTAR MATERI) --}}
+                            {{-- KONTEN SUBBAB --}}
                             <div id="chapter-content-{{ $chapter->id }}" class="chapter-content hidden space-y-1.5 mt-2 pt-2 border-t border-appleHairline/60 px-1">
                                 @foreach($chapter->materials as $material)
                                     @php 
@@ -118,7 +121,9 @@
                                            class="nav-item flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 text-appleInk hover:bg-white/80 {{ request()->is('belajar/'.$material->slug) ? 'active' : '' }}">
                                             <span class="text-base opacity-80">{{ $material->type == 'simulation_3d' ? '🧊' : '📄' }}</span> 
                                             <span class="ms-2.5 text-xs font-medium truncate">{{ $material->title }}</span>
-                                            @if($isDone) <span class="ml-auto text-applePrimary text-xs font-bold">✓</span> @endif
+                                            @if($isDone) 
+                                                <span class="ml-auto text-applePrimary text-xs font-bold">✓</span> 
+                                            @endif
                                         </a>
                                         @php if (!$isDone) { $isUnlocked = false; } @endphp
                                     @else
@@ -141,7 +146,9 @@
                                            class="nav-item flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 text-appleInk hover:bg-white/80 {{ request()->routeIs('quiz.show') && request()->route('id') == $quiz->id ? 'active' : '' }}">
                                             <span class="text-base opacity-80">📝</span> 
                                             <span class="ms-2.5 text-xs font-medium truncate">{{ $quiz->title }}</span>
-                                            @if($isQuizDone) <span class="ml-auto text-applePrimary text-xs font-bold">✓</span> @endif
+                                            @if($isQuizDone) 
+                                                <span class="ml-auto text-applePrimary text-xs font-bold">✓</span> 
+                                            @endif
                                         </a>
                                     @else
                                         <div class="locked-item nav-item flex items-center px-3 py-2.5 rounded-xl text-appleMuted bg-white/20 cursor-not-allowed select-none"
@@ -158,7 +165,7 @@
                 </div>
             @endif
 
-            {{-- PEMISAH GARIS ANTARA BAB DENGAN FITUR TAMBAHAN (SANDBOX & SPREADSHEET) --}}
+            {{-- PEMISAH GARIS ANTARA BAB DENGAN FITUR TAMBAHAN --}}
             <div class="border-t border-appleHairline my-3"></div>
 
             {{-- FITUR SANDBOX DATA --}}
@@ -183,11 +190,11 @@
             </a>
         </nav>
 
-        {{-- TOMBOL KELUAR AKUN --}}
+        {{-- TOMBOL KELUAR AKUN SISWA --}}
         <div class="mt-6 pt-4 border-t border-appleHairline">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit" class="w-full flex items-center justify-center p-3 text-red-600 bg-red-50/80 rounded-xl hover:bg-red-600 hover:text-white transition-all text-sm font-bold">
+                <button type="submit" class="w-full flex items-center justify-center p-3 text-red-600 bg-red-50/80 rounded-xl hover:bg-red-600 hover:text-white transition-all text-sm font-bold border-none cursor-pointer">
                     <span class="mr-2">🚪</span> Keluar Akun
                 </button>
             </form>

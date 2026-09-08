@@ -6,6 +6,7 @@ use App\Models\UserProgress;
 use App\Models\Material;
 use App\Models\Chapter; 
 use App\Models\Quiz;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -18,26 +19,30 @@ class LearningController extends Controller
      */
     public function show($slug)
     {
-        // 1. CEK PRE-TEST (WAJIB)
-        $preTest = Quiz::where('type', 'pre_test')->first();
-        if ($preTest) {
-            $hasDonePreTest = UserProgress::where('user_id', Auth::id())
-                                ->where('quiz_id', $preTest->id)
-                                ->exists();
-            if (!$hasDonePreTest) {
-                return redirect()->route('dashboard')
-                    ->with('error', 'Akses Terkunci: Selesaikan Evaluasi Awal (Pre-Test) terlebih dahulu!');
+        $user = Auth::user();
+
+        // 1. CEK PRE-TEST (Wajib untuk siswa, guru bypass)
+        if ($user && $user->role !== 'teacher') {
+            $preTest = Quiz::where('type', 'pre_test')->first();
+            if ($preTest) {
+                $hasDonePreTest = UserProgress::where('user_id', Auth::id())
+                                                ->where('quiz_id', $preTest->id)
+                                                ->exists();
+                if (!$hasDonePreTest) {
+                    return redirect()->route('dashboard')
+                        ->with('error', 'Akses Terkunci: Selesaikan Evaluasi Awal (Pre-Test) terlebih dahulu!');
+                }
             }
         }
 
         $material = Material::with('chapter')->where('slug', $slug)->firstOrFail();
 
-        // 2. CEK SYARAT AKSES MATERI (KUNCI URUTAN & KKM)
+        // 2. CEK SYARAT AKSES MATERI (Urutan & KKM Dinamis)
         $accessCheck = $this->canAccessMaterial(Auth::user(), $material);
         if ($accessCheck !== true) {
             return redirect()->route('dashboard')->with('error', $accessCheck);
         }
-
+        
         $chapters = Chapter::with(['materials' => function($q) {
             $q->orderBy('sequence', 'asc');
         }, 'materials.progress' => function($q) {
@@ -49,14 +54,11 @@ class LearningController extends Controller
             ->where('is_completed', true)
             ->exists();
 
-        // 🔥 PERBAIKAN 1: NEXT MATERIAL HANYA DI DALAM BAB YANG SAMA
-        // Jika ini materi terakhir di bab ini, biarkan $nextMaterial = null agar tombol Kuis muncul!
         $nextMaterial = Material::where('chapter_id', $material->chapter_id)
             ->where('sequence', '>', $material->sequence)
             ->orderBy('sequence', 'asc')
             ->first();
 
-        // LOGIKA PREV MATERIAL (MUNDUR)
         $prevMaterial = Material::where('chapter_id', $material->chapter_id)
             ->where('sequence', '<', $material->sequence)
             ->orderBy('sequence', 'desc')
@@ -66,7 +68,6 @@ class LearningController extends Controller
             $prevChapter = Chapter::where('sequence', '<', $material->chapter->sequence)
                 ->orderBy('sequence', 'desc')
                 ->first();
-            
             if ($prevChapter) {
                 $prevMaterial = $prevChapter->materials()->orderBy('sequence', 'desc')->first();
             }
@@ -76,10 +77,15 @@ class LearningController extends Controller
     }
 
     /**
-     * 🔥 PERBAIKAN 2: GATEKEEPER STRICT KKM (MINIMAL 70)
+     * Pengecekan Syarat Akses Materi & Batas KKM Dinamis (Bypass Guru)
      */
     private function canAccessMaterial($user, $material)
     {
+        // Bypass akses untuk peran guru
+        if ($user && $user->role === 'teacher') {
+            return true;
+        }
+
         if ($material->chapter->sequence == 1 && $material->sequence == 1) {
             return true;
         }
@@ -96,11 +102,11 @@ class LearningController extends Controller
                     ->exists();
 
                 if (!$isPrevCompleted) {
-                    return "🚫 Akses Ditolak: Kamu harus membaca materi sebelumnya secara berurutan.";
+                    return "Akses Ditolak: Anda harus membaca materi sebelumnya secara berurutan.";
                 }
             }
         } 
-        // JIKA INI MATERI PERTAMA DI BAB BARU (Misal: Bab 2 Materi 1)
+        // Jika materi pertama di bab baru (Misal: Bab 2 Materi 1)
         else {
             $prevChapter = Chapter::where('sequence', '<', $material->chapter->sequence)
                                 ->orderBy('sequence', 'desc')->first();
@@ -116,14 +122,15 @@ class LearningController extends Controller
                         ->where('quiz_id', $prevQuiz->id)
                         ->first();
 
-                    // Cek apakah sudah dikerjakan
                     if (!$quizProgress) {
-                        return "🚫 Akses Ditolak: Kamu harus mengerjakan Evaluasi Bab " . $prevChapter->sequence . " terlebih dahulu.";
+                        return "Akses Ditolak: Anda harus mengerjakan Evaluasi Bab " . $prevChapter->sequence . " terlebih dahulu.";
                     }
 
-                    // 🔥 CEK NILAI KKM
-                    if ($quizProgress->score < 70) {
-                        return "🚫 Akses Ditolak: Kamu belum Tuntas di Bab " . $prevChapter->sequence . ". Nilaimu: " . $quizProgress->score . " (Minimal 70). Silakan ulangi evaluasi.";
+                    // Penentuan KKM Dinamis dari Settings
+                    $kkmEvaluasi = (int) Setting::get('kkm_evaluasi_bab', 70);
+
+                    if ($quizProgress->score < $kkmEvaluasi) {
+                        return "Akses Ditolak: Anda belum mencapai ketuntasan di Bab " . $prevChapter->sequence . ". Nilai Anda: " . $quizProgress->score . " (Minimal " . $kkmEvaluasi . "). Silakan ulangi evaluasi.";
                     }
                 } else {
                     // Jika bab sebelumnya tidak ada kuis, pastikan materi terakhirnya dibaca
@@ -131,7 +138,7 @@ class LearningController extends Controller
                     if ($lastMaterial) {
                         $isLastCompleted = UserProgress::where('user_id', $user->id)->where('material_id', $lastMaterial->id)->exists();
                         if (!$isLastCompleted) {
-                            return "🚫 Akses Ditolak: Selesaikan materi terakhir di Bab " . $prevChapter->sequence . ".";
+                            return "Akses Ditolak: Selesaikan materi terakhir di Bab " . $prevChapter->sequence . ".";
                         }
                     }
                 }
@@ -141,6 +148,9 @@ class LearningController extends Controller
         return true;
     }
 
+    /**
+     * Simpan Progres Penyelesaian Materi
+     */
     public function completeMaterial(Request $request, $slug)
     {
         $material = Material::where('slug', $slug)->firstOrFail();
@@ -150,20 +160,19 @@ class LearningController extends Controller
             ->where('material_id', $material->id)
             ->first();
 
-        // 🔥 TANGKAP NILAI MINI QUIZ DARI JAVASCRIPT 🔥
-        $miniQuizScore = $request->input('mini_quiz_score', 0); // Default 0 jika materi tidak ada kuisnya
+        // Tangkap nilai mini-quiz dari request
+        $miniQuizScore = $request->input('mini_quiz_score', 0);
 
         if (!$progressCheck) {
             UserProgress::create([
-                'user_id' => $user->id,
-                'material_id' => $material->id,
+                'user_id'      => $user->id,
+                'material_id'  => $material->id,
                 'is_completed' => true,
-                'score' => $miniQuizScore, // Simpan nilai formatiif di sini!
+                'score'        => $miniQuizScore,
                 'completed_at' => now(),
             ]);
-            session()->flash('success', 'Materi berhasil diselesaikan! 📚');
+            session()->flash('success', 'Materi berhasil diselesaikan.');
         } else {
-            // Opsional: Jika siswa mengulang kuis materi dan nilainya lebih baik, kita update
             if($miniQuizScore > $progressCheck->score) {
                 $progressCheck->update(['score' => $miniQuizScore]);
             }
@@ -195,9 +204,12 @@ class LearningController extends Controller
 
         return $nextMaterial
             ? redirect()->route('learning.show', $nextMaterial->slug)
-            : redirect()->route('dashboard')->with('success', 'Selamat! Kurikulum telah tuntas!');
+            : redirect()->route('dashboard')->with('success', 'Selamat! Kurikulum telah tuntas.');
     }
 
+    /**
+     * Asisten AI Tanya Jawab Materi
+     */
     public function askAi(Request $request)
     {
         $request->validate([

@@ -9,6 +9,7 @@ use App\Models\Chapter;
 use App\Models\UserProgress;
 use App\Models\QuizAttempt;
 use App\Models\Quiz;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -29,7 +30,10 @@ class DashboardController extends Controller
         // 3. LOGIKA PROGRES GABUNGAN (MATERI + KUIS)
         // ==========================================
         
-        // A. Hitung Item MATERI (Hanya materi biasa, simulasi)
+        // Ambil nilai KKM Evaluasi Bab secara dinamis dari database
+        $kkmEvaluasi = (int) Setting::get('kkm_evaluasi_bab', 70);
+
+        // A. Hitung Item MATERI
         $totalMaterials = Material::count();
         $completedMaterials = UserProgress::where('user_id', $user->id)
                                           ->whereNotNull('material_id')
@@ -39,12 +43,12 @@ class DashboardController extends Controller
         // B. Hitung Item KUIS (Abaikan Pre-Test & Post-Test dalam hitungan modul)
         $totalQuizzes = Quiz::whereNotIn('type', ['pre_test', 'post_test'])->count();
         
-        // Kuis dianggap tuntas jika is_completed = true ATAU score >= 70 (KKM)
+        // Kuis dianggap tuntas jika is_completed = true ATAU score >= KKM Dinamis
         $passedQuizzes = UserProgress::where('user_id', $user->id)
                                      ->whereNotNull('quiz_id')
-                                     ->where(function($query) {
+                                     ->where(function($query) use ($kkmEvaluasi) {
                                          $query->where('is_completed', true)
-                                               ->orWhere('score', '>=', 70);
+                                               ->orWhere('score', '>=', $kkmEvaluasi);
                                      })
                                      ->whereHas('quiz', function($q) {
                                          $q->whereNotIn('type', ['pre_test', 'post_test']);
@@ -76,11 +80,11 @@ class DashboardController extends Controller
         // 4. DATA CHART RIWAYAT NILAI
         // ==========================================
         $recentAttempts = QuizAttempt::with('quiz')
-                            ->where('user_id', $user->id)
-                            ->orderBy('created_at', 'desc')
-                            ->take(5)
-                            ->get()
-                            ->sortBy('created_at');
+                                    ->where('user_id', $user->id)
+                                    ->orderBy('created_at', 'desc')
+                                    ->take(5)
+                                    ->get()
+                                    ->sortBy('created_at');
 
         $chartLabels = $recentAttempts->pluck('quiz.title')->map(function($title){
             return str_replace(['Evaluasi Akhir ', 'Ujian Sertifikasi '], '', $title);
@@ -92,7 +96,8 @@ class DashboardController extends Controller
             'user', 'globalChapters',
             'totalItems', 'finishedItems', 'progressPercentage',
             'preTestScore', 'averageEvaluation',
-            'chartLabels', 'chartScores'
+            'chartLabels', 'chartScores',
+            'kkmEvaluasi'
         ));
     }
 }
