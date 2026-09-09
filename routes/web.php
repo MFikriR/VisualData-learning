@@ -121,8 +121,8 @@ Route::middleware(['auth', 'teacher'])->prefix('teacher')->name('teacher.')->gro
     Route::get('/help', [TeacherController::class, 'help'])->name('help');
 
     // J. Setting KKM
-    Route::get('/settings', [App\Http\Controllers\TeacherSettingController::class, 'index'])->name('teacher.settings.index');
-    Route::put('/settings', [App\Http\Controllers\TeacherSettingController::class, 'update'])->name('teacher.settings.update');
+    Route::get('/settings', [TeacherSettingController::class, 'index'])->name('settings.index');
+    Route::put('/settings', [TeacherSettingController::class, 'update'])->name('settings.update');
 });
 
 require __DIR__.'/auth.php';
