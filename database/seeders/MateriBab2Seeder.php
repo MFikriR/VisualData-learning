@@ -9,21 +9,22 @@ class MateriBab2Seeder extends Seeder
 {
     public function run(): void
     {
-        // 1. Buat/Update Bab 2 dengan judul baru
+        // Update/Create Chapter 2
         Chapter::updateOrCreate(
             ['sequence' => 2],
             [
-                'title' => 'Visualisasi dan Pengelompokan Data',
-                'description' => 'Menerapkan konsep visualisasi grafik dan memahami cara kerja algoritma pengelompokan data.',
+                'title' => 'Visualisasi Data',
+                'description' => 'Menyajikan data secara visual menggunakan Diagram Batang, Histogram, Box Plot, dan Scatter Plot secara etis.',
                 'is_active' => true,
             ]
         );
 
-        // 2. Panggil file anak sesuai sub-bab baru secara berurutan
         $this->call([
-            Bab2_01_VisualisasiDataSeeder::class,       // Sub-bab 1 (Visualisasi / 3D Chart)
-            Bab2_02_PengelompokanDataSeeder::class,      // Sub-bab 2 (Konsep K-Means Clustering)
-            Bab2_06_KuisAkhirSeeder::class,              // Evaluasi Bab 2
+            Bab2_01_DiagramBatangSeeder::class,     // Sub-bab 1
+            Bab2_02_HistogramSeeder::class,         // Sub-bab 2
+            Bab2_03_BoxPlotSeeder::class,           // Sub-bab 3
+            Bab2_04_ScatterPlotSeeder::class,       // Sub-bab 4
+            Bab2_KuisAkhirSeeder::class,            // Evaluasi 20 Soal Bab 2
         ]);
     }
 }

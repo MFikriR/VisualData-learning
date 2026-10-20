@@ -21,8 +21,8 @@ class LearningController extends Controller
     {
         $user = Auth::user();
 
-        // 1. CEK PRE-TEST (Wajib untuk siswa, guru bypass)
-        if ($user && $user->role !== 'teacher') {
+        // 1. CEK PRE-TEST (Wajib untuk siswa, guru & akun bypass di-bypass)
+        if ($user && $user->role !== 'teacher' && $user->email !== 'bypass@gmail.com') {
             $preTest = Quiz::where('type', 'pre_test')->first();
             if ($preTest) {
                 $hasDonePreTest = UserProgress::where('user_id', Auth::id())
@@ -77,12 +77,12 @@ class LearningController extends Controller
     }
 
     /**
-     * Pengecekan Syarat Akses Materi & Batas KKM Dinamis (Bypass Guru)
+     * Pengecekan Syarat Akses Materi & Batas KKM Dinamis (Bypass Guru & Akun Demo)
      */
     private function canAccessMaterial($user, $material)
     {
-        // Bypass akses untuk peran guru
-        if ($user && $user->role === 'teacher') {
+        // Bypass akses untuk peran guru atau akun bypass demo
+        if ($user && ($user->role === 'teacher' || $user->email === 'bypass@gmail.com')) {
             return true;
         }
 
@@ -106,13 +106,12 @@ class LearningController extends Controller
                 }
             }
         } 
-        // Jika materi pertama di bab baru (Misal: Bab 2 Materi 1)
+        // Jika materi pertama di bab baru
         else {
             $prevChapter = Chapter::where('sequence', '<', $material->chapter->sequence)
                                 ->orderBy('sequence', 'desc')->first();
 
             if ($prevChapter) {
-                // Cari kuis di bab sebelumnya
                 $prevQuiz = Quiz::where('chapter_id', $prevChapter->id)
                                 ->whereNotIn('type', ['pre_test', 'post_test'])
                                 ->first();
@@ -126,14 +125,12 @@ class LearningController extends Controller
                         return "Akses Ditolak: Anda harus mengerjakan Evaluasi Bab " . $prevChapter->sequence . " terlebih dahulu.";
                     }
 
-                    // Penentuan KKM Dinamis dari Settings
                     $kkmEvaluasi = (int) Setting::get('kkm_evaluasi_bab', 70);
 
                     if ($quizProgress->score < $kkmEvaluasi) {
                         return "Akses Ditolak: Anda belum mencapai ketuntasan di Bab " . $prevChapter->sequence . ". Nilai Anda: " . $quizProgress->score . " (Minimal " . $kkmEvaluasi . "). Silakan ulangi evaluasi.";
                     }
                 } else {
-                    // Jika bab sebelumnya tidak ada kuis, pastikan materi terakhirnya dibaca
                     $lastMaterial = Material::where('chapter_id', $prevChapter->id)->orderBy('sequence', 'desc')->first();
                     if ($lastMaterial) {
                         $isLastCompleted = UserProgress::where('user_id', $user->id)->where('material_id', $lastMaterial->id)->exists();
@@ -160,7 +157,6 @@ class LearningController extends Controller
             ->where('material_id', $material->id)
             ->first();
 
-        // Tangkap nilai mini-quiz dari request
         $miniQuizScore = $request->input('mini_quiz_score', 0);
 
         if (!$progressCheck) {
@@ -219,28 +215,50 @@ class LearningController extends Controller
 
         $material = Material::findOrFail($request->material_id);
         $userQuestion = $request->question;
-        $prompt = "Berperanlah sebagai Guru Privat yang asik. Konteks: Siswa belajar '{$material->title}'. Pertanyaan: '{$userQuestion}'. Jawab santai, jelas, max 3 paragraf. Gunakan formatting HTML bold untuk poin penting.";
+        $prompt = "Berperanlah sebagai Guru Privat yang interaktif. Konteks: Siswa belajar '{$material->title}'. Pertanyaan: '{$userQuestion}'. Jawab santai, jelas, maksimal 3 paragraf. Gunakan formatting HTML bold untuk poin penting.";
+        
         $apiKey = env('GEMINI_API_KEY');
 
-        try {
-            $response = Http::withoutVerifying()->timeout(30)->withHeaders([
-                'Content-Type' => 'application/json',
-            ])->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={$apiKey}", [
-                "contents" => [["parts" => [["text" => $prompt]]]]
-            ]);
-
-            if (!$response->successful()) return response()->json(['answer' => 'Error API Google.'], 500);
-
-            $data = $response->json();
-            $answer = $data['candidates'][0]['content']['parts'][0]['text'] ?? 'Maaf, AI sedang istirahat.';
-            $answer = preg_replace('/\*\*(.*?)\*\*/', '<b>$1</b>', $answer);
-            $answer = nl2br(e($answer));
-            $answer = str_replace(['&lt;b&gt;', '&lt;/b&gt;'], ['<b>', '</b>'], $answer);
-
-            return response()->json(['answer' => $answer]);
-
-        } catch (\Throwable $e) {
-            return response()->json(['answer' => 'Terjadi kesalahan sistem.'], 500);
+        if (empty($apiKey)) {
+            return response()->json(['answer' => 'API Key Gemini belum terpasang di berkas .env.'], 500);
         }
+
+        $models = ['gemini-flash-latest', 'gemini-2.5-flash', 'gemini-3-flash-preview', 'gemini-pro-latest'];
+        $lastError = 'Gagal terhubung ke server Google.';
+
+        foreach ($models as $model) {
+            try {
+                $response = Http::withoutVerifying()->timeout(30)->withHeaders([
+                    'Content-Type' => 'application/json',
+                ])->post("https://generativelanguage.googleapis.com/v1beta/models/{$model}:generateContent?key={$apiKey}", [
+                    "contents" => [
+                        [
+                            "parts" => [
+                                ["text" => $prompt]
+                            ]
+                        ]
+                    ]
+                ]);
+
+                if ($response->successful()) {
+                    $data = $response->json();
+                    $answer = $data['candidates'][0]['content']['parts'][0]['text'] ?? 'Maaf, AI sedang tidak dapat merespons.';
+                    
+                    $answer = preg_replace('/\*\*(.*?)\*\*/', '<b>$1</b>', $answer);
+                    $answer = nl2br(e($answer));
+                    $answer = str_replace(['&lt;b&gt;', '&lt;/b&gt;'], ['<b>', '</b>'], $answer);
+
+                    return response()->json(['answer' => $answer]);
+                } else {
+                    $lastError = "Model {$model} (HTTP " . $response->status() . ")";
+                    \Illuminate\Support\Facades\Log::warning("Gemini Error [{$model}]: " . $response->body());
+                }
+            } catch (\Throwable $e) {
+                $lastError = $e->getMessage();
+                \Illuminate\Support\Facades\Log::error("Gemini Exception [{$model}]: " . $e->getMessage());
+            }
+        }
+
+        return response()->json(['answer' => "Error API Google ({$lastError}). Pastikan API Key di buat melalui Google AI Studio."], 500);
     }
 }

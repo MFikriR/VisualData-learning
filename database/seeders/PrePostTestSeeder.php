@@ -10,168 +10,186 @@ class PrePostTestSeeder extends Seeder
 {
     public function run(): void
     {
-        // 1. Bersihkan Data Pre-Test & Post-Test Lama (Mencegah Duplikat jika di-run ulang)
+        // 1. Bersihkan Data Pre-Test & Post-Test Lama
         $oldQuizzes = Quiz::whereIn('type', ['pre_test', 'post_test'])->get();
         foreach ($oldQuizzes as $oq) {
             Question::where('quiz_id', $oq->id)->delete();
             $oq->delete();
         }
 
-        // 2. Buat Kuis Pre-Test
+        // 2. Buat Header Kuis Pre-Test
         $preTest = Quiz::create([
-            'chapter_id' => null, // Pre/Post test biasanya tidak terikat 1 bab spesifik
+            'chapter_id' => null,
             'title' => 'Evaluasi Kemampuan Awal (Pre-Test)',
-            'description' => 'Uji pemahaman awalmu sebelum mempelajari modul Visualisasi dan Clustering Data.',
+            'description' => 'Uji pemahaman awalmu sebelum mempelajari modul Pengolahan Data, Visualisasi, dan Clustering.',
             'type' => 'pre_test',
-            'time_limit' => 30, // 30 Menit
+            'time_limit' => 30,
         ]);
 
-        // 3. Buat Kuis Post-Test
+        // 3. Buat Header Kuis Post-Test
         $postTest = Quiz::create([
             'chapter_id' => null, 
             'title' => 'Ujian Akhir Pembelajaran (Post-Test)',
-            'description' => 'Uji pemahaman akhirmu setelah menyelesaikan seluruh modul untuk melihat perkembangan belajarmu.',
+            'description' => 'Uji pemahaman akhirmu setelah menyelesaikan seluruh modul untuk mengukur perkembangan belajarmu.',
             'type' => 'post_test',
-            'time_limit' => 30, // 30 Menit
+            'time_limit' => 30,
         ]);
 
-        // 4. Daftar 10 Soal Lengkap (Mencakup Visualisasi Data & K-Means Clustering)
+        // 4. Daftar 10 Soal Ringkas & Integratif
         $questions = [
+            // BAB 1: SOAL 1
             [
-                'question' => 'Apa tujuan utama dari proses Visualisasi Data?',
+                'question' => 'Manakah dari pernyataan berikut yang paling tepat menggambarkan perbedaan mendasar antara data dan informasi?',
                 'image' => null,
                 'options' => [
-                    'A' => 'Mengubah data teks menjadi angka agar mudah dihitung komputer',
-                    'B' => 'Menyembunyikan data rahasia dari publik',
-                    'C' => 'Menyajikan data kompleks dalam bentuk grafis agar pola dan informasi mudah dipahami manusia',
-                    'D' => 'Menghapus data yang tidak penting (Data Cleaning)',
-                    'E' => 'Meningkatkan ukuran file database'
+                    'A' => 'Data berbentuk angka, sedangkan informasi selalu berbentuk kalimat deskriptif.',
+                    'B' => 'Data adalah fakta mentah, sedangkan informasi adalah data yang diolah dan diberi konteks sehingga bermakna.',
+                    'C' => 'Data hanya digunakan komputer, sedangkan informasi hanya digunakan manusia.',
+                    'D' => 'Data berasal dari internet, sedangkan informasi dari buku perpustakaan.',
+                    'E' => 'Data selalu akurat, sedangkan informasi berisi opini yang belum pasti.'
+                ],
+                'correct_answer' => 'b',
+                'explanation' => 'Data adalah fakta mentah (raw facts) yang belum diberi konteks, sedangkan informasi adalah data yang telah diolah dan diberi konteks sehingga memiliki makna dan nilai guna.'
+            ],
+
+            // BAB 1: SOAL 2
+            [
+                'question' => 'Seorang peneliti mencatat tinggi badan siswa (165,5 cm) dan jumlah kelereng (25 butir). Klasifikasi jenis data numerik yang tepat untuk kedua data tersebut berturut-turut adalah....',
+                'image' => null,
+                'options' => [
+                    'A' => 'Tinggi badan adalah data diskrit, sedangkan kelereng adalah data kontinu.',
+                    'B' => 'Tinggi badan adalah data kualitatif, sedangkan kelereng adalah data kuantitatif.',
+                    'C' => 'Tinggi badan adalah data kontinu (pengukuran), sedangkan kelereng adalah data diskrit (cacahan).',
+                    'D' => 'Tinggi badan adalah data nominal, sedangkan kelereng adalah data ordinal.',
+                    'E' => 'Kedua data merupakan data tidak terstruktur.'
                 ],
                 'correct_answer' => 'c',
-                'explanation' => 'Visualisasi data bertujuan menerjemahkan data yang kompleks menjadi representasi visual (grafik/diagram) agar wawasan dan pola data lebih mudah ditangkap oleh otak manusia.'
+                'explanation' => 'Data hasil pengukuran bernilai desimal/rentang adalah data kontinu, sedangkan data hasil menghitung/cacah berupa bilangan bulat adalah data diskrit.'
             ],
+
+            // BAB 1: SOAL 3
             [
-                'question' => 'Jika Anda ingin melihat persebaran umur siswa di sebuah sekolah (melihat rentang dan frekuensi), jenis grafik apa yang paling tepat digunakan?',
+                'question' => 'Mengapa prinsip "Garbage In, Garbage Out" (GIGO) sangat krusial untuk diperhatikan sebelum menganalisis data atau melatih model AI?',
                 'image' => null,
                 'options' => [
-                    'A' => 'Pie Chart (Diagram Lingkaran)',
-                    'B' => 'Histogram',
-                    'C' => 'Scatter Plot (Diagram Titik)',
-                    'D' => 'Line Chart (Diagram Garis)',
-                    'E' => 'Radar Chart'
+                    'A' => 'Karena data yang terlalu banyak membuat memori komputer penuh.',
+                    'B' => 'Karena jika data masukan kotor/salah, maka hasil analisis dan keputusan dipastikan salah.',
+                    'C' => 'Karena data kotor otomatis diperbaiki oleh sistem.',
+                    'D' => 'Karena model AI tidak membutuhkan pembersihan data.',
+                    'E' => 'Karena data mentah tidak boleh diolah sama sekali.'
                 ],
                 'correct_answer' => 'b',
-                'explanation' => 'Histogram sangat tepat digunakan untuk melihat distribusi atau frekuensi data numerik yang sifatnya kontinu, seperti rentang umur.'
+                'explanation' => 'Prinsip GIGO menyatakan bahwa kualitas keluaran (output) sangat bergantung pada masukan (input). Data kotor atau salah akan menghasilkan analisis/keputusan yang salah.'
             ],
+
+            // BAB 2: SOAL 4
             [
-                'question' => 'Grafik Scatter Plot (Diagram Pencar) paling efektif digunakan untuk tujuan apa?',
+                'question' => 'Perbedaan visual paling utama antara Histogram dan Diagram Batang (Bar Chart) beserta alasan metodologisnya adalah....',
                 'image' => null,
                 'options' => [
-                    'A' => 'Menunjukkan komposisi persentase dari sebuah total',
-                    'B' => 'Mengetahui hubungan (korelasi) antara dua variabel numerik yang berbeda',
-                    'C' => 'Melihat tahapan sebuah proses bisnis',
-                    'D' => 'Menampilkan perbandingan kategori produk',
-                    'E' => 'Mendeteksi letak geografis suatu data'
+                    'A' => 'Histogram bercelah karena datanya kategorikal, sedangkan Diagram Batang tidak bercelah.',
+                    'B' => 'Histogram menempel tanpa celah (data kontinu), sedangkan Diagram Batang bercelah (kategori terpisah).',
+                    'C' => 'Diagram Batang bernuansa 3D, sedangkan Histogram berlatar polos.',
+                    'D' => 'Histogram memuat data waktu, sedangkan Diagram Batang memuat data wilayah.',
+                    'E' => 'Tidak ada perbedaan antara Histogram dan Diagram Batang.'
                 ],
                 'correct_answer' => 'b',
-                'explanation' => 'Scatter Plot memetakan dua variabel pada sumbu X dan Y untuk melihat apakah ada korelasi (hubungan) positif, negatif, atau tidak ada hubungan sama sekali.'
+                'explanation' => 'Histogram menggambarkan distribusi variabel kontinu (interval/bins) sehingga batangnya saling menempel tanpa celah, sedangkan Diagram Batang menggambarkan kategori diskrit/terpisah yang dipisahkan oleh spasi (gap).'
             ],
+
+            // BAB 2: SOAL 5
             [
-                'question' => 'Manakah di bawah ini yang merupakan contoh dari "Data Tidak Terstruktur" (Unstructured Data)?',
+                'question' => 'Sebuah grafik batang tingkat kepuasan dipotong (Truncated Y-Axis) dan dimulai dari 90%, sehingga beda 91% dan 94% tampak 4 kali lebih tinggi. Mengapa ini tergolong visualisasi menyesatkan?',
                 'image' => null,
                 'options' => [
-                    'A' => 'Tabel absensi siswa di Microsoft Excel',
-                    'B' => 'Database produk di minimarket',
-                    'C' => 'Kumpulan gambar radiologi paru-paru dan rekaman suara',
-                    'D' => 'Data harga saham harian',
-                    'E' => 'Daftar nilai ujian di buku rapor'
-                ],
-                'correct_answer' => 'c',
-                'explanation' => 'Data tidak terstruktur tidak memiliki format baris dan kolom yang baku, contoh utamanya adalah teks bebas, gambar, video, dan audio.'
-            ],
-            [
-                'question' => 'Dalam Machine Learning, apa yang dimaksud dengan proses "Clustering" (Pengelompokan)?',
-                'image' => null,
-                'options' => [
-                    'A' => 'Memprediksi harga rumah di masa depan berdasarkan data masa lalu',
-                    'B' => 'Membagi kumpulan data menjadi beberapa kelompok berdasarkan kemiripan karakteristiknya',
-                    'C' => 'Mengubah gambar menjadi teks',
-                    'D' => 'Menghitung rata-rata nilai dari sebuah tabel',
-                    'E' => 'Menerjemahkan bahasa Indonesia ke bahasa Inggris'
-                ],
-                'correct_answer' => 'b',
-                'explanation' => 'Clustering adalah teknik Unsupervised Learning untuk mengelompokkan data yang tidak memiliki label ke dalam cluster-cluster berdasarkan kemiripan jarak/sifatnya.'
-            ],
-            [
-                'question' => 'Algoritma K-Means merupakan salah satu algoritma pengelompokan. Huruf "K" pada K-Means melambangkan apa?',
-                'image' => null,
-                'options' => [
-                    'A' => 'Jumlah kelompok (cluster) yang ingin dibentuk',
-                    'B' => 'Konstanta kecepatan komputer',
-                    'C' => 'Jumlah baris data yang ada',
-                    'D' => 'Kode keamanan untuk mengenkripsi data',
-                    'E' => 'Kecepatan putaran algoritma'
+                    'A' => 'Melanggar Zero Baseline sehingga membesar-besarkan perbedaan kecil secara manipulatif.',
+                    'B' => 'Diagram batang tidak boleh digunakan untuk persentase.',
+                    'C' => 'Warna batang yang digunakan tidak seragam.',
+                    'D' => 'Persentase harus disajikan dalam Box Plot.',
+                    'E' => 'Data persentase tidak boleh dibuat grafik.'
                 ],
                 'correct_answer' => 'a',
-                'explanation' => 'K merepresentasikan jumlah titik pusat (centroid) atau target jumlah kelompok yang ingin kita bentuk dari sekumpulan data.'
+                'explanation' => 'Memotong Sumbu Y melanggar Zero Baseline dan Principle of Proportional Ink, sehingga perbedaan visual tampak jauh lebih dramatis dari nilai numerik sebenarnya.'
             ],
+
+            // BAB 2: SOAL 6
             [
-                'question' => 'Bagaimana algoritma K-Means menentukan apakah sebuah data masuk ke Cluster A atau Cluster B?',
+                'question' => 'Komponen visual pada Box Plot yang menandakan keberadaan data pencilan (outlier) berdasarkan rumus pagar Q3 + (1,5 x IQR) adalah....',
                 'image' => null,
                 'options' => [
-                    'A' => 'Dengan menebak secara acak setiap saat',
-                    'B' => 'Dengan melihat ukuran file datanya',
-                    'C' => 'Dengan menghitung jarak terdekat dari data tersebut ke titik pusat (centroid) masing-masing cluster',
-                    'D' => 'Dengan mengurutkan data sesuai abjad namanya',
-                    'E' => 'Dengan bertanya kepada pengguna (user)'
-                ],
-                'correct_answer' => 'c',
-                'explanation' => 'K-Means menggunakan metrik jarak (seperti Jarak Euclidean) untuk mengukur seberapa dekat suatu data dengan centroid. Data akan masuk ke cluster dengan centroid terdekat.'
-            ],
-            [
-                'question' => 'Rumus Jarak Euclidean (Euclidean Distance) digunakan dalam algoritma K-Means untuk...',
-                'image' => null,
-                'options' => [
-                    'A' => 'Menghitung waktu yang dibutuhkan untuk menyelesaikan program',
-                    'B' => 'Mengukur jarak lurus (garis lurus) antara dua titik data dalam ruang dimensi',
-                    'C' => 'Menghitung jumlah data error yang harus dihapus',
-                    'D' => 'Memperbesar ukuran grafik visualisasi',
-                    'E' => 'Mengubah data kuantitatif menjadi kualitatif'
+                    'A' => 'Garis Median (Q2).',
+                    'B' => 'Titik-titik tunggal di luar garis kumis (whisker).',
+                    'C' => 'Lebar kotak interkuartil.',
+                    'D' => 'Garis rata-rata (Mean).',
+                    'E' => 'Sumbu Y pada skala interval.'
                 ],
                 'correct_answer' => 'b',
-                'explanation' => 'Euclidean distance adalah formula matematis (mirip teorema Pythagoras) untuk mencari jarak terpendek/garis lurus antara dua titik koordinat data.'
+                'explanation' => 'Data yang nilainya melampaui batas pagar dikategorikan sebagai outlier dan digambarkan sebagai titik tunggal terpisah di luar garis whisker.'
             ],
+
+            // BAB 2: SOAL 7
             [
-                'question' => 'Apa yang terjadi pada titik pusat (Centroid) setelah semua data selesai dikelompokkan pada iterasi pertama algoritma K-Means?',
+                'question' => 'Pada Scatter Plot, sebaran titik bergerak naik dari kiri bawah ke kanan atas. Pernyataan kritis yang paling tepat mengenai temuan tersebut adalah....',
                 'image' => null,
                 'options' => [
-                    'A' => 'Centroid akan dihapus',
-                    'B' => 'Centroid akan berubah warna',
-                    'C' => 'Posisi Centroid akan diperbarui ke titik rata-rata (mean) dari semua anggota di clusternya',
-                    'D' => 'Centroid akan berpindah ke cluster lain',
-                    'E' => 'Proses algoritma langsung berhenti seketika'
+                    'A' => 'Terjadi korelasi negatif yang membuktikan sebab-akibat.',
+                    'B' => 'Terjadi korelasi positif, namun tidak otomatis membuktikan sebab-akibat (Correlation != Causation).',
+                    'C' => 'Tidak ada hubungan sama sekali antara variabel X dan Y.',
+                    'D' => 'Data terbukti mengandung kesalahan sampel.',
+                    'E' => 'Variabel X dan Y bersifat kualitatif nominal.'
                 ],
-                'correct_answer' => 'c',
-                'explanation' => 'Setelah pengelompokan selesai, posisi centroid baru akan dihitung berdasarkan nilai rata-rata (mean) dari koordinat semua data yang tergabung dalam cluster tersebut.'
+                'correct_answer' => 'b',
+                'explanation' => 'Pola miring naik menandakan korelasi positif. Namun, korelasi tidak sama dengan kausalitas (sebab-akibat) karena kenaikan bisa dipicu oleh variabel ketiga.'
             ],
+
+            // BAB 3: SOAL 8
             [
-                'question' => 'Sebuah data bernilai ekstrem (sangat tinggi atau sangat rendah dibandingkan mayoritas data lainnya) dapat merusak visualisasi dan hasil rata-rata. Data seperti ini disebut...',
+                'question' => 'Mengapa algoritma pengelompokan data seperti K-Means dikategorikan ke dalam paradigma Unsupervised Learning (Pembelajaran Tanpa Pengawasan)?',
                 'image' => null,
                 'options' => [
-                    'A' => 'Data Center',
-                    'B' => 'Missing Value',
-                    'C' => 'Centroid',
-                    'D' => 'Outlier (Pencilan)',
-                    'E' => 'Metadata'
+                    'A' => 'Karena memerlukan kunci jawaban (label kelas) pada data latih.',
+                    'B' => 'Karena mengolah data tanpa label untuk menemukan pola kelompok secara mandiri.',
+                    'C' => 'Karena prosesnya tidak bisa dijalankan oleh komputer.',
+                    'D' => 'Karena hanya memproses foto dan video.',
+                    'E' => 'Karena wajib diawasi manusia setiap detik.'
                 ],
-                'correct_answer' => 'd',
-                'explanation' => 'Outlier adalah data yang anomali atau menyimpang jauh dari kelompok data lainnya. Outlier biasanya bisa dideteksi dengan mudah menggunakan visualisasi Box Plot.'
+                'correct_answer' => 'b',
+                'explanation' => 'Unsupervised Learning mengelompokkan data tanpa label awal dengan mencari struktur/pola alami berdasarkan kedekatan sifat data.'
+            ],
+
+            // BAB 3: SOAL 9
+            [
+                'question' => 'Pada algoritma K-Means, dasar utama yang digunakan untuk mengalokasikan suatu titik data ke dalam kelompok (cluster) tertentu pada setiap iterasi adalah....',
+                'image' => null,
+                'options' => [
+                    'A' => 'Ukuran file dan format penyimpanan data.',
+                    'B' => 'Jarak Euclidean terpendek antara titik data dengan titik pusat cluster (centroid).',
+                    'C' => 'Nilai maksimum dikurangi nilai minimum populasi.',
+                    'D' => 'Urutan alfabetis nama pemilik data.',
+                    'E' => 'Tebakan acak sistem pada perulangan.'
+                ],
+                'correct_answer' => 'b',
+                'explanation' => 'Pada K-Means, setiap titik data dihitung jaraknya ke seluruh centroid menggunakan metrik jarak (seperti Jarak Euclidean), lalu dialokasikan ke cluster dengan centroid terdekat.'
+            ],
+
+            // BAB 3: SOAL 10
+            [
+                'question' => 'Pada pengujian variasi nilai K terhadap nilai Sum of Squared Errors (SSE) dalam K-Means, jumlah cluster optimal (K) ditentukan dengan Metode Elbow dengan cara mencari....',
+                'image' => null,
+                'options' => [
+                    'A' => 'Nilai K yang menghasilkan nilai SSE paling tinggi.',
+                    'B' => 'Titik siku (patahan grafik) di mana penurunan nilai SSE mulai melambat drastis.',
+                    'C' => 'Nilai K yang sama dengan jumlah total titik data.',
+                    'D' => 'Nilai K yang bernilai nol.',
+                    'E' => 'Titik awal sebelum simulasi dijalankan.'
+                ],
+                'correct_answer' => 'b',
+                'explanation' => 'Metode Elbow menentukan K optimal dengan mengidentifikasi titik patahan (siku) pada grafik SSE vs K, yaitu titik di mana penambahan K tidak lagi memberikan penurunan SSE secara signifikan.'
             ],
         ];
 
-        // 5. Masukkan Soal ke Pre-Test DAN Post-Test (Agar Valid untuk Uji N-Gain)
+        // 5. Masukkan Soal Identik ke Pre-Test DAN Post-Test
         foreach ($questions as $q) {
-            // Insert ke Pre-Test
             Question::create([
                 'quiz_id' => $preTest->id,
                 'question_text' => $q['question'],
@@ -181,12 +199,11 @@ class PrePostTestSeeder extends Seeder
                 'option_c' => $q['options']['C'],
                 'option_d' => $q['options']['D'],
                 'option_e' => $q['options']['E'],
-                'correct_answer' => $q['correct_answer'],
-                'points' => 10, // 10 Soal x 10 Poin = 100
+                'correct_answer' => strtolower($q['correct_answer']),
+                'points' => 10,
                 'explanation' => $q['explanation']
             ]);
 
-            // Insert ke Post-Test (Soal yang sama)
             Question::create([
                 'quiz_id' => $postTest->id,
                 'question_text' => $q['question'],
@@ -196,12 +213,12 @@ class PrePostTestSeeder extends Seeder
                 'option_c' => $q['options']['C'],
                 'option_d' => $q['options']['D'],
                 'option_e' => $q['options']['E'],
-                'correct_answer' => $q['correct_answer'],
+                'correct_answer' => strtolower($q['correct_answer']),
                 'points' => 10,
                 'explanation' => $q['explanation']
             ]);
         }
         
-        $this->command->info('✅ Berhasil menyuntikkan 10 Soal untuk Ujian Pre-Test & Post-Test!');
+        $this->command->info('✅ Berhasil menyuntikkan 10 Soal Integratif Materi Baru untuk Pre-Test & Post-Test!');
     }
 }

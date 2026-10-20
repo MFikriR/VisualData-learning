@@ -23,8 +23,8 @@ class Bab1_KuisAkhirSeeder extends Seeder
         $quiz = Quiz::updateOrCreate(
             ['chapter_id' => $chapter->id, 'type' => 'final'], 
             [
-                'title' => 'Evaluasi Akhir Bab 1: Data dan Pengolahannya',
-                'description' => 'Uji pemahamanmu secara menyeluruh tentang Sumber, Jenis, Struktur, dan teknik Pengolahan Data di era digital.',
+                'title' => 'Evaluasi Akhir Bab 1: Pengenalan, Pengolahan, dan Analisis Data',
+                'description' => 'Evaluasi pemahaman secara menyeluruh tentang Konsep Dasar Data, Pengolahan Data, dan Analisis Data Deskriptif.',
                 'time_limit' => 45, // 45 Menit
             ]
         );
@@ -32,287 +32,287 @@ class Bab1_KuisAkhirSeeder extends Seeder
         // 3. Bersihkan soal lama agar tidak duplikat saat seeder dijalankan ulang
         Question::where('quiz_id', $quiz->id)->delete();
 
-        // 4. Daftar 20 Soal Evaluasi Akhir Bab 1 (Pola Kunci: A,B,C,D,E berulang 4 kali)
+        // 4. Daftar 20 Soal Evaluasi Akhir Bab 1
         $questions = [
-            // Q1: Jawaban A
+            // Q1: Jawaban B [TP 1.1]
             [
-                'question' => 'Kumpulan fakta, angka, hasil pengukuran, atau deskripsi kejadian yang sifatnya masih sangat mentah dan belum diolah sama sekali disebut sebagai....',
+                'question' => 'Istilah data berasal dari bahasa Latin datum. Dalam bidang informatika dan sistem komputer, manakah pernyataan berikut yang paling tepat mendefinisikan konsep Data?',
                 'image' => null,
                 'options' => [
-                    'A' => 'Data',
-                    'B' => 'Informasi',
-                    'C' => 'Pengetahuan',
-                    'D' => 'Kecerdasan Buatan',
-                    'E' => 'Keputusan Analisis'
-                ],
-                'correct_answer' => 'a',
-                'explanation' => 'Data adalah bentuk paling dasar. Bagaikan bahan makanan mentah yang belum dimasak menjadi makanan siap saji (Informasi).'
-            ],
-            // Q2: Jawaban B
-            [
-                'question' => 'Kumpulan data (seperti data cuaca BMKG) yang sengaja dipublikasikan agar bisa diakses dan dimanfaatkan oleh siapa saja tanpa melanggar hukum disebut sebagai sumber data....',
-                'image' => null,
-                'options' => [
-                    'A' => 'Komersial (Berbayar)',
-                    'B' => 'Terbuka (Open Data)',
-                    'C' => 'Pribadi (Konfidensial)',
-                    'D' => 'Rahasia (Tingkat Tinggi)',
-                    'E' => 'Internal (Batas Organisasi)'
+                    'A' => 'Hasil analisis grafik yang disajikan dalam bentuk rekomendasi keputusan bisnis.',
+                    'B' => 'Sekumpulan fakta mentah, angka, teks, gambar, atau suara digital yang disimpan dan belum memiliki arti khusus sebelum diolah.',
+                    'C' => 'Informasi matang yang siap digunakan langsung oleh pengambil keputusan tanpa pemrosesan.',
+                    'D' => 'Ringkasan nilai rata-rata dan nilai tengah dari hasil pengamatan sampel penelitian.',
+                    'E' => 'Kesimpulan akhir dari sebuah riset ilmiah yang sudah dipublikasikan.'
                 ],
                 'correct_answer' => 'b',
-                'explanation' => 'Sesuai namanya, Open Data (Data Terbuka) dirilis agar masyarakat bisa memanfaatkannya secara bebas.'
+                'explanation' => 'Data adalah sekumpulan fakta mentah, angka, teks, gambar, atau suara digital yang disimpan dan belum memiliki arti khusus sebelum diolah menjadi informasi.'
             ],
-            // Q3: Jawaban C
+            // Q2: Jawaban C [TP 1.1]
             [
-                'question' => 'Data sensus penduduk dari BPS atau rekam medis rumah sakit sangat akurat karena diterbitkan oleh lembaga berwenang. Ini adalah contoh dari sumber data yang bersifat....',
+                'question' => 'Seorang peneliti mencatat deretan angka mentah 160, 175, 168. Setelah diolah oleh sistem komputer, sistem menampilkan kalimat: "Rata-rata tinggi badan siswa kelas XI adalah 167,6 cm". Mengapa kalimat hasil pengolahan tersebut dikategorikan sebagai Informasi?',
                 'image' => null,
                 'options' => [
-                    'A' => 'Kualitatif Deskriptif Bebas',
-                    'B' => 'Terstruktur Pola Angka Penuh',
-                    'C' => 'Terpercaya Tingkat Validitasnya',
-                    'D' => 'Sekunder Dari Pihak Ketiga Saja',
-                    'E' => 'Primer Hasil Uji Coba Lapangan'
+                    'A' => 'Karena kalimat tersebut terdiri dari kumpulan angka tanpa huruf.',
+                    'B' => 'Karena angka-angka tersebut diambil langsung dari sumber pengamatan tanpa diubah.',
+                    'C' => 'Karena data mentah telah diberi satuan, konteks, dan dihitung nilainya sehingga memiliki makna serta nilai guna.',
+                    'D' => 'Karena jumlah angka mentah yang dimasukkan ke dalam sistem kurang dari 10 datum.',
+                    'E' => 'Karena kalimat tersebut bersifat rahasia dan tidak boleh diketahui oleh publik.'
                 ],
                 'correct_answer' => 'c',
-                'explanation' => 'Data Terpercaya adalah data yang bisa diandalkan karena berasal dari pihak atau instansi yang kredibilitasnya sudah diakui.'
+                'explanation' => 'Informasi adalah data yang telah diolah, diberi konteks, satuan, dan makna sehingga bermanfaat untuk pengambilan keputusan.'
             ],
-            // Q4: Jawaban D
+            // Q3: Jawaban C [TP 1.2]
             [
-                'question' => 'Mengambil nomor WhatsApp atau menyebarkan alamat rumah teman di internet tanpa meminta izin terlebih dahulu merupakan bentuk pelanggaran terhadap prinsip sumber data....',
+                'question' => 'Pak Budi mencatat nomor absen siswa (seperti 1, 2, 3) dan kode pos wilayah tempat tinggal siswa (seperti 70111, 70112). Meskipun tersusun atas deretan angka, data tersebut dikategorikan sebagai Data Kategorikal (Nominal) karena...',
                 'image' => null,
                 'options' => [
-                    'A' => 'Terstruktur Dan Sistematis Angka',
-                    'B' => 'Kuantitatif Dengan Batas Ukuran',
-                    'C' => 'Terpercaya Atas Dasar Bukti Kuat',
-                    'D' => 'Legal Bersumber Pada Aturan Hukum',
-                    'E' => 'Ordinal Yang Memiliki Jenjang Rapi'
+                    'A' => 'Angka tersebut didapatkan dari hasil pengukuran menggunakan alat ukur presisi.',
+                    'B' => 'Nilai angka tersebut berbentuk desimal atau pecahan yang dapat dibulatkan.',
+                    'C' => 'Angka tersebut hanya berfungsi sebagai label/identitas dan tidak logis jika dioperasikan secara aritmatika (dijumlahkan atau dirata-ratakan).',
+                    'D' => 'Angka tersebut memiliki tingkatan hierarki di mana angka yang lebih besar selalu lebih baik.',
+                    'E' => 'Angka tersebut tersimpan dalam berkas gambar digital .png.'
                 ],
-                'correct_answer' => 'd',
-                'explanation' => 'Kita harus mematuhi hukum privasi. Data yang diambil tanpa izin adalah tindakan ilegal (melanggar prinsip Data Legal).'
+                'correct_answer' => 'c',
+                'explanation' => 'Data nominal angka seperti nomor absen atau kode pos berfungsi murni sebagai label/identitas dan tidak dapat dioperasikan secara matematika/aritmatika.'
             ],
-            // Q5: Jawaban E
+            // Q4: Jawaban B [TP 1.2]
             [
-                'question' => 'Alasan utama mengapa kita harus mendefinisikan "masalah" dengan jelas sebelum mulai mengumpulkan data adalah agar data yang kita kumpulkan nanti sifatnya....',
+                'question' => "Pengelola perpustakaan mendata dua jenis variabel:\n- Variabel X: Jumlah buku yang dipinjam oleh siswa (misal: 2 buku, 5 buku).\n- Variabel Y: Berat total tumpukan buku saat ditimbang (misal: 1,2 kg, 2,8 kg).\nPengelompokan sifat data kuantitatif yang paling tepat untuk kedua variabel tersebut adalah...",
                 'image' => null,
                 'options' => [
-                    'A' => 'Acak namun luas tak terhingga batasnya',
-                    'B' => 'Rumit dan butuh algoritma tinggi PC',
-                    'C' => 'Murni berbasis angka agar cepat diolah',
-                    'D' => 'Hanya berisi opini bebas dari netizen',
-                    'E' => 'Benar-benar sesuai dengan tujuannya'
-                ],
-                'correct_answer' => 'e',
-                'explanation' => 'Mengetahui masalahnya membuat kita tidak membuang waktu mengumpulkan data yang salah atau tidak relevan dengan solusi.'
-            ],
-            // Q6: Jawaban A
-            [
-                'question' => 'Ciri khas yang paling membedakan data "Kualitatif Nominal" (seperti Jenis Kelamin) dengan jenis data kualitatif lainnya adalah bahwa label kategorinya....',
-                'image' => null,
-                'options' => [
-                    'A' => 'Sama sekali tidak memiliki tingkatan atau urutan',
-                    'B' => 'Mempunyai rentang selisih ukur yang sangat pasti',
-                    'C' => 'Menghadirkan tingkatan atau ranking yang berurutan',
-                    'D' => 'Sanggup dikenakan operasi penjumlahan matematika',
-                    'E' => 'Cenderung mengandung bilangan pecahan atau desimal'
-                ],
-                'correct_answer' => 'a',
-                'explanation' => 'Data nominal murni berfungsi sebagai label saja. (Laki-laki tidak lebih tinggi pangkatnya dari Perempuan, dan sebaliknya).'
-            ],
-            // Q7: Jawaban B
-            [
-                'question' => 'Sebuah formulir penilaian guru membagi jawaban siswa menjadi: Sangat Buruk, Buruk, Baik, dan Sangat Baik. Dilihat dari bentuk teksnya yang bertingkat, ini termasuk jenis data kualitatif....',
-                'image' => null,
-                'options' => [
-                    'A' => 'Tipe Nominal Murni Labeling Dasar',
-                    'B' => 'Tipe Ordinal Berjenjang Terstruktur',
-                    'C' => 'Kuantitatif Jenis Diskrit Bulat Murni',
-                    'D' => 'Kuantitatif Jenis Kontinu Hasil Ukur',
-                    'E' => 'Format Bebas Campuran Tidak Resmi'
+                    'A' => 'Variabel X adalah data kontinu, sedangkan Variabel Y adalah data diskrit.',
+                    'B' => 'Variabel X adalah data diskrit (hasil pencacahan/bilangan bulat), sedangkan Variabel Y adalah data kontinu (hasil pengukuran/berupa rentang desimal).',
+                    'C' => 'Variabel X adalah data tidak terstruktur, sedangkan Variabel Y adalah data terstruktur.',
+                    'D' => 'Variabel X adalah data skala nominal, sedangkan Variabel Y adalah data skala ordinal.',
+                    'E' => 'Variabel X dan Variabel Y keduanya tergolong sebagai data kualitatif.'
                 ],
                 'correct_answer' => 'b',
-                'explanation' => 'Walau berupa kata-kata (Kualitatif), penilaian tersebut memiliki urutan level dari terendah ke tertinggi (Ordinal).'
+                'explanation' => 'Variabel X diperoleh dari hasil menghitung/mencacah (diskrit, bulat), sedangkan Variabel Y diperoleh dari hasil mengukur dengan alat timbang (kontinu, pecahan/desimal).'
             ],
-            // Q8: Jawaban C
+            // Q5: Jawaban C [TP 1.2]
             [
-                'question' => 'Laporan perawat di UKS mencatat suhu tubuh seorang siswa adalah 36,7 derajat celcius. Mengingat nilainya didapat dari termometer dan berbentuk desimal, hasil ini termasuk data kuantitatif....',
+                'question' => 'Berkas digital seperti foto kegiatan ekstrakurikuler (format .jpg), pesan teks chatting kelompok, dan rekaman audio wawancara (format .mp3) diklasifikasikan ke dalam bentuk struktur digital...',
                 'image' => null,
                 'options' => [
-                    'A' => 'Diskrit Hasil Kegiatan Hitung Bebas',
-                    'B' => 'Nominal Kategori Tanpa Tingkatan',
-                    'C' => 'Kontinu Hasil Penggunaan Alat Ukur',
-                    'D' => 'Ordinal Peringkat Berurutan Teratur',
-                    'E' => 'Abstrak Konstruksi Matematika Murni'
+                    'A' => 'Data Terstruktur (Structured Data)',
+                    'B' => 'Data Tabel Relasional (SQL Data)',
+                    'C' => 'Data Tidak Terstruktur (Unstructured Data)',
+                    'D' => 'Data Semi-Terstruktur (XML Data)',
+                    'E' => 'Data Numerik Rasio'
                 ],
                 'correct_answer' => 'c',
-                'explanation' => 'Data yang didapat melalui alat ukur dan dapat memiliki nilai pecahan koma/desimal secara logis disebut data Kuantitatif Kontinu.'
+                'explanation' => 'File foto, pesan percakapan bebas, dan rekaman audio tidak memiliki skema tabel baris-kolom yang kaku sehingga dikategorikan sebagai Data Tidak Terstruktur.'
             ],
-            // Q9: Jawaban D
+            // Q6: Jawaban B [TP 1.3]
             [
-                'question' => 'Wali kelas mencatat bahwa siswa yang tidak hadir hari ini berjumlah 3 orang. Karena didapat dari proses menghitung orang satu per satu, jumlah kehadiran ini disebut data kuantitatif....',
+                'question' => 'Sebuah grafik batang menampilkan peningkatan penjualan kantin sekolah. Namun, pembuat grafik memotong skala sumbu Y (Truncated Y-Axis) dan memulainya dari angka 95 (bukan dari 0). Dampak visual yang dirasakan oleh pembaca grafik tersebut adalah...',
                 'image' => null,
                 'options' => [
-                    'A' => 'Nominal Berlabel Tekstual Bebas',
-                    'B' => 'Kontinu Dengan Rentang Desimal',
-                    'C' => 'Ordinal Bersistem Penilaian Ranking',
-                    'D' => 'Diskrit Bilangan Bulat Hasil Hitung',
-                    'E' => 'Terstruktur Pola Tabel Baris Kolom'
-                ],
-                'correct_answer' => 'd',
-                'explanation' => 'Kita tidak bisa membelah manusia menjadi bilangan desimal. Data angka bulat dari hasil menghitung cacah disebut data Diskrit.'
-            ],
-            // Q10: Jawaban E
-            [
-                'question' => 'Kumpulan nilai ujian ratusan siswa yang disimpan dengan sangat rapi ke dalam kotak-kotak baris dan kolom di aplikasi Microsoft Excel, adalah ciri mutlak dari wujud data....',
-                'image' => null,
-                'options' => [
-                    'A' => 'Semi Terstruktur Berbasis Penanda Tag',
-                    'B' => 'Tidak Terstruktur Komposisi Amat Bebas',
-                    'C' => 'Kualitatif Deskriptif Rangkaian Kalimat',
-                    'D' => 'Kuantitatif Campuran Karakter Bebas Liar',
-                    'E' => 'Terstruktur Format Tabel Aplikasi Disiplin'
-                ],
-                'correct_answer' => 'e',
-                'explanation' => 'Komputer paling mudah membaca tabel. Format tabel baris dan kolom adalah wujud sejati dari data yang Terstruktur.'
-            ],
-            // Q11: Jawaban A
-            [
-                'question' => 'Menurut tips rahasia visualisasi, bentuk grafik "Diagram Batang (Bar Chart)" sangat tepat jika kita ingin melihat perbandingan nilai pada data yang berjenis....',
-                'image' => null,
-                'options' => [
-                    'A' => 'Kategori label (Seperti Nominal dan Ordinal)',
-                    'B' => 'Kelanjutan angka (Data Kontinu bilangan ukur)',
-                    'C' => 'Komposisi file media gambar tanpa batas tegas',
-                    'D' => 'Rekaman gelombang audio musik atau jenis suara',
-                    'E' => 'Rangkaian dialog chat obrolan keseharian liar'
-                ],
-                'correct_answer' => 'a',
-                'explanation' => 'Diagram Batang memang diciptakan untuk membandingkan kelompok/kategori data (Misal: membandingkan Jumlah Laki-laki vs Perempuan).'
-            ],
-            // Q12: Jawaban B
-            [
-                'question' => 'Format file seperti JSON sangat disukai pembuat web karena tidak perlu tabel kaku, tapi cukup memakai "tag" penanda. Gaya penyimpanan yang tidak kaku ini disebut data....',
-                'image' => null,
-                'options' => [
-                    'A' => 'Terstruktur Penuh Arsitektur Batas Tabel',
-                    'B' => 'Semi Terstruktur Kategori Penuh Kelenturan',
-                    'C' => 'Tidak Terstruktur Absolut Tanpa Komposisi',
-                    'D' => 'Nominal Numerik Karakter Bilangan Pecahan',
-                    'E' => 'Tingkat Tinggi Hasil Penggalian Dalam Lanjut'
+                    'A' => 'Grafik menjadi sangat datar dan tidak memperlihatkan perbedaan sama sekali.',
+                    'B' => 'Perbedaan angka kenaikan yang sebenarnya kecil terlihat seolah-olah melonjak sangat drastis dan berlebihan.',
+                    'C' => 'Warna batang grafik secara otomatis berubah menjadi tidak konsisten.',
+                    'D' => 'Data angka kuantitatif pada grafik otomatis terkonversi menjadi data kualitatif.',
+                    'E' => 'Pembaca dapat melihat nilai presisi dari setiap sampel secara objektif.'
                 ],
                 'correct_answer' => 'b',
-                'explanation' => 'JSON tidak punya tabel ketat, tapi datanya tidak berantakan berkat sistem tag-nya. Posisi di tengah ini disebut Semi Terstruktur.'
+                'explanation' => 'Memotong sumbu Y (truncated Y-axis) melanggar prinsip proportional ink dan membesar-besarkan perbedaan selisih data secara manipulatif/visual.'
             ],
-            // Q13: Jawaban C
+            // Q7: Jawaban B [TP 1.3]
             [
-                'question' => 'Sebagian besar informasi yang diunggah ke internet oleh netizen setiap hari berwujud foto, video TikTok, dan pesan suara WhatsApp. Secara ilmu data, format liar ini diklasifikasikan sebagai data....',
+                'question' => 'Ditemukan data bahwa tingkat penjualan es krim dan tingkat kasus kecelakaan berenang sama-sama meningkat pada bulan Juli. Seorang analis menyimpulkan bahwa "Memakan es krim menyebabkan orang tenggelam saat berenang". Analisis kritis yang tepat terhadap kesalahan kesimpulan tersebut adalah...',
                 'image' => null,
                 'options' => [
-                    'A' => 'Terstruktur Sistem Tabel Relasional Internal',
-                    'B' => 'Semi Terstruktur Kumpulan Berkas Identitas',
-                    'C' => 'Tidak Terstruktur Pola Media Tidak Beraturan',
-                    'D' => 'Kuantitatif Murni Deretan Angka Matematika',
-                    'E' => 'Kualitatif Deskripsi Format Surat Resmi Teks'
-                ],
-                'correct_answer' => 'c',
-                'explanation' => 'Foto dan pesan suara tidak memiliki batas sel, baris, maupun penanda kolom. Inilah alasan kuat mengapa mereka disebut Tidak Terstruktur.'
-            ],
-            // Q14: Jawaban D
-            [
-                'question' => 'Cara pengumpulan data yang paling cepat, murah, dan praktis jika pengurus OSIS ingin mengetahui pendapat dari 300 siswa sekaligus secara bersamaan adalah dengan membagikan....',
-                'image' => null,
-                'options' => [
-                    'A' => 'Kamera video untuk merekam observasi diam-diam',
-                    'B' => 'Undangan wawancara secara langsung satu per satu',
-                    'C' => 'Buku catatan kosong untuk dokumentasi perpustakaan',
-                    'D' => 'Survei atau kuesioner form berbasis platform digital',
-                    'E' => 'Alat instrumen uji eksperimen tertutup laboratorium'
-                ],
-                'correct_answer' => 'd',
-                'explanation' => 'Link kuesioner digital (seperti Google Forms) dapat diisi ratusan anak pada detik yang sama dari HP masing-masing.'
-            ],
-            // Q15: Jawaban E
-            [
-                'question' => 'Proses pembersihan (Data Cleaning) wajib dilakukan agar jangan sampai ada nama siswa yang tertulis dua kali di daftar kelas. Jika dibiarkan, "Data Duplikat" ini akan menyebabkan...',
-                'image' => null,
-                'options' => [
-                    'A' => 'Tampilan warna baris memudar dengan cepat',
-                    'B' => 'Terjadinya kerusakan file dokumen mendadak',
-                    'C' => 'Letak sel vertikal tertukar secara otomatis',
-                    'D' => 'Aplikasi mengalami kebocoran kerahasiaan',
-                    'E' => 'Perhitungan hasil rata-rata menjadi keliru'
-                ],
-                'correct_answer' => 'e',
-                'explanation' => 'Nama yang ganda membuat mesin mengira jumlah siswa lebih banyak dari aslinya, sehingga rumus rata-rata nilainya pasti akan salah.'
-            ],
-            // Q16: Jawaban A
-            [
-                'question' => 'Seringkali komputer kebingungan memproses data karena seseorang menuliskan nama kota "Banjarmasin", "banjarmasin", dan "BANJARMASIN". Data yang kotor akibat keteledoran jari ini disebut masalah....',
-                'image' => null,
-                'options' => [
-                    'A' => 'Kesalahan penulisan ketik (Typo / Format Error)',
-                    'B' => 'Kegagalan pengisian formulir (Missing Value Kritis)',
-                    'C' => 'Penyalinan otomatis data yang sama persis (Duplikat)',
-                    'D' => 'Kegagalan penerapan metodologi pengamatan manual',
-                    'E' => 'Kekurangan kapasitas memori simpan komputer lokal'
-                ],
-                'correct_answer' => 'a',
-                'explanation' => 'Huruf besar dan kecil yang tidak seragam (Typo format) membuat komputer membacanya sebagai kota yang sama sekali berbeda.'
-            ],
-            // Q17: Jawaban B
-            [
-                'question' => 'Pada tampilan aplikasi pengolah angka (Spreadsheet), sebuah kotak kecil perpotongan silang antara Kolom C menurun dan Baris 5 mendatar disebut dengan istilah....',
-                'image' => null,
-                'options' => [
-                    'A' => 'Tampilan Utuh Jendela Kerja (Worksheet File)',
-                    'B' => 'Satuan Wadah Nilai Tunggal (Sel / Cell C5)',
-                    'C' => 'Fungsi Bahasa Pemrograman Khusus (Formula Utama)',
-                    'D' => 'Deretan Baris Utama (Header Identitas Kolom Tabel)',
-                    'E' => 'Kumpulan Baris Keterangan (Tabel Eksekusi Lanjutan)'
+                    'A' => 'Kesimpulan tersebut benar karena nilai korelasi positif selalu membuktikan hubungan sebab-akibat.',
+                    'B' => 'Kesimpulan tersebut keliru karena mengabaikan variabel ketiga (yaitu musim panas/terik) yang menjadi penyebab meningkatnya kedua variabel secara bersamaan.',
+                    'C' => 'Kesimpulan tersebut keliru karena data es krim tergolong data tidak terstruktur.',
+                    'D' => 'Kesimpulan tersebut terjadi akibat kesalahan pemotongan sumbu Y pada grafik.',
+                    'E' => 'Kesimpulan tersebut benar karena didasarkan pada sampel data yang berukuran sangat besar.'
                 ],
                 'correct_answer' => 'b',
-                'explanation' => 'Setiap kotak kecil tempat kita mengetik angka atau teks di dalam antarmuka Spreadsheet dinamakan Sel (Cell).'
+                'explanation' => 'Korelasi tidak sama dengan kausalitas (Correlation ≠ Causation). Kenaikan penjualan es krim dan kasus tenggelam sama-sama dipengaruhi oleh variabel luar (suhu udara panas di musim panas).'
             ],
-            // Q18: Jawaban C
+            // Q8: Jawaban B [TP 2.1]
             [
-                'question' => 'Jika kamu memblok daftar nilai seluruh kelas di Excel dan ingin komputer langsung memperlihatkan "skor tertinggi" yang diraih di kelas tersebut, kamu harus menggunakan perintah fungsi....',
+                'question' => 'Prinsip "Garbage In, Garbage Out" (GIGO) dalam tahap pengolahan data mengandung arti bahwa...',
                 'image' => null,
                 'options' => [
-                    'A' => 'Penelusuran ambang angka nilai terendah (Fungsi MIN)',
-                    'B' => 'Kalkulasi nilai sebaran tengah kelas rata (Fungsi AVG)',
-                    'C' => 'Pelacakan capaian maksimum angka terbesar (Fungsi MAX)',
-                    'D' => 'Pengkalkulasian total penjumlahan gabungan (Fungsi SUM)',
-                    'E' => 'Penghitungan jumlah partisipan tes ujian (Fungsi COUNT)'
+                    'A' => 'Komputer akan menghapus file sampah di dalam memori secara otomatis sebelum pemrosesan.',
+                    'B' => 'Jika data mentah yang dimasukkan berkualitas kotor atau salah, maka hasil analisis yang dikeluarkan dipastikan salah dan menyesatkan.',
+                    'C' => 'Data mentah yang tidak lengkap dapat diubah secara otomatis menjadi informasi yang sempurna oleh algoritma.',
+                    'D' => 'Hasil analisis data yang buruk dapat diperbaiki hanya dengan mengubah warna grafik.',
+                    'E' => 'Pengolahan data tidak memerlukan tahap pembersihan jika menggunakan komputer canggih.'
+                ],
+                'correct_answer' => 'b',
+                'explanation' => 'Prinsip GIGO menegaskan bahwa kualitas output/analisis sangat bergantung pada kualitas input data mentah yang dimasukkan.'
+            ],
+            // Q9: Jawaban C [TP 2.1]
+            [
+                'question' => 'Saat memeriksa formulir pendaftaran ulang, staf TU menemukan beberapa baris data di mana kolom "Nomor HP Orang Tua" dikosongkan oleh pendaftar. Teknik penanganan missing values dengan cara mengisi kolom kosong tersebut menggunakan estimasi nilai statistik (seperti rata-rata atau nilai tengah) disebut...',
+                'image' => null,
+                'options' => [
+                    'A' => 'Deletion (Penghapusan baris)',
+                    'B' => 'Trimming (Pemotongan)',
+                    'C' => 'Imputation (Imputasi)',
+                    'D' => 'Sorting (Pengurutan)',
+                    'E' => 'Grouping (Pengelompokan)'
                 ],
                 'correct_answer' => 'c',
-                'explanation' => 'Fungsi MAX ditugaskan murni untuk memindai kolom dan menampilkan siapa pemilik angka paling besar (maksimal).'
+                'explanation' => 'Imputasi (Imputation) adalah teknik penanganan data hilang (missing values) dengan cara mengisi nilai pengganti estimasi/statistik.'
             ],
-            // Q19: Jawaban D
+            // Q10: Jawaban C [TP 2.1]
             [
-                'question' => 'Apabila panitia lomba OSIS hanya ingin menghitung secara cepat "ada berapa banyak siswa" yang datanya sudah masuk ke dalam daftar tabel, panitia tersebut wajib menggunakan rumus....',
+                'question' => 'Pada kolom "Nilai Ujian" siswa dengan skala 0–100, tercatat angka 950 akibat kesalahan ketik (human error). Angka 950 ini berada sangat jauh di luar rentang mayoritas data lainnya. Dalam data cleaning, angka tersebut dikategorikan sebagai...',
                 'image' => null,
                 'options' => [
-                    'A' => 'Penguraian sebaran nilai poin tertinggi populasi (MAX)',
-                    'B' => 'Penambahan volume absolut kumulatif seluruh skor (SUM)',
-                    'C' => 'Pemecahan hasil ujian secara pukul nilai rata-rata (AVG)',
-                    'D' => 'Pencacah kuantitas banyak kotak terisi data (Fungsi COUNT)',
-                    'E' => 'Pencarian batas skor evaluasi terbawah populasi (Fungsi MIN)'
+                    'A' => 'Data Duplikat (Duplicate Data)',
+                    'B' => 'Data Terstruktur (Structured Data)',
+                    'C' => 'Pencilan (Outlier)',
+                    'D' => 'Nilai Tengah (Median)',
+                    'E' => 'Data Kategorikal Ordinal'
                 ],
-                'correct_answer' => 'd',
-                'explanation' => 'Fungsi COUNT berguna untuk "menghitung kepala" atau jumlah baris data yang sudah terisi dalam sebuah tabel rekapitulasi.'
+                'correct_answer' => 'c',
+                'explanation' => 'Angka yang menyimpang sangat jauh dari rentang nilai normal/mayoritas data dikategorikan sebagai pencilan (outlier) akibat kesalahan ketik.'
             ],
-            // Q20: Jawaban E
+            // Q11: Jawaban B [TP 2.2]
             [
-                'question' => 'Setelah fakta mentah dari lapangan berhasil dibersihkan dan diproses sedemikian rupa, data tersebut akhirnya berubah menjadi sesuatu yang sangat berharga untuk pengambilan keputusan, yaitu....',
+                'question' => 'Guru Olahraga ingin menampilkan tabel daftar siswa mulai dari siswa yang memiliki tinggi badan tertinggi hingga yang terendah. Jenis pengurutan (sorting) yang harus diterapkan pada kolom tinggi badan tersebut adalah...',
                 'image' => null,
                 'options' => [
-                    'A' => 'Laporan daftar absensi pengamatan terstruktur',
-                    'B' => 'Basis tabel mentah format berkas penyimpanan',
-                    'C' => 'Sistem tata kelola perangkat lunak terintegrasi',
-                    'D' => 'Struktur relasi tabel baris kolom antarmuka',
-                    'E' => 'Informasi matang yang siap dimanfaatkan manusia'
+                    'A' => 'Ascending (Menaik, dari terkecil ke terbesar)',
+                    'B' => 'Descending (Menurun, dari terbesar ke terkecil)',
+                    'C' => 'Grouping berdasarkan jenis kelamin',
+                    'D' => 'Imputasi nilai rata-rata',
+                    'E' => 'Filtering data kategorikal'
                 ],
-                'correct_answer' => 'e',
-                'explanation' => 'Itulah esensi dari siklus data. Data yang tadinya mentah dan tak berarti, kini telah naik pangkat menjadi "Informasi" yang berguna.'
+                'correct_answer' => 'b',
+                'explanation' => 'Pengurutan dari nilai terbesar ke terkecil dinamakan pengurutan menurun atau Descending.'
+            ],
+            // Q12: Jawaban A [TP 2.2]
+            [
+                'question' => 'Pengelola kantin mencatat total penjualan makanan sebesar 200 porsi. Sebanyak 50 porsi di antaranya adalah Nasi Goreng. Rumus dan hasil perhitungan persentase proporsi penjualan Nasi Goreng terhadap total penjualan adalah...',
+                'image' => null,
+                'options' => [
+                    'A' => 'PERSENTASE = (50 / 200) × 100% = 25%',
+                    'B' => 'PERSENTASE = (200 / 50) × 100% = 400%',
+                    'C' => 'AVERAGE = 200 - 50 = 150%',
+                    'D' => 'SUM = 200 + 50 = 250%',
+                    'E' => 'MEDIAN = (200 + 50) / 2 = 125%'
+                ],
+                'correct_answer' => 'a',
+                'explanation' => 'Persentase proporsi dihitung dengan membagi jumlah bagian (50) dengan total keseluruhan (200) lalu dikalikan 100% = 25%.'
+            ],
+            // Q13: Jawaban C [TP 2.3]
+            [
+                'question' => 'Seorang peneliti menyajikan data statistik penelitiannya. Kapan peneliti tersebut lebih disarankan menggunakan Tabel Ringkasan daripada Diagram/Grafik?',
+                'image' => null,
+                'options' => [
+                    'A' => 'Ketika ingin menampilkan tren perkembangan data dari waktu ke waktu secara visual dan cepat.',
+                    'B' => 'Ketika target pembaca adalah masyarakat umum yang tidak menyukai angka detail.',
+                    'C' => 'Ketika pembaca membutuhkan nilai angka yang presisi, pasti, rinci, dan memuat beberapa variabel dengan satuan berbeda.',
+                    'D' => 'Ketika peneliti ingin memperlihatkan proporsi persentase dalam bentuk potongan lingkaran.',
+                    'E' => 'Ketika data yang disajikan berbentuk file foto dan video digital.'
+                ],
+                'correct_answer' => 'c',
+                'explanation' => 'Tabel Ringkasan digunakan saat pembaca membutuhkan nilai angka yang rinci, presisi, dan pasti dengan berbagai satuan berbeda.'
+            ],
+            // Q14: Jawaban C [TP 2.3]
+            [
+                'question' => 'Guru Informatika ingin menganalisis apakah terdapat pola hubungan atau korelasi antara "Tinggi Badan" (Sumbu X) dan "Berat Badan" (Sumbu Y) dari 30 siswa. Jenis grafik yang paling tepat digunakan adalah...',
+                'image' => null,
+                'options' => [
+                    'A' => 'Diagram Lingkaran (Pie Chart)',
+                    'B' => 'Diagram Batang (Bar Chart)',
+                    'C' => 'Grafik Pencar (Scatter Plot)',
+                    'D' => 'Diagram Garis (Line Chart)',
+                    'E' => 'Tabel Frekuensi Tunggal'
+                ],
+                'correct_answer' => 'c',
+                'explanation' => 'Grafik Pencar (Scatter Plot) adalah jenis grafik yang paling tepat untuk melihat pola korelasi atau hubungan antara dua variabel numerik kuantitatif.'
+            ],
+            // Q15: Jawaban C [TP 3.1]
+            [
+                'question' => 'Hasil nilai tes simulasi coding dari 5 orang siswa adalah sebagai berikut: 70, 80, 85, 90, 100. Nilai Mean (\bar{x}) dari data tersebut adalah...',
+                'image' => null,
+                'options' => [
+                    'A' => '80',
+                    'B' => '82,5',
+                    'C' => '85',
+                    'D' => '90',
+                    'E' => '425'
+                ],
+                'correct_answer' => 'c',
+                'explanation' => 'Mean = (70 + 80 + 85 + 90 + 100) / 5 = 425 / 5 = 85.'
+            ],
+            // Q16: Jawaban C [TP 3.1]
+            [
+                'question' => 'Pengurus OSIS mendata ukuran baju seragam yang dipesan oleh siswa baru (S, M, L, XL, XXL) untuk menentukan ukuran yang paling banyak diproduksi. Ukuran pemusatan data yang wajib digunakan untuk menganalisis data kategorikal tersebut adalah...',
+                'image' => null,
+                'options' => [
+                    'A' => 'Mean (Rata-rata)',
+                    'B' => 'Median (Nilai Tengah)',
+                    'C' => 'Modus (Nilai yang Sering Muncul)',
+                    'D' => 'Jangkauan Interkuartil (IQR)',
+                    'E' => 'Standar Deviasi'
+                ],
+                'correct_answer' => 'c',
+                'explanation' => 'Modus (nilai/kategori dengan frekuensi terbanyak) adalah satu-satunya ukuran pemusatan yang dapat digunakan untuk menganalisis data kategorikal/nominal.'
+            ],
+            // Q17: Jawaban B [TP 3.2]
+            [
+                'question' => 'Sebuah perusahaan mendata gaji 10 karyawannya. Sembilan staf memiliki gaji di rentang Rp 4 juta–Rp 5 juta, sedangkan 1 orang Direktur Utama memiliki gaji Rp 150 juta (sebagai outlier ekstrem). Mengapa nilai Median lebih jujur dan direkomendasikan untuk menggambarkan rata-rata gaji karyawan daripada Mean?',
+                'image' => null,
+                'options' => [
+                    'A' => 'Karena Median memperhitungakan nilai ekstrim sehingga nilainya menjadi membengkak.',
+                    'B' => 'Karena Median bersifat resistan (robust) terhadap nilai pencilan ekstrem dan tidak akan terdistorsi oleh gaji Direktur.',
+                    'C' => 'Karena Mean hanya bisa digunakan jika data berbentuk kata-kata/kategorikal.',
+                    'D' => 'Karena nilai Median selalu bernilai nol pada data kuantitatif.',
+                    'E' => 'Karena rumus Mean membutuhkan perhitungan kuartil terlebih dahulu.'
+                ],
+                'correct_answer' => 'b',
+                'explanation' => 'Median bersifat resistan (robust) atau tahan terhadap pencilan ekstrem, sehingga gambaran nilai tengah tidak terdistorsi oleh angka 150 juta milik Direktur Utama.'
+            ],
+            // Q18: Jawaban A [TP 3.2]
+            [
+                'question' => 'Diberikan sekumpulan data nilai siswa terurut dengan Kuartil Bawah (Q1 = 65) dan Kuartil Atas (Q3 = 85). Nilai Jangkauan Interkuartil (IQR) dari data tersebut adalah...',
+                'image' => null,
+                'options' => [
+                    'A' => '20',
+                    'B' => '75',
+                    'C' => '150',
+                    'D' => '2,5',
+                    'E' => '55'
+                ],
+                'correct_answer' => 'a',
+                'explanation' => 'IQR = Q3 - Q1 = 85 - 65 = 20.'
+            ],
+            // Q19: Jawaban B [TP 3.3]
+            [
+                'question' => 'Hasil analisis nilai ujian matematika suatu kelas menunjukkan bahwa Mean = 68, namun Median = 85. Ditemukan bahwa ada 2 siswa yang mendapat nilai 10 karena tidak hadir. Wawasan (insight) yang paling tepat dari data tersebut adalah...',
+                'image' => null,
+                'options' => [
+                    'A' => 'Seluruh siswa di kelas tersebut gagal memahami materi matematika.',
+                    'B' => 'Mayoritas siswa sebenarnya berkinerja sangat baik (mengelompok di angka 85), dan penurunan nilai rata-rata kelas semata-mata ditarik oleh 2 nilai ekstrem di bawah.',
+                    'C' => 'Nilai KKM sekolah harus segera diturunkan menjadi angka 10.',
+                    'D' => 'Dua siswa tersebut harus dikeluarkan dari sekolah tanpa analisis lanjutan.',
+                    'E' => 'Nilai Median pasti salah hitung karena nilainya lebih besar dari Mean.'
+                ],
+                'correct_answer' => 'b',
+                'explanation' => 'Perbandingan Mean (68) dan Median (85) menunjukkan sebaran miring ke kiri akibat outlier nilai 10. Sebenarnya mayoritas siswa berkinerja sangat baik mengelompok di angka 85.'
+            ],
+            // Q20: Jawaban B [TP 3.3]
+            [
+                'question' => 'Berdasarkan wawasan (insight) pada soal nomor 19 di atas, tindakan/keputusan pedagogis yang paling tepat dan berkeadilan dilakukan oleh guru adalah...',
+                'image' => null,
+                'options' => [
+                    'A' => 'Mengulang seluruh materi pembelajaran dari awal untuk satu kelas penuh secara klasikal.',
+                    'B' => 'Memberikan pendampingan bimbingan/remedial khusus hanya kepada 2 siswa yang tidak hadir tersebut, tanpa mengganggu siswa lain yang sudah paham.',
+                    'C' => 'Mengubah seluruh nilai angka menjadi data kategorikal nominal secara acak.',
+                    'D' => 'Memotong sumbu Y pada grafik nilai agar terlihat sama rata.',
+                    'E' => 'Menghapus data seluruh siswa agar nilai rata-rata menjadi sempurna.'
+                ],
+                'correct_answer' => 'b',
+                'explanation' => 'Karena mayoritas siswa sudah memahami materi, tindakan yang tepat dan adil adalah memberikan intervensi/remedial personal khusus kepada 2 siswa yang tidak hadir.'
             ],
         ];
 
@@ -335,7 +335,7 @@ class Bab1_KuisAkhirSeeder extends Seeder
                 'explanation' => $q['explanation']
             ]);
         }
-        
-        $this->command->info('Berhasil membuat 20 Soal Statement Evaluasi Akhir Bab 1: Data & Pengolahannya (Bahasa SMA & Distribusi Merata)!');
+
+        $this->command->info('Berhasil membuat 20 Soal Evaluasi Akhir Bab 1: Pengenalan, Pengolahan, dan Analisis Data!');
     }
 }

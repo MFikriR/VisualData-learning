@@ -9,22 +9,21 @@ class MateriBab1Seeder extends Seeder
 {
     public function run(): void
     {
-        // 1. Buat/Update Bab 1 dengan judul baru
+        // Update/Create Chapter 1
         Chapter::updateOrCreate(
             ['sequence' => 1],
             [
-                'title' => 'Data dan Pengolahannya',
-                'description' => 'Memahami definisi, sumber, jenis, struktur, pengolahan, hingga etika data.',
+                'title' => 'Pengenalan dan Pengolahan Data',
+                'description' => 'Memahami konsep dasar data, jenis data, pembersihan data, hingga teknik analisis deskriptif.',
                 'is_active' => true,
             ]
         );
 
-        // 2. Panggil file anak sesuai sub-bab baru secara berurutan
         $this->call([
-            Bab1_01_ApaItuDataSeeder::class,             // Sub-bab 1 (Definisi & Konsep)
-            Bab1_02_SumberJenisStrukturSeeder::class,   // Sub-bab 2 (Gabungan Sumber, Jenis & Struktur)
-            Bab1_03_PengolahanDataSeeder::class,        // Sub-bab 3 (Proses Pengolahan & Siklus AI)
-            Bab1_KuisAkhirSeeder::class,                // Evaluasi Bab 1
+            Bab1_01_KonsepDasarDataSeeder::class,   // Sub-bab 1
+            Bab1_02_PengolahanDataSeeder::class,    // Sub-bab 2
+            Bab1_03_AnalisisDataSeeder::class,      // Sub-bab 3
+            Bab1_KuisAkhirSeeder::class,            // Evaluasi Bab 1
         ]);
     }
 }

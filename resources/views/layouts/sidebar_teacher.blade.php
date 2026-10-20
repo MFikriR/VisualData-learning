@@ -1,8 +1,8 @@
-<aside class="sidebar fixed top-0 left-0 z-40 w-[280px] h-screen transition-transform -translate-x-full md:translate-x-0 flex flex-col bg-[#f5f5f7] border-r border-[#e0e0e0]" style="font-family: 'SF Pro Text', 'Inter', system-ui, -apple-system, sans-serif;">
+<aside id="main-sidebar" class="sidebar fixed top-0 left-0 z-40 w-[280px] h-screen transition-transform -translate-x-full md:translate-x-0 flex flex-col bg-[#f5f5f7] border-r border-[#e0e0e0]" style="font-family: 'SF Pro Text', 'Inter', system-ui, -apple-system, sans-serif;">
     
     <div class="flex-1 px-4 py-6 overflow-y-auto custom-scrollbar flex flex-col h-full">
         
-        {{-- LOGO --}}
+        {{-- LOGO & TOMBOL CLOSE MOBILE --}}
         <div class="flex items-center justify-between mb-8 px-2">
             <div class="flex items-center gap-3">
                 <div class="w-8 h-8 bg-[#1d1d1f] rounded-[8px] flex items-center justify-center text-white font-bold text-lg">V</div>
@@ -10,7 +10,7 @@
                     Visual Data
                 </span>
             </div>
-            <button id="sidebar-close" class="md:hidden text-[#7a7a7a] hover:text-[#1d1d1f] transition-colors focus:outline-none">
+            <button id="sidebar-close" class="md:hidden text-[#7a7a7a] hover:text-[#1d1d1f] transition-colors focus:outline-none cursor-pointer p-1 rounded-lg hover:bg-black/5" title="Tutup Sidebar">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
         </div>
@@ -75,10 +75,10 @@
             {{-- PRATINJAU MATERI (ACCORDION DROPDOWN) --}}
             <li x-data="{ open: {{ request()->routeIs('learning.*') || request()->routeIs('quiz.*') ? 'true' : 'false' }} }">
                 <button @click="open = !open"
-                        class="w-full flex items-center justify-between px-3 py-2.5 rounded-[11px] transition-colors duration-150 text-[17px] tracking-[-0.374px] cursor-pointer border-none bg-transparent
+                        class="w-full flex items-center justify-between px-3 py-2.5 rounded-[11px] transition-colors duration-150 text-[17px] tracking-[-0.374px] cursor-pointer border-none
                         {{ request()->routeIs('learning.*') || request()->routeIs('quiz.*') 
                              ? 'bg-[#0066cc] text-white font-semibold shadow-sm' 
-                             : 'text-[#333333] hover:bg-[#e0e0e0]/50 font-normal' }}">
+                             : 'text-[#333333] bg-transparent hover:bg-[#e0e0e0]/50 font-normal' }}">
                     <div class="flex items-center">
                         <svg class="w-5 h-5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                         <span>Pratinjau Materi</span>

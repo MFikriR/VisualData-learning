@@ -3,10 +3,9 @@
 @section('header', $material->chapter->title)
 
 @section('content')
-    {{-- 1. NOTIFIKASI BERHASIL (Apple Light Success Banner Style - Memperbaiki Teks Gaib) --}}
+    {{-- 1. NOTIFIKASI BERHASIL (Apple Light Success Banner Style) --}}
     @if (session('success'))
         <div class="mb-6 p-4 rounded-xl flex items-center gap-3 animate-fade-in" style="background-color: rgba(52, 199, 89, 0.08) !important; border: 1px solid rgba(52, 199, 89, 0.2) !important;">
-            {{-- Lingkaran Indikator Menggunakan Warna Hijau iOS Resmi (#34c759) --}}
             <div class="p-2 rounded-full flex-shrink-0" style="background-color: rgba(52, 199, 89, 0.12) !important;">
                 <svg class="w-5 h-5" style="color: #34c759 !important;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -24,7 +23,7 @@
         
         {{-- Header Judul --}}
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
-            <h1 class="text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight">
+            <h1 class="text-3xl md:text-4xl font-semibold !text-white leading-tight tracking-tight">
                 {{ $material->title }}
             </h1>
         </div>
@@ -83,14 +82,14 @@
                 @include('learning.simulations.labeling')
             @endif
 
-            {{-- B. KONTEN TEKS PENJELASAN --}}
-            <div id="material-content-area" class="mt-8 max-w-none text-[#cccccc]">
+            {{-- B. KONTEN TEKS PENJELASAN (TAMBAHAN: prose prose-invert) --}}
+            <div id="material-content-area" class="mt-8 max-w-none prose prose-invert text-[#cccccc]">
                 {!! $material->content !!}
             </div>
 
         </div>
 
-        {{-- 3. NAVIGASI BAWAH (Pill Shape Minimalis Tanpa Shadow) --}}
+        {{-- 3. NAVIGASI BAWAH --}}
         <div id="bottom-navigation" class="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 hidden opacity-0 transition-opacity duration-1000">
             @if($prevMaterial)
                 <a href="{{ route('learning.show', $prevMaterial->slug) }}" class="w-full md:w-auto px-6 py-2.5 rounded-full border border-white/20 bg-transparent text-[#2997ff] font-medium hover:bg-white/5 transition-colors flex items-center justify-center gap-2 text-sm">
@@ -112,8 +111,8 @@
             @else
                 @php
                     $targetQuiz = \App\Models\Quiz::where('chapter_id', $material->chapter_id)
-                                    ->whereNotIn('type', ['pre_test', 'post_test'])
-                                    ->first();
+                                                  ->whereNotIn('type', ['pre_test', 'post_test'])
+                                                  ->first();
                 @endphp
                 <div class="w-full md:w-auto">
                     @if($targetQuiz)
@@ -146,7 +145,7 @@
         </div>
     </div>
     
-    {{-- CSS Global Khusus Canvas (Apple Styling Integration) --}}
+    {{-- CSS Global Khusus Canvas & Handling Konten Seeder Dinamis --}}
     <style>
         .apple-material-viewport {
             font-family: "SF Pro Display", "-apple-system", BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -154,7 +153,58 @@
         }
         .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        
+
+        /* 1. WARNA DEFAULT UNTUK ELEMEN DI ATAS CANVAS GELAP (#272729) */
+        .apple-material-viewport h1,
+        .apple-material-viewport > div > h1 {
+            color: #ffffff !important;
+        }
+
+        #material-content-area {
+            color: #cccccc;
+        }
+        #areaMateriPelajaran {
+            color: #cccccc !important;
+        }
+        #material-content-area h1,
+        #material-content-area h2,
+        #material-content-area h3,
+        #material-content-area h4,
+        #areaMateriPelajaran > h3,
+        #areaMateriPelajaran > div > h3 {
+            color: #ffffff !important;
+        }
+        #material-content-area p,
+        #areaMateriPelajaran > p,
+        #areaMateriPelajaran > div > p {
+            color: #cccccc;
+        }
+
+        /* 2. MENJAGA TEKS TETAP GELAP KHUSUS DI DALAM KARTU BERLATAR TERANG */
+        #material-content-area .bg-\[\#f5f5f7\],
+        #material-content-area .bg-white,
+        #material-content-area .bg-\[\#fafafc\] {
+            color: #1d1d1f;
+        }
+
+        #material-content-area .bg-\[\#f5f5f7\] h1, #material-content-area .bg-\[\#f5f5f7\] h2, #material-content-area .bg-\[\#f5f5f7\] h3, #material-content-area .bg-\[\#f5f5f7\] h4,
+        #material-content-area .bg-white h1, #material-content-area .bg-white h2, #material-content-area .bg-white h3, #material-content-area .bg-white h4,
+        #material-content-area .bg-\[\#fafafc\] h1, #material-content-area .bg-\[\#fafafc\] h2, #material-content-area .bg-\[\#fafafc\] h3, #material-content-area .bg-\[\#fafafc\] h4 {
+            color: #1d1d1f !important;
+        }
+
+        #material-content-area .bg-\[\#f5f5f7\] p, #material-content-area .bg-\[\#f5f5f7\] li,
+        #material-content-area .bg-white p, #material-content-area .bg-white li,
+        #material-content-area .bg-\[\#fafafc\] p, #material-content-area .bg-\[\#fafafc\] li {
+            color: #333333 !important;
+        }
+
+        /* 3. KARTU INNER GELAP DI DALAM KARTU TERANG (Misal: Output Panel Lab Mini) */
+        #material-content-area .bg-\[\#1c1c1e\] p,
+        #material-content-area .bg-\[\#1c1c1e\] span {
+            color: #cccccc !important;
+        }
+
         .material-section {
             transition: all 0.5s ease;
             position: relative;
@@ -192,7 +242,7 @@
     @include('learning.partials.floating_tools')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
-    {{-- 🔥 SCRIPT STEPPER + MINI QUIZ ENGINE 🔥 --}}
+    {{-- SCRIPT STEPPER + MINI QUIZ ENGINE --}}
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             
@@ -280,9 +330,7 @@
                 navBottom.classList.remove('hidden', 'opacity-0');
             }
 
-            // ==============================================================
-            // 🔥 ENGINE MULTI-QUIZ CBT MODE (Apple Dark Token Styles) 🔥
-            // ==============================================================
+            // ENGINE MULTI-QUIZ CBT MODE
             function renderMultiQuiz(items) {
                 let currentIdx = 0;
                 const totalQuestions = items.length;
@@ -304,9 +352,9 @@
                 quizBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
                 quizBox.innerHTML = `
-                    <div class="p-5 border-b border-white/10" style="background-color: rgba(255, 255, 255, 0.02) !important;">
-                        <h5 class="text-sm font-semibold text-white mb-2">Petunjuk Pengerjaan Kuis Formatif</h5>
-                        <ul class="list-decimal pl-4 text-xs text-[#cccccc] space-y-1">
+                    <div class="p-5 bg-white border-b border-appleHairline">
+                        <h5 class="text-sm font-semibold text-appleInk mb-2">Petunjuk Pengerjaan Kuis Formatif</h5>
+                        <ul class="list-decimal pl-4 text-xs text-appleMuted space-y-1">
                             <li>Kuis ini bertujuan untuk menguji pemahaman Anda pada sub-bab materi yang baru saja dipelajari.</li>
                             <li>Pilihlah salah satu opsi jawaban yang Anda anggap paling tepat.</li>
                             <li>Batas kelulusan kuis ini adalah minimal 80%. Jika belum memenuhi, Anda diharapkan mempelajari kembali materi di atas.</li>

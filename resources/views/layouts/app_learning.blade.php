@@ -54,7 +54,6 @@
         body { 
             background-color: var(--color-canvas) !important; 
             color: var(--color-ink) !important; 
-            overflow-x: hidden;
             font-family: 'SF Pro Text', 'Inter', system-ui, -apple-system, sans-serif;
             font-size: 17px;
             line-height: 1.47;
@@ -66,6 +65,7 @@
             background-color: var(--color-canvas-parchment) !important; 
             border-right: 1px solid var(--color-hairline) !important;
             z-index: 50;
+            transition: transform 0.3s ease, margin-left 0.3s ease;
         }
         
         .nav-item.active {
@@ -81,8 +81,18 @@
             margin-left: 280px;
             min-width: 0;
             width: 100%;
-            overflow-x: hidden;
             background-color: var(--color-canvas) !important;
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Mode Sidebar Ditutup pada Layar Desktop */
+        @media (min-width: 769px) {
+            body.sidebar-closed .sidebar {
+                transform: translateX(-100%);
+            }
+            body.sidebar-closed .main-content {
+                margin-left: 0 !important;
+            }
         }
 
         .content-wrapper-fix {
@@ -92,17 +102,31 @@
             color: var(--color-ink);
         }
 
+        /* Frosted Glass Header Sticky di Atas Layar */
         .apple-frosted-header {
-            background: rgba(255, 255, 255, 0.8) !important;
+            background: rgba(255, 255, 255, 0.85) !important;
             backdrop-filter: saturate(180%) blur(20px) !important;
             -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
             border-bottom: 1px solid var(--color-hairline) !important;
         }
 
         @media (max-width: 768px) { 
-            .main-content { margin-left: 0; } 
-            .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; } 
-            .sidebar.open { transform: translateX(0); } 
+            .main-content { 
+                margin-left: 0; 
+            } 
+            .sidebar { 
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                width: 280px;
+                z-index: 50 !important;
+                transform: translateX(-100%); 
+                transition: transform 0.3s ease;
+            } 
+            .sidebar.open { 
+                transform: translateX(0); 
+            } 
         }
 
         .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -153,12 +177,17 @@
             @include('layouts.sidebar')
         @endif
 
-        <main class="main-content flex-1 flex flex-col min-h-screen transition-all duration-300 relative z-10">
+        <main class="main-content flex-1 flex flex-col min-h-screen transition-all duration-300 relative">
             
+            {{-- HEADER STICKY ATAS --}}
             <header class="sticky top-0 z-40 apple-frosted-header px-6 py-3 flex items-center justify-between">
                 <div class="flex items-center gap-4">
-                    <button id="sidebar-toggle" class="md:hidden text-[#1d1d1f] hover:text-applePrimary transition-colors focus:outline-none">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    {{-- Tombol Toggle Sidebar --}}
+                    <button id="sidebar-toggle" class="p-2 rounded-xl text-[#1d1d1f] hover:bg-black/5 hover:text-applePrimary transition-all focus:outline-none cursor-pointer" title="Buka/Tutup Navigasi">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="18" x="3" y="3" rx="2"/>
+                            <path d="M9 3v18"/>
+                        </svg>
                     </button>
                     
                     <h2 class="text-[21px] font-semibold text-[#1d1d1f] tracking-[0.231px] font-display">
@@ -199,18 +228,38 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const toggleBtn = document.getElementById('sidebar-toggle');
-            const sidebar = document.querySelector('.sidebar');
-            const overlay = document.getElementById('sidebar-overlay');
+            const sidebar   = document.querySelector('.sidebar');
+            const overlay   = document.getElementById('sidebar-overlay');
 
-            if(toggleBtn && sidebar && overlay) {
+            // Fungsi Menutup Sidebar
+            function closeSidebar() {
+                if (sidebar) sidebar.classList.remove('open');
+                if (overlay) overlay.classList.add('hidden');
+            }
+
+            // Toggle dari Header (Laptop & HP)
+            if (toggleBtn && sidebar) {
                 toggleBtn.addEventListener('click', function() {
-                    sidebar.classList.add('open'); 
-                    overlay.classList.remove('hidden'); 
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.toggle('open');
+                        if (overlay) overlay.classList.toggle('hidden');
+                    } else {
+                        document.body.classList.toggle('sidebar-closed');
+                    }
                 });
-                overlay.addEventListener('click', function() {
-                    sidebar.classList.remove('open'); 
-                    overlay.classList.add('hidden'); 
-                });
+            }
+
+            // Tangkap Klik pada Tombol X di Dalam Sidebar (Universal Listener)
+            document.addEventListener('click', function(e) {
+                const closeBtn = e.target.closest('#sidebar-close, .sidebar-close, [data-sidebar-close]');
+                if (closeBtn) {
+                    closeSidebar();
+                }
+            });
+
+            // Tangkap Klik pada Area Blur (Overlay)
+            if (overlay) {
+                overlay.addEventListener('click', closeSidebar);
             }
         });
     </script>

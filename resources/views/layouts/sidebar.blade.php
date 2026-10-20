@@ -1,7 +1,7 @@
 <aside id="main-sidebar" class="sidebar fixed top-0 left-0 z-40 w-[280px] h-screen transition-transform -translate-x-full md:translate-x-0 flex flex-col">
-    
+
     <div class="flex-1 px-4 py-6 overflow-y-auto custom-scrollbar flex flex-col h-full">
-        
+
         {{-- BRAND LOGO --}}
         <div class="flex items-center justify-between mb-6 px-2">
             <div class="flex items-center gap-2">
@@ -27,53 +27,70 @@
         </div>
 
         @php
-            $sidebarPreTest = \App\Models\Quiz::where('type', 'pre_test')->first();
-            $sidebarHasDonePreTest = false;
+            // Pengecekan akun bypass
+            $isBypassUser = (Auth::check() && Auth::user()->email === 'bypass@gmail.com');
 
-            if ($sidebarPreTest) {
-                $sidebarHasDonePreTest = \App\Models\UserProgress::where('user_id', Auth::id())
-                                        ->where('quiz_id', $sidebarPreTest->id)
-                                        ->exists();
-            } else {
-                $sidebarHasDonePreTest = true; 
+            // Status pre-test (otomatis true jika akun bypass)
+            $sidebarPreTest = \App\Models\Quiz::where('type', 'pre_test')->first();
+            $sidebarHasDonePreTest = $isBypassUser;
+
+            if (!$isBypassUser) {
+                if ($sidebarPreTest) {
+                    $sidebarHasDonePreTest = \App\Models\UserProgress::where('user_id', Auth::id())
+                        ->where('quiz_id', $sidebarPreTest->id)
+                        ->exists();
+                } else {
+                    // Tidak ada pre-test di database, jangan kunci materi
+                    $sidebarHasDonePreTest = true;
+                }
             }
+
+            // Ambil seluruh progres siswa sekali saja
+            $doneMaterialIds = \App\Models\UserProgress::where('user_id', Auth::id())
+                ->whereNotNull('material_id')
+                ->pluck('material_id')
+                ->all();
+
+            $doneQuizIds = \App\Models\UserProgress::where('user_id', Auth::id())
+                ->whereNotNull('quiz_id')
+                ->pluck('quiz_id')
+                ->all();
         @endphp
 
         <nav class="space-y-4 font-medium flex-1">
-            
+
             {{-- DASHBOARD SISWA --}}
-            <a id="sidebar-dashboard" href="{{ route('dashboard') }}" 
+            <a id="sidebar-dashboard" href="{{ route('dashboard') }}"
                class="nav-item flex items-center px-4 py-3 rounded-xl transition-all duration-200 text-appleInk hover:bg-white/60 {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                <span class="text-xl opacity-80">📊</span>
                 <span class="ms-3 text-sm font-semibold">Dashboard</span>
             </a>
 
-            {{-- PEMISAH GARIS ANTARA DASHBOARD DENGAN DAFTAR MATERI --}}
+            {{-- PEMISAH GARIS --}}
             <div class="border-t border-appleHairline my-2"></div>
 
-            {{-- KONDISI 1: PRE-TEST BELUM SELESAI (TERKUNCI GLOBAL) --}}
+            {{-- KONDISI 1: PRE-TEST BELUM SELESAI --}}
             @if(!$sidebarHasDonePreTest && isset($globalChapters))
                 <div class="px-4 py-5 text-center bg-red-50 rounded-2xl border border-red-200 mb-4">
                     <span class="text-3xl mb-2 block">🚫</span>
                     <p class="text-xs text-red-600 font-bold leading-relaxed">Selesaikan Pre-Test di Dashboard untuk membuka materi!</p>
                 </div>
 
-                <div class="space-y-4 opacity-40 filter blur-[1px] pointer-events-none select-none">
+                <div class="space-y-3 opacity-40 filter blur-[1px] pointer-events-none select-none">
                     @foreach($globalChapters as $chapter)
+                        @php
+                            $lockedMaterials = $chapter->materials ? $chapter->materials->unique('slug') : collect();
+                        @endphp
                         <div class="chapter-group bg-white/40 p-2.5 rounded-2xl border border-appleHairline space-y-1">
                             <div class="w-full flex items-center justify-between px-2 py-1 text-[11px] font-bold text-appleInk uppercase tracking-wider">
                                 <span>
-                                    @if($chapter->sequence == 0)
-                                        Pengantar
-                                    @elseif($chapter->sequence == 99)
-                                        Penilaian Akhir
-                                    @else
-                                        Bab {{ $chapter->sequence }}
+                                    @if($chapter->sequence == 0) Pengantar
+                                    @elseif($chapter->sequence == 99) Penilaian Akhir
+                                    @else Bab {{ $chapter->sequence }}
                                     @endif
                                 </span>
                             </div>
                             <div class="space-y-1 pt-1">
-                                @foreach($chapter->materials as $mat)
+                                @foreach($lockedMaterials as $mat)
                                     <div class="flex items-center px-3 py-2.5 rounded-xl text-appleMuted bg-white/50">
                                         <span class="text-base opacity-50">🔒</span>
                                         <span class="ms-2.5 text-xs truncate font-medium">{{ $mat->title }}</span>
@@ -86,24 +103,24 @@
 
             {{-- KONDISI 2: TAMPILKAN BAB & SUBBAB --}}
             @elseif($sidebarHasDonePreTest && isset($globalChapters))
-                <div id="sidebar-chapters" class="space-y-4"> 
-                    @php 
-                        $isUnlocked = true; 
+                <div id="sidebar-chapters" class="space-y-3">
+                    @php
+                        $isUnlocked = true;
                     @endphp
 
                     @foreach($globalChapters as $chapter)
-                        
+                        @php
+                            $chapterMaterials = $chapter->materials ? $chapter->materials->unique('slug') : collect();
+                        @endphp
+
                         <div class="chapter-group bg-white/50 p-2 rounded-2xl border border-appleHairline shadow-sm transition-all">
-                            
+
                             {{-- HEADER BAB --}}
                             <button class="chapter-toggle w-full flex items-center justify-between px-3 py-2 text-[11px] font-bold text-appleInk hover:text-applePrimary uppercase tracking-wider transition-colors cursor-pointer rounded-xl hover:bg-white/80" data-target="chapter-content-{{ $chapter->id }}">
                                 <span>
-                                    @if($chapter->sequence == 0)
-                                        Pengantar
-                                    @elseif($chapter->sequence == 99)
-                                        Penilaian Akhir
-                                    @else
-                                        Bab {{ $chapter->sequence }}
+                                    @if($chapter->sequence == 0) Pengantar
+                                    @elseif($chapter->sequence == 99) Penilaian Akhir
+                                    @else Bab {{ $chapter->sequence }}
                                     @endif
                                 </span>
                                 <svg class="chevron-icon w-4 h-4 transition-transform duration-300 text-appleMuted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -111,68 +128,75 @@
 
                             {{-- KONTEN SUBBAB --}}
                             <div id="chapter-content-{{ $chapter->id }}" class="chapter-content hidden space-y-1.5 mt-2 pt-2 border-t border-appleHairline/60 px-1">
-                                @foreach($chapter->materials as $material)
-                                    @php 
-                                        $isDone = \App\Models\UserProgress::where('user_id', Auth::id())->where('material_id', $material->id)->exists();
+
+                                @foreach($chapterMaterials as $material)
+                                    @php
+                                        $isDone = in_array($material->id, $doneMaterialIds);
                                     @endphp
-                                    
-                                    @if($isUnlocked)
+
+                                    @if($isUnlocked || $isBypassUser)
                                         <a href="{{ route('learning.show', $material->slug) }}"
                                            class="nav-item flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 text-appleInk hover:bg-white/80 {{ request()->is('belajar/'.$material->slug) ? 'active' : '' }}">
-                                            <span class="text-base opacity-80">{{ $material->type == 'simulation_3d' ? '🧊' : '📄' }}</span> 
+                                            <span class="text-base opacity-80">{{ $material->type == 'simulation_3d' ? '🧊' : '📄' }}</span>
                                             <span class="ms-2.5 text-xs font-medium truncate">{{ $material->title }}</span>
-                                            @if($isDone) 
-                                                <span class="ml-auto text-applePrimary text-xs font-bold">✓</span> 
+                                            @if($isDone)
+                                                <span class="ml-auto text-applePrimary text-xs font-bold">✓</span>
                                             @endif
                                         </a>
-                                        @php if (!$isDone) { $isUnlocked = false; } @endphp
+                                        @php
+                                            if (!$isDone && !$isBypassUser) {
+                                                $isUnlocked = false;
+                                            }
+                                        @endphp
                                     @else
                                         <div class="locked-item nav-item flex items-center px-3 py-2.5 rounded-xl text-appleMuted bg-white/20 cursor-not-allowed select-none"
                                              data-syarat="• Selesaikan materi sebelumnya terlebih dahulu untuk membuka materi ini.">
-                                            <span class="text-base opacity-50">🔒</span> 
+                                            <span class="text-base opacity-50">🔒</span>
                                             <span class="ms-2.5 text-xs font-medium truncate">{{ $material->title }}</span>
                                         </div>
-                                        @php $isUnlocked = false; @endphp
+                                        @php
+                                            $isUnlocked = false;
+                                        @endphp
                                     @endif
                                 @endforeach
-                                
+
                                 {{-- KUIS / EVALUASI BAB --}}
                                 @foreach($chapter->quizzes as $quiz)
-                                    @php 
-                                        $isQuizDone = \App\Models\UserProgress::where('user_id', Auth::id())->where('quiz_id', $quiz->id)->exists(); 
+                                    @php
+                                        $isQuizDone = in_array($quiz->id, $doneQuizIds);
                                     @endphp
-                                     @if($isUnlocked)
-                                        <a href="{{ route('quiz.show', $quiz->id) }}" 
+
+                                    @if($isUnlocked || $isBypassUser)
+                                        <a href="{{ route('quiz.show', $quiz->id) }}"
                                            class="nav-item flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 text-appleInk hover:bg-white/80 {{ request()->routeIs('quiz.show') && request()->route('id') == $quiz->id ? 'active' : '' }}">
-                                            <span class="text-base opacity-80">📝</span> 
+                                            <span class="text-base opacity-80">📝</span>
                                             <span class="ms-2.5 text-xs font-medium truncate">{{ $quiz->title }}</span>
-                                            @if($isQuizDone) 
-                                                <span class="ml-auto text-applePrimary text-xs font-bold">✓</span> 
+                                            @if($isQuizDone)
+                                                <span class="ml-auto text-applePrimary text-xs font-bold">✓</span>
                                             @endif
                                         </a>
                                     @else
                                         <div class="locked-item nav-item flex items-center px-3 py-2.5 rounded-xl text-appleMuted bg-white/20 cursor-not-allowed select-none"
                                              data-syarat="• Selesaikan semua materi di bab ini terlebih dahulu untuk membuka evaluasi.">
-                                            <span class="text-base opacity-50">🔒</span> 
+                                            <span class="text-base opacity-50">🔒</span>
                                             <span class="ms-2.5 text-xs font-medium truncate">{{ $quiz->title }}</span>
                                         </div>
                                     @endif
                                 @endforeach
-                            </div> 
+                            </div>
 
                         </div>
                     @endforeach
                 </div>
             @endif
 
-            {{-- PEMISAH GARIS ANTARA BAB DENGAN FITUR TAMBAHAN --}}
+            {{-- PEMISAH GARIS --}}
             <div class="border-t border-appleHairline my-3"></div>
 
             {{-- FITUR SANDBOX DATA --}}
             @if($sidebarHasDonePreTest)
-                <a href="{{ route('sandbox') }}" 
+                <a href="{{ route('sandbox') }}"
                    class="nav-item flex items-center px-4 py-3 rounded-xl transition-all duration-200 text-appleInk hover:bg-white/60 {{ request()->routeIs('sandbox') ? 'active' : '' }}">
-                    <span class="text-xl opacity-80">🧪</span>
                     <span class="ms-3 text-sm font-semibold">Sandbox Data</span>
                 </a>
             @else
@@ -182,12 +206,6 @@
                 </div>
             @endif
 
-            {{-- FITUR SPREADSHEET LAB --}}
-            <a href="{{ route('spreadsheet.lab') }}"
-               class="nav-item flex items-center px-4 py-3 rounded-xl transition-all duration-200 text-appleInk hover:bg-white/60 {{ request()->routeIs('spreadsheet.lab') ? 'active' : '' }}">
-                <span class="text-xl opacity-80">📈</span>
-                <span class="ms-3 text-sm font-semibold">Spreadsheet Lab</span>
-            </a>
         </nav>
 
         {{-- TOMBOL KELUAR AKUN SISWA --}}
@@ -195,7 +213,7 @@
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="w-full flex items-center justify-center p-3 text-red-600 bg-red-50/80 rounded-xl hover:bg-red-600 hover:text-white transition-all text-sm font-bold border-none cursor-pointer">
-                    <span class="mr-2">🚪</span> Keluar Akun
+                    Keluar Akun
                 </button>
             </form>
         </div>
@@ -221,16 +239,16 @@
             const lockedItems = document.querySelectorAll('.locked-item');
 
             lockedItems.forEach(item => {
-                item.addEventListener('mouseenter', (e) => {
+                item.addEventListener('mouseenter', () => {
                     const syarat = item.getAttribute('data-syarat');
-                    if(syarat) {
-                        tooltipText.innerHTML = syarat; 
+                    if (syarat) {
+                        tooltipText.innerHTML = syarat;
                         tooltip.classList.remove('hidden');
-                        setTimeout(() => tooltip.classList.remove('opacity-0'), 10); 
+                        setTimeout(() => tooltip.classList.remove('opacity-0'), 10);
                     }
                 });
                 item.addEventListener('mousemove', (e) => {
-                    let top = e.clientY + 10; 
+                    let top = e.clientY + 10;
                     let left = e.clientX + 20;
                     if (top + 100 > window.innerHeight) top = e.clientY - 80;
                     tooltip.style.top = `${top}px`;
@@ -243,16 +261,21 @@
             });
 
             const chapterToggles = document.querySelectorAll('.chapter-toggle');
-            
+
             chapterToggles.forEach(toggle => {
                 toggle.addEventListener('click', () => {
                     const targetId = toggle.getAttribute('data-target');
-                    const content = document.getElementById(targetId);
-                    const icon = toggle.querySelector('.chevron-icon');
-                    
-                    if(content && icon) {
-                        content.classList.toggle('hidden');
-                        icon.classList.toggle('rotate-180');
+                    const targetContent = document.getElementById(targetId);
+                    const targetIcon = toggle.querySelector('.chevron-icon');
+
+                    const isCurrentlyOpen = targetContent && !targetContent.classList.contains('hidden');
+
+                    document.querySelectorAll('.chapter-content').forEach(content => content.classList.add('hidden'));
+                    document.querySelectorAll('.chevron-icon').forEach(icon => icon.classList.remove('rotate-180'));
+
+                    if (!isCurrentlyOpen && targetContent) {
+                        targetContent.classList.remove('hidden');
+                        if (targetIcon) targetIcon.classList.add('rotate-180');
                     }
                 });
             });
@@ -261,7 +284,7 @@
             if (activeItem) {
                 const activeChapter = activeItem.closest('.chapter-content');
                 if (activeChapter) {
-                    activeChapter.classList.remove('hidden'); 
+                    activeChapter.classList.remove('hidden');
                     const relatedToggle = document.querySelector(`[data-target="${activeChapter.id}"]`);
                     if (relatedToggle) {
                         const icon = relatedToggle.querySelector('.chevron-icon');
@@ -271,10 +294,10 @@
             } else {
                 const firstChapter = document.querySelector('.chapter-content');
                 const firstToggle = document.querySelector('.chapter-toggle');
-                if(firstChapter && firstToggle) {
+                if (firstChapter && firstToggle) {
                     firstChapter.classList.remove('hidden');
                     const icon = firstToggle.querySelector('.chevron-icon');
-                    if(icon) icon.classList.add('rotate-180');
+                    if (icon) icon.classList.add('rotate-180');
                 }
             }
         });

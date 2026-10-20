@@ -12,7 +12,7 @@ class ContentSeeder extends Seeder
             Bab0_PengantarSeeder::class, 
             MateriBab1Seeder::class,
             MateriBab2Seeder::class,
-            UjiKompetensiAkhirSeeder::class
+            MateriBab3Seeder::class, // <-- Seeder Bab 3 yang baru
         ]);
     }
 }

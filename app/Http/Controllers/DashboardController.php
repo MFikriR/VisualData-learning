@@ -23,8 +23,15 @@ class DashboardController extends Controller
             return redirect()->route('teacher.dashboard');
         }
 
-        // 2. DATA SIDEBAR
-        $globalChapters = Chapter::with('materials')->orderBy('sequence', 'asc')->get();
+        // 2. DATA SIDEBAR (Urutkan materials dan load quizzes)
+        $globalChapters = Chapter::with([
+            'materials' => function($query) {
+                $query->orderBy('sequence', 'asc');
+            },
+            'quizzes'
+        ])
+        ->orderBy('sequence', 'asc')
+        ->get();
 
         // ==========================================
         // 3. LOGIKA PROGRES GABUNGAN (MATERI + KUIS)
